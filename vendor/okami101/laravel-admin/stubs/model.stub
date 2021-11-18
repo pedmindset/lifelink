@@ -1,0 +1,36 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\Translatable\HasTranslations;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Okami101\LaravelAdmin\Traits\RequestMediaTrait;
+
+class {{ class }} extends Model implements HasMedia
+{
+    use HasTranslations;
+    use RequestMediaTrait;
+
+    protected $fillable = [{{ fillable }}];
+
+    protected $casts = [{{ casts }}];
+
+    public $translatable = [{{ translatable }}];
+
+    protected function getLocale(): string
+    {
+        return request()->header('locale') ?: app()->getLocale();
+    }
+
+    public function registerMediaCollections(): void
+    {
+        {{ media }}
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        //
+    }
+}

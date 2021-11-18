@@ -41,4 +41,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $appends = [
+        'is_impersonating',
+    ];
+
+    public function getIsImpersonatingAttribute()
+    {
+        return session()->get('impersonate') === $this->id;
+    }
 }
