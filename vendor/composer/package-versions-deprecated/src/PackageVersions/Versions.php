@@ -193,7 +193,7 @@ final class Versions
   'symfony/options-resolver' => 'v5.3.7@4b78e55b179003a42523a362cc0e8327f7a69b5e',
   'symfony/stopwatch' => 'v5.3.4@b24c6a92c6db316fee69e38c80591e080e41536c',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'laravel/laravel' => 'dev-main@7449d4ba9e7cf9a821bd9fd56ee49b173c333a1c',
+  'laravel/laravel' => 'dev-main@fa77d6c66330d6a883c7677863f9b39b1d4cb0f9',
 );
 
     private function __construct()
