@@ -1,0 +1,47 @@
+
+5.721100696877888, -0.3140022051624215 - call center
+
+5.719315803941786, -0.3135652477256904 - respondent
+
+5.715353072167407, -0.3081724032962058
+
+5.722713151200926, -0.3071685387476845
+
+// amasaman
+hospital 5.702393845666233, -0.2992697090969202
+
+5.701578955504726, -0.2973676498879063
+5.708150617186192, -0.2988206117344503
+5.700842924651288, -0.28600812982345325
+
+AAAAPbm6xUk:APA91bE2L4LBUVJhRJvqXEvVWO4Ebg9DiRHcXZo7fIg9qZGzmcw8G-3s9U5kkBfScQcGKJMZH9slKr3HM-UM_hTAHfoZgGYCJl2elToO7-Lk4FhLdEhSFv3YpNvPVYYXL265QDNMQrJw
+
+AIzaSyC14S7S-N9PtCL3Ng-xV4pKuUD3qD3gyY4
+
+
+function distance($lat1, $lon1, $lat2, $lon2, $unit) {
+   if (($lat1 == $lat2) && ($lon1 == $lon2)) {
+     return 0;
+   }
+   else {
+     $theta = $lon1 - $lon2;
+     $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+     $dist = acos($dist);
+     $dist = rad2deg($dist);
+     $miles = $dist * 60 * 1.1515;
+     $unit = strtoupper($unit);
+ 
+     if ($unit == "K") {
+       return ($miles * 1.609344);
+     } else if ($unit == "N") {
+       return ($miles * 0.8684);
+     } else {
+       return $miles;
+     }
+   }
+ }
+ 
+ echo distance(32.9697, -96.80322, 29.46786, -98.53506, "M") . " Miles<br>";
+ echo distance(32.9697, -96.80322, 29.46786, -98.53506, "K") . " Kilometers<br>";
+ echo distance(32.9697, -96.80322, 29.46786, -98.53506, "N") . " Nautical Miles<br>";
+ 
