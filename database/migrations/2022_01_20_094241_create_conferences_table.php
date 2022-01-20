@@ -15,17 +15,17 @@ class CreateConferencesTable extends Migration
     {
         Schema::create('conferences', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-			$table->integer('type');
-			$table->integer('duration');
-			$table->string('location');
-			$table->string('commitee_interest');
-			$table->string('regional_bloc');
-			$table->boolean('entry_visa');
-			$table->boolean('first_time');
-			$table->text('embassy_loaction');
-			$table->dateTime('start');
-			$table->dateTime('end');
+            $table->string('name')->nullable();
+			$table->integer('type')->nullable();
+			$table->integer('duration')->nullable();
+			$table->string('location')->nullable();
+			$table->string('commitee_interest')->nullable();
+			$table->string('regional_bloc')->nullable();
+			$table->boolean('entry_visa')->nullable();
+			$table->boolean('first_time')->nullable();
+			$table->text('embassy_loaction')->nullable();
+			$table->dateTime('start')->nullable();
+			$table->dateTime('end')->nullable();
 			$table->softDeletes();
             $table->timestamps();
         });

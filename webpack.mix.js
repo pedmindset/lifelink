@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const tailwindcss = require('tailwindcss');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,8 +12,20 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
-    require('postcss-import'),
-    require('tailwindcss'),
-    require('autoprefixer'),
-]);
+ mix.js('resources/js/app.js', 'public/js')
+    .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
+    .vue()
+    .sass('resources/sass/app.scss', 'public/css')
+    .options({
+        processCssUrls: false,
+        postCss: [ tailwindcss('./tailwind.config.js') ],
+    });
+
+// mix.js('resources/js/app.js', 'public/js')
+//     .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
+//     .vue()
+//     .postCss('resources/css/app.css', 'public/css', [
+//     require('postcss-import'),
+//     require('tailwindcss'),
+//     require('autoprefixer'),
+// ]);
