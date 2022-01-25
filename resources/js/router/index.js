@@ -4,6 +4,8 @@ import DashboardView from '../components/Dashboard'
 import ConferenceIndex from '../components/conference/Home'
 import ConferenceCreate from '../components/conference/Create'
 import ConferenceEdit from '../components/conference/Create'
+import AluminiaHome from '../components/aluminia/Home'
+import SettingsView from '../components/Settings'
 
 const routes = [
    {
@@ -22,10 +24,34 @@ const routes = [
       component: ConferenceCreate
    },
    {
-      path: '/conference/:id/edit',
-      name: 'conference.edit',
+      path: '/officials',
+      name: 'officials',
       component: ConferenceEdit,
-      props: true
+   },
+   {
+      path: '/members',
+      name: 'members',
+      component: ConferenceEdit,
+   },
+   {
+      path: '/aluminias',
+      name: 'aluminias.index',
+      component: AluminiaHome,
+   },
+   {
+      path: '/payments',
+      name: 'payments',
+      component: ConferenceEdit,
+   },
+   {
+      path: '/awards-citations',
+      name: 'award.citation',
+      component: ConferenceEdit,
+   },
+   {
+      path: '/settings',
+      name: 'settings',
+      component: SettingsView,
    }
 ]
 

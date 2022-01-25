@@ -1,17 +1,21 @@
 require('./bootstrap');
+require('alpinejs');
 
-import Alpine from 'alpinejs';
+// import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
+// window.Alpine = Alpine;
 
-Alpine.start();
+// Alpine.start();
 
 import { createApp } from "vue";
+import { createDynamicForms } from '@asigloo/vue-dynamic-forms'
 import router from './router'
 import AppIndex from './components/Dashboard'
+
+const VueDynamicForms = createDynamicForms()
 
 createApp({
    components: {
       AppIndex
    }
-}).use(router).mount('#app')
+}).use(router, VueDynamicForms).mount('#app')
