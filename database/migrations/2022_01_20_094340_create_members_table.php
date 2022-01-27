@@ -15,12 +15,14 @@ class CreateMembersTable extends Migration
    {
       Schema::create('members', function (Blueprint $table) {
          $table->id();
-         $table->unsignedBigInteger('conference_id');
-         $table->unsignedBigInteger('profile_id');
+         $table->unsignedBigInteger('event_id');
+         $table->unsignedBigInteger('user_id');
+         $table->string('status');
+         $table->string('paid'); // string indicating part or full
          $table->timestamps();
 
-         $table->foreign('conference_id')->references('id')->on('conferences');
-         $table->foreign('profile_id')->references('id')->on('profile_id');
+         $table->foreign('event_id')->references('id')->on('events');
+         $table->foreign('user_id')->references('id')->on('users');
       });
    }
 

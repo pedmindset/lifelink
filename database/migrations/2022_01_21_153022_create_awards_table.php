@@ -15,12 +15,10 @@ class CreateAwardsTable extends Migration
     {
         Schema::create('awards', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('conference_id');
+            $table->string('name');
+            $table->string('description');
             $table->uuid('uuid');
-            $table->uuid('title');
             $table->timestamps();
-
-            $table->foreign('conference_id')->references('id')->on('conferences');
         });
     }
 

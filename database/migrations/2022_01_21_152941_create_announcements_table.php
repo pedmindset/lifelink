@@ -15,10 +15,14 @@ class CreateAnnouncementsTable extends Migration
    {
       Schema::create('announcements', function (Blueprint $table) {
          $table->id();
+         $table->unsignedBigInteger('event_id')->nullable();
          $table->uuid('uuid');
-         $table->string('title');
-         $table->string('content');
+         $table->string('type');
+         $table->string('subject');
+         $table->text('content');
          $table->timestamps();
+
+         $table->foreign('event_id')->references('id')->on('events');
       });
    }
 
