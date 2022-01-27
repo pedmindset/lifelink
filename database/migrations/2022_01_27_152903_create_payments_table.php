@@ -15,8 +15,8 @@ class CreatePaymentsTable extends Migration
    {
       Schema::create('payments', function (Blueprint $table) {
          $table->id();
-         $table->unsignedBigInteger('profile_id')->nullable();
-         $table->unsignedBigInteger('conference_id')->nullable();
+         $table->unsignedBigInteger('user_id')->nullable();
+         $table->unsignedBigInteger('event_application_id')->nullable();
          $table->uuid('uuid')->nullable();
          $table->string('transaction_code')->nullable();
          $table->string('description')->nullable();
@@ -26,8 +26,8 @@ class CreatePaymentsTable extends Migration
          $table->softDeletes();
          $table->timestamps();
 
-         $table->foreign('profile_id')->references('id')->on('profiles');
-         $table->foreign('conference_id')->references('id')->on('conferences');
+         $table->foreign('user_id')->references('id')->on('users');
+         $table->foreign('event_application_id')->references('id')->on('event_applications');
       });
    }
 

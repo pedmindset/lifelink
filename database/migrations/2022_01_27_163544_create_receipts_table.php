@@ -17,13 +17,13 @@ class CreateReceiptsTable extends Migration
       Schema::create('receipts', function (Blueprint $table) {
          $table->id();
          $table->unsignedBigInteger('payment_id');
-         $table->unsignedBigInteger('profile_id');
+         $table->unsignedBigInteger('user_id');
          $table->unsignedBigInteger('receipt_code');
          $table->softDeletes();
          $table->timestamps();
 
          $table->foreign('payment_id')->references('id')->on('payments');
-         $table->foreign('profile_id')->references('id')->on('profiles');
+         $table->foreign('user_id')->references('id')->on('users');
       });
    }
 

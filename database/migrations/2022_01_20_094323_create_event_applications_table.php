@@ -15,9 +15,13 @@ class CreateEventApplicationsTable extends Migration
    {
       Schema::create('event_applications', function (Blueprint $table) {
          $table->id();
-         $table->text('form_data')->nullable();
+         $table->unsignedBigInteger('event_id');
+         $table->text('name')->nullable();
+         $table->json('schema');
          $table->softDeletes();
          $table->timestamps();
+
+         $table->foreign('event_id')->references('id')->on('events');
       });
    }
 

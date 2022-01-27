@@ -15,16 +15,12 @@ class CreateEventsTable extends Migration
    {
       Schema::create('events', function (Blueprint $table) {
          $table->id();
-         $table->unsignedBigInteger('compony_id');
-         $table->unsignedBigInteger('fee_id');
-         $table->string('name')->nullable();
+         $table->string('name');
+         $table->string('description')->nullable();
          $table->dateTime('start_date')->nullable();
          $table->dateTime('end_date')->nullable();
          $table->softDeletes();
          $table->timestamps();
-
-         $table->foreign('compony_id')->references('id')->on('componies');
-         $table->foreign('fee_id')->references('id')->on('fees');
       });
    }
 

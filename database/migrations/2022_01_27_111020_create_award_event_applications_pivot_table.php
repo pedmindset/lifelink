@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAwardEventsPivotTable extends Migration
+class CreateAwardEventApplicationsPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -31,6 +31,6 @@ class CreateAwardEventsPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('award_events_pivot');
+        Schema::dropIfExists('award_event_applications_pivot');
     }
 }

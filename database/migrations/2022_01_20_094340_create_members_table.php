@@ -15,13 +15,13 @@ class CreateMembersTable extends Migration
    {
       Schema::create('members', function (Blueprint $table) {
          $table->id();
-         $table->unsignedBigInteger('event_id');
+         $table->unsignedBigInteger('event_application_id');
          $table->unsignedBigInteger('user_id');
          $table->string('status');
          $table->string('paid'); // string indicating part or full
          $table->timestamps();
 
-         $table->foreign('event_id')->references('id')->on('events');
+         $table->foreign('event_application_id')->references('id')->on('event_applications');
          $table->foreign('user_id')->references('id')->on('users');
       });
    }
