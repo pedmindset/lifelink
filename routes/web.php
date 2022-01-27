@@ -1,5 +1,13 @@
 <?php
 
+use App\Http\Livewire\ComponentAwardCitation;
+use App\Http\Livewire\ComponentConference;
+use App\Http\Livewire\ComponentMembers;
+use App\Http\Livewire\ComponentOfficials;
+use App\Http\Livewire\ComponentPayment;
+use App\Http\Livewire\ComponentUsers;
+use App\Http\Livewire\Error\Err404;
+use App\Http\Livewire\Error\Err500;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,15 +22,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return view('welcome');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
 
-Route::view('/{any}', 'dashboard')
-    ->middleware(['auth'])
-    ->where('any', '.*');
+Route::get('/404', Err404::class)->name('404');
+Route::get('/500', Err500::class)->name('500');
+
+Route::middleware('auth')->group(function ($route) {
+   $route->post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+         ->name('logout');
+   $route->get('/home', function () {
+      return view('welcome');
+   });
+   $route->get('/settings', function () {
+      return view('welcome');
+   })->name('settings');
+   $route->get('/dashboard', function() {
+      return view('admin.dashboard');
+   })->name('dashboard');
+
+   $route->get('/users', ComponentUsers::class)->name('users');
+   $route->get('/conferences', ComponentConference::class)->name('conferences');
+   $route->get('/officials', ComponentOfficials::class)->name('officials');
+   $route->get('/members', ComponentMembers::class)->name('members');
+   $route->get('/payments', ComponentPayment::class)->name('payments');
+   $route->get('/awards-citations', ComponentAwardCitation::class)->name('awards.citations');
+});

@@ -24956,11 +24956,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
+    var data = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
+      newAdd: false
+    });
     var form = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)([]);
 
     var _useConference = (0,_composables_conference__WEBPACK_IMPORTED_MODULE_2__["default"])(),
         errors = _useConference.errors,
         storeConference = _useConference.storeConference;
+
+    var toggleNewField = function toggleNewField() {
+      data.newAdd = !data.newAdd;
+      console.log(data.newAdd);
+    };
+
+    var addField = function addField(label, type, name) {
+      form.push({
+        'label': label,
+        'type': type,
+        'name': name
+      });
+    };
 
     var saveConference = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -24985,8 +25001,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }();
 
     return {
+      data: data,
       form: form,
       errors: errors,
+      addField: addField,
+      toggleNewField: toggleNewField,
       saveConference: saveConference
     };
   }
@@ -25235,13 +25254,92 @@ var _hoisted_1 = {
   "class": "w-full flex flex-col sm:justify-center items-center pt-6 sm:pt-0"
 };
 var _hoisted_2 = {
-  key: 0
+  key: 0,
+  "class": "fixed z-10 inset-0 overflow-hidden"
+};
+var _hoisted_3 = {
+  "class": "absolute inset-0 overflow-hidden"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"w-full sm:max-w-4xl mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg\"><form class=\"space-y-6\"><div class=\"grid grid-cols-6 gap-4\"></div><div class=\"flex place-content-end space-x-3\"><button type=\"button\" class=\"inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-green-600 rounded-md border border-transparent ring-green-300 transition duration-150 ease-in-out hover:bg-green-700 hover:shadow-inner active:bg-green-900 focus:outline-none focus:border-green-900 focus:ring disabled:opacity-25\"> Add Field </button><button type=\"submit\" class=\"inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-gray-800 rounded-md border border-transparent ring-gray-300 transition duration-150 ease-in-out hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring disabled:opacity-25\"> Submit </button></div></form></div>", 1);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity ease-in-out duration-500 sm:duration-700",
+  "aria-hidden": "true"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_5 = {
+  "class": "absolute inset-y-0 right-0 pl-10 max-w-full flex",
+  "aria-labelledby": "slide-over-heading"
+};
+var _hoisted_6 = {
+  "class": "relative w-screen max-w-md"
+};
+var _hoisted_7 = {
+  "class": "absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "sr-only"
+}, "Close panel", -1
+/* HOISTED */
+);
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  "class": "h-6 w-6",
+  xmlns: "http://www.w3.org/2000/svg",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor",
+  "aria-hidden": "true"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M6 18L18 6M6 6l12 12"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "min-h-screen flex flex-col py-6 bg-white shadow-xl overflow-y-scroll"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "px-4 sm:px-6 sm:flex sm:justify-between"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_11 = {
+  key: 1
+};
+var _hoisted_12 = {
+  "class": "w-full sm:max-w-4xl px-6 py-4 overflow-hidden"
+};
+var _hoisted_13 = {
+  "class": "space-y-6"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div><div class=\"mt-5 md:mt-0\"><div class=\"shadow sm:rounded-md sm:overflow-hidden\"><h3 class=\"text-base font-medium px-6 leading-6 text-gray-700 bg-gray-50 py-2\">General</h3><div class=\"px-4 py-5 bg-white space-y-6 sm:p-6\"><div class=\"grid grid-cols-4 gap-6\"><div class=\"col-span-4 sm:col-span-2\"><label for=\"conference-title\" class=\"block text-sm font-medium text-gray-700\"> Conference Title </label><div class=\"mt-1 flex rounded-md shadow-sm\"><input type=\"text\" name=\"conference_title\" id=\"conference-title\" class=\"focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none sm:text-sm border-gray-300\" placeholder=\"Conference Title\"></div></div><div class=\"col-span-4 sm:col-span-2\"><label for=\"venue\" class=\"block text-sm font-medium text-gray-700\"> Venue </label><div class=\"mt-1 flex rounded-md shadow-sm\"><input type=\"text\" name=\"venue\" id=\"venue\" class=\"focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none sm:text-sm border-gray-300\" placeholder=\"Conference Venue\"></div></div></div><div><label for=\"description\" class=\"block text-sm font-medium text-gray-700\"> Description </label><div class=\"mt-1\"><textarea id=\"description\" name=\"description\" rows=\"3\" class=\"shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md\" placeholder=\"\"></textarea></div><p class=\"mt-2 text-sm text-gray-500\"> Brief description for the conference. URLs are hyperlinked. </p></div><div><label class=\"block text-sm font-medium text-gray-700\"> Cover photo </label><div class=\"mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md\"><div class=\"space-y-1 text-center\"><svg class=\"mx-auto h-12 w-12 text-gray-400\" stroke=\"currentColor\" fill=\"none\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path d=\"M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><div class=\"flex text-sm text-gray-600\"><label for=\"file-upload\" class=\"relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500\"><span>Upload a file</span><input id=\"file-upload\" name=\"file-upload\" type=\"file\" class=\"sr-only\"></label><p class=\"pl-1\">or drag and drop</p></div><p class=\"text-xs text-gray-500\"> PNG, JPG, GIF up to 10MB </p></div></div></div></div></div></div></div><div class=\"py-3\"><div class=\"border-t border-gray-300\"></div></div><div class=\"mt-5 md:mt-0\"><div class=\"shadow sm:rounded-md sm:overflow-hidden\"><h3 class=\"text-base font-medium px-6 leading-6 text-gray-700 bg-gray-50 py-2\">Conference Details - <span class=\"text-xs\">Add fields to complete the details</span></h3><div class=\"px-4 py-5 bg-white space-y-6 sm:p-6\"></div></div></div><div class=\"py-3\"><div class=\"border-t border-gray-300\"></div></div>", 4);
+
+var _hoisted_18 = {
+  "class": "flex place-content-end space-x-3"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "button",
+  "class": "inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-gray-800 rounded-md border border-transparent ring-gray-300 transition duration-150 ease-in-out hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring disabled:opacity-25"
+}, " Submit ", -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [$setup.errors ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.errors, function (v, k) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"flex items-center justify-center fixed left-0 bottom-0 w-full min-h-screen z-50\">\r\n         <div class=\"fixed inset-0 transition-opacity\">\r\n            <div class=\"absolute inset-0 bg-gray-800 opacity-75\"></div>\r\n\r\n         </div>\r\n         <div class=\"bg-white rounded-lg w-2/3 md:w-1/2 transform transition-all\">\r\n            <div class=\"bg-gray-100 rounded-t-lg flex sm:items-start px-4 pt-5 pb-4 sm:p-6 sm:pb-4\">\r\n               <div class=\"mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10\">\r\n                  <svg class=\"h-6 w-6 text-red-600\" stroke=\"currentColor\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n                     <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z\"/>\r\n                  </svg>\r\n               </div>\r\n\r\n               <div class=\"text-center sm:mt-0 sm:ml-4 sm:text-left\">\r\n                  <h3 class=\"text-lg leading-6 mt-2 font-medium text-gray-900\" id=\"modal-headline\">\r\n                     Add Form Field\r\n                  </h3>\r\n               </div>\r\n            </div>\r\n\r\n            <div class=\"sm:flex sm:items-start px-4 pt-5 pb-4 sm:p-6 sm:pb-4\">\r\n\r\n               <div class=\"mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left\">\r\n                  \r\n               </div>\r\n\r\n            </div>\r\n\r\n         </div>\r\n      </div> "), $setup.data.newAdd ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $setup.data.newAdd = false;
+    }, ["prevent"])),
+    "class": "rounded-full p-1 bg-red-500 hover:bg-red-700 text-white focus:outline-none focus:ring-2 focus:ring-white"
+  }, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Heroicon name: x "), _hoisted_9])]), _hoisted_10])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.errors ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.errors, function (v, k) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: k,
       "class": "bg-red-500 text-white rounded font-bold mb-4 shadow-lg py-2 px-4 pr-0"
@@ -25257,7 +25355,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ))]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_3]);
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $setup.toggleNewField();
+    }),
+    type: "button",
+    "class": "inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-green-600 rounded-md border border-transparent ring-green-300 transition duration-150 ease-in-out hover:bg-green-700 hover:shadow-inner active:bg-green-900 focus:outline-none focus:border-green-900 focus:ring disabled:opacity-25"
+  }, " Add Field "), _hoisted_19])])])]);
 }
 
 /***/ }),

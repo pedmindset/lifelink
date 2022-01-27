@@ -10,7 +10,7 @@
          <div class="flex items-start justify-between">
             @include('layouts.sidebar')
             <div class="w-full">
-               <router-view />
+      
             </div>
          </div>
       </div>

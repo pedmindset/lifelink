@@ -2,7 +2,7 @@
    <x-auth-card class="mb-12">
       <x-slot name="logo">
          <a href="/">
-            <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <x-application-logo class="w-52 h-14  fill-current" />
          </a>
       </x-slot>
 
@@ -15,26 +15,22 @@
             <x-label for="first_name" :value="__('First Name')" />
             <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus />
          </div>
-         <div class="mt-4">
+         <div class="mt-2">
             <x-label for="last_name" :value="__('Last Name')" />
             <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus />
          </div>
 
-         <div class="mt-4 grid grid-cols-4 gap-2">
-            <div class="col-span-2">
-               <x-label for="email" :value="__('Email')" />
-               <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="col-span-2">
-               <x-label for="phone" :value="__('Phone')" />
-               <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required />
-            </div>
-
+         <div class="mt-2">
+            <x-label for="email" :value="__('Email')" />
+            <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
          </div>
 
+         <div class="mt-2">
+            <x-label for="phone" :value="__('Phone')" />
+            <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required />
+         </div>
          
-         <div class="mt-4 grid grid-cols-4 gap-2">
+         <div class="mt-2 grid grid-cols-4 gap-2">
             
             <div class="col-span-2">
                <x-label for="password" :value="__('Password')" />
@@ -51,7 +47,7 @@
             </div>
          </div>
 
-         <div class="mt-4">
+         <div class="mt-2">
             <x-label for="address" :value="__('Address')" />
             <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')"/>
          </div>
