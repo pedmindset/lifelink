@@ -43,9 +43,10 @@ Route::middleware('auth')->group(function ($route) {
    })->name('dashboard');
 
    $route->get('/users', ComponentUsers::class)->name('users');
-   $route->get('/conferences', ComponentConference::class)->name('conferences');
+   $route->get('/events', ComponentConference::class)->name('events');
+   $route->get('/event-form', ComponentConference::class)->name('event.form');
    $route->get('/officials', ComponentOfficials::class)->name('officials');
    $route->get('/members', ComponentMembers::class)->name('members');
-   $route->get('/payments', ComponentPayment::class)->name('payments');
    $route->get('/awards-citations', ComponentAwardCitation::class)->name('awards.citations');
+   $route->get('/payments', ComponentPayment::class)->name('payments');
 });

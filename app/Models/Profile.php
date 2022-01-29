@@ -55,27 +55,5 @@ class Profile extends Model implements HasMedia
       return $this->belongsTo(User::class);
    }
 
-   /**
-    * @return \Illuminate\Database\Eloquent\Relations\HasMany
-   */
-   public function conferences()
-   {
-      return $this->hasMany(Conference::class);
-   }
-
-   /**
-    * @return \Illuminate\Database\Eloquent\Relations\HasMany
-   */
-   public function payments()
-   {
-      return $this->hasMany(Payment::class);
-   }
-
-   /**
-    * @return \Illuminate\Database\Eloquent\Relations\HasMany
-    */
-   public function reciepts()
-   {
-      return $this->hasMany(Receipt::class);
-   }
+   
 }
