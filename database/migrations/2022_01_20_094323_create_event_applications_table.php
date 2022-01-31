@@ -17,6 +17,7 @@ class CreateEventApplicationsTable extends Migration
          $table->id();
          $table->unsignedBigInteger('event_id');
          $table->text('name')->nullable();
+         $table->text('description')->nullable();
          $table->json('schema');
          $table->softDeletes();
          $table->timestamps();

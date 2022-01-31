@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
    use HasFactory;
-   protected $fillable = ['name', 'type', 'location', 'commitee_interest', 'regional_bloc', 'entry_visa', 'first_time', 'embassy_loaction', 'start', 'end'];
+   protected $fillable = ['name', 'description', 'start_date', 'end_date'];
+
+   /**
+    * Get all of the applications for the Event
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+   public function applications()
+   {
+      return $this->hasMany(EventApplications::class);
+   }
 
 }

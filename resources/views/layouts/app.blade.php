@@ -12,8 +12,10 @@
       <link rel="shortcut icon" href="{{ asset('img/logo_image.png') }}" type="image/x-icon">
       <!-- Styles -->
       <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+      {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> --}}
       <!-- Scripts -->
-      {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+      <script src="{{ asset('js/app.js') }}" defer></script>
       <script src="{{ asset('js/alpine.js') }}" defer></script>
       @livewireStyles
    </head>

@@ -1,73 +1,224 @@
-<div class="w-full">
-   <div class="py-10">
+<div class="w-full" x-data="app()" x-init="initDate(); $watch('openEdit', value => updateData(value))">
+   <div class="py-10"  x-on:keydown.escape="showEndDatepicker = false" x-on:click.away="showEndDatepicker = false">
       <div class="max-w-full sm:px-6 lg:px-8">
+         <div class="w-full">
+            @include('livewire.conference.create')
+            @include('livewire.conference.update')
+            @include('livewire.conference.delete')
 
-         <div class="flex place-content-end mb-4">
-            <div class="px-4 py-2 text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer rounded-bl-md rounded-tr-md">
-               <button type="button" class="text-sm font-medium">New Conference</button>
+            @if (count($data) > 0)
+            <div class="flex place-content-end mb-4">
+               <button type="button" x-on:click="openCreate = true" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white capitalize bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                  new event
+               </button>
             </div>
-         </div>
 
-         <table class="min-w-full border divide-y divide-gray-200">
-            <thead>
-               <tr>
-                  <th class="px-6 py-3 bg-gray-50">
-                     <span class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Index</span>
-                  </th>
-                  <th class="px-6 py-3 bg-gray-50">
-                     <span class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Title</span>
-                  </th>
-                  <th class="px-6 py-3 bg-gray-50">
-                     <span class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Date</span>
-                  </th>
-                  <th class="px-6 py-3 bg-gray-50">
-                     <span class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Location</span>
-                  </th>
-                  <th class="px-6 py-3 bg-gray-50">
-                     <span class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Fee</span>
-                  </th>
-                  <th class="px-6 py-3 bg-gray-50">
-                  </th>
-               </tr>
-            </thead>
+            <div class="flex flex-col">
+               <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                  <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-b-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                           <thead class="bg-gray-50">
+                              <tr>
+                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Name
+                                 </th>
+                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Description
+                                 </th>
+                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Start Date
+                                 </th>
+                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    End Date
+                                 </th>
+                                 <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Action</span>
+                                 </th>
+                              </tr>
+                           </thead>
+                           <tbody class="bg-white divide-y divide-gray-200">
+                              @foreach($data as $event)
+                              <tr>
+                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-500">
+                                    {{ $event->name }}
+                                 </td>
+                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate">
+                                    {{ $event->description }}
+                                 </td>
+                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ date("F jS, Y", strtotime($event->start_date)) }}
+                                 </td>
+                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ date("F jS, Y", strtotime($event->end_date)) }}
+                                 </td>
+                                 <td class="px-6 py-4 whitespace-nowrap text-right space-x-2">
+                                    <button wire:click.prevent="edit({{$event->id}})" type="button" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-blue-600 rounded-md border border-transparent ring-blue-300 transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-inner active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring disabled:opacity-25">Edit </button> 
+                                    <button wire:click.prevent="delete({{$event->id}})" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-red-600 rounded-md border border-transparent ring-red-300 transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-inner active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring disabled:opacity-25">Delete</button>
+                                 </td>
+                              </tr>
+                              @endforeach
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            @else
 
-            <tbody class="bg-white divide-y divide-gray-200 divide-solid w-full">
-               @for($i = 0; $i < 5; $i++)
-               <tr class="bg-white w-full">
-                  <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                     <span class="items-center flex justify-center">{{ $i + 1 }} </span>
-                  </td>
-                  <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                     <span class="items-center flex justify-center">Conference title</span>
-                  </td>
-                  <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                     <span class="items-center flex justify-center">Conference date</span>
-                  </td>
-                  <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                     <span class="items-center flex justify-center">Conference Location</span>
-                  </td>
-                  <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                     <span class="items-center flex justify-center">120.00</span>
-                  </td>
-                  <td class="space-x-2">
-                     <button type="button" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-blue-600 rounded-md border border-transparent ring-blue-300 transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-inner active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring disabled:opacity-25">
-                        Edit 
-                     </button> 
-                     <button class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-red-600 rounded-md border border-transparent ring-red-300 transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-inner active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring disabled:opacity-25">Delete</button>
-                  </td>
-               </tr>
-               @endfor
-            </tbody>
-         </table>
+            <div class="w-3/4 mx-auto text-center py-8 bg-white shadow my-8 border-t-4 border-r-4 border-gray-400 rounded-t-lg">
+               <i class="las la-folder-plus text-6xl text-gray-600 py-3"></i>
+               <p class="text-gray-600 text-base font-bold">No Event Available</p>
+               <p class="text-gray-400 font-medium">Get started by creating a new <span class="font-bold text-gray-700">Event</span></p>
 
-         <div class="w-3/4 mx-auto text-center py-8 bg-white shadow my-8 border-t-4 border-r-4 border-gray-400 rounded-t-lg">
-            <i class="las la-folder-plus text-6xl text-gray-600 py-3"></i>
-            <p class="text-gray-600 text-base font-bold">No Conference available</p>
-            <p class="text-gray-400 font-medium">Get started by creating a new <span class="font-bold text-gray-700">Conference</span></p>
-
-            <p class="mt-6 mb-10"><span class="px-4 py-2 text-sm rounded-md text-white w-auto bg-indigo-600 hover:bg-indigo-700 cursor-pointer"> <i class="las la-plus text-md px-1"></i> New Conference </span></p>
+               <p class="mt-6 mb-10" x-on:click="openCreate = true"><span class="px-4 py-2 text-sm rounded-md text-white w-auto bg-indigo-600 hover:bg-indigo-700 cursor-pointer"> <i class="las la-plus text-md px-1"></i> New Event </span></p>
+            </div>
+            @endif
          </div>
 
       </div>
    </div>
 </div>
+
+@push('custom-scripts')
+<script src="{{ asset('js/sweet-alert.js') }}"></script>
+<script>
+   window.addEventListener('alertMessage', ({detail:{type, message}}) => {
+      Swal.fire({
+         toast: true,
+         title: message,
+         icon: type,
+         position:'top-end',
+         timer: 3600,
+         showConfirmButton: false,
+         timerProgressBar: true,
+         didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+         }
+      })
+   });
+</script>
+<script>
+   const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+   const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+   function app() {
+      return {
+         showDatepicker: false,
+         showEndDatepicker: false,
+         isStart: false,
+         openCreate: @entangle('createMode'), 
+         openEdit: @entangle('updateMode'), 
+         openDelete: @entangle('deleteMode'),
+         startValue: @entangle('start_date'),
+         endValue: @entangle('end_date'),
+         dateValueYmd: '',
+         currentDate: null,
+         month: '',
+         year: '',
+         no_of_days: [],
+         blankdays: [],
+         
+         convertFromYmd(dateYmd) {
+            const year = Number(dateYmd.substr(0, 4));
+            const month = Number(dateYmd.substr(5, 2)) - 1;
+            const date = Number(dateYmd.substr(8, 2));
+            
+            return new Date(year, month, date);
+         },
+         
+         convertToYmd(dateObject) {
+            const year = dateObject.getFullYear();
+            const month = dateObject.getMonth() + 1;
+            const date = dateObject.getDate();
+            
+            return year + "-" + ('0' + month).slice(-2) + "-" +  ('0' + date).slice(-2);
+         },
+
+         initDate() {
+            this.currentDate = new Date();
+
+            currentMonth = this.currentDate.getMonth();
+            currentYear = this.currentDate.getFullYear();
+            if ( this.month !== currentMonth || this.year !== currentYear ) {
+               this.month = currentMonth;
+               this.year = currentYear;
+               this.getNoOfDays();
+            }
+            this.setDateValues();
+         },
+
+         updateData(value) {
+            console.log(value);
+            setDateValues();
+         },
+
+         isToday(date) {
+            const today = new Date();
+            const d = new Date(this.year, this.month, date);
+            return today.toDateString() === d.toDateString();
+         },
+
+         openPicker(value) {
+            console.log(value);
+            if (value == 'startValue') {
+               this.showDatepicker = true;
+               this.isStart = true;
+            } else {
+               this.showEndDatepicker = true;
+               this.isStart = false;
+            }
+         },
+         
+         setDateValues() {
+            if (this.isStart && this.startValue) {
+               this.showDatepicker = false;
+               this.startValue = this.startValue.toDateString();
+               this.dateValueYmd = this.convertToYmd(this.startValue);
+            }
+            if(!this.isStart && this.endValue) {
+               this.showEndDatepicker = false;
+               this.endValue = this.endValue.toDateString();
+               this.endValue = this.convertToYmd(this.endValue);
+            }
+         },
+
+         getDateValue(date) {
+            let selectedDate = new Date(this.year, this.month, date);
+            if (this.isStart) {
+               this.startValue = selectedDate;
+            } else {
+               this.endValue = selectedDate;
+            }
+
+            this.setDateValues();
+
+         },
+
+         getNoOfDays() {
+            let daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+            let dayOfWeek = new Date(this.year, this.month).getDay();
+            let blankdaysArray = [];
+            for ( var i=1; i <= dayOfWeek; i++) {
+               blankdaysArray.push(i);
+            }
+
+            let daysArray = [];
+            for ( var i=1; i <= daysInMonth; i++) {
+               daysArray.push(i);
+            }
+
+            this.blankdays = blankdaysArray;
+            this.no_of_days = daysArray;
+         },
+
+         convertDate(date){
+            var d = new Date(date);
+            var new_date = this.month_names[d.getMonth()] + " " + ('0'+ d.getDate()).slice(-2) + ", "+ d.getFullYear();
+            return new_date
+         },
+      }
+   }
+</script>
+@endpush
