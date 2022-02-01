@@ -30,12 +30,12 @@
                Events
             </x-nav-link>
 
-            <x-nav-link :href="route('event.form')" :active="request()->routeIs('event.form')">
+            {{-- <x-nav-link :href="route('event.form')" :active="request()->routeIs('event.form')">
                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                </svg>
                Event Forms
-            </x-nav-link>
+            </x-nav-link> --}}
 
             <x-nav-link :href="route('officials')" :active="request()->routeIs('officials')">
                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -44,12 +44,12 @@
                Officials
             </x-nav-link>
 
-            <x-nav-link :href="route('members')" :active="request()->routeIs('members')">
+            {{-- <x-nav-link :href="route('members')" :active="request()->routeIs('members')">
                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                </svg>
                Members
-            </x-nav-link>
+            </x-nav-link> --}}
 
             <x-nav-link :href="route('awards.citations')" :active="request()->routeIs('awards.citations')">
                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

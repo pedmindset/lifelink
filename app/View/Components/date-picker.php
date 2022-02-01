@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class date-picker extends Component
+class DatePicker extends Component
 {
     /**
      * Create a new component instance.

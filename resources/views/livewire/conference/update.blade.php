@@ -1,4 +1,4 @@
-<div class="fixed inset-0 overflow-hidden z-20" x-show="openEdit"
+<div class="fixed inset-0 overflow-hidden z-20" x-show="openEdit" style="display: none"
    aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
       x-transition:enter="ease-in-out duration-500" 
@@ -88,11 +88,18 @@
                               </div>
                            </div>
 
-                           <x-start-date-picker label="Start Date" placeholder="Select start date" />
-                           <div class="flex justify-center items-center bg-gray-100">
-                              <span class="mx-4 text-gray-600">to</span>
+                           <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                              <div class="sm:col-span-3">
+                                 <x-input.group label="Starts Date" inline="true" for="start_date" :error="$errors->first('start_date')" help-text="Select Start Date">
+                                    <x-input.date-picker wire:model.lazy="start_date" id="start_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                 </x-input.group>
+                              </div>
+                              <div class="sm:col-span-3">
+                                 <x-input.group label="Ends Date" inline="true" for="end_date" :error="$errors->first('end_date')" help-text="Select End Date">
+                                    <x-input.date-picker wire:model.lazy="end_date" id="end_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                 </x-input.group>
+                              </div>
                            </div>
-                           <x-end-date-picker label="End Date" placeholder="Select end date" />
                            
                         </div>
                      </div>

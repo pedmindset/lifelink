@@ -19,5 +19,9 @@ class Event extends Model
    {
       return $this->hasMany(EventApplications::class);
    }
+   // public function award()
+   // {
+   //    return $this->hasMany(EventApplications::class);
+   // }
 
 }
