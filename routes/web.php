@@ -1,15 +1,19 @@
 <?php
 
-use App\Http\Livewire\ComponentAwardCitation;
-use App\Http\Livewire\ComponentConference;
-use App\Http\Livewire\ComponentMembers;
-use App\Http\Livewire\ComponentOfficials;
-use App\Http\Livewire\ComponentPayment;
-use App\Http\Livewire\ComponentUsers;
+use Illuminate\Http\Request;
 use App\Http\Livewire\Error\Err404;
 use App\Http\Livewire\Error\Err500;
-use App\Http\Livewire\EventApplication;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Livewire\ComponentUsers;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\ComponentMembers;
+use App\Http\Livewire\ComponentPayment;
+use App\Http\Livewire\EventApplication;
+use App\Http\Livewire\ComponentOfficials;
+use App\Http\Livewire\ComponentConference;
+use App\Http\Livewire\Pages\TertiaryEvents;
+use App\Http\Livewire\ComponentAwardCitation;
+use App\Models\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+   // $u = Auth::user();
+   // dd($u->roles[0]['name']);
    return view('welcome');
 });
 require __DIR__.'/auth.php';
@@ -31,17 +37,23 @@ Route::get('/404', Err404::class)->name('404');
 Route::get('/500', Err500::class)->name('500');
 
 Route::middleware('auth')->group(function ($route) {
-   $route->post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-         ->name('logout');
    $route->get('/home', function () {
       return view('welcome');
    });
+   $route->get('/profile', function () {
+      return view('pages.profile');
+   })->name('profile');
    $route->get('/settings', function () {
       return view('welcome');
    })->name('settings');
    $route->get('/dashboard', function() {
       return view('admin.dashboard');
    })->name('dashboard');
+
+   // main default
+   $route->get('/tertiary-events/{id?}', function(Request $request) {
+      return view('pages.events', ['eventId'=> $request->id]);
+   })->name('events.tertiary');
 
    $route->get('/users', ComponentUsers::class)->name('users');
    $route->get('/events', ComponentConference::class)->name('events');

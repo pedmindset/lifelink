@@ -15,6 +15,9 @@ module.exports = {
       },
       colors: {
         cyan: colors.cyan,
+        teal: colors.teal,
+        sky: colors.sky,
+        rose: colors.rose,
       },
       screen: {
         xs: '320px',
