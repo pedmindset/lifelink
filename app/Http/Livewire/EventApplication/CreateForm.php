@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\EventApplication;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
 use App\Models\EventApplications;
 use Illuminate\Support\Collection;
 
@@ -12,7 +13,7 @@ class CreateForm extends Component
    public $optionMode=false, $createForm = false;
    // schema data
    public Collection $schema;
-   public $rules,$fieldName,$fieldType,$placeholder, $fieldOptions, $fieldId;
+   public $rules,$requiredRule, $fieldName,$fieldType,$placeholder, $fieldOptions, $fieldId;
 
    public function render()
    {
@@ -60,7 +61,7 @@ class CreateForm extends Component
       else {
          $this->rules[$index]['value'] = false;
       }
-      dd($this->rules);
+      // dd($this->rules);
    }
 
    public function addOption($value) {
@@ -78,6 +79,7 @@ class CreateForm extends Component
          'id' => $this->fieldSelected_id ?? $this->schemaFieldsCount,
          'fieldType' => $this->fieldType,
          'fieldName' => $this->fieldName,
+         'model'=> str_replace(" ", "_", strtolower( $this->fieldName )),
          'placeholder' => $this->placeholder,
          'rules' => $this->rules,
          'options' => $options,

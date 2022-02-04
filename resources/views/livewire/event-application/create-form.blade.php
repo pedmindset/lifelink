@@ -120,6 +120,7 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    
                                        <label for="field-type" class="sr-only">Type</label>
                                        <select id="field-type" wire:model="fieldType" wire:change="switchOption($event.target.value)" class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-4 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md">
+                                          <option >--Select Type--</option>
                                           <option value="1">Text</option>
                                           <option value="2">Textarea</option>
                                           <option value="3">Select Option</option>
@@ -131,7 +132,7 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                               </div>
 
                               <div>
-                                 <label for="field-placeholder" class="text-gray-600 text-sm pb-1">Feild Placeholder</label>
+                                 <label for="field-placeholder" class="text-gray-600 text-sm pb-1">Field Placeholder</label>
                                  <div class="mt-1">
                                     <input type="text" wire:model="placeholder" id="field-placeholder" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                                  </div>

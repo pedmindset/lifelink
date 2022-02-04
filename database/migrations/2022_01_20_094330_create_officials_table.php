@@ -15,13 +15,13 @@ class CreateOfficialsTable extends Migration
    {
       Schema::create('officials', function (Blueprint $table) {
          $table->id();
-         $table->unsignedBigInteger('event_application_id');
+         $table->unsignedBigInteger('event_id');
          $table->unsignedBigInteger('user_id');
          $table->string('type'); // default or volunteer
          $table->string('role');
          $table->timestamps();
 
-         $table->foreign('event_application_id')->references('id')->on('event_applications');
+         $table->foreign('event_id')->references('id')->on('events');
          $table->foreign('user_id')->references('id')->on('users');
       });
    }

@@ -2,7 +2,7 @@
 <div class="hidden sm:flex sm:w-64 md:flex-col sm:fixed sm:inset-y-0">
    <div class="flex flex-col flex-grow border-r border-gray-200 pt-5 bg-white overflow-y-auto">
       <div class="flex items-center flex-shrink-0 px-4 border-b border-gray-100">
-         <a href="{{ route('dashboard') }}" class="ml-3 mb-2">
+         <a href="/" class="ml-3 mb-2">
             <x-application-logo class="w-auto h-8 text-gray-600 fill-current" />
          </a>
       </div>
@@ -73,11 +73,11 @@
          <a href="#" class="flex-shrink-0 w-full group block">
             <div class="flex items-center">
                <div>
-                  <img class="inline-block h-9 w-9 rounded-full" src="{{ asset('img/face.jpg') }}" alt="">
+                  <img class="inline-block h-9 w-9 rounded-full" src="{{ auth()->user()->thumb_image_url ?? asset('img/face.jpg') }}" alt="">
                </div>
                <div class="ml-3">
                   <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                  Tom Cook
+                     {{ auth()->user()->name }}
                   </p>
                   <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">
                   View profile

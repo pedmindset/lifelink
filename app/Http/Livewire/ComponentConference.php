@@ -9,16 +9,21 @@ use Illuminate\Support\Str;
 
 class ComponentConference extends Component
 {
-   public $data, $viewItem, $name, $description, $start_date, $end_date, $selected_id, $selectedname;
-   public $updateMode = false, $createMode = false, $deleteMode=false, $viewMode = false, $formCreateMode = false;
+   public $data, $viewItem, $name, $description, $venue, $event_image, $start_date, $end_date, $selected_id, $selectedname;
+   public $updateMode = false, $isListing = false, $createMode = false, $deleteMode=false, $viewMode = false, $formCreateMode = false;
 
    // for detail page
-   public $detailTab = false, $formTab = false, $officialTab = false,$awardTab = false, $addOfficialMode = false, $addAwardMode = false;
+   public $detailTab = false, $formTab = false, $officialTab = false, $awardTab = false, $addOfficialMode = false, $addAwardMode = false;
 
    public function render()
    {
       $this->data = Event::all();
       return view('livewire.conference.component-conference');
+   }
+
+   public function mount()
+   {
+      $this->isListing = true;
    }
 
    private function resetInput()
@@ -44,6 +49,7 @@ class ComponentConference extends Component
       $event = Event::create([
          'name' => $this->name,
          'description' => $this->description,
+         'venue' => $this->venue,
          'start_date' => new DateTime($this->start_date),
          'end_date' => new DateTime($this->end_date),
          // 'uuid' => Str::uuid(),
@@ -89,14 +95,23 @@ class ComponentConference extends Component
       }
 
    }
+
+   public function gotoListing()
+   {
+      $this->viewMode = false;
+      $this->selected_id = null;
+   }
    
    public function view($id)
    {
+      $this->selected_id = $id;
       $record = Event::findOrFail($id);
       $this->viewItem = $record;
 
       $this->switchtab(1);
       $this->viewMode = true;
+
+      // dd($this->isListing);
    }
 
    public function edit($id)

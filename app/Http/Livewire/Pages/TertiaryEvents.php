@@ -2,18 +2,22 @@
 
 namespace App\Http\Livewire\Pages;
 
+use App\Models\Event;
 use Livewire\Component;
 
 class TertiaryEvents extends Component
 {
-   public $eventId;
-   public $showMode = false;
+   public $events,$event, $eventId, $formId;
+   public $showMode = false, $applyMode = false;
 
    public function render()
    {
-      $this->eventId = 1;
       if (isset($this->eventId)) {
+         $this->event = Event::firstWhere('id', $this->eventId);
          $this->showMode = true;
+      }
+      else {
+         $this->events = Event::all()->reverse();
       }
       return view('livewire.pages.tertiary-events');
    }
@@ -25,7 +29,18 @@ class TertiaryEvents extends Component
 
    public function showItem($id){
       $this->eventId = $id;
+      $this->event = Event::firstWhere('id', $this->eventId);
       $this->showMode = true;
+   }
 
+   public function closeView() {
+      $this->eventId = null;
+      $this->event = null;
+      $this->showMode = false;
+   }
+
+   public function applyForm($id){
+      $this->formId = $id;
+      $this->applyMode = true;
    }
 }

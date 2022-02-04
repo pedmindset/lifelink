@@ -20,7 +20,7 @@
             x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
             x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
             x-description="Slide-over panel, show/hide based on slide-over state.">
-            <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
+            <form class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                <div class="py-6 px-4 bg-cyan-700 sm:px-6">
                   <div class="flex items-start justify-between">
                      <h2 class="text-lg font-medium text-white capitalize" id="slide-over-title">
@@ -45,9 +45,7 @@
                </div>
 
                <div class="min-h-0 flex-1 flex flex-col overflow-y-scroll">
-
                   <div class="my-4 relative flex-1 px-4 sm:px-6">
-                     <!-- Replace with your content -->
                      <div class="h-full" aria-hidden="true">
                         @if (count($errors) > 0)
                         <div class="rounded-md bg-red-50 p-4 mb-3 shadow-inner">
@@ -100,11 +98,27 @@
                                  </x-input.group>
                               </div>
                            </div>
+
+                           <div class="mt-3">
+                              <label for="venue" class="block text-sm font-medium text-gray-900">Venue</label>
+                              <div class="mt-1">
+                                 <input type="text" wire:model="venue" id="venue" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                              </div>
+                           </div>
+
+                           {{-- <div class="row mb-3">
+                              <label for="event-image" class="col-md-4 col-form-label text-md-end">{{ __('Event Image') }}</label>
+                           
+                              <div class="col-md-6">
+                                 <input id="event-image" wire:model="event_image" type="file" accept="image/*" class="form-control" placeholder="Choose Image">
+                              </div>
+                           </div> --}}
                            
                         </div>
                      </div>
                   </div>
                </div>
+
                <div class="flex-shrink-0 px-4 py-4 flex justify-end">
                   <button type="button" x-on:click="openCreate = false" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                      Cancel
@@ -113,9 +127,10 @@
                      Save
                   </button>
                </div>
-            </div>
+            </form>
 
          </div>
       </div>
    </div>
 </div>
+

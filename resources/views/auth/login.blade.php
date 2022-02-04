@@ -16,35 +16,47 @@
          @csrf
          <!-- Email Address -->
          <div>
-            <x-label for="email" :value="__('Email')" />
-            <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <x-label for="email" :value="__('Email')" class="sr-only" />
+            <x-auth-input id="email" class="w-full rounded-t-md" 
+                     type="email" 
+                     name="email" 
+                     :value="old('email')" 
+                     required autofocus />
          </div>
-
          <!-- Password -->
-         <div class="mt-4">
-            <x-label for="password" :value="__('Password')" />
-            <x-input id="password" class="block mt-1 w-full"
+         <div>
+            <x-label for="password" :value="__('Password')" class="sr-only" />
+            <x-auth-input id="password" class="w-full rounded-b-md"
                      type="password"
                      name="password"
                      required autocomplete="current-password" />
          </div>
 
          <!-- Remember Me -->
-         <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-               <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-               <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-         </div>
-
-         <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-               <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+         <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input id="remember_me" name="remember" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+              <label for="remember_me" class="ml-2 block text-sm text-gray-900">
+               {{ __('Remember me') }}
+              </label>
+            </div>
+    
+            <div class="text-sm my-6">
+               @if (Route::has('password.request'))
+               <a class="font-semibold text-indigo-600 hover:text-indigo-500" href="{{ route('password.request') }}">
                   {{ __('Forgot your password?') }}
                </a>
-            @endif
+               @endif
+            </div>
+          </div>
 
-            <x-button class="ml-3">
+         <div class="mt-2">
+            <x-button :type="'submit'" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+               <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                  <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                  </svg>
+               </span>
                {{ __('Log in') }}
             </x-button>
          </div>

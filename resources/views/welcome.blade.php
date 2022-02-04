@@ -29,13 +29,13 @@
                   </button>
                </div>
 
-               <nav class="hidden md:flex space-x-10">
-                  <a href="#" class="text-base font-semibold font-sans text-gray-500 hover:text-gray-900">Home</a>
+               <nav class="hidden md:flex space-x-8">
+                  <a href="#" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-900">Home</a>
 
-                  <div class="relative">
+                  <div class="relative -mt-1">
                      <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
-                     <span x-on:click="openNav = !openNav"  class="cursor-pointer group inline-flex items-center text-base font-semibold font-sans text-gray-500 hover:text-gray-900" aria-expanded="false">
-                        <span>Conferences Model</span>
+                     <span x-on:click="openNav = !openNav"  class="cursor-pointer group inline-flex items-center text-sm font-semibold font-sans text-gray-500 hover:text-gray-900" aria-expanded="false">
+                        <span>Event Model</span>
                         <svg class="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
@@ -53,7 +53,7 @@
                         x-transition:leave-end="opacity-0 translate-y-1">
                         <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                            <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
-                              <a href="{{ route('events.tertiary') }}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                              <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
                                  <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white sm:h-12 sm:w-12">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                        <path d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -124,8 +124,8 @@
                         </div>
                      </div>
                   </div>
-                  <a href="#" class="text-base font-semibold font-sans text-gray-500 hover:text-gray-700">Upcoming Conferences</a>
-                  <a href="#" class="text-base font-semibold font-sans text-gray-500 hover:text-gray-700">About Us</a>
+                  <a href="{{ route('events.tertiary') }}" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-700">Upcoming Conferences</a>
+                  <a href="#" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-700">About Us</a>
                </nav>
 
                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">

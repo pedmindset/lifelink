@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
          'email_verified_at' => now(),
          'remember_token' => Str::random(10),
       ]);
+      $user->addMediaFromUrl('http://127.0.0.1:8000/img/image_profile.png')->toMediaCollection('profile_image');
       Profile::create([
          'user_id' => 1,
          'first_name' => 'Kwadwo Mensah',
