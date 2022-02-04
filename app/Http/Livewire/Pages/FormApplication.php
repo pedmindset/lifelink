@@ -2,22 +2,21 @@
 
 namespace App\Http\Livewire\Pages;
 
-use App\Models\Applicant;
 use Livewire\Component;
+use App\Models\Applicant;
 use App\Models\EventApplications;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Casts\ArrayObject;
 
 class FormApplication extends Component
 {
-   public $formId,$eventId, $data, $schema, $valueIn; 
+   public $formId,$eventId, $data, $valueIn; 
+   public $schema;
    public $applicantData = [];
    public function render()
    {
       return view('livewire.pages.form-application');
    }
-
-   protected $rules = [
-      'schema.*.model' => 'required',
-   ];
 
    public function getFieldValue($value, $fieldName)
    {
@@ -30,12 +29,11 @@ class FormApplication extends Component
       $data = EventApplications::firstWhere('id', $this->formId);
       $this->data = $data;
       $this->eventId = $data->event->id;
-      $this->schema = json_decode($this->data->schema);
+      $this->schema = $this->data->schema;
    }
 
    public function saveForm()
    {
-      // $this->validate();
       $saved = Applicant::create([
          'event_id' => $this->eventId,
          'event_application_id' => $this->formId,

@@ -11,6 +11,10 @@ class EventApplications extends Model
 
    protected $fillable = ['event_id','name', 'description','schema'];
 
+   protected $casts = [
+      'schema' => 'array',
+   ];
+
    /**
     * Get the event that owns the EventApplication
     *

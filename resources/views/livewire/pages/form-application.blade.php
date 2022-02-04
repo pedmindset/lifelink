@@ -42,7 +42,6 @@
 
                <div class="min-h-0 flex-1 flex flex-col overflow-y-scroll">
                   <div class="my-4 relative flex-1 px-4 sm:px-6">
-                     <!-- Replace with your content -->
                      <div class="h-full" aria-hidden="true">
                         @if (count($errors) > 0)
                         <div class="rounded-md bg-red-50 p-4 mb-3 shadow-inner">
@@ -69,11 +68,14 @@
                         </div>
                         @endif
 
-                        @if(isset($schema) )
-                        <x-form-view :schema="$schema"></x-form-view>
-                        @endif
+                        <div>
+                           @if(isset($schema))
+                           <x-form-view :schema="$schema"/>
+                           @endif
+                        </div>
+
+                           {{-- <x-form-view :schema = '{{ $schema }}'></x-form-view> --}}
                      </div>
-                     <!-- /End replace -->
                   </div>
                </div>
 
@@ -81,7 +83,7 @@
                   <button type="button" x-on:click="showApply = false" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                      Cancel
                   </button>
-                  <button type="button" wire:click.prevent="saveForm()" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <button type="button" wire:click.prevent="saveForm()" x-on:click="showApply = false" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                      Save
                   </button>
                </div>
