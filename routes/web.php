@@ -13,6 +13,8 @@ use App\Http\Livewire\ComponentOfficials;
 use App\Http\Livewire\ComponentConference;
 use App\Http\Livewire\Pages\TertiaryEvents;
 use App\Http\Livewire\ComponentAwardCitation;
+use App\Http\Livewire\EventApplicants;
+use App\Http\Livewire\Fees;
 use App\Models\Event;
 
 /*
@@ -58,6 +60,8 @@ Route::middleware('auth')->group(function ($route) {
    $route->get('/users', ComponentUsers::class)->name('users');
    $route->get('/events', ComponentConference::class)->name('events');
    $route->get('/event-form', EventApplication::class)->name('event.form');
+   $route->get('/applicants/{id}', EventApplicants::class)->name('event.applicants');
+   $route->get('/fees', Fees::class)->name('fees');
    $route->get('/officials', ComponentOfficials::class)->name('officials');
    $route->get('/members', ComponentMembers::class)->name('members');
    $route->get('/awards-citations', ComponentAwardCitation::class)->name('awards.citations');

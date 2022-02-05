@@ -12,7 +12,7 @@
 
       <x-card>
          <div>
-            <img class="h-32 w-full object-cover lg:h-48" src="https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="image back">
+            <img class="h-32 w-full object-cover lg:h-48" src="{{ $viewItem->thumb_image_url != '' ? $viewItem->thumb_image_url : asset('img/back_con.jpg') }}" alt="image back">
          </div>
 
          <div class="pt-3">
@@ -52,6 +52,7 @@
                   </dl>
                </div>
             </div>
+
             <div x-show="showOfficialTab">
                <div class="py-4 px-8">
                   <div class="w-3/4 mx-auto text-center py-8 my-2">
@@ -74,12 +75,14 @@
                <ul class="p-3 space-y-2">
                   @forelse ($viewItem->applications as $item)
                   <li wire:click="showForm()" class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
-                     <div class="flex p-3">
+                     <div class="flex p-3 justify-between">
                         <div class="ml-3 mr-auto">
                            <p class="text-sm leading-5 font-medium text-gray-600">
                               {{ $item['name'] }}
                            </p>
                         </div>
+
+                        <a href="{{ route('event.applicants', ['id'=>$item->id]) }}"><span class="bg-cyan-600 text-white rounded-md px-3 py-1">{{ count($item->applicants) }} Applicant(s)</span>
                   
                         {{-- <div class="pl-3">
                            <div class="-mx-1.5 -my-1.5">

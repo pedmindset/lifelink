@@ -26,9 +26,14 @@
                         <div class="block">
                            <div class="px-4 py-4 sm:px-6">
                               <div class="flex items-center justify-between">
-                                 <p class="text-sm font-bold text-gray-600 truncate">
-                                    {{ $app->name }}
-                                 </p>
+                                 <div>
+                                    <p class="text-sm font-bold text-gray-600 truncate flex">
+                                       {{ $app->name }} 
+                                       {{-- <span class="bg-green-600 text-xs font-bold flex rounded-lg p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                                          </svg> {{ count($app->applicants) }}</span> --}}
+                                    </p>
+                                 </div>
                                  <div class="ml-2 flex-shrink-0 flex">
                                     <x-button type="button" wire:click="applyForm({{$app->id }})" class="inline-flex text-xs font-bold leading-5 rounded-md bg-green-100 text-green-800 hover:bg-green-400 hover:text-white hover:shadow-inner">
                                        Apply
@@ -103,18 +108,10 @@
                      </div>
                      <div>
                         <dt class="font-semibold text-white">
-                           Benefits
+                           About Conference
                         </dt>
-                        <dd class="mt-3 text-gray-400">
-                           <ol class="list-disc">
-                              <li>Accommodation For Conference</li>
-                              <li>Feeding during your entire stay</li>
-                              <li>Dinner/Awards Night Conference</li>
-                              <li>Souvenir-Training Manual, Conference Handbook</li>
-                              <li>Transportation</li>
-                              <li>2 Day Training Program Before Conference With Feeding</li>
-                              <li>Certificate After Successful Participation In Conference</li>
-                           </ol>
+                        <dd class="mt-3 text-gray-400 prose">
+                           {{ $event->description }}
                         </dd>
                      </div>
             

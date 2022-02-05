@@ -34,15 +34,23 @@ class FormApplication extends Component
 
    public function saveForm()
    {
-      $saved = Applicant::create([
-         'event_id' => $this->eventId,
-         'event_application_id' => $this->formId,
-         'user_id' => auth()->user()->id,
-         'form_data' => json_encode($this->applicantData)
-      ]);
-      $this->dispatchBrowserEvent('alertMessage',[
-         'type'=>'info',
-         'message'=>  'Successfully applied!'
-      ]);
+      $application = EventApplications::firstWhere('id', $this->formId);
+      if($application->applicants()->attach(auth()->user()->id, ['form_data'=> json_encode($this->applicantData)])){
+         $this->dispatchBrowserEvent('alertMessage',[
+            'type'=>'info',
+            'message'=>  'Successfully applied!'
+         ]);
+      }else {
+         $this->dispatchBrowserEvent('alertMessage',[
+            'type'=>'warning',
+            'message'=>  'Apllication unsuccessful!'
+         ]);
+      }
+      // $saved = Applicant::create([
+      //    'event_id' => $this->eventId,
+      //    'event_application_id' => $this->formId,
+      //    'user_id' => auth()->user()->id,
+      //    'form_data' => json_encode($this->applicantData)
+      // ]);
    }
 }

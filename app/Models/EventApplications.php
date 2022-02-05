@@ -25,4 +25,14 @@ class EventApplications extends Model
       return $this->belongsTo(Event::class);
    }
 
+   public function officials()
+   {
+      return $this->belongsToMany(Applicant::class, 'officials', 'applicant_id', 'event_id')->withPivot('type', 'role');
+   }
+
+   public function applicants()
+   {
+      return $this->belongsToMany(User::class)->withPivot('form_data')->withTimestamps();
+   }
+
 }

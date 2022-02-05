@@ -50,7 +50,7 @@
                                     {{ $award->uuid }}
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $award->date_created }}
+                                    <time>{{ date("F jS, Y", strtotime($award->created_at)) }}</time>
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap text-right space-x-2">
                                     <button wire:click.prevent="edit({{$award->id}})" type="button" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-blue-600 rounded-md border border-transparent ring-blue-300 transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-inner active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring disabled:opacity-25">Edit </button> 

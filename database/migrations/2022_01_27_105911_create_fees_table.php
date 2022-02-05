@@ -15,8 +15,9 @@ class CreateFeesTable extends Migration
     {
         Schema::create('fees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('event_application_id');
-            $table->string('type'); // local or foreign
+            // $table->unsignedBigInteger('event_application_id');
+            $table->string('category'); // event or aluminia
+            $table->string('type')->nullable(); // local or foreign
             $table->decimal('part_payment', 13, 4)->nullable();
             $table->decimal('amount', 13, 4)->nullable();
             $table->decimal('early_bird_amount', 13, 4)->nullable();
@@ -25,7 +26,7 @@ class CreateFeesTable extends Migration
             $table->dateTime('late_pay_date')->nullable();
             $table->timestamps();
 
-            $table->foreign('event_application_id')->references('id')->on('event_applications');
+            // $table->foreign('event_application_id')->references('id')->on('event_applications');
         });
     }
 
