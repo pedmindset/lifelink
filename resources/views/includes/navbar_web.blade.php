@@ -34,9 +34,9 @@
           <!-- Profile dropdown -->
           <div class="ml-3 relative">
             <div>
-              <button type="button" x-on:click.prevent="open = !open" x-on:click.away="open = false" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+              <button type="button" x-on:click.prevent="open = !open" x-on:click.away="open = false" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->thumb_image_url ?? asset('img/face.jpg') }}" alt="">
+                <img class="h-8 w-8 rounded-full border-2 border-cyan-500" src="{{ auth()->user()->thumb_image_url ?? asset('img/face.jpg') }}" alt="">
               </button>
             </div>
             <div x-show="open" style="display: none" 

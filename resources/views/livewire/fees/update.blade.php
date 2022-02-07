@@ -23,7 +23,7 @@
                <div class="py-6 px-4 bg-blue-700 sm:px-6">
                   <div class="flex items-start justify-between">
                      <h2 class="text-lg font-medium text-white capitalize" id="slide-over-title">
-                        editing ( {{ $selectedname ?? 'N/A' }} )
+                        editing fee for ( {{ $selectedname ?? 'N/A' }} )
                      </h2>
                      <div class="ml-3 h-7 flex items-center">
                         <button type="button" x-on:click.prevent="openEdit = false" 
@@ -38,7 +38,7 @@
                   </div>
                   <div class="mt-1">
                      <p class="text-sm text-blue-300">
-                        Update current information of award / citation
+                        Update information of fee
                      </p>
                   </div>
                </div>
@@ -74,33 +74,56 @@
                      <div class="h-full" aria-hidden="true">
 
                         <div class="space-y-3 pb-5">
-                           <input type="hidden" wire:model="selected_id">
-                           <div>
-                              <label for="name" class="block text-sm font-medium text-gray-900">Name</label>
+                           {{-- <div>
+                              <label for="event" class="block text-sm font-medium text-gray-900">Select Event</label>
                               <div class="mt-1">
-                                 <input type="text" wire:model="name" id="name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <select wire:model="selectedId" id="event" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <option value="null">-- Select Event --</option>
+                                    @foreach ($eventData as $event)
+                                    <option value="{{ $event->id }}">{{ $event->name }}</option>
+                                    @endforeach
+                                 </select>
                               </div>
-                           </div>
-                           <div>
-                              <label for="description" class="block text-sm font-medium text-gray-900">Description</label>
-                              <div class="mt-1">
-                                 <input type="text" wire:model="description" id="description" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
-                              </div>
-                           </div>
+                           </div> --}}
 
                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                               <div class="sm:col-span-3">
-                                 <x-input.group label="Starts Date" inline="true" for="start_date" :error="$errors->first('start_date')" help-text="Select Start Date">
-                                    <x-input.date-picker wire:model.lazy="start_date" id="start_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                 <x-input.group label="Standard" inline="true" for="standard" :error="$errors->first('standard_amount')" help-text="Standard Fee">
+                                    <input type="number" wire:model="standard_amount" min="1" step="2" placeholder="Standard Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">
-                                 <x-input.group label="Ends Date" inline="true" for="end_date" :error="$errors->first('end_date')" help-text="Select End Date">
-                                    <x-input.date-picker wire:model.lazy="end_date" id="end_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                 <x-input.group label="International" inline="true" for="international" :error="$errors->first('international_amount')" help-text="International Fee">
+                                    <input type="number" wire:model="international_amount" min="1" step="2" placeholder="International Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                 </x-input.group>
+                              </div>
+                              <div class="sm:col-span-3">
+                                 <x-input.group label="Early Bird" inline="true" for="early-bird" :error="$errors->first('early_bird_amount')" help-text="Early Bird Fee">
+                                    <input type="number" id="early-bird" wire:model="early_bird_amount" min="1" step="2" placeholder="Early Bird Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                 </x-input.group>
+                              </div>
+                              <div class="sm:col-span-3">
+                                 <x-input.group label="Late Fee" inline="true" for="late-fee" :error="$errors->first('late_amount')" help-text="Late Fee">
+                                    <input type="number" id="late-fee" wire:model="late_amount" min="1" step="2" placeholder="Late Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                 </x-input.group>
+                              </div>
+
+                              <div class="sm:col-span-3">
+                                 <x-input.group label="Regular Date" inline="true" for="regular-date" :error="$errors->first('regular_date')" help-text="Select Regular Date">
+                                    <x-input.date-picker wire:model.lazy="regular_date" id="regular-date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                 </x-input.group>
+                              </div>
+                              <div class="sm:col-span-3">
+                                 <x-input.group label="Early Date" inline="true" for="early-bird" :error="$errors->first('early_bird_date')" help-text="Select Early Date">
+                                    <x-input.date-picker wire:model.lazy="early_bird_date" id="early-bird" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                 </x-input.group>
+                              </div>
+                              <div class="sm:col-span-3">
+                                 <x-input.group label="Late Date" inline="true" for="late-date" :error="$errors->first('late_date')" help-text="Select Late Date">
+                                    <x-input.date-picker wire:model.lazy="late_date" id="late-date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
                                  </x-input.group>
                               </div>
                            </div>
-                           
                         </div>
                      </div>
                      <!-- /End replace -->

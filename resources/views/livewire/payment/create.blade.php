@@ -72,10 +72,36 @@
                         @endif
 
                         <div class="space-y-3 pb-5">
-                           <div>
-                              <label for="name" class="block text-sm font-medium text-gray-900">Name</label>
-                              <div class="mt-1">
-                                 <input type="text" wire:model="name" id="name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                           <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                              <div class="sm:col-span-3">
+                                 <label for="user" class="block text-sm font-medium text-gray-900">Select Client</label>
+                                 <div class="mt-1">
+                                    <select wire:model="user_id" id="user" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                       <option value="null">-- Select Client --</option>
+                                       @foreach ($users as $user)
+                                       <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                       @endforeach
+                                    </select>
+                                 </div>
+                              </div>
+
+                              <div class="sm:col-span-3">
+                                 <label class="text-sm font-medium text-gray-900">Payment For</label>
+                                 {{-- <p class="text-sm leading-5 text-gray-500">How do you prefer to receive notifications?</p> --}}
+                                 <fieldset class="mt-4">
+                                    <legend class="sr-only">Payment reason</legend>
+                                    <div class="space-y-2 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+                                       <div class="flex items-center">
+                                          <input id="event-radio" wire:model="payment_for" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                          <label for="event-radio" class="ml-3 block text-sm font-medium text-gray-700"> Event </label>
+                                       </div>
+                                 
+                                       <div class="flex items-center">
+                                          <input id="aluminia-radio" wire:model="payment_for" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                          <label for="aluminia-radio" class="ml-3 block text-sm font-medium text-gray-700"> Aluminia </label>
+                                       </div>
+                                    </div>
+                                 </fieldset>
                               </div>
                            </div>
                            <div>
@@ -83,6 +109,12 @@
                               <div class="mt-1">
                                  <textarea id="description" wire:model="description" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
                               </div>
+                           </div>
+
+                           <div class="">
+                              <x-input.group label="Amount" inline="true" for="amount" :error="$errors->first('amount')" help-text="Amount">
+                                 <input type="number" wire:model="amount" min="1" step="2" placeholder="Amount" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                              </x-input.group>
                            </div>
                            
                         </div>

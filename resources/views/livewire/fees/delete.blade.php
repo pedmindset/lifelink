@@ -31,7 +31,7 @@
                </div>
                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                   <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                     Delete ( <span class="font-bold">{{ $selectedname }}</span> )
+                     Delete ( <span class="font-bold">Payment</span> )
                   </h3>
                   <div class="mt-2">
                      <p class="text-sm text-gray-500">

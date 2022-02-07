@@ -42,9 +42,10 @@ class Event extends Model implements HasMedia
    {
       return $this->hasMany(EventApplications::class);
    }
-   // public function award()
-   // {
-   //    return $this->hasMany(EventApplications::class);
-   // }
+
+   public function fee()
+   {
+      return $this->hasOne(Fee::class);
+   }
 
 }
