@@ -34,6 +34,7 @@ class ComponentUsers extends Component
       $this->address = null;
 
       $this->data = Person::all();
+      // $this->data = Person::role('customer')->get();
    }
 
    public function store()

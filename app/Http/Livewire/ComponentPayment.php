@@ -9,13 +9,13 @@ use Illuminate\Support\Str;
 
 class ComponentPayment extends Component
 {
-   public $data, $users, $name, $selected_id, $selectedname;
-   public $event_id, $user_id, $description, $payment_for, $amount;
+   public $payData, $users, $name, $selected_id, $selectedname;
+   public $event_id, $user_id, $description, $payment_for_event, $payment_for_aluminia, $payment_for, $amount;
    public $createMode = false, $editMode = false, $deleteMode = false, $viewMode = false;
 
    public function render()
    {
-      $this->data = Payment::all();
+      $this->payData = Payment::all();
       $this->users = User::role('customer')->get();
       return view('livewire.payment.component-payment');
    }
@@ -30,7 +30,18 @@ class ComponentPayment extends Component
       $this->payment_for = null;
       $this->description = null;
 
-      $this->feeData = Payment::latest()->get();
+      $this->payData = Payment::latest()->get();
+   }
+
+   public function getPaymentFor($type) {
+      if ($type == 0) {
+         $this->payment_for = 'Event';
+         $this->payment_for_aluminia = false;
+      }
+      else {
+         $this->payment_for = 'Aluminia';
+         $this->payment_for_event = false;
+      }
    }
 
    public function store()
@@ -45,7 +56,7 @@ class ComponentPayment extends Component
          'uuid' => Str::uuid(),
          'description' => $this->description,
          'amount' => $this->amount,
-         'isAluminia' => $this->payment_for,
+         'isAluminia' => $this->payment_for == 'Event' ? false : true,
       ]);
       if ($pay) {
          $this->dispatchBrowserEvent('alertMessage',[

@@ -92,12 +92,12 @@
                                     <legend class="sr-only">Payment reason</legend>
                                     <div class="space-y-2 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
                                        <div class="flex items-center">
-                                          <input id="event-radio" wire:model="payment_for" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                          <input id="event-radio" wire:model="payment_for_event" wire:change="getPaymentFor(0)" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                                           <label for="event-radio" class="ml-3 block text-sm font-medium text-gray-700"> Event </label>
                                        </div>
                                  
                                        <div class="flex items-center">
-                                          <input id="aluminia-radio" wire:model="payment_for" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                          <input id="aluminia-radio" wire:model="payment_for_aluminia" wire:change="getPaymentFor(1)" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                                           <label for="aluminia-radio" class="ml-3 block text-sm font-medium text-gray-700"> Aluminia </label>
                                        </div>
                                     </div>

@@ -5,13 +5,13 @@
             @include('livewire.conference.create')
             @include('livewire.conference.update')
             @include('livewire.conference.delete')
-            @if (isset($selected_id))
-            @if ($viewMode)
-            @include('livewire.conference.detail')
-            @livewire('event-application.create-form', ['eventId' => $viewItem->id])
-            @livewire('event-application.add-official', ['eventId' => $viewItem->id])
-            @livewire('event-application.add-award', ['eventId' => $viewItem->id])
-            @endif
+            @if (isset($selected_id) && $viewMode)
+               @if ($viewMode)
+               @include('livewire.conference.detail')
+               @livewire('event-application.create-form', ['eventId' => $viewItem->id])
+               @livewire('event-application.add-official', ['eventId' => $viewItem->id])
+               @livewire('event-application.add-award', ['eventId' => $viewItem->id])
+               @endif
             @else
             @include('livewire.conference.index')
             @endif

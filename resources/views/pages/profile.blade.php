@@ -28,7 +28,7 @@
                   <div>
                      <button type="button" x-on:click="openDrop = !openDrop" x-on:click.away="openDrop = false" class="bg-white rounded-full flex text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                         <span class="sr-only">Open user menu</span>
-                        <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->thumb_image_url !='' ? auth()->user()->thumb_image_url : asset('img/face.jpg') }}" alt="">
                      </button>
                   </div>
                   <div x-show="openDrop" style="display: none" 
@@ -103,20 +103,12 @@
                   </div>
                   <div class="mt-3 px-2 space-y-1">
                      <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Home</a>
-      
-                     <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Profile</a>
-      
-                     <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Resources</a>
-      
-                     <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Company Directory</a>
-      
-                     <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Openings</a>
                   </div>
                </div>
                <div class="pt-4 pb-2">
                   <div class="flex items-center px-5">
                      <div class="flex-shrink-0">
-                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        <img class="h-10 w-10 rounded-full" src="{{ auth()->user()->thumb_image_url !='' ? auth()->user()->thumb_image_url : asset('img/face.jpg') }}" alt="">
                      </div>
                      <div class="ml-3 min-w-0 flex-1">
                         <div class="text-base font-medium text-gray-800 truncate">Chelsea Hagon</div>
@@ -152,12 +144,12 @@
                         <div class="sm:flex sm:items-center sm:justify-between">
                            <div class="sm:flex sm:space-x-5">
                               <div class="flex-shrink-0">
-                                 <img class="mx-auto h-20 w-20 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                 <img class="mx-auto h-20 w-20 rounded-full" src="{{ auth()->user()->thumb_image_url !='' ? auth()->user()->thumb_image_url : asset('img/face.jpg') }}" alt="">
                               </div>
                               <div class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
                                  <p class="text-sm font-medium text-gray-600">Welcome back,</p>
                                  <p class="text-xl font-bold text-gray-900 sm:text-2xl">{{ auth()->user()->name }}</p>
-                                 <p class="text-sm font-medium text-gray-600">Human Resources Manager</p>
+                                 {{-- <p class="text-sm font-medium text-gray-600">Human Resources Manager</p> --}}
                               </div>
                            </div>
                         </div>
@@ -165,18 +157,18 @@
 
                      <div class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
                         <div class="px-6 py-5 text-sm font-medium text-center">
-                          <span class="text-gray-900">12</span>
-                          <span class="text-gray-600">Vacation days left</span>
+                          <span class="text-gray-900">{{ count(auth()->user()->applications) }}</span>
+                          <span class="text-gray-600">Events applied</span>
                         </div>
         
                         <div class="px-6 py-5 text-sm font-medium text-center">
                           <span class="text-gray-900">4</span>
-                          <span class="text-gray-600">Sick days left</span>
+                          <span class="text-gray-600">Payments</span>
                         </div>
         
                         <div class="px-6 py-5 text-sm font-medium text-center">
                           <span class="text-gray-900">2</span>
-                          <span class="text-gray-600">Personal days left</span>
+                          <span class="text-gray-600">Awards</span>
                         </div>
                      </div>
 
@@ -188,12 +180,13 @@
                   <div class="rounded-lg bg-white overflow-hidden shadow">
                      <div class="p-6">
                         <h2 class="text-base font-medium text-gray-900" id="recent-hires-title">Events</h2>
+                        @if(count(auth()->user()->applications) > 0)
                         <div class="flow-root mt-6">
                            <ul role="list" class="-my-5 divide-y divide-gray-200">
                               <li class="py-4">
                                  <div class="flex items-center space-x-4">
                                     <div class="flex-shrink-0">
-                                       <img class="h-10 w-10 rounded-md" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                       <img class="h-10 w-10 rounded-md" src="{{ asset('img/face.jpg') }}" alt="">
                                     </div>
                                     <div class="flex-1 min-w-0">
                                        <p class="text-sm font-medium text-gray-900 truncate">
@@ -210,76 +203,17 @@
                                     </div>
                                  </div>
                               </li>
-
-                              <li class="py-4">
-                                 <div class="flex items-center space-x-4">
-                                    <div class="flex-shrink-0">
-                                       <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                       <p class="text-sm font-medium text-gray-900 truncate">
-                                          Floyd Miles
-                                       </p>
-                                       <p class="text-sm text-gray-500 truncate">
-                                          @floydmiles
-                                       </p>
-                                    </div>
-                                    <div>
-                                       <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
-                                          View
-                                       </a>
-                                    </div>
-                                 </div>
-                              </li>
-
-                              <li class="py-4">
-                                 <div class="flex items-center space-x-4">
-                                    <div class="flex-shrink-0">
-                                       <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                       <p class="text-sm font-medium text-gray-900 truncate">
-                                          Emily Selman
-                                       </p>
-                                       <p class="text-sm text-gray-500 truncate">
-                                          @emilyselman
-                                       </p>
-                                    </div>
-                                    <div>
-                                       <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
-                                          View
-                                       </a>
-                                    </div>
-                                 </div>
-                              </li>
-
-                              <li class="py-4">
-                                 <div class="flex items-center space-x-4">
-                                    <div class="flex-shrink-0">
-                                       <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                       <p class="text-sm font-medium text-gray-900 truncate">
-                                          Kristin Watson
-                                       </p>
-                                       <p class="text-sm text-gray-500 truncate">
-                                          @kristinwatson
-                                       </p>
-                                    </div>
-                                    <div>
-                                       <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
-                                          View
-                                       </a>
-                                    </div>
-                                 </div>
-                              </li>
                            </ul>
                         </div>
+
                         <div class="mt-6">
                            <a href="#" class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                            View all
                            </a>
                         </div>
+                        @else
+                        <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center mt-6">You have not applied for any event</p>
+                        @endif
                      </div>
                   </div>
                </section>
@@ -293,7 +227,7 @@
                      <div class="">
                         <h2 class="px-6 py-5 text-sm font-medium text-center text-gray-900 bg-gray-50" id="announcements-title">Announcements</h2>
                         <div class="p-6">
-                           <div class="flow-root mt-6">
+                           {{-- <div class="flow-root mt-6">
                               <ul role="list" class="-my-5 divide-y divide-gray-200">
                                  <li class="py-5">
                                     <div class="relative focus-within:ring-2 focus-within:ring-cyan-500">
@@ -345,7 +279,8 @@
                               <a href="#" class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                               View all
                               </a>
-                           </div>
+                           </div> --}}
+                           <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You have no announcement</p>
                         </div>
                      </div>
                   </div>

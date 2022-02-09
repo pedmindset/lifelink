@@ -1,4 +1,4 @@
-<div class="fixed inset-0 overflow-hidden z-20" x-show="openCreate"
+<div class="fixed inset-0 overflow-hidden z-20" x-show="openCreate" style="display:none"
    aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
       x-transition:enter="ease-in-out duration-500" 

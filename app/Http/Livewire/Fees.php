@@ -75,7 +75,8 @@ class Fees extends Component
 
    public function edit($id)
    {
-      $record = Fee::findOrFail($id);
+      // dd($id);
+      $record = Fee::firstWhere('id',$id);
       $this->selectedname = $record->event->name;
       $this->standard_amount = $record->standard_amount;
       $this->international_amount = $record->international_amount;
@@ -86,16 +87,16 @@ class Fees extends Component
       $this->late_date = $record->late_date;
       $this->selectedId = $id;
 
-      $this->updateMode = true;
+      $this->editMode = true;
    }
 
    public function update()
    {
       $this->validate([
-         'standard_amount' => 'required|digits',
-         'international_amount' => 'required|digits',
-         'early_bird_amount' => 'required|digits',
-         'late_amount' => 'required|digits',
+         'standard_amount' => 'required|numeric',
+         'international_amount' => 'required|numeric',
+         'early_bird_amount' => 'required|numeric',
+         'late_amount' => 'required|numeric',
          'regular_date' => 'required',
          'early_bird_date' => 'required',
          'late_date' => 'required',
@@ -126,7 +127,7 @@ class Fees extends Component
          ]);
       }
 
-      $this->updateMode = false;
+      $this->editMode = false;
       $this->resetInput();
    }
 

@@ -39,7 +39,7 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-500">
                            {{ $event->name }}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate break-words prose">
                            {{ $event->description }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

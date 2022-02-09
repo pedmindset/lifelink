@@ -43,6 +43,11 @@ class Event extends Model implements HasMedia
       return $this->hasMany(EventApplications::class);
    }
 
+   /**
+    * Get the user associated with the Event
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
    public function fee()
    {
       return $this->hasOne(Fee::class);

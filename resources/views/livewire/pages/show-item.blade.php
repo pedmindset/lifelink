@@ -10,9 +10,9 @@
          <div class="max-w-5xl mx-auto">
             <p class="flex justify-center items-center text-green-600 uppercase leading-6 tracking-wider font-sans font-bold text-2xl pt-12">{{ $event->name }}</p>
             <p class="text-base text-center text-gray-600 font-medium tracking-wide leading-6 py-4">{{ $event->description ?? '' }}</p>
-            <div class="flex justify-between">
-               <p class="text-sm font-bold text-gray-600">Start - <span class="bg-cyan-200 text-cyan-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->start_date)) }}</span></p>
-               <p class="text-sm font-bold text-gray-600">End - <span class="bg-red-200 text-red-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->end_date)) }}</span></p>
+            <div class="flex space-x-8">
+               <p class="text-sm font-bold text-gray-600">From - <span class="bg-cyan-200 text-cyan-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->start_date)) }}</span></p>
+               <p class="text-sm font-bold text-gray-600">To - <span class="bg-red-200 text-red-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->end_date)) }}</span></p>
             </div>
 
             <div class="mb-12 pt-20">
@@ -66,43 +66,17 @@
                         <dt class="font-semibold text-white">
                            Payment
                         </dt>
-                        <dd class="mt-3 text-gray-400">
+                        <dd class="mt-3 text-gray-400 text-sm">
                            <ul role="list" class="mt-4 space-y-4">
-                              <li>Early bird registration: GHS 600 ends April 30th
-                              </li>
-                              <li>
-                                 Regular registration: GHS 700 ends June 30th
-                              </li>
-                              <li>
-                                 Late registration: GHS 850
-                              </li>
-                              <li>
-                                 International Delegates: $250 US DOLLARS
-                              </li>
-                              <li>
-                                 <dt class="font-semibold text-white">Account Details</dt>
-                                 <dd>
-                                    <p>
-                                       Bank Name: Ecobank Ghana
-                                    </p>
-                                    <p>
-                                       Account Details CEDI: 0020134402288001
-                                    </p>
-                                    <p>
-                                       DOLLAR: 0022104402288001
-                                    </p>
-                                    <p>
-                                       Account Name: Life-link Friendship School
-                                    </p>
-                                    <p>
-                                       Account Branch: Tema
-                                    </p>
-                                    <p>
-                                       MTN Mobile Money: 024 093 5493
-                                    </p>
-                                 </dd>
-                              </li>
-                              
+                              @if (isset($event->fee))
+                              <li>International Delegates: ${{ $event->fee->international_amount }} US DOLLARS</li>
+                              <li>Early bird registration - {{ $event->fee->early_bird_amount }} before {{ date("F jS, Y", strtotime($event->fee->early_bird_date)) }}</li>
+                              <li>Regular registration - {{ $event->fee->standard_amount }} before {{ date("F jS, Y", strtotime($event->fee->regular_date)) }}</li>
+                              <li>Late registration {{ $event->fee->late_amount }} after {{ date("F jS, Y", strtotime($event->fee->late_date)) }}</li>
+                                 
+                              @else
+                                 <li>Fees unavailable</li>
+                              @endif
                            </ul>
                         </dd>
                      </div>
@@ -114,29 +88,58 @@
                            {{ $event->description }}
                         </dd>
                      </div>
-            
-                     <!-- More questions... -->
                   </dl>
+
+                  <div class="my-8">
+                     <div class="pt-12">
+                        <h1 class="font-semibold text-xl text-white text-center">Account Details</h1>
+                        <div class="text-gray-300 text-center justify-center leading-5 tracking-wide">
+                           <p>
+                              Bank Name: Ecobank Ghana
+                           </p>
+                           <p>
+                              Account Details CEDI: 0020134402288001
+                           </p>
+                           <p>
+                              DOLLAR: 0022104402288001
+                           </p>
+                           <p>
+                              Account Name: Life -link Friendship School
+                           </p>
+                           <p>
+                              Account Branch: Tema
+                           </p>
+                           <p>
+                              MTN Mobile Money: 024 093 5493
+                           </p>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
 
-         <div class="sm:my-12 my-8 sm:flex sm:justify-between">
-            <div class="p-8">
-               <h2 class="text-3xl font-extrabold tracking-tight text-gray-600 sm:text-4xl">
-                  Venue
-               </h2>
-               <p>Accra International Conference Center</p>
+         <div class="sm:my-12 my-8 space-y-2">
+            <div class="p-8 flex justify-between">
+               <div>
+                  <h2 class="text-3xl font-extrabold tracking-tight text-gray-600 sm:text-4xl">
+                     Venue
+                  </h2>
+                  <p>{{ $event->venue }}</p>
+               </div>
 
-               <h2 class="text-sm font-bold text-gray-600 mt-8">
-                  Phone
-               </h2>
-               <p>+233-24-4681828</p>
+               <div>
+                  <h2 class="text-3xl font-extrabold tracking-tight text-gray-600 sm:text-4xl">
+                     Phone
+                  </h2>
+                  <p>+233-24-4681828</p>
+               </div>
+
             </div>
             <div class="p-8">
                <div class="border-2 border-gray-500 rounded">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7941.313763795987!2d-0.06590542864552393!3d5.617577710032567!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf869b8083002d%3A0x233f163d3a21ce80!2sQueensland%20International%20School!5e0!3m2!1sen!2sgh!4v1643883005471!5m2!1sen!2sgh" 
-                        width="800" height="450" 
+                  <iframe class="w-full" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7941.313763795987!2d-0.06590542864552393!3d5.617577710032567!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf869b8083002d%3A0x233f163d3a21ce80!2sQueensland%20International%20School!5e0!3m2!1sen!2sgh!4v1643883005471!5m2!1sen!2sgh" 
+                        height="450" 
                         style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy"></iframe>

@@ -12,9 +12,8 @@
 
       <script src="{{ asset('js/app.js') }}" defer></script>
    </head>
-   <body class="h-full">
-      <section class="w-full h-full min-h-screen text-gray-900 py-36 bg-center bg-cover bg-no-repeat"
-      style="background:url('../img/sitting_meeting.jpg')">
+   <body class="h-full w-full">
+      <section class="min-w-screen min-h-screen bg-gray-800 flex items-center justify-center px-5 py-5">
          {{ $slot }}
       </section>
    </body>

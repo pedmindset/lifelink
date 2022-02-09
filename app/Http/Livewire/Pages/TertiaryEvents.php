@@ -30,6 +30,7 @@ class TertiaryEvents extends Component
    public function showItem($id){
       $this->eventId = $id;
       $this->event = Event::firstWhere('id', $this->eventId);
+      // dd($this->event->fee);
       $this->showMode = true;
    }
 
