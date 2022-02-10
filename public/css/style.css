@@ -19,3 +19,11 @@
 .h-17 {
    height: 17rem;
 }
+.closed {
+	transition: .3s ease-in-out;
+}
+.flipTop {
+	-webkit-transform: scaleY(-1);
+	transform: scaleY(-1);
+	transition: .3s ease-in-out;
+}

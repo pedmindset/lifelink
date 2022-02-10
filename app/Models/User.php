@@ -87,4 +87,9 @@ class User extends Authenticatable implements HasMedia
    {
       return $this->belongsToMany(EventApplications::class)->withPivot('form_data')->withTimestamps();
    }
+
+   public function payments()
+   {
+      return $this->belongsToMany(Payment::class);
+   }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 class MtnMomoApiController extends Controller
 {
+   // create momo api user for transactions
    public function createApiUser() {
       $uuidV4 = Str::uuid()->toString();
       $tempCallBackUrl = "https://webhook.site/6d8f355e-99c7-4289-8478-61a932959db4";
@@ -36,6 +37,7 @@ class MtnMomoApiController extends Controller
       return $response;
    }
 
+   // get momo api user
    public function getApiUser()
    {
       $curl = curl_init();
@@ -60,6 +62,7 @@ class MtnMomoApiController extends Controller
       return $response;
    }
 
+   // get momo api key fro transaction
    public function getApiKey()
    {
       $curl = curl_init();
@@ -84,6 +87,11 @@ class MtnMomoApiController extends Controller
       return $response;
    }
 
+   /**
+    * GET MOMO API TOKEN
+    * Ocp-Apim-Subscription-Key -- this is the primary key generated 
+    * after account and subscription is to product
+   */
    public function getApiToken()
    {
 

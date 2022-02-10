@@ -18,20 +18,21 @@ class FormApplication extends Component
       return view('livewire.pages.form-application');
    }
 
-   public function getFieldValue($value, $fieldName)
-   {
-      $this->applicantData = array_replace($this->applicantData, [$fieldName => $value]);
-   }
-   
    public function mount($id)
    {
       $this->formId = $id;
       $data = EventApplications::firstWhere('id', $this->formId);
       $this->data = $data;
       $this->eventId = $data->event->id;
-      $this->schema = $this->data->schema;
+      $this->schema = json_decode($this->data->schema);
+      // dd($this->schema[0]);
    }
-
+   
+   public function getFieldValue($value, $fieldName)
+   {
+      $this->applicantData = array_replace($this->applicantData, [$fieldName => $value]);
+   }
+   
    public function saveForm()
    {
       $application = EventApplications::firstWhere('id', $this->formId);

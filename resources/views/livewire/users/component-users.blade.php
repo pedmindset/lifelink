@@ -7,11 +7,45 @@
             @include('livewire.users.delete')
 
             @if (count($data) > 0)
+            
+            <div class="mb-4 flex justify-between">
+               <div class="relative" x-data="{ open:false }" x-on:click.away="open = false">
+                  <div class="h-10 bg-white flex border border-gray-200 items-center">
+                     <p class="px-4 transform appearance-none outline-none text-gray-800 w-full capitalize">Sort By</p>
 
-            <div class="flex place-content-end mb-4">
-               <button type="button" x-on:click.defer="openCreate = true" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white capitalize bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
-                  New User
-               </button>
+                     <label x-on:click="open = !open" 
+                        {{-- x-transition:enter="" 
+                        x-transition:enter-start="opacity-0" 
+                        x-transition:enter-end="opacity-100" 
+                        x-transition:leave="ease-in-out duration-500" 
+                        x-transition:leave-start="opacity-100" 
+                        x-transition:leave-end="opacity-0"  --}}
+                        x-bind:class="open ? 'flip-top' : 'closed' " for="show_more" class="cursor-pointer outline-none focus:outline-none transition-all text-gray-400 hover:text-gray-800">
+                        <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
+                     </label>
+                  </div>
+                  <div x-show="open" class="absolute z-1 w-40 rounded shadow bg-white overflow-hidden flex flex-col mt-1 border border-gray-200">
+                     
+                     <div class="cursor-pointer group w-40">
+                        <span wire:click.prevent="sortedBy('aluminia')" @click.prevent="open = false" class="block p-2 border-transparent capitalize border-b-2 group-hover:border-red-600">Aluminia</span>
+                     </div>
+                     <div class="cursor-pointer group w-40">
+                        <span wire:click.prevent="sortedBy('client')" @click.prevent="open = false" class="block p-2 border-transparent capitalize border-b-2 group-hover:border-red-600">Client</span>
+                     </div>
+                     <div class="cursor-pointer group w-40">
+                        <span wire:click.prevent="sortedBy('staff')" @click.prevent="open = false" class="block p-2 border-transparent capitalize border-b-2 group-hover:border-red-600">Staff</span>
+                     </div>
+                     
+                  </div>
+               </div>
+
+               <div class="">
+                  <button type="button" x-on:click.defer="openCreate = true" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white capitalize bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                     New User
+                  </button>
+               </div>
             </div>
 
             <div class="flex flex-col">

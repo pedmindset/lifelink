@@ -1,15 +1,16 @@
-<div class="w-full h-full" x-data="{ viewItem: @entangle('') }">
+<div class="w-full h-full" x-data="{ viewItem: false }">
    {{-- index table --}}
    <div class="max-w-5xl mx-auto p-3">
       <div class="bg-white shadow overflow-hidden sm:rounded-md my-8">
          <ul role="list" class="divide-y divide-gray-200">
-            @foreach ($data as $index => $person)
+
+            @forelse ($data as $index => $person)
             <li x-data="{ open: false }">
                <p class="block hover:bg-gray-50">
                   <div class="flex items-center px-4 py-4 sm:px-6">
                      <div class="min-w-0 flex-1 flex items-center">
                         <div class="flex-shrink-0">
-                           <img class="h-12 w-12 rounded-full" src="{{ $person->thumb_image_url != '' ? $person->thumb_image_url : asset('img/back_con.jpg') }}" alt="">
+                           <img class="h-12 w-12 rounded-full" src="{{ $person->thumb_image_url != '' ? $person->thumb_image_url : asset('img/face.jpg') }}" alt="">
                         </div>
                         <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                            <div>
@@ -56,15 +57,18 @@
                            <table class="min-w-full divide-y divide-gray-200">
                               <thead class="bg-gray-50">
                                  <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data set</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Value</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Answer</th>
                                  </tr>
                               </thead>
                               <tbody>
+                                 @foreach (json_decode($person->pivot->form_data, true) as $key => $value)
                                  <tr class="bg-white">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $person->pivot->form_data }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Regional Paradigm Technician</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $key }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                       <span class="font-semibold">{{ $value }}</span></td>
                                  </tr>
+                                 @endforeach
                               </tbody>
                            </table>
                         </div>
@@ -73,7 +77,11 @@
                </div>
                    
             </li>
-            @endforeach
+            @empty
+               <li class="flex justify-center items-center font-sans leading-7 tracking-wider font-medium text-lg text-gray-600 py-12">
+                  <p>Applicant list is empty</p>
+               </li>
+            @endforelse
          </ul>
       </div>
    </div>

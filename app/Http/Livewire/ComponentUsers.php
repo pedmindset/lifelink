@@ -19,6 +19,13 @@ class ComponentUsers extends Component
       return view('livewire.users.component-users');
    }
 
+   public function sortedBy($value){
+      dd($value);
+      if($value == 'aluminia'){
+         $this->data = Person::where('aluminia', true)->get();
+      }
+   }
+
    private function resetInput()
    {
       $this->name = null;
