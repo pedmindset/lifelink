@@ -13,6 +13,7 @@ use App\Http\Livewire\ComponentOfficials;
 use App\Http\Livewire\ComponentConference;
 use App\Http\Livewire\Pages\TertiaryEvents;
 use App\Http\Livewire\ComponentAwardCitation;
+use App\Http\Livewire\DashboardView;
 use App\Http\Livewire\EventApplicants;
 use App\Http\Livewire\Fees;
 use App\Models\Event;
@@ -45,18 +46,21 @@ Route::middleware('auth')->group(function ($route) {
    $route->get('/profile', function () {
       return view('pages.profile');
    })->name('profile');
-   $route->get('/settings', function () {
-      return view('welcome');
-   })->name('settings');
-   $route->get('/dashboard', function() {
-      return view('admin.dashboard');
-   })->name('dashboard');
 
+   $route->get('/my-profile', function () {
+      return view('pages.profile');
+   })->name('admin.profile');
+
+   $route->get('/settings', function () {
+      return view('pages.settings');
+   })->name('admin.settings');
+   
    // main default
    $route->get('/tertiary-events/{id?}', function(Request $request) {
       return view('pages.events', ['eventId'=> $request->id]);
    })->name('events.tertiary');
-
+   
+   $route->get('/dashboard', DashboardView::class)->name('dashboard');
    $route->get('/users', ComponentUsers::class)->name('users');
    $route->get('/events', ComponentConference::class)->name('events');
    $route->get('/event-form', EventApplication::class)->name('event.form');
