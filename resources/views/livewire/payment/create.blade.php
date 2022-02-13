@@ -76,7 +76,7 @@
                               <div class="sm:col-span-3">
                                  <label for="user" class="block text-sm font-medium text-gray-900">Select Client</label>
                                  <div class="mt-1">
-                                    <select wire:model="user_id" id="user" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <select wire:model="customer" id="user" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                        <option value="null">-- Select Client --</option>
                                        @foreach ($users as $user)
                                        <option value="{{ $user->id }}">{{ $user->name }}</option>

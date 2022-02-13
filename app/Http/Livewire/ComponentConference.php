@@ -6,11 +6,14 @@ use DateTime;
 use App\Models\Event;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\WithFileUploads;
 
 class ComponentConference extends Component
 {
-   public $data, $viewItem, $name, $description, $venue, $event_image, $start_date, $end_date, $selected_id, $selectedname;
-   public $updateMode = false, $isListing = false, $createMode = false, $deleteMode=false, $viewMode = false, $formCreateMode = false;
+   use WithFileUploads;
+   
+   public $data, $viewItem, $name, $description, $venue, $event_image, $start_date, $end_date, $lat, $lng, $selected_id, $selectedname;
+   public $updateMode = false, $saveMode= false, $isListing = false, $createMode = false, $deleteMode=false, $viewMode = false, $formCreateMode = false;
 
    // for detail page
    public $detailTab = false, $formTab = false, $officialTab = false, $awardTab = false, $addOfficialMode = false, $addAwardMode = false;
@@ -32,6 +35,9 @@ class ComponentConference extends Component
       $this->description = null;
       $this->start_date = null;
       $this->end_date = null;
+      $this->lat = null;
+      $this->lng = null;
+      $this->event_image = null;
       $this->selectedname = null;
       $this->selected_id = null;
       $this->viewItem = null;
@@ -45,22 +51,28 @@ class ComponentConference extends Component
          'name' => 'required|string|max:255',
          'start_date' => 'required',
          'end_date' => 'required',
+         'venue' => 'required|string|max:255',
+         'lat' => 'required|numeric',
+         'lng' => 'required|numeric',
+         'event_image' => 'file|mimes:png,jpg,jpeg|max:2048'
       ]);
       $event = Event::create([
          'name' => $this->name,
          'description' => $this->description,
          'venue' => $this->venue,
+         'latitude' => $this->lat,
+         'longitude' => $this->lng,
          'start_date' => new DateTime($this->start_date),
          'end_date' => new DateTime($this->end_date),
          // 'uuid' => Str::uuid(),
       ]);
+      $event->addMedia($this->event_image->getRealPath())->toMediaCollection('event_image');
       
       $this->dispatchBrowserEvent('alertMessage',[
          'type'=>'info',
          'message'=> "Successfully created!"
       ]);
 
-      // $event->addMedia($this->event_image->getRealPath())->toMediaCollection('event_image');
 
       $this->createMode = false;
       $this->resetInput();
@@ -71,26 +83,32 @@ class ComponentConference extends Component
          case 1:
             $this->formTab = false;
             $this->officialTab = false;
-            $this->awardtab = false;
+            $this->awardTab = false;
             $this->detailTab = true;
             break;
          case 2:
             $this->detailTab = false;
             $this->officialTab = false;
-            $this->awardtab = false;
+            $this->awardTab = false;
             $this->formTab = true;
+            break;
+         case 3:
+            $this->detailTab = false;
+            $this->formTab = false;
+            $this->awardTab = false;
+            $this->officialTab = true;
             break;
          case 4:
             $this->detailTab = false;
             $this->officialTab = false;
             $this->formTab = false;
-            $this->awardtab = true;
+            $this->awardTab = true;
             break;
          default:
             $this->formTab = false;
-            $this->detailTab = false;
-            $this->awardtab = false;
-            $this->officialTab = true;
+            $this->officialTab = false;
+            $this->awardTab = false;
+            $this->detailTab = true;
             break;
       }
 

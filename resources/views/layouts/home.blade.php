@@ -7,6 +7,8 @@
 
       <title>{{ config('app.name', 'Laravel') }}</title>
       <!-- Fonts -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
       <link rel="shortcut icon" href="{{ asset('img/logo_image.png') }}" type="image/x-icon">
       <!-- Styles -->
       @livewireStyles
@@ -15,12 +17,12 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
       <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css"/>
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
-      <script src="{{ asset('js/alpine.js') }}" defer></script>
    </head>
    <body class="font-sans antialiased h-full">
       <main>
          @yield('section-content')
       </main>
       <x-main-footer />
+      @include('includes.public-scripts')
    </body>
 </html>

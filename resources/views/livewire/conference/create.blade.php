@@ -58,7 +58,7 @@
                               </div>
                               <div class="ml-3">
                                  <h3 class="text-sm font-medium text-red-800">
-                                    There were count($errors) errors with your submission
+                                    There were {{ count($errors) }} errors with your submission
                                  </h3>
                                  <div class="mt-2 text-sm text-red-700">
                                     <ul role="list" class="list-disc pl-5 space-y-1">
@@ -74,9 +74,9 @@
 
                         <div class="space-y-3 pb-5">
                            <div>
-                              <label for="name" class="block text-sm font-medium text-gray-900">Name</label>
+                              <label for="event-name" class="block text-sm font-medium text-gray-900">Name</label>
                               <div class="mt-1">
-                                 <input type="text" wire:model="name" id="name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" wire:model="name" id="event-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
@@ -106,14 +106,68 @@
                               </div>
                            </div>
 
-                           {{-- <div class="row mb-3">
-                              <label for="event-image" class="col-md-4 col-form-label text-md-end">{{ __('Event Image') }}</label>
-                           
-                              <div class="col-md-6">
-                                 <input id="event-image" wire:model="event_image" type="file" accept="image/*" class="form-control" placeholder="Choose Image">
+                           <div class="flex justify-between text-sm text-gray-800" x-data="{ openTooltip:false }">
+                              <p>For direction purposes add Venue latitude and longitude </p>
+                              <div class="relative">
+                                 <span @click="openTooltip = !openTooltip" data-tooltip-target="tooltip-top" data-tooltip-placement="top" class="hover:text-gray-500 cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                 </span>
+
+                                 <div x-show="openTooltip" class="inline-block absolute z-10 py-2 right-6 -mt-6 mr-1 w-72 tooltip tooltip-show px-3 text-sm font-medium text-white opacity-90 bg-gray-900 rounded-lg shadow-sm dark:bg-gray-700">
+                                    <ul class="space-y-3">
+                                       <li>
+                                          - Goto https://www.google.com/maps/ and search venue
+                                       </li>
+                                       <li>
+                                          - Click on the location on the map to retrieve latitude (the numbers before the comma sign) and longitude (the numbers after the comma sign). 
+                                       </li>
+                                    </ul> 
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                 </div>
+
                               </div>
-                           </div> --}}
-                           
+                           </div>
+
+                           <div class="mt-3">
+                              <label for="lat" class="block text-sm font-medium text-gray-900">Latitude</label>
+                              <div class="mt-1">
+                                 <input type="number" steps="2" wire:model="lat" id="lat" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                              </div>
+                           </div>
+
+                           <div class="mt-3">
+                              <label for="lng" class="block text-sm font-medium text-gray-900">Longitude</label>
+                              <div class="mt-1">
+                                 <input type="number" steps="2" wire:model="lng" id="lng" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                              </div>
+                           </div>
+
+                           <div class="mt-3">
+                              <label for="lng" class="block text-sm font-medium text-gray-900">Upload Image (jpg,png,jpeg)</label>
+                              <div class="mt-1">
+                                 @if ($event_image)
+                                 <div id="preview-container" class="relative">
+                                    <img src="{{ $event_image->temporaryUrl() }}" class="inset-0 w-full h-36 rounded-md">
+                                    <span @click="$refs.uploader.click()" class="px-4 py-1 cursor-pointer text-white bg-red-300 text-xs rounded shadow">Change</span>
+                                 </div>
+                                 @endif
+                                 <div id="upload" class="{{ $event_image ? 'hidden' : 'block' }} w-full">
+                                    <label class="flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
+                                       <div class="flex flex-col items-center justify-center pt-7">
+                                          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-400 group-hover:text-gray-600"
+                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                          </svg>
+                                          <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">Attach an image</p>
+                                       </div>
+                                       <input type="file" x-ref="uploader" wire:model="event_image" class="opacity-0" accept="image/*" />
+                                    </label>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -124,6 +178,7 @@
                      Cancel
                   </button>
                   <button type="button" wire:click="store()" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                     {{-- <span>{{  ? 'Saving' : 'Save' }}</span> --}}
                      Save
                   </button>
                </div>

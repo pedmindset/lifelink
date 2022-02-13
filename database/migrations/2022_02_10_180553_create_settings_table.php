@@ -6,26 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSettingsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('settings', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+   /**
+    * Run the migrations.
+    *
+    * @return void
+    */
+   public function up()
+   {
+      Schema::create('settings', function (Blueprint $table) {
+         $table->id();
+         $table->decimal('aluminiaDue', 13, 2)->nullable();
+         $table->timestamps();
+      });
+   }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('settings');
-    }
+   /**
+    * Reverse the migrations.
+    *
+    * @return void
+    */
+   public function down()
+   {
+      Schema::dropIfExists('settings');
+   }
 }

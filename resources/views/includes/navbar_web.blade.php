@@ -32,38 +32,38 @@
           </button>
 
           <!-- Profile dropdown -->
-          <div class="ml-3 relative">
-            <div>
-              <button type="button" x-on:click.prevent="open = !open" x-on:click.away="open = false" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full border-2 border-cyan-500" src="{{ auth()->user()->thumb_image_url ?? asset('img/face.jpg') }}" alt="">
-              </button>
-            </div>
-            <div x-show="open" style="display: none" 
-              x-transition:enter="transition ease-out duration-200" 
-              x-transition:enter-start="transform opacity-0 scale-95" 
-              x-transition:enter-end="transform opacity-100 scale-100" 
-              x-transition:leave="transition ease-in duration-100" 
-              x-transition:leave-start="transform opacity-100 scale-100" 
-              x-transition:leave-end="transform opacity-0 scale-95"
-              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" 
-              role="menu" aria-orientation="vertical" 
-              aria-labelledby="user-menu-button" tabindex="-1">
-              {{-- <a href="{{ route('admin.profile') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a> --}}
+            <div class="ml-3 relative">
+               <div>
+                  <button type="button" x-on:click.prevent="open = !open" x-on:click.away="open = false" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                     <span class="sr-only">Open user menu</span>
+                     <img class="h-8 w-8 rounded-full border-2 border-cyan-500" src="{{ auth()->user()->thumb_image_url ?? asset('img/face.jpg') }}" alt="">
+                  </button>
+               </div>
+               <div x-show="open" style="display: none" 
+                     x-transition:enter="transition ease-out duration-200" 
+                     x-transition:enter-start="transform opacity-0 scale-95" 
+                     x-transition:enter-end="transform opacity-100 scale-100" 
+                     x-transition:leave="transition ease-in duration-100" 
+                     x-transition:leave-start="transform opacity-100 scale-100" 
+                     x-transition:leave-end="transform opacity-0 scale-95"
+                     class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" 
+                     role="menu" aria-orientation="vertical" 
+                     aria-labelledby="user-menu-button" tabindex="-1">
+                  {{-- <a href="{{ route('admin.profile') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a> --}}
 
-              <a href="{{ route('admin.settings') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                  <a href="{{ route('admin.settings') }}" class="block hover:bg-teal-50 px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
 
-              <a class="block px-4 py-2 text-sm text-gray-700"
-               href="{{ route('logout') }}"
-               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-              </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-               @csrf
-           </form>
+                  <a class="block px-4 py-2 text-sm text-gray-700"
+                     href="{{ route('logout') }}"
+                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                     {{ __('Logout') }}
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                     @csrf
+                  </form>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
    </div>
 </div>

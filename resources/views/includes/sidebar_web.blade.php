@@ -70,14 +70,14 @@
       </div>
 
       <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-         <a href="#" class="flex-shrink-0 w-full group block">
+         <a href="{{ route('admin.settings') }}" class="flex-shrink-0 w-full group block">
             <div class="flex items-center">
                <div>
                   <img class="inline-block h-9 w-9 rounded-full border border-gray-500" src="{{ auth()->user()->thumb_image_url ?? asset('img/face.jpg') }}" alt="">
                </div>
                <div class="ml-3">
                   <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                     {{ auth()->user()->name }}
+                     {{ auth()->user()->profile->first_name }}
                   </p>
                   <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">
                   View profile

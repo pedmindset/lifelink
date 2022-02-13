@@ -1,4 +1,6 @@
-<div class="w-full" x-data="{ showList: @entangle('isListing'), openCreate: @entangle('createMode'), openEdit:  @entangle('updateMode'), openDelete:  @entangle('deleteMode'), openView:  @entangle('viewMode'), openCreateForm: @entangle('formCreateMode'), openAddOfficial: @entangle('addOfficialMode'), openAddAward: @entangle('addAwardMode'), showDetailTab: @entangle('detailTab'), showFormTab: @entangle('formTab'), showOfficialTab:  @entangle('officialTab'), showAwardTab:  @entangle('awardTab'), openAddAward:  @entangle('addAwardMode') }">
+<div class="w-full" x-data="{ showList: @entangle('isListing'), openCreate: @entangle('createMode'), openEdit:  @entangle('updateMode'), openDelete:  @entangle('deleteMode'), openView:  @entangle('viewMode'), openCreateForm: @entangle('formCreateMode'), openAddOfficial: @entangle('addOfficialMode'),
+ openAddAward: @entangle('addAwardMode'), showDetailTab: @entangle('detailTab'), showFormTab: @entangle('formTab'), 
+ showOfficialTab:  @entangle('officialTab'), showAwardTab:  @entangle('awardTab')}">
    <div class="py-10">
       <div class="max-w-full sm:px-6 lg:px-8">
          <div class="w-full">

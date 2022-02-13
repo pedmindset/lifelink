@@ -33,7 +33,7 @@
          <div class="flex flex-col items-center w-full mb-6 space-y-4 md:space-x-4 md:space-y-0 md:flex-row">
             <div class="w-full md:w-6/12">
                <div class="relative w-full overflow-hidden bg-white shadow-lg dark:bg-gray-700">
-                  <a href="#" class="block w-full h-full">
+                  <a href="{{ route('payments') }}" class="block w-full h-full">
                      <div class="flex items-center justify-between px-4 py-6 space-x-4">
                         <div class="flex items-center">
                            <span class="relative p-5 bg-yellow-100 shadow-lg rounded-full">

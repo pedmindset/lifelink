@@ -16,6 +16,7 @@ use App\Http\Livewire\ComponentAwardCitation;
 use App\Http\Livewire\DashboardView;
 use App\Http\Livewire\EventApplicants;
 use App\Http\Livewire\Fees;
+use App\Http\Livewire\SettingPage;
 use App\Models\Event;
 
 /*
@@ -51,14 +52,16 @@ Route::middleware('auth')->group(function ($route) {
       return view('pages.profile');
    })->name('admin.profile');
 
-   $route->get('/settings', function () {
-      return view('pages.settings');
-   })->name('admin.settings');
+   // $route->get('/settings', function () {
+   //    return view('pages.settings');
+   // })->name('admin.settings');
    
    // main default
    $route->get('/tertiary-events/{id?}', function(Request $request) {
       return view('pages.events', ['eventId'=> $request->id]);
    })->name('events.tertiary');
+   $route->get('/settings', function(Request $request) {
+      return view('pages.settings');})->name('admin.settings');
    
    $route->get('/dashboard', DashboardView::class)->name('dashboard');
    $route->get('/users', ComponentUsers::class)->name('users');

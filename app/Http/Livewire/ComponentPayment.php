@@ -4,13 +4,14 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use App\Models\Payment;
+use App\Models\Setting;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
 class ComponentPayment extends Component
 {
-   public $payData, $users, $name, $selected_id, $selectedname;
-   public $event_id, $user_id, $description, $payment_for_event, $payment_for_aluminia, $payment_for, $amount;
+   public $payData, $users, $name, $dues, $selected_id, $selectedname;
+   public $event_id, $customer, $description, $payment_for_event, $payment_for_aluminia, $payment_for, $amount;
    public $createMode = false, $editMode = false, $deleteMode = false, $viewMode = false;
 
    public function render()
@@ -20,10 +21,17 @@ class ComponentPayment extends Component
       return view('livewire.payment.component-payment');
    }
 
+   public function mount() {
+      $setting = Setting::first();
+      if($setting){
+         $this->dues = $setting->aluminiaDue;
+      }
+   }
+
    private function resetInput()
    {
       $this->event_id = null;
-      $this->user_id = null;
+      $this->customer = null;
       $this->amount = null;
       $this->selected_id = null;
       $this->selectedname = null;
@@ -37,22 +45,24 @@ class ComponentPayment extends Component
       if ($type == 0) {
          $this->payment_for = 'Event';
          $this->payment_for_aluminia = false;
+         $this->amount = null;
       }
       else {
          $this->payment_for = 'Aluminia';
          $this->payment_for_event = false;
+         $this->amount = $this->dues;
       }
    }
 
    public function store()
    {
       $this->validate([
-         'user_id' => 'required|integer',
+         'customer' => 'required|integer',
          'amount' => 'required|numeric',
       ]);
       $pay = Payment::create([
          'event_id' => $this->event_id,
-         'user_id' => $this->user_id,
+         'user_id' => $this->customer,
          'uuid' => Str::uuid(),
          'description' => $this->description,
          'amount' => $this->amount,
