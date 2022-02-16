@@ -24,10 +24,10 @@
                         <div class="flex-1 ">
                            <div class="block mt-2 overflow-hidden" wire:click.prevent="showItem({{ $event->id }})">
                               <p class="text-xl font-semibold text-indigo-600">{{ $event->name }}</p>
-                              <p class="mt-3 text-base text-gray-500 prose  h-40">{{ $event->description }}</p>
+                              <p class="mt-3 text-base text-gray-500 prose prose-sm pb-3 h-40">{{ $event->description }}</p>
                            </div>
                         </div>
-                        <div class="mt-6 flex justify-between">
+                        <div class="mt-3 flex justify-between">
                            <div class="">
                               <p class="text-sm font-semibold text-gray-900">Date</p>
                               <div class="flex space-x-1 text-sm text-gray-500">
