@@ -21,7 +21,7 @@
                      </div>
 
                      <div class="flex-1 bg-white p-6 flex flex-col justify-between cursor-pointer">
-                        <div class="flex-1 truncate">
+                        <div class="flex-1 ">
                            <div class="block mt-2" wire:click.prevent="showItem({{ $event->id }})">
                               <p class="text-xl font-semibold text-indigo-600">{{ $event->name }}</p>
                               <p class="mt-3 text-base text-gray-500 truncate h-40">{{ $event->description }}</p>
