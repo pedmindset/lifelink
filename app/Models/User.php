@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -16,9 +19,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $password
  */
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-   use HasApiTokens, HasFactory,HasRoles, Notifiable;
+   use HasApiTokens, InteractsWithMedia, HasFactory, HasRoles, Notifiable;
 
    /**
     * The attributes that are mass assignable.
@@ -50,8 +53,43 @@ class User extends Authenticatable
       'email_verified_at' => 'datetime',
    ];
 
+   protected $appends = ['thumb_image_url'];
+
+   public function registerMediaCollections(): void
+   {
+      $this->addMediaCollection('profile_image')->singleFile();
+   }
+
+   public function getThumbImageUrlAttribute()
+   {
+      return $this->getFirstMediaUrl('profile_image', 'thumb');
+   }
+
+   public function registerMediaConversions(Media $media = null): void
+   {
+      $this->addMediaConversion('thumb')
+         ->width(368)
+         ->height(232)
+         ->sharpen(10);
+   }
+
    public function profile()
    {
       return $this->hasOne(Profile::class);
+   }
+
+   public function officials()
+   {
+      return $this->belongsToMany(Event::class, 'officials', 'user_id', 'event_id')->withPivot('type', 'role');
+   }
+
+   public function applications()
+   {
+      return $this->belongsToMany(EventApplications::class)->withPivot('form_data')->withTimestamps();
+   }
+
+   public function payments()
+   {
+      return $this->belongsToMany(Payment::class);
    }
 }

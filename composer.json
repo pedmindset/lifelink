@@ -52,6 +52,12 @@
             "@php artisan key:generate --ansi"
         ]
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/naitrons/livewire-forms"
+        }
+    ],
     "extra": {
         "laravel": {
             "dont-discover": []

@@ -5,8 +5,9 @@ namespace App\Http\Livewire;
 use App\Models\Profile;
 use Livewire\Component;
 use App\Models\User as Person;
-use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Builder;
 
 class ComponentUsers extends Component
 {
@@ -14,9 +15,25 @@ class ComponentUsers extends Component
    public $updateMode = false, $createMode = false, $deleteMode=false;
    public function render()
    {
-      $this->data = Person::all();
       $this->roles = Role::all();
       return view('livewire.users.component-users');
+   }
+
+   public function mount()
+   {
+      $this->data = Person::all();
+   }
+
+   public function sortedBy($value){
+      if ($value == 'client') {
+         $this->data = Person::role('customer')->get();
+      }
+      elseif ($value == 'staff') {
+         $this->data = Person::whereNotIn('name', ['customer'])->get();
+      }
+      else {
+         $this->data = Person::latest()->get();
+      }
    }
 
    private function resetInput()
@@ -34,6 +51,7 @@ class ComponentUsers extends Component
       $this->address = null;
 
       $this->data = Person::all();
+      // $this->data = Person::role('customer')->get();
    }
 
    public function store()

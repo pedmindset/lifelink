@@ -24,30 +24,30 @@ class Payment extends Model
 {
    use HasFactory;
 
-   protected $fillable = ['profile_id','conference_id','uuid','transaction_code','description','amount', 'status', 'payment_method'];
+   protected $fillable = ['user_id', 'event_id', 'isAluminia', 'type', 'uuid','transaction_code','description','amount', 'status', 'payment_method'];
 
-/**
+   /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
     */
-   public function conference()
+   public function event()
    {
-      return $this->belongsTo(Conference::class);
+      return $this->belongsTo(Event::class);
    }
 
    /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
     */
-   public function member()
+   public function user()
    {
-      return $this->belongsTo(Profile::class);
+      return $this->belongsTo(User::class);
    }
 
    /**
     * @return \Illuminate\Database\Eloquent\Relations\HasOne
     */
-   public function receipt()
-   {
-      return $this->hasOne(Invoice::class);
-   }
+   // public function receipt()
+   // {
+   //    return $this->hasOne(Invoice::class);
+   // }
 
 }

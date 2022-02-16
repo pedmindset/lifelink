@@ -16,7 +16,9 @@ class CreatePaymentsTable extends Migration
       Schema::create('payments', function (Blueprint $table) {
          $table->id();
          $table->unsignedBigInteger('user_id')->nullable();
-         $table->unsignedBigInteger('event_application_id')->nullable();
+         $table->unsignedBigInteger('event_id')->nullable();
+         $table->boolean('isAluminia');
+         $table->string('type')->nullable();
          $table->uuid('uuid')->nullable();
          $table->string('transaction_code')->nullable();
          $table->string('description')->nullable();
@@ -27,7 +29,7 @@ class CreatePaymentsTable extends Migration
          $table->timestamps();
 
          $table->foreign('user_id')->references('id')->on('users');
-         $table->foreign('event_application_id')->references('id')->on('event_applications');
+         $table->foreign('event_id')->references('id')->on('events');
       });
    }
 

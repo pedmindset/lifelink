@@ -11,10 +11,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Nunito','Poppins', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         cyan: colors.cyan,
+        teal: colors.teal,
+        sky: colors.sky,
+        rose: colors.rose,
       },
       screen: {
         xs: '320px',

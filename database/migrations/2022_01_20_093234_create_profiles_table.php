@@ -18,9 +18,15 @@ class CreateProfilesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('address')->nullable();
             $table->string('email');
             $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('school')->nullable();
+            $table->string('level')->nullable();
+            $table->string('coarse')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->string('nationality')->nullable();
             $table->string('fb_token')->nullable();
             $table->boolean('aluminia')->default(false);
             $table->softDeletes();

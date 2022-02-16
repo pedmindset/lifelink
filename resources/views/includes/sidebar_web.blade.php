@@ -2,7 +2,7 @@
 <div class="hidden sm:flex sm:w-64 md:flex-col sm:fixed sm:inset-y-0">
    <div class="flex flex-col flex-grow border-r border-gray-200 pt-5 bg-white overflow-y-auto">
       <div class="flex items-center flex-shrink-0 px-4 border-b border-gray-100">
-         <a href="{{ route('dashboard') }}" class="ml-3 mb-2">
+         <a href="/" class="ml-3 mb-2">
             <x-application-logo class="w-auto h-8 text-gray-600 fill-current" />
          </a>
       </div>
@@ -30,25 +30,25 @@
                Events
             </x-nav-link>
 
-            <x-nav-link :href="route('event.form')" :active="request()->routeIs('event.form')">
+            {{-- <x-nav-link :href="route('event.form')" :active="request()->routeIs('event.form')">
                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                </svg>
                Event Forms
-            </x-nav-link>
+            </x-nav-link> --}}
 
-            <x-nav-link :href="route('officials')" :active="request()->routeIs('officials')">
+            {{-- <x-nav-link :href="route('officials')" :active="request()->routeIs('officials')">
                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
                </svg>
                Officials
-            </x-nav-link>
+            </x-nav-link> --}}
 
-            <x-nav-link :href="route('members')" :active="request()->routeIs('members')">
+            <x-nav-link :href="route('fees')" :active="request()->routeIs('fees')">
                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                </svg>
-               Members
+               Fees
             </x-nav-link>
 
             <x-nav-link :href="route('awards.citations')" :active="request()->routeIs('awards.citations')">
@@ -70,14 +70,14 @@
       </div>
 
       <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-         <a href="#" class="flex-shrink-0 w-full group block">
+         <a href="{{ route('admin.settings') }}" class="flex-shrink-0 w-full group block">
             <div class="flex items-center">
                <div>
-                  <img class="inline-block h-9 w-9 rounded-full" src="{{ asset('img/face.jpg') }}" alt="">
+                  <img class="inline-block h-9 w-9 rounded-full border border-gray-500" src="{{ auth()->user()->thumb_image_url ?? asset('img/face.jpg') }}" alt="">
                </div>
                <div class="ml-3">
                   <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                  Tom Cook
+                     {{ auth()->user()->profile->first_name }}
                   </p>
                   <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">
                   View profile
