@@ -25,6 +25,12 @@ class Event extends Model implements HasMedia
       return $this->getFirstMediaUrl('event_image', 'thumb');
    }
 
+   public function getImageUrlAttribute()
+   {
+      return $this->getFirstMediaUrl('event_image');
+   }
+
+
    public function registerMediaConversions(Media $media = null): void
    {
       $this->addMediaConversion('thumb')

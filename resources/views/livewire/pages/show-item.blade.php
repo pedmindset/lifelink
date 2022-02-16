@@ -6,7 +6,7 @@
          </svg>
          Back to Events</p>
       <div class="overflow-hidden">
-         <img class="h-64 rounded-sm w-full object-cover lg:h-80" src="{{ $event->thumb_image_url != '' ? $event->thumb_image_url : asset('img/back_con.jpg') }}" alt="image back">
+         <img class="h-64 rounded-sm w-full object-cover lg:h-80" src="{{ $event->image_url != '' ? $event->image_url : asset('img/back_con.jpg') }}" alt="image back">
          <div class="max-w-5xl mx-auto">
             <p class="flex justify-center items-center text-green-600 uppercase leading-6 tracking-wider font-sans font-bold text-2xl pt-12">{{ $event->name }}</p>
             <p class="text-base text-center text-gray-600 font-medium tracking-wide leading-6 py-4">{{ $event->description ?? '' }}</p>
@@ -28,7 +28,7 @@
                               <div class="flex items-center justify-between">
                                  <div>
                                     <p class="text-sm font-bold text-gray-600 truncate flex">
-                                       {{ $app->name }} 
+                                       {{ $app->name }}
                                        {{-- <span class="bg-green-600 text-xs font-bold flex rounded-lg p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                                           </svg> {{ count($app->applicants) }}</span> --}}
@@ -40,7 +40,7 @@
                                     </x-button>
                                  </div>
                               </div>
-                              
+
                            </div>
                         </div>
                      </li>
@@ -49,7 +49,7 @@
                      @endforelse
                </ul>
             </div>
- 
+
             </div>
          </div>
 
@@ -73,7 +73,7 @@
                               <li>Early bird registration - {{ $event->fee->early_bird_amount }} before {{ date("F jS, Y", strtotime($event->fee->early_bird_date)) }}</li>
                               <li>Regular registration - {{ $event->fee->standard_amount }} before {{ date("F jS, Y", strtotime($event->fee->regular_date)) }}</li>
                               <li>Late registration {{ $event->fee->late_amount }} after {{ date("F jS, Y", strtotime($event->fee->late_date)) }}</li>
-                                 
+
                               @else
                                  <li>Fees unavailable</li>
                               @endif
@@ -138,10 +138,10 @@
             </div>
             <div class="p-8">
                <div class="border-2 border-gray-500 rounded">
-                  <iframe class="w-full" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7941.313763795987!2d-0.06590542864552393!3d5.617577710032567!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf869b8083002d%3A0x233f163d3a21ce80!2sQueensland%20International%20School!5e0!3m2!1sen!2sgh!4v1643883005471!5m2!1sen!2sgh" 
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
+                  <iframe class="w-full" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7941.313763795987!2d-0.06590542864552393!3d5.617577710032567!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf869b8083002d%3A0x233f163d3a21ce80!2sQueensland%20International%20School!5e0!3m2!1sen!2sgh!4v1643883005471!5m2!1sen!2sgh"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
                         loading="lazy"></iframe>
                </div>
             </div>
