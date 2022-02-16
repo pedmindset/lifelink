@@ -10,19 +10,7 @@
    @include('includes.styles')
 </head>
 <body class="font-sans antialiased h-full bg-gray-50" x-data="{ openNav: false }">
-   <div class="bg-white shadow-sm lg:static lg:overflow-y-visible">
-      <div class="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
-         <div class="relative flex justify-center items-center">
-            <div class="flex md:absolute md:left-0 md:inset-y-0 lg:static">
-               <div class="flex-shrink-0 flex items-center">
-                  <a :href="'/'">
-                     <x-application-logo class="w-44"/>
-                  </a>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+    @include('partials.header')
    <div class="w-full h-full">
       @yield('content')
    </div>
