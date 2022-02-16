@@ -24,7 +24,7 @@
                         <div class="flex-1 ">
                            <div class="block mt-2" wire:click.prevent="showItem({{ $event->id }})">
                               <p class="text-xl font-semibold text-indigo-600">{{ $event->name }}</p>
-                              <p class="mt-3 text-base text-gray-500  prose prose-sm pb-3 h-40">{{ \Illuminate\Support\Str::limit($event->description, 40) }}</p>
+                              <p class="mt-3 text-base text-gray-500  prose prose-sm pb-3">{{ \Illuminate\Support\Str::limit($event->description, 200) }}</p>
                            </div>
                         </div>
                         <div class="mt-3 flex justify-between">
