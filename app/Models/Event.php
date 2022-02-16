@@ -33,6 +33,11 @@ class Event extends Model implements HasMedia
          ->sharpen(10);
    }
 
+   public function getShortDescriptionAttribute()
+   {
+       return  \Illuminate\Support\Str::limit($this->description, 200);
+   }
+
    /**
     * Get all of the applications for the Event
     *
