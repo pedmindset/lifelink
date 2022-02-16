@@ -20,7 +20,7 @@
           <nav class="hidden md:flex space-x-8">
              <a href="{{ url('/') }}" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-900">Home</a>
 
-             <div class="relative -mt-1">
+             {{-- <div class="relative -mt-1">
                 <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
                 <span x-on:click="openNav = !openNav"  class="cursor-pointer group inline-flex items-center text-sm font-semibold font-sans text-gray-500 hover:text-gray-900" aria-expanded="false">
                    <span>Event Model</span>
@@ -111,7 +111,7 @@
                       </div>
                    </div>
                 </div>
-             </div>
+             </div> --}}
              <a href="{{ route('events.tertiary') }}" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-700">Upcoming Conferences</a>
              <a href="#" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-700">About Us</a>
           </nav>
