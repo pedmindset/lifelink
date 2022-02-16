@@ -15,7 +15,7 @@
             <div class="my-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
                {{-- <ul role="list" class="divide-y divide-gray-200 space-y-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4"> --}}
                @forelse ($events as $event)
-                  <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+                  <div class="flex flex-col rounded-lg shadow-lg overflow-hidden mx-4">
                      <div class="flex-shrink-0">
                         <img class="h-48 w-full object-cover" src="{{ $event->thumb_image_url != '' ? $event->thumb_image_url : asset('img/back_con.jpg') }}" alt="">
                      </div>
@@ -27,7 +27,7 @@
                               <p class="mt-3 text-base text-gray-500  prose prose-sm pb-3">{{ $event->short_description }}</p>
                            </div>
                         </div>
-                        <div class="mt-3 flex justify-between">
+                        <div class="mt-2 flex justify-between">
                            <div class="">
                               <p class="text-sm font-semibold text-gray-900">Date</p>
                               <div class="flex space-x-1 text-sm text-gray-500">
