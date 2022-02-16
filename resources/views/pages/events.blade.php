@@ -1,6 +1,6 @@
 @extends('layouts.home-livewire')
 
-@section('title', 'Tertiary Events')
+@section('title', 'Upcoming Conferences')
 
 @section('content')
 
