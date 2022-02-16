@@ -11,8 +11,8 @@
             <p class="flex justify-center items-center text-green-600 uppercase leading-6 tracking-wide font-sans font-bold text-2xl pt-12">{{ $event->name }}</p>
             <p class="text-base text-gray-600 tracking-wide leading-9 py-4">{{ $event->description ?? '' }}</p>
             <div class="flex space-x-8">
-               <p class="text-sm font-bold text-gray-600">From - <span class="bg-cyan-200 text-cyan-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->start_date)) }}</span></p>
-               <p class="text-sm font-bold text-gray-600">To - <span class="bg-red-200 text-red-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->end_date)) }}</span></p>
+               <p class="text-sm font-bold text-gray-600">From  <span class="bg-cyan-200 text-cyan-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->start_date)) }}</span></p>
+               <p class="text-sm font-bold text-gray-600">To  <span class="bg-red-200 text-red-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->end_date)) }}</span></p>
             </div>
 
             <div class="mb-12 pt-20">
