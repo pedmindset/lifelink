@@ -18,7 +18,7 @@
           </div>
 
           <nav class="hidden md:flex space-x-8">
-             <a href="#" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-900">Home</a>
+             <a href="{{ url('/') }}" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-900">Home</a>
 
              <div class="relative -mt-1">
                 <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
