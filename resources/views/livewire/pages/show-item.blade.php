@@ -90,31 +90,7 @@
                      </div>
                   </dl>
 
-                  <div class="my-8">
-                     <div class="pt-12">
-                        <h1 class="font-semibold text-xl text-white text-center">Account Details</h1>
-                        <div class="text-gray-300 text-center justify-center leading-5 tracking-wide">
-                           <p>
-                              Bank Name: Ecobank Ghana
-                           </p>
-                           <p>
-                              Account Details CEDI: 0020134402288001
-                           </p>
-                           <p>
-                              DOLLAR: 0022104402288001
-                           </p>
-                           <p>
-                              Account Name: Life -link Friendship School
-                           </p>
-                           <p>
-                              Account Branch: Tema
-                           </p>
-                           <p>
-                              MTN Mobile Money: 024 093 5493
-                           </p>
-                        </div>
-                     </div>
-                  </div>
+                 
                </div>
             </div>
          </div>
