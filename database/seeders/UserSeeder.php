@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
       ]);
       $user->addMediaFromUrl('https://app.gunyo.org/img/image_profile.png')->toMediaCollection('profile_image');
       Profile::create([
-         'user_id' => 1,
+         'user_id' => $user->id,
          'first_name' => 'Kwadwo Mensah',
          'last_name' => 'Osei',
          'email' => 'kwadwo@gmail.com',
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
      ]);
      $user->addMediaFromUrl('https://app.gunyo.org/img/image_profile.png')->toMediaCollection('profile_image');
      Profile::create([
-        'user_id' => 1,
+        'user_id' => $user->id,
         'first_name' => 'Emmanuel',
         'last_name' => 'Oduro',
         'email' => 'emmanuel@jumeni.com',
