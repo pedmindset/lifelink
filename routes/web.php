@@ -55,14 +55,14 @@ Route::middleware('auth')->group(function ($route) {
    // $route->get('/settings', function () {
    //    return view('pages.settings');
    // })->name('admin.settings');
-   
+
    // main default
-   $route->get('/tertiary-events/{id?}', function(Request $request) {
+   $route->get('/upcoming-events/{id?}', function(Request $request) {
       return view('pages.events', ['eventId'=> $request->id]);
    })->name('events.tertiary');
    $route->get('/settings', function(Request $request) {
       return view('pages.settings');})->name('admin.settings');
-   
+
    $route->get('/dashboard', DashboardView::class)->name('dashboard');
    $route->get('/users', ComponentUsers::class)->name('users');
    $route->get('/events', ComponentConference::class)->name('events');

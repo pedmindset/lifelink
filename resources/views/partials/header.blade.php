@@ -199,7 +199,7 @@
              <div class="pt-5 pb-6 px-5">
                 <div class="flex items-center justify-between">
                    <div>
-                      <img class="h-8 w-auto" src="{{ asset('img/logo_image.png') }}" alt="Workflow">
+                      <img class="h-8 w-auto" src="{{  asset('img/logo_black.png') }}" alt="Workflow">
                    </div>
                    <div class="-mr-2">
                       <button type="button" x-on:click="openMenu = false" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -232,7 +232,7 @@
              <div class="py-6 px-5">
                 <div class="grid grid-cols-1 gap-4">
                    <a href="{{ url('/') }}" class="text-base col-span-1 font-medium text-gray-900 hover:text-gray-700">Home</a>
-                   <a href="{{ route('events.tertiary') }}" class="text-base col-span-1 font-medium text-gray-900 hover:text-gray-700">Upcomming Conferences</a>
+                   <a href="{{ route('events.tertiary') }}" class="text-base col-span-1 font-medium text-gray-900 hover:text-gray-700">Upcoming Conferences</a>
                    <a href="#" class="text-base col-span-1 font-medium text-gray-900 hover:text-gray-700">About</a>
                 </div>
                 <div class="mt-6">
