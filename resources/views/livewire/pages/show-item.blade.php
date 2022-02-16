@@ -8,8 +8,8 @@
       <div class="overflow-hidden">
          <img class="h-64 rounded-sm w-full object-cover lg:h-80" src="{{ $event->image_url != '' ? $event->image_url : asset('img/back_con.jpg') }}" alt="image back">
          <div class="max-w-5xl mx-auto">
-            <p class="flex justify-center items-center text-green-600 uppercase leading-6 tracking-wider font-sans font-bold text-2xl pt-12">{{ $event->name }}</p>
-            <p class="text-base  text-gray-600  tracking-wide leading-6 py-4">{{ $event->description ?? '' }}</p>
+            <p class="flex justify-center items-center text-green-600 uppercase leading-6 tracking-wide font-sans font-bold text-2xl pt-12">{{ $event->name }}</p>
+            <p class="text-base text-gray-600 tracking-wide leading-9 py-4">{{ $event->description ?? '' }}</p>
             <div class="flex space-x-8">
                <p class="text-sm font-bold text-gray-600">From - <span class="bg-cyan-200 text-cyan-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->start_date)) }}</span></p>
                <p class="text-sm font-bold text-gray-600">To - <span class="bg-red-200 text-red-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->end_date)) }}</span></p>
