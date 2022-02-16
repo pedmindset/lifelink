@@ -6,7 +6,7 @@
          </svg>
          Back to Events</p>
       <div class="overflow-hidden">
-         <img class="h-64 rounded-sm w-full object-cover lg:h-80" src="{{ $event->image_url != '' ? $event->image_url : asset('img/back_con.jpg') }}" alt="image back">
+         <img class="h-64 rounded-sm w-full object-center object-cover lg:h-80" src="{{ $event->image_url != '' ? $event->image_url : asset('img/back_con.jpg') }}" alt="image back">
          <div class="max-w-5xl mx-auto">
             <p class="flex justify-center items-center text-green-600 uppercase leading-6 tracking-wide font-sans font-bold text-2xl pt-12">{{ $event->name }}</p>
             <p class="text-base text-gray-600 tracking-wide leading-9 py-4">{{ $event->description ?? '' }}</p>
@@ -90,7 +90,7 @@
                      </div>
                   </dl>
 
-                 
+
                </div>
             </div>
          </div>
