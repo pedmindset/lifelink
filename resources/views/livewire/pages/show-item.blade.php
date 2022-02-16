@@ -1,5 +1,5 @@
 <div x-show="showView" style="display:none">
-   <div class="p-3 sm:px-16 sm:py-12">
+   <div class="p-3 sm:px-16 sm:py-5">
       <p wire:click="closeView()" class="pb-12 font-sans font-bold cursor-pointer text-gray-600 text-sm flex items-center">
          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
@@ -9,7 +9,7 @@
          <img class="h-64 rounded-sm w-full object-cover lg:h-80" src="{{ $event->image_url != '' ? $event->image_url : asset('img/back_con.jpg') }}" alt="image back">
          <div class="max-w-5xl mx-auto">
             <p class="flex justify-center items-center text-green-600 uppercase leading-6 tracking-wider font-sans font-bold text-2xl pt-12">{{ $event->name }}</p>
-            <p class="text-base text-center text-gray-600 font-medium tracking-wide leading-6 py-4">{{ $event->description ?? '' }}</p>
+            <p class="prose py-4">{{ $event->description ?? '' }}</p>
             <div class="flex space-x-8">
                <p class="text-sm font-bold text-gray-600">From - <span class="bg-cyan-200 text-cyan-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->start_date)) }}</span></p>
                <p class="text-sm font-bold text-gray-600">To - <span class="bg-red-200 text-red-600 px-3 py-1 rounded">{{ date("F jS, Y", strtotime($event->end_date)) }}</span></p>
