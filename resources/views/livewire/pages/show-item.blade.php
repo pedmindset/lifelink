@@ -101,7 +101,7 @@
                   <h2 class="text-3xl font-extrabold tracking-tight text-gray-600 sm:text-4xl">
                      Venue
                   </h2>
-                  <p>{{ $event->venue }}</p>
+                  <p>{{ $event->venue??'N/A' }}</p>
                </div>
 
                <div>

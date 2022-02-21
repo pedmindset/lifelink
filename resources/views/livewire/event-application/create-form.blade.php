@@ -175,18 +175,18 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                            @switch($s['fieldType'])
                               @case(1)
                               <div class="mt-3">
-                                 <div class="mb-1">
+                                 <label for="input" class="block text-sm font-bold text-gray-900">{{ $s['fieldName'] }}</label>
+                                 <div class="mt-1">
                                     <input type="text" id="input" placeholder="{{ $s['placeholder'] }}" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                                  </div>
-                                 <label for="input" class="block text-sm font-bold text-gray-900">{{ $s['fieldName'] }}</label>
                               </div>
                               @break
                               @case(2)
                               <div class="mt-3">
+                                 <label for="comment" class="block text-sm font-bold text-gray-900">{{ $s['fieldName'] }}</label>
                                  <div class="mt-1">
                                     <textarea rows="4" name="comment" id="comment" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
                                  </div>
-                                 <label for="comment" class="block text-sm font-bold text-gray-900">{{ $s['fieldName'] }}</label>
                               </div>
                               @break
                               @case(3)
@@ -203,11 +203,11 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                               <div class="mt-3">
                                  <label class="text-sm font-bold text-gray-900">{{ $s['fieldName'] }}</label>
                                  <fieldset class="mt-4">
-                                    <legend class="sr-only">Notification method</legend>
+                                    <legend class="sr-only">{{ $s['fieldName'] }}</legend>
                                     <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
                                        @foreach ($s['options'] as $op)
                                        <div class="flex items-center">
-                                          <input id="noti" name="notification-method" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                          <input id="noti" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                                           <label for="noti" class="ml-3 block text-sm font-medium text-gray-700">
                                              {{ $op }}
                                           </label>
@@ -224,11 +224,11 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                                     @foreach ($s['options'] as $op)
                                     <div class="relative flex items-start">
                                        <div class="flex items-center h-5">
-                                          <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                          <input id="check" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                        </div>
                                        <div class="ml-3 text-sm">
-                                          <label for="comments" class="font-medium text-gray-700">{{ $op }}</label>
-                                          <span id="comments-description" class="text-gray-500"><span class="sr-only">{{ $op }}</span>so you always know what's happening.</span>
+                                          <label for="check" class="font-medium text-gray-700">{{ $op }}</label>
+                                          <span class="text-gray-500"><span class="sr-only">{{ $op }}</span></span>
                                        </div>
                                     </div>
                                     @endforeach
