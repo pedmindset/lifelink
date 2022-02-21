@@ -18,7 +18,7 @@
           </div>
 
           <nav class="hidden md:flex space-x-8">
-             <a href="{{ url('/') }}" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-900">Home</a>
+             <a href="{{ url('/') }}" class="{{ request()->routeIs('home') ? 'border-b-2 border-teal-300' : '' }} text-sm font-semibold font-sans text-gray-500 hover:text-gray-900">Home</a>
 
              {{-- <div class="relative -mt-1">
                 <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
@@ -112,8 +112,8 @@
                    </div>
                 </div>
              </div> --}}
-             <a href="{{ route('events.tertiary') }}" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-700">Upcoming Conferences</a>
-             <a href="#" class="text-sm font-semibold font-sans text-gray-500 hover:text-gray-700">About Us</a>
+             <a href="{{ route('events.tertiary') }}" class="{{ request()->routeIs('events.tertiary') ? 'border-b-2 border-teal-300' : '' }} text-sm font-semibold font-sans text-gray-500 hover:text-gray-700">Upcoming Conferences</a>
+             <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'border-b-2 border-teal-300' : '' }} text-sm font-semibold font-sans text-gray-500 hover:text-gray-700">About Us</a>
           </nav>
 
           <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">

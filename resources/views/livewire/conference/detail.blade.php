@@ -1,6 +1,6 @@
 <div class="h-full flex" x-show="openView" style="display: none">
    <div class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
-      <nav class="flex items-start pb-3" aria-label="Breadcrumb">
+      {{-- <nav class="flex items-start pb-3" aria-label="Breadcrumb">
          <p wire:click="gotoListing()" class="inline-flex items-center cursor-pointer space-x-3 text-sm font-medium text-gray-900">
            <!-- Heroicon name: solid/chevron-left -->
            <svg class="-ml-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -8,11 +8,11 @@
            </svg>
            <span>Listing</span>
          </p>
-      </nav>
+      </nav> --}}
 
-      <x-card>
+      <x-card class="shadow-md">
          <div>
-            <img class="h-32 w-full object-cover lg:h-48" src="{{ $viewItem->thumb_image_url != '' ? $viewItem->thumb_image_url : asset('img/back_con.jpg') }}" alt="image back">
+            <img class="h-60 w-full object-cover md:h-80 shadow-md rounded-t-md" src="{{ $viewItem->thumb_image_url != '' ? $viewItem->thumb_image_url : asset('img/back_con.jpg') }}" alt="image back">
          </div>
 
          <div class="pt-3">

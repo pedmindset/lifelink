@@ -15,6 +15,9 @@ class ComponentConference extends Component
    public $data, $viewItem, $name, $description, $venue, $event_image, $start_date, $end_date, $lat, $lng, $selected_id, $selectedname;
    public $updateMode = false, $saveMode= false, $isListing = false, $createMode = false, $deleteMode=false, $viewMode = false, $formCreateMode = false;
 
+   // for route
+   public $option, $optionId;
+
    // for detail page
    public $detailTab = false, $formTab = false, $officialTab = false, $awardTab = false, $addOfficialMode = false, $addAwardMode = false;
 
@@ -26,7 +29,17 @@ class ComponentConference extends Component
 
    public function mount()
    {
-      $this->isListing = true;
+      if (isset(request()->option)) {
+         if (request()->option=='view') {
+            $this->view(request()->id);
+         }
+         else{
+            $this->isListing = true;
+         }
+      }
+      else {
+         $this->isListing = true;
+      }
    }
 
    private function resetInput()
@@ -120,7 +133,7 @@ class ComponentConference extends Component
       $this->selected_id = null;
    }
    
-   public function view($id)
+   private function view($id)
    {
       $this->selected_id = $id;
       $record = Event::findOrFail($id);

@@ -31,10 +31,11 @@ use App\Models\Event;
 */
 
 Route::get('/', function () {
-   // $u = Auth::user();
-   // dd($u->roles[0]['name']);
    return view('welcome');
-});
+})->name('home');
+Route::get('/about', function () {
+   return view('pages.about');
+})->name('about');
 require __DIR__.'/auth.php';
 
 Route::get('/404', Err404::class)->name('404');
@@ -65,7 +66,10 @@ Route::middleware('auth')->group(function ($route) {
 
    $route->get('/dashboard', DashboardView::class)->name('dashboard');
    $route->get('/users', ComponentUsers::class)->name('users');
+
    $route->get('/events', ComponentConference::class)->name('events');
+   // $route->get('/events/{option}/{id}', ComponentConference::class)->name('event');
+
    $route->get('/event-form', EventApplication::class)->name('event.form');
    $route->get('/applicants/{id}', EventApplicants::class)->name('event.applicants');
    $route->get('/fees', Fees::class)->name('fees');

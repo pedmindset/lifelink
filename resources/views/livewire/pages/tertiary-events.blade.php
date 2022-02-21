@@ -45,7 +45,7 @@
                      </div>
                   </div>
                @empty
-                  <div class="w-full bg-green-100 text-green-800 text-sm rounded shadow">No event available</div>
+                  <div class="w-full bg-green-100 col-span-3 p-3 font-medium tracking-wide text-green-800 text-sm rounded shadow-lg">No event available</div>
                @endforelse
          </div>
       </div>

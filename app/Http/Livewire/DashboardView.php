@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Payment;
+use App\Models\Profile;
 use Livewire\Component;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 class DashboardView extends Component
 {
    public $monthPayment, $monthEvents, $monthUsers, $barData;
+   public $conferences, $aluminias, $totalUsers;
    public function render()
    {
       return view('livewire.dashboard-view');
@@ -25,6 +27,10 @@ class DashboardView extends Component
       $this->monthUsers = User::role('customer')->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
       $this->monthPayment = round($pays, 2);
       $this->barData = $this->createMonthlyArray($paysin);
+
+      $this->aluminias = Profile::where('aluminia', 1)->get()->count();
+      $this->totalUsers = User::get()->count();
+      $this->conferences = Event::get()->count();
       // dd($this->barData);
    }
 
