@@ -102,11 +102,11 @@
                            <div class="mt-3">
                               <label for="venue" class="block text-sm font-medium text-gray-900">Venue</label>
                               <div class="mt-1">
-                                 <input type="text" wire:model="venue" id="venue" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" wire:model="venue" id="venue" class="block w-full map-input shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
 
-                           <div class="flex justify-between text-sm text-gray-800" x-data="{ openTooltip:false }">
+                           {{-- <div class="flex justify-between text-sm text-gray-800" x-data="{ openTooltip:false }">
                               <p>For direction purposes add Venue latitude and longitude </p>
                               <div class="relative">
                                  <span @click="openTooltip = !openTooltip" data-tooltip-target="tooltip-top" data-tooltip-placement="top" class="hover:text-gray-500 cursor-pointer">
@@ -128,21 +128,25 @@
                                  </div>
 
                               </div>
-                           </div>
+                           </div> --}}
 
                            <div class="mt-3">
                               <label for="lat" class="block text-sm font-medium text-gray-900">Latitude</label>
                               <div class="mt-1">
-                                 <input type="number" steps="2" wire:model="lat" id="lat" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" readonly id="latitude" wire:model="lat" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
 
                            <div class="mt-3">
                               <label for="lng" class="block text-sm font-medium text-gray-900">Longitude</label>
                               <div class="mt-1">
-                                 <input type="number" steps="2" wire:model="lng" id="lng" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" readonly id="longitude" wire:model="lng" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
+
+                           {{-- <div id="address-map-container mt-3" style="width:100%;height:400px;">
+                              <div style="width: 100%; height: 100%" id="address-map"></div>
+                           </div> --}}
 
                            <div class="mt-3">
                               <label for="lng" class="block text-sm font-medium text-gray-900">Upload Image (jpg,png,jpeg)</label>
@@ -167,6 +171,7 @@
                                     </label>
                                  </div>
                               </div>
+                              <p class="mt-2" wire:loading>Loading...</p>
                            </div>
                         </div>
                      </div>

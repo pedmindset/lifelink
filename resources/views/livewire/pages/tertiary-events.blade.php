@@ -4,6 +4,7 @@
       @include('livewire.pages.form-application')
       @if ($applyMode)
       @livewire('pages.form-application', ['id' => $formId])
+      @stack('my-scripts')
       @endif
    @else
       <div class="p-3 sm:px-8 sm:py-12">

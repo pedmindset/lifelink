@@ -1,4 +1,4 @@
-<div x-show="showView" style="display:none">
+<div x-show="showView" style="display:none" onload="statrt()">
    <div class="p-3 sm:px-16 sm:py-5">
       <p wire:click="closeView()" class="pb-12 font-sans font-bold cursor-pointer text-gray-600 text-sm flex items-center">
          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -114,11 +114,11 @@
             </div>
             <div class="p-8">
                <div class="border-2 border-gray-500 rounded">
-                  <iframe class="w-full" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7941.313763795987!2d-0.06590542864552393!3d5.617577710032567!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf869b8083002d%3A0x233f163d3a21ce80!2sQueensland%20International%20School!5e0!3m2!1sen!2sgh!4v1643883005471!5m2!1sen!2sgh"
-                        height="450"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"></iframe>
+                  <iframe src="https://maps.google.com/maps?q={{ $event->latitude }}, {{ $event->longitude }}&z=15&output=embed" 
+                     height="450" frameborder="0" 
+                     width="100%"
+                     style="border:0"
+                     loading="lazy"></iframe>
                </div>
             </div>
          </div>
