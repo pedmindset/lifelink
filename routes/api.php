@@ -18,11 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/mobile/login', [App\Http\Controllers\Api\AuthController::class, 'loginAction']);
 Route::get('/mobile/register', [App\Http\Controllers\Api\AuthController::class, 'registerAction']);
+Route::get('mobile/event/current', [App\Http\Controllers\Api\EventController::class, 'getLatest']);
+Route::get('mobile/events', [App\Http\Controllers\Api\EventController::class, 'getEvents']);
 
 Route::group(['middleware' => ['auth:sanctum']], function($route) {
     $route->post('mobile/logout', [App\Http\Controllers\Api\AuthController::class, 'logoutAction']);
-    $route->get('mobile/conferences', [App\Http\Controllers\Api\ConferenceController::class, 'getConferences']);
+    $route->post('mobile/logout', [App\Http\Controllers\Api\EventController::class, 'appyForm']);
     $route->get('mobile/get-conferences', [App\Http\Controllers\Api\ConferenceController::class, 'getMemberConference']);
-    $route->get('mobile/get-latest-conference', [App\Http\Controllers\Api\ConferenceController::class, 'getLatest']);
     $route->get('mobile/register-conference', [App\Http\Controllers\Api\ConferenceController::class, 'registerMember']);
 });

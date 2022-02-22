@@ -8,9 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\URL;
 
-class AuthenticateController extends Controller
+class AuthController extends Controller
 {
    use ResponseTrait;
 
@@ -22,7 +21,7 @@ class AuthenticateController extends Controller
          'device_name' => 'required',
       ]);
 
-      $user = User::where('email', $request->email)->first();
+      $user = User::firstWhere('email', $request->email);
       if (! $user || ! Hash::check($request->password, $user->password)) {
          return $this->fail(null, 'The provided credentials are incorrect.');
       }
@@ -49,7 +48,7 @@ class AuthenticateController extends Controller
          'password' => $request->password,
       ]);
 
-      $profile = Profile::create([
+      Profile::create([
          'user_id' => $user->id,
          'first_name' => $request->first_name,
          'last_name' => $request->last_name,

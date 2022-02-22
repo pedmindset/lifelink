@@ -6,6 +6,7 @@ use App\Models\Conference;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 
 class ConferenceController extends Controller
 {
@@ -13,7 +14,7 @@ class ConferenceController extends Controller
    
    public function getConferences()
    {
-      $conference = Conference::all();
+      $conference = Event::all();
       return $this->success($conference, 'Conference registration was successful');
    }
 
@@ -31,7 +32,7 @@ class ConferenceController extends Controller
    }
    public function registerMember(Request $request)
    {
-      $conference = Conference::firstWhere('id', $request->conference_id);
+      $conference = Event::firstWhere('id', $request->conference_id);
       $conference->attach(request()->user()->id);
 
       return $this->success('Registered', 'Conference registration was successful');

@@ -15,16 +15,16 @@ class FormApplication extends Component
    public $applicantData = [];
    public function render()
    {
-      return view('livewire.pages.form-application');
-   }
-
-   public function mount($id)
-   {
-      $this->formId = $id;
       $data = EventApplications::firstWhere('id', $this->formId);
       $this->data = $data;
       $this->eventId = $data->event->id;
       $this->schema = json_decode($this->data->schema);
+      return view('livewire.pages.form-application');
+   }
+   
+   public function mount($id)
+   {
+      $this->formId = $id;
       // dd($this->schema[0]);
    }
    
@@ -38,13 +38,13 @@ class FormApplication extends Component
       $application = EventApplications::firstWhere('id', $this->formId);
       if($application->applicants()->attach(auth()->user()->id, ['form_data'=> json_encode($this->applicantData)])){
          $this->dispatchBrowserEvent('alertMessage',[
-            'type'=>'info',
+            'type'=>'success',
             'message'=>  'Successfully applied!'
          ]);
       }else {
          $this->dispatchBrowserEvent('alertMessage',[
-            'type'=>'warning',
-            'message'=>  'Apllication unsuccessful!'
+            'type'=>'error',
+            'message'=>  'Application unsuccessful!'
          ]);
       }
       // $saved = Applicant::create([
