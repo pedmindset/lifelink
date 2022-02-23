@@ -42,6 +42,11 @@ class ComponentConference extends Component
       }
    }
 
+   public function showVenue($value)
+   {
+      dd($value);
+   }
+
    private function resetInput()
    {
       $this->name = null;

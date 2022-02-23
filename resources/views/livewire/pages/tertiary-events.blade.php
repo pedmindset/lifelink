@@ -1,34 +1,36 @@
-<div x-data="{ showView: @entangle('showMode'), showApply: @entangle('applyMode') }">
-   @if (isset($eventId))
+<div>
+   {{-- @if (isset($eventId))
       @include('livewire.pages.show-item')
       @include('livewire.pages.form-application')
       @if ($applyMode)
       @livewire('pages.form-application', ['id' => $formId])
       @stack('my-scripts')
       @endif
-   @else
+   @else --}}
       <div class="p-3 sm:px-8 sm:py-12">
          <div class="pb-12 text-center">
-            <h2 class="text-3xl font-sans tracking-tight uppercase font-extrabold text-gray-900 sm:text-4xl">upcoming events</h2>
-            {{-- <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.</p> --}}
+            <h2 class="font-sans text-3xl font-extrabold tracking-tight text-gray-900 uppercase sm:text-4xl">upcoming events</h2>
+            {{-- <p class="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.</p> --}}
          </div>
          <div class="overflow-hidden">
-            <div class="my-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-               {{-- <ul role="list" class="divide-y divide-gray-200 space-y-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4"> --}}
+            <div class="grid max-w-lg gap-5 mx-auto my-12 lg:grid-cols-3 lg:max-w-none">
+               {{-- <ul role="list" class="grid grid-cols-1 gap-4 space-y-12 divide-y divide-gray-200 md:grid-cols-2 lg:grid-cols-3"> --}}
                @forelse ($events as $event)
-                  <div class="flex flex-col rounded-lg shadow-lg overflow-hidden mx-4">
+                  <div class="flex flex-col mx-4 overflow-hidden rounded-lg shadow-lg">
                      <div class="flex-shrink-0">
-                        <img class="h-48 w-full object-cover" src="{{ $event->thumb_image_url != '' ? $event->thumb_image_url : asset('img/back_con.jpg') }}" alt="">
+                        <img class="object-cover w-full h-48" src="{{ $event->thumb_image_url != '' ? $event->thumb_image_url : asset('img/back_con.jpg') }}" alt="">
                      </div>
 
-                     <div class="flex-1 bg-white p-6 flex flex-col justify-between cursor-pointer">
+                     <div class="flex flex-col justify-between flex-1 p-6 bg-white cursor-pointer">
                         <div class="flex-1 ">
-                           <div class="block mt-2" wire:click.prevent="showItem({{ $event->id }})">
-                              <p class="text-xl font-semibold text-indigo-600">{{ $event->name }}</p>
-                              <p class="mt-3 text-base text-gray-500  prose prose-sm pb-3">{{ $event->short_description }}</p>
+                           <div class="block mt-2">
+                              <a href="{{ route('events.detail', ['id' => $event->id]) }}" class="text-xl font-semibold text-indigo-600">
+                                 {{ $event->name }}
+                              </a>
+                              <p class="pb-3 mt-3 text-base prose-sm prose text-gray-500">{{ $event->short_description }}</p>
                            </div>
                         </div>
-                        <div class="mt-2 flex justify-between">
+                        <div class="flex justify-between mt-2">
                            <div class="">
                               <p class="text-sm font-semibold text-gray-900">Date</p>
                               <div class="flex space-x-1 text-sm text-gray-500">
@@ -46,28 +48,10 @@
                      </div>
                   </div>
                @empty
-                  <div class="w-full bg-green-100 col-span-3 p-3 font-medium tracking-wide text-green-800 text-sm rounded shadow-lg">No event available</div>
+                  <div class="w-full col-span-3 p-3 text-sm font-medium tracking-wide text-green-800 bg-green-100 rounded shadow-lg">No event available</div>
                @endforelse
          </div>
       </div>
-   @endif
+   {{-- @endif --}}
 </div>
 
-<script src="{{ asset('js/sweet-alert.js') }}"></script>
-<script>
-   window.addEventListener('alertMessage', ({detail:{type, message}}) => {
-      Swal.fire({
-         toast: true,
-         title: message,
-         icon: type,
-         position:'top-end',
-         timer: 3600,
-         showConfirmButton: false,
-         timerProgressBar: true,
-         didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-         }
-      })
-   });
-</script>

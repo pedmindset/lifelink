@@ -13,14 +13,15 @@
       <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
       <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
-         <div class="w-screen max-w-lg"
+         <div class="w-screen max-w-lg" x-data="showImage()"
             x-show="openCreate" 
             x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
             x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
             x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
             x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
             x-description="Slide-over panel, show/hide based on slide-over state.">
-            <form class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
+            <form action="{{ route('event.create') }}" enctype="multipart/form-data" method="POST" class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
+               @csrf
                <div class="py-6 px-4 bg-cyan-700 sm:px-6">
                   <div class="flex items-start justify-between">
                      <h2 class="text-lg font-medium text-white capitalize" id="slide-over-title">
@@ -76,25 +77,25 @@
                            <div>
                               <label for="event-name" class="block text-sm font-medium text-gray-900">Name</label>
                               <div class="mt-1">
-                                 <input type="text" wire:model="name" id="event-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" name="event_name" id="event-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="description" class="block text-sm font-medium text-gray-900">Description</label>
                               <div class="mt-1">
-                                 <textarea id="description" wire:model="description" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
+                                 <textarea id="description" name="description" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
                               </div>
                            </div>
 
                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                               <div class="sm:col-span-3">
                                  <x-input.group label="Starts Date" inline="true" for="start_date" :error="$errors->first('start_date')" help-text="Select Start Date">
-                                    <x-input.date-picker wire:model.lazy="start_date" id="start_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                    <x-input.date-picker wire:model.lazy="start_date" name="start_date" id="start_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">
                                  <x-input.group label="Ends Date" inline="true" for="end_date" :error="$errors->first('end_date')" help-text="Select End Date">
-                                    <x-input.date-picker wire:model.lazy="end_date" id="end_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                    <x-input.date-picker wire:model.lazy="end_date" name="end_date" id="end_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
                                  </x-input.group>
                               </div>
                            </div>
@@ -102,7 +103,7 @@
                            <div class="mt-3">
                               <label for="venue" class="block text-sm font-medium text-gray-900">Venue</label>
                               <div class="mt-1">
-                                 <input type="text" wire:model="venue" id="venue" class="block w-full map-input shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" name="venue" id="venue" class="block w-full map-input shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
 
@@ -133,14 +134,14 @@
                            <div class="mt-3">
                               <label for="lat" class="block text-sm font-medium text-gray-900">Latitude</label>
                               <div class="mt-1">
-                                 <input type="text" readonly id="latitude" wire:model="lat" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" readonly id="latitude" name="lat" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
 
                            <div class="mt-3">
                               <label for="lng" class="block text-sm font-medium text-gray-900">Longitude</label>
                               <div class="mt-1">
-                                 <input type="text" readonly id="longitude" wire:model="lng" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" readonly id="longitude" name="lng" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
 
@@ -149,15 +150,15 @@
                            </div> --}}
 
                            <div class="mt-3">
-                              <label for="lng" class="block text-sm font-medium text-gray-900">Upload Image (jpg,png,jpeg)</label>
+                              <label for="event-image" class="block text-sm font-medium text-gray-900">Upload Image (jpg,png,jpeg)</label>
                               <div class="mt-1">
-                                 @if ($event_image)
-                                 <div id="preview-container" class="relative">
-                                    <img src="{{ $event_image->temporaryUrl() }}" class="inset-0 w-full h-36 rounded-md">
+                                 {{-- @if ($event_image) --}}
+                                 <div id="preview-container" class="relative hidden">
+                                    <img id="preview" class="inset-0 w-full h-36 rounded-md">
                                     <span @click="$refs.uploader.click()" class="px-4 py-1 cursor-pointer text-white bg-red-300 text-xs rounded shadow">Change</span>
                                  </div>
-                                 @endif
-                                 <div id="upload" class="{{ $event_image ? 'hidden' : 'block' }} w-full">
+                                 {{-- @endif --}}
+                                 <div id="upload" class="w-full">
                                     <label class="flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
                                        <div class="flex flex-col items-center justify-center pt-7">
                                           <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-400 group-hover:text-gray-600"
@@ -167,11 +168,10 @@
                                           </svg>
                                           <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">Attach an image</p>
                                        </div>
-                                       <input type="file" x-ref="uploader" wire:model="event_image" class="opacity-0" accept="image/*" />
+                                       <input type="file" x-ref="uploader" id="event-image" name="event_image" class="opacity-0" accept="image/*" x-on:change="showPreview(event)" />
                                     </label>
                                  </div>
                               </div>
-                              <p class="mt-2" wire:loading>Loading...</p>
                            </div>
                         </div>
                      </div>
@@ -182,15 +182,37 @@
                   <button type="button" x-on:click="openCreate = false" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                      Cancel
                   </button>
-                  <button type="button" wire:click="store()" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                     {{-- <span>{{  ? 'Saving' : 'Save' }}</span> --}}
+                  <button type="submit" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                      Save
                   </button>
                </div>
+
+               <script>
+                  function showImage() {
+                     return {
+                        showPreview(event) {
+                           var previewContainer = document.getElementById("preview-container");
+                           var preview = document.getElementById("preview");
+                           var upload = document.getElementById("upload");
+                           if (event.target.files.length > 0) {
+                              var src = URL.createObjectURL(event.target.files[0]);
+                              preview.src = src;
+                              previewContainer.classList.add('block')
+                              previewContainer.classList.remove('hidden')
+                              upload.classList.add('hidden')
+                           }
+                           else {
+                              previewContainer.classList.add('hidden')
+                              previewContainer.classList.remove('block')
+                              upload.classList.remove('hidden')
+                           }
+                        }
+                     }
+                  }
+               </script>
             </form>
 
          </div>
       </div>
    </div>
 </div>
-

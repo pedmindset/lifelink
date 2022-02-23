@@ -214,9 +214,6 @@
 
 @push('custom-scripts')
    <script>
-      console.log(paymentData);
-   </script>
-   <script>
       function app() {
          return {
             // chartData: [112, 10, 225, 134, 101, 80, 50, 100, 200, 160, 210, 75],

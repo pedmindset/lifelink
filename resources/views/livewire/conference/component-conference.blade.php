@@ -3,6 +3,16 @@
  showOfficialTab:  @entangle('officialTab'), showAwardTab:  @entangle('awardTab')}">
    <div class="py-10">
       <div class="max-w-full sm:px-6 lg:px-8">
+         @if(Session::has('success'))
+            <div class="w-full p-3 bg-green-200 mb-3 text-sm font-sans font-medium text-green-700 shadow-inner rounded-sm">
+               {{Session::get('success')}}
+            </div>
+         @endif
+         @if(Session::has('fail'))
+            <div class="w-full p-3 bg-red-200 mb-3 text-sm font-sans font-medium text-red-700 shadow-inner rounded-sm">
+               {{Session::get('fail')}}
+            </div>
+         @endif
          <div class="w-full">
             @include('livewire.conference.create')
             @include('livewire.conference.update')
@@ -52,14 +62,16 @@
    function initialize() {
       var input = document.getElementById('venue');
       var autocomplete = new google.maps.places.Autocomplete(input);
+      var place = autocomplete.getPlace();
       var longitude = document.getElementById('longitude');
       var latitude = document.getElementById('latitude');
 
-       autocomplete.addListener('place_changed', function () {
-           var place = autocomplete.getPlace();
-           latitude.value = place.geometry['location'].lat()
-           longitude.value = place.geometry['location'].lng()
-       });
+      autocomplete.addListener('place_changed', function () {
+         var place = autocomplete.getPlace();
+         //   input.value = place.
+         latitude.value = place.geometry['location'].lat()
+         longitude.value = place.geometry['location'].lng()
+      });
    }
 </script>
 

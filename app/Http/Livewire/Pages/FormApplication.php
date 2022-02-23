@@ -36,16 +36,27 @@ class FormApplication extends Component
    public function saveForm()
    {
       $application = EventApplications::firstWhere('id', $this->formId);
-      if($application->applicants()->attach(auth()->user()->id, ['form_data'=> json_encode($this->applicantData)])){
+      // dd($application->applicants);
+      if ($application->applicants->contains(auth()->user())) {
          $this->dispatchBrowserEvent('alertMessage',[
-            'type'=>'success',
-            'message'=>  'Successfully applied!'
+            'type'=>'alert',
+            'message'=>  'Already Registered!'
          ]);
-      }else {
-         $this->dispatchBrowserEvent('alertMessage',[
-            'type'=>'error',
-            'message'=>  'Application unsuccessful!'
-         ]);
+      }
+      else {
+         $attach = $application->applicants()->attach(auth()->user()->id, ['form_data'=> json_encode($this->applicantData)]);
+         if($attach){
+            // send email to user email about the event
+            $this->dispatchBrowserEvent('alertMessage',[
+               'type'=>'success',
+               'message'=>  'Successfully applied!'
+            ]);
+         }else {
+            $this->dispatchBrowserEvent('alertMessage',[
+               'type'=>'error',
+               'message'=>  'Application unsuccessful!'
+            ]);
+         }
       }
       // $saved = Applicant::create([
       //    'event_id' => $this->eventId,

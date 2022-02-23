@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use Illuminate\Http\Request;
 use App\Http\Livewire\Error\Err404;
 use App\Http\Livewire\Error\Err500;
@@ -53,14 +54,14 @@ Route::middleware('auth')->group(function ($route) {
       return view('pages.profile');
    })->name('admin.profile');
 
-   // $route->get('/settings', function () {
-   //    return view('pages.settings');
-   // })->name('admin.settings');
-
-   // main default
    $route->get('/upcoming-events/{id?}', function(Request $request) {
       return view('pages.events', ['eventId'=> $request->id]);
    })->name('events.tertiary');
+
+   $route->get('/upcoming/event/{id}', function(Request $request) {
+      return view('pages.event-detail', ['eventId' => $request->id]);
+   })->name('events.detail');
+
    $route->get('/settings', function(Request $request) {
       return view('pages.settings');})->name('admin.settings');
 
@@ -68,6 +69,7 @@ Route::middleware('auth')->group(function ($route) {
    $route->get('/users', ComponentUsers::class)->name('users');
 
    $route->get('/events', ComponentConference::class)->name('events');
+   $route->post('/event/create', [EventController::class, 'store'])->name('event.create');
    // $route->get('/events/{option}/{id}', ComponentConference::class)->name('event');
 
    $route->get('/event-form', EventApplication::class)->name('event.form');

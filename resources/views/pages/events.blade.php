@@ -4,6 +4,6 @@
 
 @section('content')
 
-@livewire('pages.tertiary-events', ['eventId' => $eventId])
+@livewire('pages.tertiary-events')
 
 @endsection
