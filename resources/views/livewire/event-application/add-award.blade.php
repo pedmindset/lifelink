@@ -1,59 +1,57 @@
-<div class="z-10 fixed inset-0 overflow-y-auto" style="display: none"
-   aria-labelledby="modal-title" x-show="openAddAward" role="dialog" aria-modal="true">
-   <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-      <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"
-         x-transition:enter="ease-in-out duration-300" 
-         x-transition:enter-start="opacity-0" 
-         x-transition:enter-end="opacity-100" 
-         x-transition:leave="ease-in-out duration-200" 
-         x-transition:leave-start="opacity-100" 
-         x-transition:leave-end="opacity-0" 
-         x-description="Background overlay, show/hide based on slide-over state."
-      ></div>
- 
-     <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+<div class="fixed inset-0 overflow-hidden z-20" x-show="openAddAward" style="display: none"
+   aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+   <div @click.outside="openAddAward = false"
+      x-transition:enter="ease-in-out duration-500" 
+      x-transition:enter-start="opacity-0" 
+      x-transition:enter-end="opacity-100" 
+      x-transition:leave="ease-in-out duration-500" 
+      x-transition:leave-start="opacity-100" 
+      x-transition:leave-end="opacity-0" 
+      x-description="Background overlay, show/hide based on slide-over state."
+      class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
-      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-2xl sm:w-full"
-         x-transition:enter="ease-in-out duration-300" 
-         x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" 
-         x-transition:leave="ease-in duration-200" 
-         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-         x-description="Background overlay, show/hide based on slide-over state."
-      >
-         <div class="bg-white">
-            <div class="bg-white shadow p-3 rounded-t-lg">
-               <h2 class="text-sm text-gray-600 font-bold leading-5 tracking-wider">Add Award</h2>
-            </div>
-            <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-               <fieldset>
-                  <div class="space-y-4">
-                     @foreach ($awards as $award)
-                         
-                     <label class="relative block bg-white border rounded-lg shadow-sm px-4 py-2 cursor-pointer focus:outline-none">
-                        <input type="radio" wire:click="addAward({{ $award->id }})" x-on:click="openAddAward = false" name="server-size" value="Hobby" class="sr-only" aria-labelledby="server-size-0-label" aria-describedby="server-size-0-description-0 server-size-0-description-1">
-                        <div class="flex items-center">
-                           <div class="text-sm">
-                              <p id="server-size-0-label" class="font-medium text-gray-900">
-                                 {{ $award->name }}
-                              </p>
-                              <div id="server-size-0-description-0" class="text-gray-500">
-                                 <p class="sm:inline">{{ $award->description ?? '' }}</p>
-                              </div>
-                           </div>
-                        </div>
-                     </label>
-                     @endforeach
+      <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+         <div class="w-screen max-w-md"
+            x-show="openAddAward" 
+            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
+            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
+            x-description="Slide-over panel, show/hide based on slide-over state.">
+
+            <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
+               <div class="py-6 px-4 bg-blue-700 sm:px-6">
+                  <div class="flex items-start justify-between">
+                     <h2 class="text-lg font-medium text-white capitalize" id="slide-over-title">
+                        attach award / citation
+                     </h2>
+                     <div class="ml-3 h-7 flex items-center">
+                        <button type="button" @click.prevent="openAddAward = false" 
+                        class="bg-blue-700 rounded-md text-blue-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
+                           <span class="sr-only">Close panel</span>
+                           <!-- Heroicon name: outline/x -->
+                           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                           </svg>
+                        </button>
+                     </div>
                   </div>
-               </fieldset>
+               </div>
+
+               <div class="min-h-0 flex-1 flex flex-col overflow-y-scroll">
+                  <div class="my-4 relative flex-1 px-4 sm:px-6">
+                     <x-select-search placeholder="Select award" :collection="$awards" limit="20" wire:model="award" class="w-full p-3"/>
+                  </div>
+               </div>
+
+               <div class="flex-shrink-0 px-4 py-4 flex justify-end bg-gray-200 shadow-inner">
+                  <button type="button" wire:click.prevent="addAward()" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                     Save
+                  </button>
+               </div>
             </div>
-         </div>
-         <div class="bg-green-100 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <button x-on:click="openAddAward = false" type="button" wire:click="" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
-               Done
-            </button>
          </div>
       </div>
    </div>
-</div> 
+</div>

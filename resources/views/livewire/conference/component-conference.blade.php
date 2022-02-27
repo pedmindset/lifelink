@@ -1,4 +1,4 @@
-<div class="w-full" x-data="{ showList: @entangle('isListing'), openCreate: @entangle('createMode'), openEdit:  @entangle('updateMode'), openDelete:  @entangle('deleteMode'), openView:  @entangle('viewMode'), openCreateForm: @entangle('formCreateMode'), openAddOfficial: @entangle('addOfficialMode'),
+<div class="w-full" x-data="{ showList: @entangle('isListing'), openCreate: @entangle('createMode'), openEdit:  @entangle('updateMode'), openDelete:  @entangle('deleteMode'), openCreateForm: @entangle('formCreateMode'), openAddOfficial: @entangle('addOfficialMode'),
  openAddAward: @entangle('addAwardMode'), showDetailTab: @entangle('detailTab'), showFormTab: @entangle('formTab'), 
  showOfficialTab:  @entangle('officialTab'), showAwardTab:  @entangle('awardTab')}">
    <div class="py-10">
@@ -17,16 +17,13 @@
             @include('livewire.conference.create')
             @include('livewire.conference.update')
             @include('livewire.conference.delete')
-            @if (isset($selected_id) && $viewMode)
+            {{-- @if (isset($selected_id) && $viewMode)
                @if ($viewMode)
                @include('livewire.conference.detail')
-               @livewire('event-application.create-form', ['eventId' => $viewItem->id])
-               @livewire('event-application.add-official', ['eventId' => $viewItem->id])
-               @livewire('event-application.add-award', ['eventId' => $viewItem->id])
                @endif
-            @else
+            @else --}}
             @include('livewire.conference.index')
-            @endif
+            {{-- @endif --}}
          </div>
       </div>
    </div>

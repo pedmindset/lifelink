@@ -15,6 +15,7 @@ use App\Http\Livewire\ComponentConference;
 use App\Http\Livewire\Pages\TertiaryEvents;
 use App\Http\Livewire\ComponentAwardCitation;
 use App\Http\Livewire\DashboardView;
+use App\Http\Livewire\Event\EventView;
 use App\Http\Livewire\EventApplicants;
 use App\Http\Livewire\Fees;
 use App\Http\Livewire\SettingPage;
@@ -69,7 +70,9 @@ Route::middleware('auth')->group(function ($route) {
    $route->get('/users', ComponentUsers::class)->name('users');
 
    $route->get('/events', ComponentConference::class)->name('events');
+   $route->get('/event/{id}', EventView::class)->name('event.view');
    $route->post('/event/create', [EventController::class, 'store'])->name('event.create');
+   $route->post('/event/update', [EventController::class, 'update'])->name('event.update');
    // $route->get('/events/{option}/{id}', ComponentConference::class)->name('event');
 
    $route->get('/event-form', EventApplication::class)->name('event.form');

@@ -131,14 +131,14 @@
                               </div>
                            </div> --}}
 
-                           <div class="mt-3">
+                           <div class="mt-3 hidden">
                               <label for="lat" class="block text-sm font-medium text-gray-900">Latitude</label>
                               <div class="mt-1">
                                  <input type="text" readonly id="latitude" name="lat" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
 
-                           <div class="mt-3">
+                           <div class="mt-3 hidden">
                               <label for="lng" class="block text-sm font-medium text-gray-900">Longitude</label>
                               <div class="mt-1">
                                  <input type="text" readonly id="longitude" name="lng" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">

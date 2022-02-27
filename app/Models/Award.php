@@ -25,4 +25,14 @@ class Award extends Model implements HasMedia
       return $this->getFirstMediaUrl('award_image', 'thumb');
    }
 
+   /**
+    * Get the event that owns the Award
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    */
+   public function event()
+   {
+       return $this->belongsTo(Event::class);
+   }
+
 }

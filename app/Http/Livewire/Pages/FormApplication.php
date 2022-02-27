@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Pages;
 
+use App\Events\ApplyEmailEvent;
 use Livewire\Component;
 use App\Models\Applicant;
 use App\Models\EventApplications;
@@ -47,6 +48,7 @@ class FormApplication extends Component
          $attach = $application->applicants()->attach(auth()->user()->id, ['form_data'=> json_encode($this->applicantData)]);
          if($attach){
             // send email to user email about the event
+            event(new ApplyEmailEvent($application, auth()->user()));
             $this->dispatchBrowserEvent('alertMessage',[
                'type'=>'success',
                'message'=>  'Successfully applied!'
@@ -58,11 +60,6 @@ class FormApplication extends Component
             ]);
          }
       }
-      // $saved = Applicant::create([
-      //    'event_id' => $this->eventId,
-      //    'event_application_id' => $this->formId,
-      //    'user_id' => auth()->user()->id,
-      //    'form_data' => json_encode($this->applicantData)
-      // ]);
+      
    }
 }

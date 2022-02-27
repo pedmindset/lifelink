@@ -1,4 +1,4 @@
-<div class="h-full flex" x-show="openView" style="display: none">
+<div class="h-full flex">
    <div class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
       {{-- <nav class="flex items-start pb-3" aria-label="Breadcrumb">
          <p wire:click="gotoListing()" class="inline-flex items-center cursor-pointer space-x-3 text-sm font-medium text-gray-900">
@@ -125,7 +125,7 @@
                         {{-- <i class="las la-folder-plus text-6xl text-gray-600 py-3"></i> --}}
                         <p class="text-gray-600 text-base font-bold">No Award / Citation Found</p>
                   
-                        <p class="mt-6 mb-10"><span @click="openAddAward = true" class="px-4 py-2 text-sm rounded-md text-white w-auto bg-indigo-600 hover:bg-indigo-700 cursor-pointer"> <i class="las la-plus text-md px-1"></i> Add Award / Citation </span></p>
+                        <p class="mt-6 mb-10"><span @click.prevent="openAddAward = true" class="px-4 py-2 text-sm rounded-md text-white w-auto bg-indigo-600 hover:bg-indigo-700 cursor-pointer"> <i class="las la-plus text-md px-1"></i> Add Award / Citation </span></p>
                      </div>
                   </div>
                </div>

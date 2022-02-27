@@ -12,7 +12,7 @@ class ComponentConference extends Component
 {
    use WithFileUploads;
    
-   public $data, $viewItem, $name, $description, $venue, $event_image, $start_date, $end_date, $lat, $lng, $selected_id, $selectedname;
+   public $data, $viewItem, $name, $description, $venue, $event_image, $start_date, $end_date, $lat, $lng, $selected_id, $imgFile, $selectedname;
    public $updateMode = false, $saveMode= false, $isListing = false, $createMode = false, $deleteMode=false, $viewMode = false, $formCreateMode = false;
 
    // for route
@@ -40,11 +40,6 @@ class ComponentConference extends Component
       else {
          $this->isListing = true;
       }
-   }
-
-   public function showVenue($value)
-   {
-      dd($value);
    }
 
    private function resetInput()
@@ -96,42 +91,6 @@ class ComponentConference extends Component
       $this->resetInput();
    }
 
-   public function switchtab($value){
-      switch ($value) {
-         case 1:
-            $this->formTab = false;
-            $this->officialTab = false;
-            $this->awardTab = false;
-            $this->detailTab = true;
-            break;
-         case 2:
-            $this->detailTab = false;
-            $this->officialTab = false;
-            $this->awardTab = false;
-            $this->formTab = true;
-            break;
-         case 3:
-            $this->detailTab = false;
-            $this->formTab = false;
-            $this->awardTab = false;
-            $this->officialTab = true;
-            break;
-         case 4:
-            $this->detailTab = false;
-            $this->officialTab = false;
-            $this->formTab = false;
-            $this->awardTab = true;
-            break;
-         default:
-            $this->formTab = false;
-            $this->officialTab = false;
-            $this->awardTab = false;
-            $this->detailTab = true;
-            break;
-      }
-
-   }
-
    public function gotoListing()
    {
       $this->viewMode = false;
@@ -159,6 +118,10 @@ class ComponentConference extends Component
       $this->description = $record->description;
       $this->start_date = $record->start_date;
       $this->end_date = $record->end_date;
+      $this->venue = $record->venue;
+      $this->lat = $record->latitude;
+      $this->lng = $record->longitude;
+      $this->imgFile = $record->thumb_image_url;
 
       $this->updateMode = true;
    }

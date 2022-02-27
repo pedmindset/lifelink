@@ -64,4 +64,9 @@ class Event extends Model implements HasMedia
       return $this->hasOne(Fee::class);
    }
 
+   public function award()
+   {
+      return $this->hasMany(Award::class);
+   }
+
 }
