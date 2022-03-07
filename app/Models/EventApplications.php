@@ -32,7 +32,8 @@ class EventApplications extends Model
 
    public function applicants()
    {
-      return $this->belongsToMany(User::class)->withPivot('form_data')->withTimestamps();
+      // return $this->belongsToMany(User::class)->withPivot('form_data')->withTimestamps();
+      return $this->belongsToMany(User::class)->using(EventApplicants::class)->withPivot('form_data')->withTimestamps();
    }
 
 }

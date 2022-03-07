@@ -36,8 +36,8 @@ class FormApplication extends Component
    
    public function saveForm()
    {
+      // dd($this->applicantData);
       $application = EventApplications::firstWhere('id', $this->formId);
-      // dd($application->applicants);
       if ($application->applicants->contains(auth()->user())) {
          $this->dispatchBrowserEvent('alertMessage',[
             'type'=>'alert',

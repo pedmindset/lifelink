@@ -85,8 +85,19 @@ class User extends Authenticatable implements HasMedia
 
    public function applications()
    {
-      return $this->belongsToMany(EventApplications::class)->withPivot('form_data')->withTimestamps();
+      return $this->belongsToMany(EventApplications::class)->using(EventApplicants::class)->withPivot('form_data')->withTimestamps();
    }
+
+//    public function users() {
+//       return $this->belongsToMany('User');
+//   }
+
+//   public function newPivot(Eloquent $parent, array $attributes, $table, $exists) {
+//       if ($parent instanceof User) {
+//           return new UserGroup($parent, $attributes, $table, $exists);
+//       }
+//       return parent::newPivot($parent, $attributes, $table, $exists);
+//   }
 
    public function payments()
    {

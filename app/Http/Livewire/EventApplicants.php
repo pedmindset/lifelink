@@ -18,5 +18,6 @@ class EventApplicants extends Component
    {
       $this->formId = request()->id;
       $this->data = EventApplications::firstWhere('id', $this->formId)->applicants;
+      // dd($this->data);
    }
 }
