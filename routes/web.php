@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Livewire\ComponentAnnouncement;
 use Illuminate\Http\Request;
 use App\Http\Livewire\Error\Err404;
 use App\Http\Livewire\Error\Err500;
@@ -81,5 +82,6 @@ Route::middleware('auth')->group(function ($route) {
    $route->get('/officials', ComponentOfficials::class)->name('officials');
    $route->get('/members', ComponentMembers::class)->name('members');
    $route->get('/awards-citations', ComponentAwardCitation::class)->name('awards.citations');
+   $route->get('/announcements', ComponentAnnouncement::class)->name('announcements');
    $route->get('/payments', ComponentPayment::class)->name('payments');
 });

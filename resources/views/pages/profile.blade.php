@@ -135,7 +135,7 @@
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
          <h1 class="sr-only">Profile</h1>
 
-         <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
+         <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8" x-data="{ openEvent: true, openPayment:false, openAward:false }">
             <div class="grid grid-cols-1 gap-4 lg:col-span-2">
                <section aria-labelledby="profile-overview-title">
                   <div class="rounded-lg bg-white overflow-hidden shadow">
@@ -156,18 +156,18 @@
                      </div>
 
                      <div class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
-                        <div class="px-6 py-5 text-sm font-medium text-center">
+                        <div class="px-6 py-5 text-sm font-medium text-center cursor-pointer" @click="openEvent = true; openPayment = false; openAward = false">
                           <span class="text-gray-900">{{ count(auth()->user()->applications) }}</span>
                           <span class="text-gray-600">Events applied</span>
                         </div>
         
-                        <div class="px-6 py-5 text-sm font-medium text-center">
-                          <span class="text-gray-900">4</span>
+                        <div class="px-6 py-5 text-sm font-medium text-center cursor-pointer" @click="openPayment = true; openEvent = false; openAward = false;">
+                          <span class="text-gray-900">{{ count(auth()->user()->payments) }}</span>
                           <span class="text-gray-600">Payments</span>
                         </div>
         
-                        <div class="px-6 py-5 text-sm font-medium text-center">
-                          <span class="text-gray-900">2</span>
+                        <div class="px-6 py-5 text-sm font-medium text-center cursor-pointer" @click="openAward = true; openEvent = false; openPayment = false;">
+                          <span class="text-gray-900">{{ count(auth()->user()->awards) }}</span>
                           <span class="text-gray-600">Awards</span>
                         </div>
                      </div>
@@ -176,43 +176,136 @@
                </section>
 
                {{-- Events --}}
-               <section aria-labelledby="recent-hires-title">
+               <section aria-labelledby="recent-hires-title" x-show="openEvent">
                   <div class="rounded-lg bg-white overflow-hidden shadow">
                      <div class="p-6">
                         <h2 class="text-base font-medium text-gray-900" id="recent-hires-title">Events</h2>
                         @if(count(auth()->user()->applications) > 0)
                         <div class="flow-root mt-6">
                            <ul role="list" class="-my-5 divide-y divide-gray-200">
+                              @foreach (auth()->user()->applications as $application)
                               <li class="py-4">
                                  <div class="flex items-center space-x-4">
                                     <div class="flex-shrink-0">
-                                       <img class="h-10 w-10 rounded-md" src="{{ asset('img/face.jpg') }}" alt="">
+                                       <img class="h-10 w-10 rounded-md" src="{{ $application->event->thumb_image_url != '' ? $application->event->thumb_image_url : asset('img/back_con.jpg') }}" alt="">
                                     </div>
                                     <div class="flex-1 min-w-0">
                                        <p class="text-sm font-medium text-gray-900 truncate">
-                                          Leonard Krasner
+                                          {{ $application->event->name }}
                                        </p>
                                        <p class="text-sm text-gray-500 truncate">
-                                          @leonardkrasner
+                                          {{ $application->event->description }}
                                        </p>
                                     </div>
-                                    <div>
+                                    <div class="flex-1 min-w-0">
+                                       <p class="text-sm py-1 px-2 rounded bg-opacity-75 font-medium text-teal-800 bg-teal-50">{{ date("F jS, Y", strtotime($application->event->start_date)) }}</p>
+                                       {{-- <p class="text-sm py-1 px-2 font-medium text-gray-600">{{ $application->event()->fee()->standard_amount }}</p> --}}
+                                    </div>
+                                    {{-- <div>
                                        <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
                                           View
                                        </a>
-                                    </div>
+                                    </div> --}}
                                  </div>
                               </li>
+                              @endforeach
                            </ul>
                         </div>
 
-                        <div class="mt-6">
+                        {{-- <div class="mt-6">
                            <a href="#" class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                            View all
                            </a>
-                        </div>
+                        </div> --}}
                         @else
                         <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center mt-6">You have not applied for any event</p>
+                        @endif
+                     </div>
+                  </div>
+               </section>
+
+               {{-- Paymnets --}}
+               <section aria-labelledby="recent-hires-title" x-show="openPayment">
+                  <div class="rounded-lg bg-white overflow-hidden shadow">
+                     <div class="p-6">
+                        <h2 class="text-base font-medium text-gray-900" id="recent-hires-title">Payment</h2>
+                        @if(count(auth()->user()->payments) > 0)
+                        <div class="flow-root mt-6">
+                           <ul role="list" class="-my-5 divide-y divide-gray-200">
+                              @foreach (auth()->user()->payments as $pays)
+                              <li class="py-4">
+                                 <div class="flex items-center space-x-4">
+                                    <div class="flex-1 min-w-0">
+                                       <p class="text-sm font-medium text-gray-900 truncate">
+                                          {{ $pays->isAluminia ? 'Alumina Dues' : $pays->event->name }}
+                                       </p>
+                                       <p class="text-sm text-gray-500 truncate">
+                                          {{ $pays->amount }}
+                                       </p>
+                                    </div>
+                                    {{-- <div>
+                                       <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
+                                          View
+                                       </a>
+                                    </div> --}}
+                                 </div>
+                              </li>
+                              @endforeach
+                           </ul>
+                        </div>
+
+                        {{-- <div class="mt-6">
+                           <a href="#" class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                           View all
+                           </a>
+                        </div> --}}
+                        @else
+                        <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center mt-6">No payment made</p>
+                        @endif
+                     </div>
+                  </div>
+               </section>
+
+               {{-- Awards --}}
+               <section aria-labelledby="recent-hires-title" x-show="openAward">
+                  <div class="rounded-lg bg-white overflow-hidden shadow">
+                     <div class="p-6">
+                        <h2 class="text-base font-medium text-gray-900" id="recent-hires-title">Awards</h2>
+                        @if(count(auth()->user()->awards) > 0)
+                        <div class="flow-root mt-6">
+                           <ul role="list" class="-my-5 divide-y divide-gray-200">
+                              @foreach (auth()->user()->awards as $award)
+                              <li class="py-4">
+                                 <div class="flex items-center space-x-4">
+                                    <div class="flex-shrink-0">
+                                       <img class="h-10 w-10 rounded-md" src="{{ $award->thumb_image_url != '' ? $application->event->thumb_image_url : asset('img/back_con.jpg') }}" alt="">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                       <p class="text-sm font-medium text-gray-900 truncate">
+                                          {{ $award->name }}
+                                       </p>
+                                       <p class="text-sm text-gray-500 truncate">
+                                          {{ $award->description }}
+                                       </p>
+                                    </div>
+                                    {{-- <div>
+                                       <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
+                                          View
+                                       </a>
+                                    </div> --}}
+                                 </div>
+                              </li>
+                              @endforeach
+                           </ul>
+                        </div>
+
+                        {{-- <div class="mt-6">
+                           <a href="#" class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                           View all
+                           </a>
+                        </div> --}}
+                        @else
+                        <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center mt-6">No Award</p>
                         @endif
                      </div>
                   </div>

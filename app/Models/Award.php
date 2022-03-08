@@ -32,7 +32,12 @@ class Award extends Model implements HasMedia
     */
    public function event()
    {
-       return $this->belongsTo(Event::class);
+      return $this->belongsTo(Event::class);
+   }
+
+   public function user()
+   {
+      return $this->belongsToMany(User::class, 'award_users_pivot', 'user_id', 'award_id');
    }
 
 }

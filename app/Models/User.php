@@ -101,6 +101,11 @@ class User extends Authenticatable implements HasMedia
 
    public function payments()
    {
-      return $this->belongsToMany(Payment::class);
+      return $this->hasMany(Payment::class);
+   }
+
+   public function awards()
+   {
+      return $this->belongsToMany(Award::class, 'award_users_pivot', 'award_id', 'user_id');
    }
 }

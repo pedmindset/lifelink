@@ -1,4 +1,4 @@
-<div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" x-show="openDelete" role="dialog" aria-modal="true">
+<div class="fixed z-10 inset-0 overflow-y-auto" style="display: none" aria-labelledby="modal-title" x-show="openDelete" role="dialog" aria-modal="true">
    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
       <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"
          x-transition:enter="ease-in-out duration-300" 
@@ -34,7 +34,7 @@
                   </h3>
                   <div class="mt-2">
                      <p class="text-sm text-gray-500">
-                     Are you sure you want to deactivate this award? All of your data will be permanently removed. This action cannot be undone.
+                        Are you sure you want to delete this announcement? <br>All of your data will be permanently removed. <br><br>This action cannot be undone.
                      </p>
                   </div>
                </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\EventApplications;
 use App\Models\User;
 use App\Models\Payment;
 use App\Models\Setting;
@@ -10,7 +11,7 @@ use Illuminate\Support\Str;
 
 class ComponentPayment extends Component
 {
-   public $payData, $users, $name, $dues, $selected_id, $selectedname;
+   public $payData, $users, $eventsApp = [], $name, $dues, $selected_id, $selectedname;
    public $event_id, $customer, $description, $payment_for_event, $payment_for_aluminia, $payment_for, $amount;
    public $createMode = false, $editMode = false, $deleteMode = false, $viewMode = false;
 
@@ -33,9 +34,12 @@ class ComponentPayment extends Component
       $this->event_id = null;
       $this->customer = null;
       $this->amount = null;
+      $this->eventsApp = [];
       $this->selected_id = null;
       $this->selectedname = null;
       $this->payment_for = null;
+      $this->payment_for_aluminia = false;
+      $this->payment_for_event = false;
       $this->description = null;
 
       $this->payData = Payment::latest()->get();
@@ -43,13 +47,17 @@ class ComponentPayment extends Component
 
    public function getPaymentFor($type) {
       if ($type == 0) {
+         $user = User::firstWhere('id', $this->customer);
+         $this->eventsApp = $user->applications;
          $this->payment_for = 'Event';
          $this->payment_for_aluminia = false;
+         $this->customer = $this->customer;
          $this->amount = null;
       }
       else {
          $this->payment_for = 'Aluminia';
          $this->payment_for_event = false;
+         $this->eventsApp = [];
          $this->amount = $this->dues;
       }
    }
@@ -58,10 +66,12 @@ class ComponentPayment extends Component
    {
       $this->validate([
          'customer' => 'required|integer',
+         'event_id' => 'required_if:payment_for,Event',
          'amount' => 'required|numeric',
       ]);
+      $eventId = EventApplications::firstWhere('id', $this->event_id);
       $pay = Payment::create([
-         'event_id' => $this->event_id,
+         'event_id' => $eventId->event->id,
          'user_id' => $this->customer,
          'uuid' => Str::uuid(),
          'description' => $this->description,

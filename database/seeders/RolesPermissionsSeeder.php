@@ -47,5 +47,30 @@ class RolesPermissionsSeeder extends Seeder
          }
 
       }
+
+      if (DB::table('tags')->get()->count() == 0) {
+         $roles =  [
+            [
+               'name' => 'event',
+               'created_at' => now(),
+               'updated_at' => now(),
+            ],
+            [
+               'name' => 'general',
+               'created_at' => now(),
+               'updated_at' => now(),
+            ],
+            [
+               'name' => 'aluminia',
+               'created_at' => now(),
+               'updated_at' => now(),
+            ],
+         ];
+
+         foreach ($roles as $role ) {
+            DB::table('tags')->insert($role);
+         }
+
+      }
    }
 }

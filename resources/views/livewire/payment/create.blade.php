@@ -73,7 +73,7 @@
 
                         <div class="space-y-3 pb-5">
                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                              <div class="sm:col-span-3">
+                              <div class="sm:col-span-6">
                                  <label for="user" class="block text-sm font-medium text-gray-900">Select Client</label>
                                  <div class="mt-1">
                                     <select wire:model="customer" id="user" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
@@ -85,6 +85,20 @@
                                  </div>
                               </div>
 
+                              @if($payment_for == 'Event')
+                              <div class="sm:col-span-6" >
+                                 <label for="user" class="block text-sm font-medium text-gray-900">Select Event</label>
+                                 <div class="mt-1">
+                                    <select wire:model="event_id" id="user" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                       <option value="null">-- Select Event --</option>
+                                       @foreach ($eventsApp as $evt)
+                                       <option value="{{ $evt->id }}">{{ $evt->name }}</option>
+                                       @endforeach
+                                    </select>
+                                 </div>
+                              </div>
+                              @endif
+
                               <div class="sm:col-span-3">
                                  <label class="text-sm font-medium text-gray-900">Payment For</label>
                                  {{-- <p class="text-sm leading-5 text-gray-500">How do you prefer to receive notifications?</p> --}}
@@ -92,12 +106,12 @@
                                     <legend class="sr-only">Payment reason</legend>
                                     <div class="space-y-2 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
                                        <div class="flex items-center">
-                                          <input id="event-radio" wire:model="payment_for_event" wire:change="getPaymentFor(0)" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                          <input id="event-radio" wire:model="payment_for_event" wire:change.prevent="getPaymentFor(0)" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                                           <label for="event-radio" class="ml-3 block text-sm font-medium text-gray-700"> Event </label>
                                        </div>
                                  
                                        <div class="flex items-center">
-                                          <input id="aluminia-radio" wire:model="payment_for_aluminia" wire:change="getPaymentFor(1)" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                          <input id="aluminia-radio" wire:model="payment_for_aluminia" wire:change.prevent="getPaymentFor(1)" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                                           <label for="aluminia-radio" class="ml-3 block text-sm font-medium text-gray-700"> Aluminia </label>
                                        </div>
                                     </div>

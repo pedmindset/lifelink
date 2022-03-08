@@ -60,7 +60,7 @@
                               </div>
                               <div class="ml-3">
                                  <h3 class="text-sm font-medium text-red-800">
-                                    There were count($errors) errors with your submission
+                                    There were {{ count($errors) }} errors with your submission
                                  </h3>
                                  <div class="mt-2 text-sm text-red-700">
                                     <ul role="list" class="list-disc pl-5 space-y-1">

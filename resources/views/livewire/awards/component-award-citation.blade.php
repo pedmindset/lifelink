@@ -1,10 +1,12 @@
-<div class="w-full" x-data="{ openCreate: @entangle('createMode'), openEdit: @entangle('updateMode'), openDelete: @entangle('deleteMode') }">
+<div class="w-full" x-data="{ openCreate: @entangle('createMode'), openEdit: @entangle('updateMode'), openDelete: @entangle('deleteMode'), openTag: @entangle('tagMode'), openList: @entangle('listingMode') }">
    <div class="py-10">
       <div class="max-w-full sm:px-6 lg:px-8">
          <div class="w-full">
             @include('livewire.awards.create')
             @include('livewire.awards.update')
             @include('livewire.awards.delete')
+            @include('livewire.awards.tag-award')
+            @include('livewire.awards.show-list')
 
             @if (count($data) > 0)
             <div class="flex place-content-end mb-4">
@@ -53,6 +55,11 @@
                                     <time>{{ date("F jS, Y", strtotime($award->created_at)) }}</time>
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap text-right space-x-2">
+                                    <button type="button" wire:click.prevent="tagAwardCitation({{$award->id}})" class="inline-flex justify-center items-center font-semibold rounded-md p-1 text-gray-500 hover:bg-green-100 hover:text-green-500 focus:outline-none focus:bg-green-100 transition ease-in-out duration-150">
+                                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                       </svg>
+                                    </button>
                                     <button wire:click.prevent="edit({{$award->id}})" class="inline-flex justify-center items-center font-semibold rounded-md p-1 text-gray-500 hover:bg-green-100 hover:text-green-500 focus:outline-none focus:bg-green-100 transition ease-in-out duration-150">
                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -63,8 +70,16 @@
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                        </svg>
                                     </button>
+                                    <button wire:click.prevent="showListing({{$award->id}})" class="inline-flex justify-center items-center font-semibold p-1 rounded-md text-gray-500 hover:bg-red-100 hover:text-red-500 focus:outline-none transition ease-in-out duration-150">
+                                       <span class="cursor-pointer">
+                                          <svg class="h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                          </svg>
+                                       </span>
+                                    </button>
                                  </td>
                               </tr>
+                              
                               @endforeach
                            </tbody>
                         </table>
