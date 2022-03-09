@@ -8,7 +8,7 @@
             <!-- Logo -->
             <div class="absolute left-0 py-5 flex-shrink-0 lg:static">
                <a href="/">
-                  <span class="sr-only">Workflow</span>
+                  <span class="sr-only">lifelink logo</span>
                   <img src="{{ asset('img/logo_white.png') }}" class="w-48" alt="">
                </a>
             </div>
@@ -111,8 +111,8 @@
                         <img class="h-10 w-10 rounded-full" src="{{ auth()->user()->thumb_image_url !='' ? auth()->user()->thumb_image_url : asset('img/face.jpg') }}" alt="">
                      </div>
                      <div class="ml-3 min-w-0 flex-1">
-                        <div class="text-base font-medium text-gray-800 truncate">Chelsea Hagon</div>
-                        <div class="text-sm font-medium text-gray-500 truncate">chelseahagon@example.com</div>
+                        <div class="text-base font-medium text-gray-800 truncate">{{ auth()->user()->name }}</div>
+                        <div class="text-sm font-medium text-gray-500 truncate">{{ auth()->user()->email }}</div>
                      </div>
                      <button type="button" class="ml-auto flex-shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
                         <span class="sr-only">View notifications</span>
@@ -123,7 +123,8 @@
                      </button>
                   </div>
                   <div class="mt-3 px-2 space-y-1">
-                     <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Sign out</a>
+                     <a href="#" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Sign out</a>
                   </div>
                </div>
             </div>

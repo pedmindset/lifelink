@@ -25,4 +25,5 @@ Route::get('mobile/events', [App\Http\Controllers\Api\EventController::class, 'g
 Route::group(['middleware' => ['auth:sanctum']], function($route) {
     $route->post('mobile/logout', [App\Http\Controllers\Api\AuthController::class, 'logoutAction']);
     $route->post('mobile/apply', [App\Http\Controllers\Api\EventController::class, 'applyForm']);
+    $route->get('mobile/my-events', [App\Http\Controllers\Api\EventController::class, 'getMyEvents']);
 });

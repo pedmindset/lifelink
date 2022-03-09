@@ -47,4 +47,13 @@ class EventController extends Controller
          return $this->fail('Application unsuccessful','Application unsuccessful!, try again');
       }
    }
+
+   public function getMyEvents() {
+      $eventApplications = auth()->user()->applications;
+      $events = array();
+      foreach($eventApplications as $eventApp){
+         $events[] = $eventApp->event;
+      }
+      return $this->success($events, 'Success');
+   }
 }
