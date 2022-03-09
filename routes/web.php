@@ -20,7 +20,9 @@ use App\Http\Livewire\Event\EventView;
 use App\Http\Livewire\EventApplicants;
 use App\Http\Livewire\Fees;
 use App\Http\Livewire\SettingPage;
+use App\Models\Announcement;
 use App\Models\Event;
+use App\Models\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +51,10 @@ Route::middleware('auth')->group(function ($route) {
       return view('welcome');
    });
    $route->get('/profile', function () {
-      return view('pages.profile');
+      $generalAnnouncement = Tag::firstWhere('id', 2)->announcements;
+      $aluminiaAnnouncement = Tag::firstWhere('id', 3)->announcements;
+      $eventAnnouncement = Tag::firstWhere('id', 1)->announcements;
+      return view('pages.profile', ['general' => $generalAnnouncement, 'aluminia' => $aluminiaAnnouncement, 'events' => $eventAnnouncement]);
    })->name('profile');
 
    $route->get('/my-profile', function () {

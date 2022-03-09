@@ -198,7 +198,7 @@
                                        </p>
                                     </div>
                                     <div class="flex-1 min-w-0">
-                                       <p class="text-sm py-1 px-2 rounded bg-opacity-75 font-medium text-teal-800 bg-teal-50">{{ date("F jS, Y", strtotime($application->event->start_date)) }}</p>
+                                       <p class="text-sm py-1 px-2 justify-end flex font-medium text-teal-800">{{ date("F jS, Y", strtotime($application->event->start_date)) }}</p>
                                        {{-- <p class="text-sm py-1 px-2 font-medium text-gray-600">{{ $application->event()->fee()->standard_amount }}</p> --}}
                                     </div>
                                     {{-- <div>
@@ -373,7 +373,81 @@
                               View all
                               </a>
                            </div> --}}
+                           @if (count($general) < 1 && count($aluminia) < 1 && count($events) < 1)
                            <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You have no announcement</p>
+                           @else
+                           <!-- general -->
+                           <div x-data="{ open: false }">
+                              <p class="block hover:bg-gray-50">
+                                 <div class="flex items-center py-2">
+                                    <div class="min-w-0 flex-1 flex items-center">General</div>
+                                    <p>
+                                       <span class="cursor-pointer" x-on:click="open = !open">
+                                          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                          </svg>
+                                       </span>
+                                    </p>
+                                 </div>
+                              </p>
+                              <div class="flex flex-col" x-show="open" style="display: none">
+                                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    @if (count($general) > 0)
+                                       
+                                    @else
+                                    <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You have no general announcement</p>
+                                    @endif
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- event -->
+                           <div x-data="{ open: false }">
+                              <p class="block hover:bg-gray-50">
+                                 <div class="flex items-center py-2">
+                                    <div class="min-w-0 flex-1 flex items-center">Event</div>
+                                    <p>
+                                       <span class="cursor-pointer" x-on:click="open = !open">
+                                          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                          </svg>
+                                       </span>
+                                    </p>
+                                 </div>
+                              </p>
+                              <div class="flex flex-col" x-show="open" style="display: none">
+                                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    @if (count($events) > 0)
+                                    <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You {{ count($events) }}</p>
+                                    @else
+                                    <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You have no general announcement</p>
+                                    @endif
+                                 </div>
+                              </div>
+                           </div>
+                           <div x-data="{ open: false }">
+                              <p class="block hover:bg-gray-50">
+                                 <div class="flex items-center py-2">
+                                    <div class="min-w-0 flex-1 flex items-center">Aluminia</div>
+                                    <p>
+                                       <span class="cursor-pointer" x-on:click="open = !open">
+                                          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                          </svg>
+                                       </span>
+                                    </p>
+                                 </div>
+                              </p>
+                              <div class="flex flex-col" x-show="open" style="display: none">
+                                 <div class="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    @if (count($aluminia) > 0)
+                                    <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You {{ count($aluminia) }}</p>
+                                    @else
+                                    <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You have no general announcement</p>
+                                    @endif
+                                 </div>
+                              </div>
+                           </div>
+                           @endif
                         </div>
                      </div>
                   </div>

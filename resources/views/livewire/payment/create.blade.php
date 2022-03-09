@@ -86,10 +86,10 @@
                               </div>
 
                               @if($payment_for == 'Event')
-                              <div class="sm:col-span-6" >
-                                 <label for="user" class="block text-sm font-medium text-gray-900">Select Event</label>
+                              <div class="sm:col-span-6">
+                                 <label for="eventPay" class="block text-sm font-medium text-gray-900">Select Event</label>
                                  <div class="mt-1">
-                                    <select wire:model="event_id" id="user" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <select wire:model="event_id" id="eventPay" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                        <option value="null">-- Select Event --</option>
                                        @foreach ($eventsApp as $evt)
                                        <option value="{{ $evt->id }}">{{ $evt->name }}</option>

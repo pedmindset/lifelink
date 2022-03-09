@@ -9,7 +9,7 @@ use App\Models\Tag;
 
 class ComponentAnnouncement extends Component
 {
-   public $data, $tags, $selectedTags = []; 
+   public $data, $tags, $selectedTags = [], $selectedTag; 
    public $subject, $content, $selected_id, $selectedname;
    public $updateMode = false, $createMode = false, $deleteMode=false;
 
@@ -26,16 +26,20 @@ class ComponentAnnouncement extends Component
       $this->content = null;
       $this->selectedname = null;
       $this->selected_id = null;
+      $this->selectedTag = null;
 
       $this->data = Announcement::all();
+   }
+
+   public function notify($id) {
+      
    }
 
    public function store()
    {
       // dd($this->selectedTags);
       $this->validate([
-         'selectedTags' => 'required|array|min:1',
-         'selectedTags.*' => 'required|min:1',
+         'selectedTag' => 'required',
          'subject' => 'required|string|max:255',
          'content' => 'required|string',
       ]);
@@ -45,7 +49,7 @@ class ComponentAnnouncement extends Component
          'uuid' => Str::uuid(),
       ]);
 
-      $ann->tags()->attach($this->selectedTags);
+      $ann->tags()->attach($this->selectedTag);
 
       if($ann){
          $this->dispatchBrowserEvent('alertMessage',[
@@ -74,6 +78,8 @@ class ComponentAnnouncement extends Component
 
       $this->updateMode = true;
    }
+
+
 
    public function update()
    {

@@ -76,8 +76,8 @@
 
                         <div class="space-y-3 pb-5">
                            <div>
-                              <label for="subject" class="block text-sm font-medium text-gray-900">Tags</label>
-                              <div class="flex space-x-3">
+                              <label for="subject" class="block text-sm font-medium text-gray-900 sr-only">Tags</label>
+                              {{-- <div class="flex space-x-3">
                                  @foreach ($tags as $tag)
                                  <div class="relative flex items-start">
                                     <div class="flex items-center h-5">
@@ -85,10 +85,19 @@
                                     </div>
                                     <div class="ml-3 text-sm">
                                       <label class="font-medium text-gray-700 capitalize">{{ $tag->name }}</label>
-                                      {{-- <span id="comments-description" class="text-gray-500"><span class="sr-only">New comments </span>so you always know what's happening.</span> --}}
+                                      <span id="comments-description" class="text-gray-500"><span class="sr-only">New comments </span>so you always know what's happening.</span>
                                     </div>
                                  </div>
                                  @endforeach
+                              </div> --}}
+
+                              <div class="mt-2 sm:mt-0">
+                                 <select wire:model="selectedTag" id="subject" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base capitalize border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <option value="null">-- Select Option --</option>
+                                    @foreach ($tags as $tag)
+                                    <option class="capitalize" value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                    @endforeach
+                                 </select>
                               </div>
                            </div>
 

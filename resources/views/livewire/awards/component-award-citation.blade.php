@@ -28,7 +28,7 @@
                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Description
                                  </th>
-                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                 <th scope="col" class="hidden sm:block px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     UUID
                                  </th>
                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -48,7 +48,7 @@
                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 line-clamp-3 truncate">
                                     {{ $award->description }}
                                  </td>
-                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                 <td class="hidden px-6 sm:block py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $award->uuid }}
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
