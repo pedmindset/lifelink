@@ -27,7 +27,7 @@ class EventController extends Controller
 
       $events = Event::with(['applications'])->whereMonth('created_at', $date->month)->get();
 
-      // return json_encode(['month' => $date->month, 'year' => $date->year]);
+      return json_encode(['month' => $date->month, 'year' => $date->year]);
 
       return $this->success($events, 'Success');
    }
