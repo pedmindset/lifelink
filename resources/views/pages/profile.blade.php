@@ -243,11 +243,9 @@
                                           {{ $pays->amount }}
                                        </p>
                                     </div>
-                                    {{-- <div>
-                                       <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
-                                          View
-                                       </a>
-                                    </div> --}}
+                                    <div class="text-sm py-1 px-2 justify-end flex font-medium text-teal-800">
+                                       {{ date("F jS, Y", strtotime($pays->created_at)) }}
+                                    </div>
                                  </div>
                               </li>
                               @endforeach
@@ -320,59 +318,6 @@
                      <div class="">
                         <h2 class="px-6 py-5 text-sm font-medium text-center text-gray-900 bg-gray-50" id="announcements-title">Announcements</h2>
                         <div class="p-6">
-                           {{-- <div class="flow-root mt-6">
-                              <ul role="list" class="-my-5 divide-y divide-gray-200">
-                                 <li class="py-5">
-                                    <div class="relative focus-within:ring-2 focus-within:ring-cyan-500">
-                                       <h3 class="text-sm font-semibold text-gray-800">
-                                       <a href="#" class="hover:underline focus:outline-none">
-                                          <!-- Extend touch target to entire panel -->
-                                          <span class="absolute inset-0" aria-hidden="true"></span>
-                                          Office closed on July 2nd
-                                       </a>
-                                       </h3>
-                                       <p class="mt-1 text-sm text-gray-600 line-clamp-2">
-                                       Cum qui rem deleniti. Suscipit in dolor veritatis sequi aut. Vero ut earum quis deleniti. Ut a sunt eum cum ut repudiandae possimus. Nihil ex tempora neque cum consectetur dolores.
-                                       </p>
-                                    </div>
-                                 </li>
-   
-                                 <li class="py-5">
-                                    <div class="relative focus-within:ring-2 focus-within:ring-cyan-500">
-                                       <h3 class="text-sm font-semibold text-gray-800">
-                                       <a href="#" class="hover:underline focus:outline-none">
-                                          <!-- Extend touch target to entire panel -->
-                                          <span class="absolute inset-0" aria-hidden="true"></span>
-                                          New password policy
-                                       </a>
-                                       </h3>
-                                       <p class="mt-1 text-sm text-gray-600 line-clamp-2">
-                                       Alias inventore ut autem optio voluptas et repellendus. Facere totam quaerat quam quo laudantium cumque eaque excepturi vel. Accusamus maxime ipsam reprehenderit rerum id repellendus rerum. Culpa cum vel natus. Est sit autem mollitia.
-                                       </p>
-                                    </div>
-                                 </li>
-   
-                                 <li class="py-5">
-                                    <div class="relative focus-within:ring-2 focus-within:ring-cyan-500">
-                                       <h3 class="text-sm font-semibold text-gray-800">
-                                       <a href="#" class="hover:underline focus:outline-none">
-                                          <!-- Extend touch target to entire panel -->
-                                          <span class="absolute inset-0" aria-hidden="true"></span>
-                                          Office closed on July 2nd
-                                       </a>
-                                       </h3>
-                                       <p class="mt-1 text-sm text-gray-600 line-clamp-2">
-                                       Tenetur libero voluptatem rerum occaecati qui est molestiae exercitationem. Voluptate quisquam iure assumenda consequatur ex et recusandae. Alias consectetur voluptatibus. Accusamus a ab dicta et. Consequatur quis dignissimos voluptatem nisi.
-                                       </p>
-                                    </div>
-                                 </li>
-                              </ul>
-                           </div>
-                           <div class="mt-6">
-                              <a href="#" class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                              View all
-                              </a>
-                           </div> --}}
                            @if (count($general) < 1 && count($aluminia) < 1 && count($events) < 1)
                            <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You have no announcement</p>
                            @else
@@ -391,12 +336,17 @@
                                  </div>
                               </p>
                               <div class="flex flex-col" x-show="open" style="display: none">
-                                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                    @if (count($general) > 0)
-                                       
-                                    @else
+                                 <div class="my-2 overflow-x-auto">
+                                    @forelse ($general as $noti)
+                                       <div class="bg-white rounded-md border-gray-300 border p-3 shadow-sm my-1">
+                                          <div class="ml-2 mr-4 text-sm">
+                                             <span class="font-semibold capitalize">{{ $noti->subject }}</span>
+                                             <span class="block text-gray-500 truncate">{{ $noti->content }}</span>
+                                          </div>
+                                       </div>
+                                    @empty
                                     <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You have no general announcement</p>
-                                    @endif
+                                    @endforelse
                                  </div>
                               </div>
                            </div>
@@ -415,17 +365,22 @@
                                  </div>
                               </p>
                               <div class="flex flex-col" x-show="open" style="display: none">
-                                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                    @if (count($events) > 0)
-                                    <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You {{ count($events) }}</p>
-                                    @else
-                                    <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You have no general announcement</p>
-                                    @endif
+                                 <div class="my-2 overflow-x-auto">
+                                    @forelse ($events as $noti)
+                                    <div class="bg-white rounded-md border-gray-300 border p-3 shadow-sm my-1">
+                                       <div class="ml-2 mr-4 text-sm">
+                                          <span class="font-semibold capitalize">{{ $noti->subject }}</span>
+                                          <span class="block text-gray-500 truncate">{{ $noti->content }}</span>
+                                       </div>
+                                    </div>
+                                    @empty
+                                    <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You have no event announcement</p>
+                                    @endforelse
                                  </div>
                               </div>
                            </div>
                            <div x-data="{ open: false }">
-                              <p class="block hover:bg-gray-50">
+                              {{-- <p class="block hover:bg-gray-50"> --}}
                                  <div class="flex items-center py-2">
                                     <div class="min-w-0 flex-1 flex items-center">Aluminia</div>
                                     <p>
@@ -436,14 +391,19 @@
                                        </span>
                                     </p>
                                  </div>
-                              </p>
+                              {{-- </p> --}}
                               <div class="flex flex-col" x-show="open" style="display: none">
-                                 <div class="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                    @if (count($aluminia) > 0)
-                                    <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You {{ count($aluminia) }}</p>
-                                    @else
+                                 <div class="my-2 overflow-x-auto">
+                                    @forelse ($aluminia as $noti)
+                                       <div class="bg-white rounded-md border-gray-300 border p-3 shadow-sm my-1">
+                                          <div class="ml-2 mr-4 text-sm">
+                                             <span class="font-semibold capitalize">{{ $noti->subject }}</span>
+                                             <span class="block text-gray-500 truncate">{{ $noti->content }}</span>
+                                          </div>
+                                       </div>
+                                    @empty
                                     <p class="text-sm p-3 leading-5 tracking-wider text-gray-600 text-center">You have no general announcement</p>
-                                    @endif
+                                    @endforelse
                                  </div>
                               </div>
                            </div>
