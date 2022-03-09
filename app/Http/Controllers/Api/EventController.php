@@ -25,7 +25,7 @@ class EventController extends Controller
       $date = Carbon::parse($request->date);
       // $events = Event::with(['applications'])->whereMonth('created_at', $date->month)->whereYear('created_at', $date->year)->get();
 
-      $events = Event::with(['applications'])->whereMonth('created_at', '05')->get();
+      $events = Event::with(['applications'])->whereMonth('created_at', '04')->get();
 
       // return json_encode(['month' => $date->month, 'year' => $date->year]);
 
