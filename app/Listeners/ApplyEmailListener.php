@@ -7,6 +7,7 @@ use App\Mail\ApplyMailDigest;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 
 class ApplyEmailListener
 {
@@ -28,6 +29,8 @@ class ApplyEmailListener
     */
    public function handle(ApplyEmailEvent $event)
    {
-      Mail::to($event->user->email, $event->user->name)->send(new ApplyMailDigest($event->event->eventApplications));
+      $user = $event->user;
+      $applicationEvent = $event->applications;
+      Mail::to($user->email, $user->name)->send(new ApplyMailDigest($applicationEvent));
    }
 }

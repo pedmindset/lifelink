@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Events\ApplyEmailEvent;
 use App\Models\EventApplications;
 use App\Http\Traits\ResponseTrait;
+use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 
 class EventController extends Controller
@@ -55,5 +56,26 @@ class EventController extends Controller
          $events[] = $eventApp->event;
       }
       return $this->success($events, 'Success');
+   }
+
+   public function getEventUrl(Request $request)
+   {
+      $user = request()->user();
+      // return $request;
+      $signUrl = URL::signedRoute(
+         'mobile.event.register', ['user' => $user->id, 'eventId' => $request->id]
+      );
+
+      return $this->success($signUrl, 'Successful');
+   }
+
+   public function getformUrl(Request $request)
+   {
+      $user = request()->user();
+      $signUrl = URL::signedRoute(
+         'mobile.event.form.register', ['user' => $user, 'event' => $request->eventId, 'form' => $request->formId]
+      );
+
+      return $this->success($signUrl, 'Successful');
    }
 }

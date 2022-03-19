@@ -48,33 +48,43 @@
                   <div class="my-4 relative flex-1 px-4 sm:px-6">
                      <!-- Replace with your content -->
                      @if (count($errors) > 0)
-                     <div class="rounded-md bg-red-50 p-4 mb-3 shadow-inner">
-                        <div class="flex">
-                           <div class="flex-shrink-0">
-                              <!-- Heroicon name: solid/x-circle -->
-                              <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                              </svg>
-                           </div>
-                           <div class="ml-3">
-                              <h3 class="text-sm font-medium text-red-800">
-                                 There were count($errors) errors with your submission
-                              </h3>
-                              <div class="mt-2 text-sm text-red-700">
-                                 <ul role="list" class="list-disc pl-5 space-y-1">
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                 </ul>
+                        <div class="rounded-md bg-red-50 p-4 mb-3 shadow-inner">
+                           <div class="flex">
+                              <div class="flex-shrink-0">
+                                 <!-- Heroicon name: solid/x-circle -->
+                                 <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                 </svg>
+                              </div>
+                              <div class="ml-3">
+                                 <h3 class="text-sm font-medium text-red-800">
+                                    There were count($errors) errors with your submission
+                                 </h3>
+                                 <div class="mt-2 text-sm text-red-700">
+                                    <ul role="list" class="list-disc pl-5 space-y-1">
+                                       @foreach ($errors->all() as $error)
+                                       <li>{{ $error }}</li>
+                                       @endforeach
+                                    </ul>
+                                 </div>
                               </div>
                            </div>
                         </div>
-                     </div>
                      @endif
                      <div class="h-full" aria-hidden="true">
-
                         <div class="space-y-3 pb-5">
                            <input type="hidden" wire:model="selected_id">
+                           <div>
+                              <label for="event" class="block text-sm font-medium text-gray-900">Event</label>
+                              <div class="mt-1">
+                                 <select wire:model="event" id="event" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base capitalize border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <option value="null">-- Select Event --</option>
+                                    @foreach ($events as $events)
+                                    <option class="capitalize" value="{{ $events->id }}">{{ $events->name }}</option>
+                                    @endforeach
+                                 </select>
+                              </div>
+                           </div>
                            <div>
                               <label for="name" class="block text-sm font-medium text-gray-900">Name</label>
                               <div class="mt-1">

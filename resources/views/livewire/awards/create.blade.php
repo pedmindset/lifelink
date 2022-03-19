@@ -76,6 +76,17 @@
 
                         <div class="space-y-3 pb-5">
                            <div>
+                              <label for="event" class="block text-sm font-medium text-gray-900">Event</label>
+                              <div class="mt-1">
+                                 <select wire:model="event" id="event" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base capitalize border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <option value="null">-- Select Event --</option>
+                                    @foreach ($events as $events)
+                                    <option class="capitalize" value="{{ $events->id }}">{{ $events->name }}</option>
+                                    @endforeach
+                                 </select>
+                              </div>
+                           </div>
+                           <div>
                               <label for="name" class="block text-sm font-medium text-gray-900">Name</label>
                               <div class="mt-1">
                                  <input type="text" wire:model="name" id="name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">

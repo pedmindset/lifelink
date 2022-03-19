@@ -7,11 +7,15 @@
 @endcomponent
 @endslot
 
+@slot('content')
+
 # {{  $application->name }}
 
 ##### Your application was successful
 
 <h2 class="uppercase text-gray-700 font-semibold tracking-widest">THANK YOU</h2>
+@endslot
+
 
 {{-- Footer --}}
 @slot('footer')

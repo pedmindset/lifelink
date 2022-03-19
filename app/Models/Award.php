@@ -11,7 +11,7 @@ class Award extends Model implements HasMedia
 {
    use HasFactory, InteractsWithMedia;
 
-   protected $fillable = ['name', 'description', 'uuid'];
+   protected $fillable = ['event_id', 'name', 'description', 'uuid'];
 
    protected $appends = ['thumb_image_url'];
 

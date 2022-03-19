@@ -10,7 +10,11 @@
    @include('includes.styles')
 </head>
 <body class="font-sans antialiased h-full bg-gray-50" x-data="{ openNav: false }">
-    @include('partials.header')
+   @if (request()->routeIs('mobile.event.register') || request()->routeIs('mobile.event.form.register'))
+   @include('partials.mobile-header')
+   @else
+   @include('partials.header')
+   @endif
    <div class="w-full h-full">
       @yield('content')
    </div>

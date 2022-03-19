@@ -1,4 +1,4 @@
-<div style="display:none" x-show="showApply" class="fixed inset-0 overflow-hidden z-20"
+<div style="display:none" x-show="showApply" x-data="{ exitFinish: @entangle('applyMode') }" class="fixed inset-0 overflow-hidden z-20"
    aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
       x-transition:enter="ease-in-out duration-500" 
@@ -9,6 +9,7 @@
       x-transition:leave-end="opacity-0"
       class="absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+      {{-- <div class="fixed inset-y-0 flex justify-center items-center w-full" wire:loading>Loading ..</div> --}}
       <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
          <div class="w-screen sm:max-w-md"
             x-show="showApply" 

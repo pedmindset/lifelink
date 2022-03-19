@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Award;
+use App\Models\Event;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -12,13 +13,18 @@ class ComponentAwardCitation extends Component
 {
    use WithFileUploads;
    
-   public $data, $name, $description, $selected_id, $selectedname, $selectedClient, $selectedClientName;
-   public $clients = [], $awardedList = [];
+   public $data, $name, $description, $event, $selected_id, $selectedname, $selectedClient, $selectedClientName, $awardEvent;
+   public $clients = [], $awardedList = [], $events = [];
    public $updateMode = false, $createMode = false, $deleteMode=false, $tagMode=false, $listingMode = false;
    public function render()
    {
-      $this->data = Award::all();
       return view('livewire.awards.component-award-citation');
+   }
+   
+   public function mount()
+   {
+      $this->data = Award::all();
+      $this->events = Event::all();
    }
 
    private function resetInput()
@@ -30,6 +36,7 @@ class ComponentAwardCitation extends Component
       $this->selected_id = null;
       $this->selectedClientName = null;
       $this->selectedClient = null;
+      $this->awardEvent = null;
 
       $this->data = Award::all();
    }
@@ -37,9 +44,11 @@ class ComponentAwardCitation extends Component
    public function store()
    {
       $this->validate([
+         'event' => 'required|integer|exists:events,id',
          'name' => 'required|string|max:255',
       ]);
       $award = Award::create([
+         'event_id' => $this->event,
          'name' => $this->name,
          'description' => $this->description,
          'uuid' => Str::uuid(),
@@ -61,6 +70,7 @@ class ComponentAwardCitation extends Component
       $record = Award::findOrFail($id);
       $this->selected_id = $id;
       $this->selectedname =  $record->name;
+      $this->event =  $record->event_id;
       $this->name = $record->name;
       $this->description = $record->description;
 
@@ -70,13 +80,15 @@ class ComponentAwardCitation extends Component
    public function update()
    {
       $this->validate([
-         'selected_id' => 'required|numeric',
+         'selected_id' => 'required|integer',
+         'event' => 'required|integer|exists:events,id',
          'name' => 'required|string|max:255',
       ]);
 
       if ($this->selected_id) {
          $record = Award::firstWhere('id', $this->selected_id);
          $record->update([
+            'event_id' => $this->event,
             'name' => $this->name,
             'description' => $this->description,
          ]);
@@ -165,6 +177,7 @@ class ComponentAwardCitation extends Component
       $record = Award::findOrFail($id);
       $this->selected_id = $id;
       $this->selectedname =  $record->name;
+      $this->awardEvent =  $record->event->name;
       $this->awardedList = $record->user;
       $this->listingMode = true;
    }

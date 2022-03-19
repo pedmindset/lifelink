@@ -21,8 +21,8 @@
             x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
             x-description="Slide-over panel, show/hide based on slide-over state.">
             <div class="h-full flex flex-col bg-white shadow-xl">
-               <div class="py-6 px-4 bg-cyan-700 sm:px-6">
-                  <div class="flex items-start justify-between">
+               <div class="bg-cyan-700">
+                  <div class="py-6 px-4 sm:px-6 flex items-start justify-between">
                      <h2 class="text-lg font-medium text-white capitalize" id="slide-over-title">
                         {{ $selectedname }}
                      </h2>
@@ -37,6 +37,9 @@
                         </button>
                      </div>
                   </div>
+                  <div class="bg-teal-50 sm:px-6 px-4 text-teal-700 shadow-inner py-2 text-sm leading-7 tracking-wider">
+                     {{ $awardEvent }} <span class="text-xs text-teal-500">(Event)</span>
+                  </div>
                </div>
 
                <div class="min-h-0 flex-1 flex flex-col overflow-y-scroll">
@@ -50,7 +53,7 @@
                            </div>
                         </li>
                         @empty
-                           <li>Award not issued</li>
+                           <li class="flex justify-center items-center pt-3">Award not issued</li>
                         @endforelse
                      </ul>
                   </div>

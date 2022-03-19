@@ -1,6 +1,6 @@
 <div x-data="{ showApply: @entangle('applyMode') }">
    @if($applyMode)
-   @livewire('pages.form-application', ['id' => $formId])
+   @livewire('pages.form-application', ['id' => $formId, 'userId' => $userId, 'isMobile'=>$isMobile])
    @endif
 
    <div class="p-3 sm:px-16 sm:py-5">

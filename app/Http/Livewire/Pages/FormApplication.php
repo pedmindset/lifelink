@@ -6,14 +6,16 @@ use App\Events\ApplyEmailEvent;
 use Livewire\Component;
 use App\Models\Applicant;
 use App\Models\EventApplications;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Casts\ArrayObject;
 
 class FormApplication extends Component
 {
-   public $formId,$eventId, $data, $valueIn; 
+   public $formId,$eventId,$userId, $data, $valueIn; 
    public $schema;
    public $applicantData = [];
+   public $isMobile = false, $formFinish = false;
    public function render()
    {
       $data = EventApplications::firstWhere('id', $this->formId);
@@ -23,9 +25,11 @@ class FormApplication extends Component
       return view('livewire.pages.form-application');
    }
    
-   public function mount($id)
+   public function mount($id, $userId, $isMobile)
    {
       $this->formId = $id;
+      $this->userId = $userId;
+      $this->isMobile = $isMobile;
       // dd($this->schema[0]);
    }
    
@@ -36,23 +40,34 @@ class FormApplication extends Component
    
    public function saveForm()
    {
-      // dd($this->applicantData);
       $application = EventApplications::firstWhere('id', $this->formId);
-      if ($application->applicants->contains(auth()->user())) {
+      if($this->isMobile){
+         $user = User::findOrFail($this->userId);
+      }
+      else {
+         $user = auth()->user();
+      }
+
+      if ($application->applicants->contains($user)) {
          $this->dispatchBrowserEvent('alertMessage',[
             'type'=>'alert',
             'message'=>  'Already Registered!'
          ]);
+         // $this->applyMode = false;
       }
       else {
-         $attach = $application->applicants()->attach(auth()->user()->id, ['form_data'=> json_encode($this->applicantData)]);
-         if($attach){
+         $counterStart = $application->applicants()->count();
+         $application->applicants()->attach($user->id, ['form_data'=> json_encode($this->applicantData)]);
+         $counterEnd = $application->applicants()->count();
+         if($counterEnd > $counterStart)
+         {
             // send email to user email about the event
-            event(new ApplyEmailEvent($application, auth()->user()));
+            event(new ApplyEmailEvent($application, $user));
             $this->dispatchBrowserEvent('alertMessage',[
                'type'=>'success',
                'message'=>  'Successfully applied!'
             ]);
+            // $this->applyMode = false;
          }else {
             $this->dispatchBrowserEvent('alertMessage',[
                'type'=>'error',
@@ -60,6 +75,7 @@ class FormApplication extends Component
             ]);
          }
       }
+
       
    }
 }

@@ -1,28 +1,29 @@
 <?php
 
-use App\Http\Controllers\EventController;
-use App\Http\Livewire\ComponentAnnouncement;
+use App\Models\Tag;
+use App\Models\User;
+use App\Models\Event;
+use App\Http\Livewire\Fees;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
+use App\Http\Livewire\SettingPage;
 use App\Http\Livewire\Error\Err404;
 use App\Http\Livewire\Error\Err500;
+use App\Http\Livewire\DashboardView;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire\ComponentUsers;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Event\EventView;
+use App\Http\Livewire\EventApplicants;
 use App\Http\Livewire\ComponentMembers;
 use App\Http\Livewire\ComponentPayment;
 use App\Http\Livewire\EventApplication;
+use App\Http\Controllers\EventController;
 use App\Http\Livewire\ComponentOfficials;
 use App\Http\Livewire\ComponentConference;
 use App\Http\Livewire\Pages\TertiaryEvents;
+use App\Http\Livewire\ComponentAnnouncement;
 use App\Http\Livewire\ComponentAwardCitation;
-use App\Http\Livewire\DashboardView;
-use App\Http\Livewire\Event\EventView;
-use App\Http\Livewire\EventApplicants;
-use App\Http\Livewire\Fees;
-use App\Http\Livewire\SettingPage;
-use App\Models\Announcement;
-use App\Models\Event;
-use App\Models\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +67,7 @@ Route::middleware('auth')->group(function ($route) {
    })->name('events.tertiary');
 
    $route->get('/upcoming/event/{id}', function(Request $request) {
-      return view('pages.event-detail', ['eventId' => $request->id]);
+      return view('pages.event-detail', ['eventId' => $request->id, 'formId' => null, 'userId'=> null]);
    })->name('events.detail');
 
    $route->get('/settings', function(Request $request) {
@@ -90,3 +91,20 @@ Route::middleware('auth')->group(function ($route) {
    $route->get('/announcements', ComponentAnnouncement::class)->name('announcements');
    $route->get('/payments', ComponentPayment::class)->name('payments');
 });
+
+Route::get('upcoming/event/mobile/{user}/{eventId}', function (Request $request) {
+   if (! $request->hasValidSignature()) {
+      abort(401);
+   }
+
+   return view('pages.event-detail', ['eventId' => $request->eventId,'userId'=>$request->user, 'formId' => null]);
+})->name('mobile.event.register');
+
+Route::get('event/mobile/form/{user}/{event}/{form}', function (Request $request) {
+
+   if (! $request->hasValidSignature()) {
+      abort(401);
+   }
+
+   return view('pages.event-detail', ['eventId' => $request->event, 'formId' => $request->form, 'userId'=>$request->user]);
+})->name('mobile.event.form.register');

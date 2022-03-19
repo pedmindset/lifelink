@@ -29,7 +29,7 @@
                                     Description
                                  </th>
                                  <th scope="col" class="hidden sm:block px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    UUID
+                                    Event
                                  </th>
                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Date
@@ -48,8 +48,8 @@
                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 line-clamp-3 truncate">
                                     {{ $award->description }}
                                  </td>
-                                 <td class="hidden px-6 sm:block py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $award->uuid }}
+                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $award->event->name }}
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     <time>{{ date("F jS, Y", strtotime($award->created_at)) }}</time>
@@ -79,7 +79,6 @@
                                     </button>
                                  </td>
                               </tr>
-                              
                               @endforeach
                            </tbody>
                         </table>
