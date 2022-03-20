@@ -62,8 +62,8 @@ class EventController extends Controller
    {
       $user = request()->user();
       // return $request;
-      $signUrl = URL::signedRoute(
-         'mobile.event.register', ['user' => $user->id, 'eventId' => $request->id]
+      $signUrl = URL::temporarySignedRoute(
+         'mobile.event.register', now()->addMinutes(30), ['user' => $user->id, 'eventId' => $request->id]
       );
 
       return $this->success($signUrl, 'Successful');
@@ -72,8 +72,8 @@ class EventController extends Controller
    public function getformUrl(Request $request)
    {
       $user = request()->user();
-      $signUrl = URL::signedRoute(
-         'mobile.event.form.register', ['user' => $user, 'event' => $request->eventId, 'form' => $request->formId]
+      $signUrl = URL::temporarySignedRoute(
+         'mobile.event.form.register', now()->addMinutes(30), ['user' => $user, 'event' => $request->eventId, 'form' => $request->formId]
       );
 
       return $this->success($signUrl, 'Successful');
