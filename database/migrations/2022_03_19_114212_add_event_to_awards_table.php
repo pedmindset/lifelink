@@ -11,7 +11,7 @@ class AddEventToAwardsTable extends Migration
     *
     * @return void
     */
-   public function up()i      
+   public function up()   
    {
       Schema::table('awards', function (Blueprint $table) {
          $table->unsignedBigInteger('event_id');
