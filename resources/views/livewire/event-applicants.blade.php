@@ -62,7 +62,7 @@
                                  </tr>
                               </thead>
                               <tbody>
-                                 @foreach (json_decode($person->pivot->form_data) as $key => $value)
+                                 @foreach ($person->pivot->form_data as $key => $value)
                                  <tr class="bg-white">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $key }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
