@@ -2,7 +2,7 @@
    <div class="py-10">
       <div class="max-w-full sm:px-6 lg:px-8">
 
-         <div class="flex place-content-end mb-4">
+         <div class="flex px-2 sm:px-0 place-content-end mb-4">
             <div class="px-8 py-2 text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer rounded-tr-md rounded-bl-md">
                <button type="button" class="text-sm font-medium">Add Official</button>
             </div>

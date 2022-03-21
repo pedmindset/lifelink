@@ -8,7 +8,7 @@
 
             @if (count($data) > 0)
             
-            <div class="mb-4 flex justify-between">
+            <div class="mb-4 px-2 sm:px-0 flex justify-between">
                <div class="relative" x-data="{ open:false }" x-on:click.away="open = false">
                   <div class="h-10 bg-white flex border border-gray-200 items-center rounded-md">
                      <p class="px-4 transform appearance-none outline-none text-gray-800 w-full capitalize">Sort By</p>
