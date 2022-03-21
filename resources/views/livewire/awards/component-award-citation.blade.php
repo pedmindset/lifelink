@@ -43,15 +43,15 @@
                               @foreach($data as $award)
                               <tr>
                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-500">
-                                    {{ $award->name }}
+                                    {{ $award->name ?? '' }}
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 line-clamp-3 truncate">
-                                    {{ $award->description }}
+                                    {{ $award->description ?? '' }}
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $award->event->name }}
+                                    {{ $award->event->name ?? ''}}
                                  </td>
-                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                 <td class="px-6 py-4 whitespace-nowrap text-svm text-gray-500">
                                     <time>{{ date("F jS, Y", strtotime($award->created_at)) }}</time>
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap text-right space-x-2">
