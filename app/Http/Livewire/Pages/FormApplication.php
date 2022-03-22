@@ -48,33 +48,33 @@ class FormApplication extends Component
          $user = auth()->user();
       }
 
-      if ($application->applicants->contains($user)) {
-         $this->dispatchBrowserEvent('alertMessage',[
-            'type'=>'alert',
-            'message'=>  'Already Registered!'
-         ]);
-         // $this->applyMode = false;
-      }
-      else {
-         $counterStart = $application->applicants()->count();
-         $application->applicants()->attach($user->id, ['form_data'=> json_encode($this->applicantData)]);
-         $counterEnd = $application->applicants()->count();
-         if($counterEnd > $counterStart)
-         {
-            // send email to user email about the event
-            event(new ApplyEmailEvent($application, $user));
-            $this->dispatchBrowserEvent('alertMessage',[
-               'type'=>'success',
-               'message'=>  'Successfully applied!'
-            ]);
-            // $this->applyMode = false;
-         }else {
-            $this->dispatchBrowserEvent('alertMessage',[
-               'type'=>'error',
-               'message'=>  'Application unsuccessful!'
-            ]);
-         }
-      }
+      // if ($application->applicants->contains($user)) {
+      //    $this->dispatchBrowserEvent('alertMessage',[
+      //       'type'=>'alert',
+      //       'message'=>  'Already Registered!'
+      //    ]);
+      //    // $this->applyMode = false;
+      // }
+      // else {
+      //    $counterStart = $application->applicants()->count();
+      //    $application->applicants()->attach($user->id, ['form_data'=> json_encode($this->applicantData)]);
+      //    $counterEnd = $application->applicants()->count();
+      //    if($counterEnd > $counterStart)
+      //    {
+      //       // send email to user email about the event
+      //       event(new ApplyEmailEvent($application, $user));
+      //       $this->dispatchBrowserEvent('alertMessage',[
+      //          'type'=>'success',
+      //          'message'=>  'Successfully applied!'
+      //       ]);
+      //       // $this->applyMode = false;
+      //    }else {
+      //       $this->dispatchBrowserEvent('alertMessage',[
+      //          'type'=>'error',
+      //          'message'=>  'Application unsuccessful!'
+      //       ]);
+      //    }
+      // }
 
       
    }

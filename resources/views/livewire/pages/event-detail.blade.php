@@ -4,6 +4,16 @@
    @endif
 
    <div class="p-3 sm:px-16 sm:py-5">
+      @if(Session::has('success'))
+            <div class="w-full p-3 bg-green-200 mb-3 text-sm font-sans font-medium text-green-700 shadow-inner rounded-sm">
+               {{Session::get('success')}}
+            </div>
+         @endif
+         @if(Session::has('fail'))
+            <div class="w-full p-3 bg-red-200 mb-3 text-sm font-sans font-medium text-red-700 shadow-inner rounded-sm">
+               {{Session::get('fail')}}
+            </div>
+         @endif
       <div class="overflow-hidden">
          <img class="object-cover object-center w-full h-64 rounded-sm lg:h-80" src="{{ $event->image_url != '' ? $event->image_url : asset('img/back_con.jpg') }}" alt="image back">
          <div class="max-w-5xl mx-auto">
