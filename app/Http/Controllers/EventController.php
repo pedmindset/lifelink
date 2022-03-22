@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class EventController extends Controller
 {
+   protected $applicantData = [];
 
    /**
     * Store a newly created resource in storage.
@@ -119,9 +120,11 @@ class EventController extends Controller
          return Redirect::back()->withFail('You have Already Registered!');
       }
       else {
-         // dd($params);
          $counterStart = $application->applicants()->count();
-         $application->applicants()->attach($user->id, ['form_data'=> json_encode($params)]);
+         $this->getFieldValue($params);
+         // dd($this->applicantData);
+         // $application->applicants()->attach($user->id, ['form_data'=> json_encode($this->applicantData)]);
+         $application->applicants()->attach($user->id, ['form_data'=> $this->applicantData]);
          $counterEnd = $application->applicants()->count();
          if($counterEnd > $counterStart)
          {
@@ -131,6 +134,13 @@ class EventController extends Controller
          }else {
             return Redirect::back()->withFail('Your application was not Successful!');
          }
+      }
+   }
+
+   protected function getFieldValue($params)
+   {
+      foreach ($params as $key => $param) {
+         $this->applicantData = array_replace($this->applicantData, [str_replace("_", " ", strtolower( $key )) => $param]);
       }
    }
 
