@@ -231,21 +231,20 @@
              </div>
              <div class="py-6 px-5">
                 <div class="grid grid-cols-1 gap-4">
-                   <a href="{{ url('/') }}" class="text-base col-span-1 font-medium text-gray-900 hover:text-gray-700">Home</a>
-                   <a href="{{ route('events.tertiary') }}" class="text-base col-span-1 font-medium text-gray-900 hover:text-gray-700">Upcoming Conferences</a>
-                   <a href="#" class="text-base col-span-1 font-medium text-gray-900 hover:text-gray-700">About</a>
+                   {{-- <a href="{{ url('/') }}" class="text-base col-span-1 font-medium text-gray-900 hover:text-gray-700">Home</a> --}}
+                   <a href="{{ route('events.tertiary') }}" class="{{ request()->routeIs('events.tertiary') || request()->routeIs('home') || request()->routeIs('auth.home') ? 'bg-gray-100 text-gray-800 hover:bg-gray-50' : 'text-gray-900 hover:text-gray-700' }} transition-all ease-linear duration-300 text-sm p-3 col-span-1 font-medium">Upcoming Conferences</a>
+                   <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'bg-gray-100 text-gray-800 hover:bg-gray-50' : 'text-gray-900 hover:text-gray-700' }} transition-all ease-linear duration-300 text-sm col-span-1 p-3 font-medium">About</a>
                 </div>
-                <div class="mt-6">
+                <div class="mt-3 pt-5 border-t border-gray-300">
+                   
                     @guest
-                    <a href="{{ route('register') }}" class="w-full flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700">Sign up
+                    <a href="{{ route('register') }}" class="w-full flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:from-purple-700 hover:to-indigo-700">Sign up
                     </a>
-
-                    <p class="mt-6 text-center text-base font-medium text-gray-500">
-                        Existing customer? <a href="{{ route('login') }}" class="text-gray-900">Sign in</a>
-                    </p>
+                    <a href="{{ route('login') }}" class="w-full mt-3 flex items-center justify-center bg-gradient-to-r from-teal-600 to-green-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:from-green-700 hover:to-green-700">Login
+                    </a>
                     @endguest
                     @auth
-                    <a href="{{  url('/dashboard') }}" class="w-full flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700">Dashboard
+                    <a href="{{ url('/dashboard') }}" class="w-full flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700">Dashboard
                     </a>
                     @endauth
                 </div>
