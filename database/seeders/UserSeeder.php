@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
          'email_verified_at' => now(),
          'remember_token' => Str::random(10),
       ]);
-      $user->addMediaFromUrl(url('/') .'img/image_profile.png')->toMediaCollection('profile_image');
+      $user->addMediaFromUrl(url('/') .'/img/image_profile.png')->toMediaCollection('profile_image');
       Profile::create([
          'user_id' => $user->id,
          'first_name' => 'Kwadwo Mensah',
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
         'email_verified_at' => now(),
         'remember_token' => Str::random(10),
      ]);
-    $user->addMediaFromUrl(url('/') .'img/image_profile.png')->toMediaCollection('profile_image');
+    $user->addMediaFromUrl(url('/') .'/img/image_profile.png')->toMediaCollection('profile_image');
    //   $user->addMediaFromUrl('https://app.gunyo.org/img/image_profile.png')->toMediaCollection('profile_image');
      Profile::create([
         'user_id' => $user->id,
