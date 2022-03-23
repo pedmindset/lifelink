@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 const tailwindcss = require('tailwindcss');
+require('mix-tailwindcss');
+
 
 /*
  |--------------------------------------------------------------------------
@@ -26,8 +28,9 @@ const tailwindcss = require('tailwindcss');
     .js('resources/js/alpine.js', 'public/js')
     .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
     .postCss('resources/css/app.css', 'public/css', [
-        tailwindcss('./tailwind.config.js'),
-    ]);
+       
+    ]) 
+    .tailwind('./tailwindcss-config.js');
 
 // mix.js('resources/js/app.js', 'public/js')
 //     .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
