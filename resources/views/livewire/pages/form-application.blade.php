@@ -18,7 +18,8 @@
             x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
             x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full">
 
-            <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
+            <form action="{{ route('apply.form') }}" method="POST" class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
+               @csrf
                <div class="py-6 px-4 bg-cyan-700 sm:px-6">
                   <div class="flex items-start justify-between">
                      <h2 class="text-lg font-medium text-white capitalize" id="slide-over-title">
@@ -40,6 +41,8 @@
                      </p>
                   </div>
                </div>
+               <input type="text" class="hidden" value="{{ $userId }}" name="uid">
+               <input type="text" class="hidden" value="{{ $formId }}" name="formId">
 
                <div class="min-h-0 flex-1 flex flex-col overflow-y-scroll">
                   <div class="my-4 relative flex-1 px-4 sm:px-6">
@@ -82,11 +85,14 @@
                   <button type="button" x-on:click="showApply = false" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                      Cancel
                   </button>
-                  <button type="button" wire:click.prevent="saveForm()" x-on:click="showApply = false" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <button type="submit" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                      Save
                   </button>
+                  {{-- <button type="submit" wire:click.prevent="saveForm()" x-on:click="showApply = false" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                     Save
+                  </button> --}}
                </div>
-            </div>
+            </form>
          </div>
       </div>
    </div>

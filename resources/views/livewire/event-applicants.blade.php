@@ -62,13 +62,14 @@
                                  </tr>
                               </thead>
                               <tbody>
+                                 {{-- <tr>{{ $person->pivot->form_data }}</tr> --}}
                                  @foreach ($person->pivot->form_data as $key => $value)
                                  <tr class="bg-white">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $key }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{{ $key }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                        <span class="font-semibold">{{ $value }}</span></td>
-                                 </tr>
-                                 @endforeach
+                                    </tr>
+                                    @endforeach 
                               </tbody>
                            </table>
                         </div>

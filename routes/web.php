@@ -37,8 +37,11 @@ use App\Http\Livewire\ComponentAwardCitation;
 */
 
 Route::get('/', function () {
-   return view('welcome');
+   return view('pages.events');
 })->name('home');
+Route::get('/upcoming-events/{id?}', function(Request $request) {
+   return view('pages.events', ['eventId'=> $request->id]);
+})->name('events.tertiary');
 Route::get('/about', function () {
    return view('pages.about');
 })->name('about');
@@ -49,8 +52,10 @@ Route::get('/500', Err500::class)->name('500');
 
 Route::middleware('auth')->group(function ($route) {
    $route->get('/home', function () {
-      return view('welcome');
-   });
+      return view('pages.events');
+      // return view('welcome');
+   })->name('auth.home');
+
    $route->get('/profile', function () {
       $generalAnnouncement = Tag::firstWhere('id', 2)->announcements;
       $aluminiaAnnouncement = Tag::firstWhere('id', 3)->announcements;
@@ -62,9 +67,9 @@ Route::middleware('auth')->group(function ($route) {
       return view('pages.profile');
    })->name('admin.profile');
 
-   $route->get('/upcoming-events/{id?}', function(Request $request) {
-      return view('pages.events', ['eventId'=> $request->id]);
-   })->name('events.tertiary');
+   // $route->get('/upcoming-events/{id?}', function(Request $request) {
+   //    return view('pages.events', ['eventId'=> $request->id]);
+   // })->name('events.tertiary');
 
    $route->get('/upcoming/event/{id}', function(Request $request) {
       return view('pages.event-detail', ['eventId' => $request->id, 'formId' => null, 'userId'=> null]);
@@ -80,6 +85,7 @@ Route::middleware('auth')->group(function ($route) {
    $route->get('/event/{id}', EventView::class)->name('event.view');
    $route->post('/event/create', [EventController::class, 'store'])->name('event.create');
    $route->post('/event/update', [EventController::class, 'update'])->name('event.update');
+   $route->post('/event/apply/form', [EventController::class, 'apply'])->name('apply.form');
    // $route->get('/events/{option}/{id}', ComponentConference::class)->name('event');
 
    $route->get('/event-form', EventApplication::class)->name('event.form');
