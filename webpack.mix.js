@@ -26,7 +26,6 @@ require('mix-tailwindcss');
 
 
    mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/alpine.js', 'public/js')
     .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
     .postCss('resources/css/app.css', 'public/css', [
        
