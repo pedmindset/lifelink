@@ -9,6 +9,7 @@ class EventDetail extends Component
 {
    public $event, $formId, $eventId;
    public $userId;
+   public $access_denied = false;
    public $applyMode = false, $isMobile = false;
 
    public function render()
@@ -31,8 +32,13 @@ class EventDetail extends Component
    }
 
    public function applyForm($id){
-      $this->formId = $id;
-      $this->applyMode = true;
-      // dd($this->formId);
+      if(Auth::check()){
+           $this->formId = $id;
+           $this->applyMode = true;
+           // dd($this->formId);
+      }
+
+      $this->access_denied = true;
+    
    }
 }
