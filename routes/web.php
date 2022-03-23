@@ -75,9 +75,9 @@ Route::middleware('auth')->group(function ($route) {
    //    return view('pages.events', ['eventId'=> $request->id]);
    // })->name('events.tertiary');
 
-   $route->get('/upcoming/event/{id}', function(Request $request) {
-      return view('pages.event-detail', ['eventId' => $request->id, 'formId' => null, 'userId'=> null]);
-   })->name('events.detail');
+   // $route->get('/upcoming/event/{id}', function(Request $request) {
+   //    return view('pages.event-detail', ['eventId' => $request->id, 'formId' => null, 'userId'=> null]);
+   // })->name('events.detail');
 
    $route->get('/settings', function(Request $request) {
       return view('pages.settings');})->name('admin.settings');
