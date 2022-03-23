@@ -50,6 +50,10 @@ require __DIR__.'/auth.php';
 Route::get('/404', Err404::class)->name('404');
 Route::get('/500', Err500::class)->name('500');
 
+Route::get('/upcoming/event/{id}', function(Request $request) {
+      return view('pages.event-detail', ['eventId' => $request->id, 'formId' => null, 'userId'=> null]);
+})->name('events.detail');
+
 Route::middleware('auth')->group(function ($route) {
    $route->get('/home', function () {
       return view('pages.events');
