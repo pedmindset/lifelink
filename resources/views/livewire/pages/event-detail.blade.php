@@ -133,7 +133,7 @@
          </div>
       </div>
    </div>
-   <div class="bg-gray-100" style="min-height: 320px;">
+<div class="bg-gray-100 z-30" style="min-height: 320px;">
     
   <!-- Global notification live region, render this permanently at the end of the document -->
   <div x-data="{ show: @entangle('access_denied') }" aria-live="assertive" class="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
