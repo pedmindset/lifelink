@@ -12,14 +12,23 @@ const tailwindcss = require('tailwindcss');
  |
  */
 
- mix.js('resources/js/app.js', 'public/js')
+ // mix.js('resources/js/app.js', 'public/js')
+ //    .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
+ //    .vue()
+ //    .sass('resources/sass/app.scss', 'public/css')
+ //    .options({
+ //        processCssUrls: false,
+ //        postCss: [ tailwindcss('./tailwind.config.js') ],
+ //    });
+
+
+   mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/alpine.js', 'public/js')
+    .js('resources/js/aos.js', 'public/js')
     .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
-    .vue()
-    .sass('resources/sass/app.scss', 'public/css')
-    .options({
-        processCssUrls: false,
-        postCss: [ tailwindcss('./tailwind.config.js') ],
-    });
+    .postCss('resources/css/app.css', 'public/css', [
+        tailwindcss('./tailwind.config.js'),
+    ]);
 
 // mix.js('resources/js/app.js', 'public/js')
 //     .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
