@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Pages;
 
 use App\Models\Event;
 use Livewire\Component;
+use Auth;
 
 class EventDetail extends Component
 {
