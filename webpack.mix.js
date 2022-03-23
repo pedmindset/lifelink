@@ -3,6 +3,7 @@ const tailwindcss = require('tailwindcss');
 require('mix-tailwindcss');
 
 
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -30,7 +31,12 @@ require('mix-tailwindcss');
     .postCss('resources/css/app.css', 'public/css', [
        
     ]) 
-    .tailwind('./tailwindcss-config.js');
+    .tailwind('./tailwind.config.js')
+    // .purgeCss({
+    //       enabled: mix.inProduction(),
+    //       folders: ['src', 'templates'],
+    //       extensions: ['html', 'js', 'php', 'vue'],
+    //   });
 
 // mix.js('resources/js/app.js', 'public/js')
 //     .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
