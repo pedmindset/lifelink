@@ -15,27 +15,23 @@ require('mix-tailwindcss');
  |
  */
 
- // mix.js('resources/js/app.js', 'public/js')
- //    .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
- //    .vue()
- //    .sass('resources/sass/app.scss', 'public/css')
- //    .options({
- //        processCssUrls: false,
- //        postCss: [ tailwindcss('./tailwind.config.js') ],
- //    });
-
-
-   mix.js('resources/js/app.js', 'public/js')
+ mix.js('resources/js/app.js', 'public/js')
     .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
-    .postCss('resources/css/app.css', 'public/css', [
+    .vue()
+    .sass('resources/sass/app.scss', 'public/css')
+    .options({
+        processCssUrls: false,
+        postCss: [ tailwindcss('./tailwind.config.js') ],
+    });
+
+
+   // mix.js('resources/js/app.js', 'public/js')
+   //  .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
+   //  .postCss('resources/css/app.css', 'public/css', [
        
-    ]) 
-    .tailwind('./tailwind.config.js')
-    // .purgeCss({
-    //       enabled: mix.inProduction(),
-    //       folders: ['src', 'templates'],
-    //       extensions: ['html', 'js', 'php', 'vue'],
-    //   });
+   //  ]) 
+   //  .tailwind('./tailwind.config.js')
+
 
 // mix.js('resources/js/app.js', 'public/js')
 //     .copy('node_modules/line-awesome/dist/line-awesome/fonts', 'public/fonts')
