@@ -28,8 +28,8 @@ class EventController extends Controller
          'start_date' => 'required',
          'end_date' => 'required',
          'venue' => 'required|string|max:255',
-         'lat' => 'required|numeric',
-         'lng' => 'required|numeric',
+         'lat' => 'nullable',
+         'lng' => 'nullable',
          'event_image' => 'required|image|mimes:jpg,png,jpeg|max:10240',
       ]);
 
@@ -115,7 +115,7 @@ class EventController extends Controller
       unset($params['uid']);
       unset($params['formId']);
       // $formId = $request->formId;
-      
+
       if ($application->applicants->contains($user)) {
          return Redirect::back()->withFail('You have Already Registered!');
       }

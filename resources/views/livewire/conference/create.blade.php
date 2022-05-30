@@ -1,12 +1,12 @@
 <div class="fixed inset-0 overflow-hidden z-20" x-show="openCreate" style="display: none"
    aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
-      x-transition:enter="ease-in-out duration-500" 
-      x-transition:enter-start="opacity-0" 
-      x-transition:enter-end="opacity-100" 
-      x-transition:leave="ease-in-out duration-500" 
-      x-transition:leave-start="opacity-100" 
-      x-transition:leave-end="opacity-0" 
+      x-transition:enter="ease-in-out duration-500"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in-out duration-500"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       x-description="Background overlay, show/hide based on slide-over state."
       class="absolute inset-0 overflow-hidden">
 
@@ -14,11 +14,11 @@
 
       <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
          <div class="w-screen max-w-lg" x-data="showImage()"
-            x-show="openCreate" 
-            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
-            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
+            x-show="openCreate"
+            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
             x-description="Slide-over panel, show/hide based on slide-over state.">
             <form action="{{ route('event.create') }}" enctype="multipart/form-data" method="POST" class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                @csrf
@@ -28,7 +28,7 @@
                         new event
                      </h2>
                      <div class="ml-3 h-7 flex items-center">
-                        <button type="button" x-on:click.prevent="openCreate = false" 
+                        <button type="button" x-on:click.prevent="openCreate = false"
                         class="bg-cyan-700 rounded-md text-cyan-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                            <span class="sr-only">Close panel</span>
                            <!-- Heroicon name: outline/x -->
@@ -77,25 +77,25 @@
                            <div>
                               <label for="event-name" class="block text-sm font-medium text-gray-900">Name</label>
                               <div class="mt-1">
-                                 <input type="text" name="event_name" id="event-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input wire:model.lazy="name" required type="text" name="event_name" id="event-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="description" class="block text-sm font-medium text-gray-900">Description</label>
                               <div class="mt-1">
-                                 <textarea id="description" name="description" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
+                                 <textarea wire:model.lazy="description" id="description" name="description" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
                               </div>
                            </div>
 
                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                               <div class="sm:col-span-3">
                                  <x-input.group label="Starts Date" inline="true" for="start_date" :error="$errors->first('start_date')" help-text="Select Start Date">
-                                    <x-input.date-picker wire:model.lazy="start_date" name="start_date" id="start_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                    <x-input.date-picker required wire:model.lazy="start_date" name="start_date" id="start_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">
                                  <x-input.group label="Ends Date" inline="true" for="end_date" :error="$errors->first('end_date')" help-text="Select End Date">
-                                    <x-input.date-picker wire:model.lazy="end_date" name="end_date" id="end_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                    <x-input.date-picker required wire:model.lazy="end_date" name="end_date" id="end_date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
                                  </x-input.group>
                               </div>
                            </div>
@@ -103,7 +103,7 @@
                            <div class="mt-3">
                               <label for="venue" class="block text-sm font-medium text-gray-900">Venue</label>
                               <div class="mt-1">
-                                 <input type="text" name="venue" id="venue" class="block w-full map-input shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input  wire:model.lazy="venue"  type="text" required name="venue" id="venue" class="block w-full map-input shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
 
@@ -122,9 +122,9 @@
                                           - Goto https://www.google.com/maps/ and search venue
                                        </li>
                                        <li>
-                                          - Click on the location on the map to retrieve latitude (the numbers before the comma sign) and longitude (the numbers after the comma sign). 
+                                          - Click on the location on the map to retrieve latitude (the numbers before the comma sign) and longitude (the numbers after the comma sign).
                                        </li>
-                                    </ul> 
+                                    </ul>
                                     <div class="tooltip-arrow" data-popper-arrow></div>
                                  </div>
 
@@ -168,7 +168,7 @@
                                           </svg>
                                           <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">Attach an image</p>
                                        </div>
-                                       <input type="file" x-ref="uploader" id="event-image" name="event_image" class="opacity-0" accept="image/*" x-on:change="showPreview(event)" />
+                                       <input required type="file" x-ref="uploader" id="event-image" name="event_image" class="opacity-0" accept="image/*" x-on:change="showPreview(event)" />
                                     </label>
                                  </div>
                               </div>
