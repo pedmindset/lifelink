@@ -11,7 +11,7 @@ use Livewire\WithFileUploads;
 class ComponentConference extends Component
 {
    use WithFileUploads;
-   
+
    public $data, $viewItem, $name, $description, $venue, $event_image, $start_date, $end_date, $lat, $lng, $selected_id, $imgFile, $selectedname;
    public $updateMode = false, $saveMode= false, $isListing = false, $createMode = false, $deleteMode=false, $viewMode = false, $formCreateMode = false;
 
@@ -80,7 +80,7 @@ class ComponentConference extends Component
          // 'uuid' => Str::uuid(),
       ]);
       $event->addMedia($this->event_image->getRealPath())->toMediaCollection('event_image');
-      
+
       $this->dispatchBrowserEvent('alertMessage',[
          'type'=>'info',
          'message'=> "Successfully created!"
@@ -96,7 +96,7 @@ class ComponentConference extends Component
       $this->viewMode = false;
       $this->selected_id = null;
    }
-   
+
    private function view($id)
    {
       $this->selected_id = $id;
@@ -170,6 +170,7 @@ class ComponentConference extends Component
    {
       if ($this->selected_id) {
          $record = Event::firstWhere('id', $this->selected_id);
+        //  $record->forms->delete();
          $record->delete();
 
          $this->dispatchBrowserEvent('alertMessage',[

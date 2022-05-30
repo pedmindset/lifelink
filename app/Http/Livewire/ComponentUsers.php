@@ -68,7 +68,7 @@ class ComponentUsers extends Component
          'email' => $this->email,
          'password' => Hash::make($this->password),
       ]);
-      
+
       Profile::create([
          'user_id' => $person->id,
          'first_name' => $this->firstname,
@@ -78,7 +78,7 @@ class ComponentUsers extends Component
          'address' => $this->address,
       ]);
       $person->assignRole($this->rolename);
-      
+
       $this->dispatchBrowserEvent('createdAlert',[
          'type'=>'info',
          'message'=> $this->firstname." successfully created!"
@@ -86,7 +86,7 @@ class ComponentUsers extends Component
       $this->createMode = false;
       $this->resetInput();
    }
-   
+
    public function edit($id)
    {
       $record = Person::findOrFail($id);
@@ -122,6 +122,11 @@ class ComponentUsers extends Component
             'phone' => $this->phone,
             'address' => $this->address,
          ]);
+
+
+         $record->removeRole($record->getRoleNames[0]);
+         $record->assignRole($this->rolename);
+
          $record->update([
             'name' => $this->firstname . ' ' . $this->lastname,
             'email' => $this->email
