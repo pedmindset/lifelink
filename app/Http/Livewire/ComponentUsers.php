@@ -97,7 +97,7 @@ class ComponentUsers extends Component
       $this->email = $record->email;
       $this->phone = $record->profile->phone;
       $this->address = $record->profile->address;
-      $this->rolename = $record->getroleNames()[0];
+      $this->rolename = $record->getRoleNames()[0];
 
       $this->updateMode = true;
    }
@@ -124,7 +124,7 @@ class ComponentUsers extends Component
          ]);
 
 
-         $record->removeRole($record->getRoleNames[0]);
+         $record->removeRole($record->getRoleNames()[0]);
          $record->assignRole($this->rolename);
 
          $record->update([
