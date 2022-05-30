@@ -15,6 +15,20 @@ class EventApplications extends Model
       'schema' => 'array',
    ];
 
+     /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::deleting(function ($form) {
+            $form->applicants->delete();
+            $form->officials->delete();
+
+        });
+    }
+
    /**
     * Get the event that owns the EventApplication
     *

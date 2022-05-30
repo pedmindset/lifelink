@@ -15,6 +15,21 @@ class Event extends Model implements HasMedia
 
    protected $appends = ['thumb_image_url'];
 
+      /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::deleting(function ($event) {
+            $event->applications->delete();
+            $event->fee->delete();
+            $event->award->delete();
+        });
+    }
+
+
    public function registerMediaCollections(): void
    {
       $this->addMediaCollection('event_image')->singleFile();
