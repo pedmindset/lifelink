@@ -64,7 +64,7 @@ class ComponentConference extends Component
          'name' => 'required|string|max:255',
          'start_date' => 'required',
          'end_date' => 'required',
-         'venue' => 'required|string|max:255',
+         'venue' => 'required|string',
          'lat' => 'nullable',
          'lng' => 'nullable',
          'event_image' => 'file|mimes:png,jpg,jpeg|max:2048'
