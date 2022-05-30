@@ -40,9 +40,9 @@
 
             <div class="pt-4 pb-3 border-t border-sky-800">
                <div class="mt-3 px-2">
-                  <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                  <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                      class="block rounded-md py-2 px-3 text-base font-medium text-sky-200 hover:text-white hover:bg-sky-800">Sign out</a>
-                  
+
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                      @csrf
                   </form>
@@ -93,7 +93,7 @@
                         </svg>
                         <span class="truncate"> Password </span>
                      </p>
-      
+
                      <p @Click="profile = false; password = false; billing = true" x-bind:class="billing ? 'bg-teal-50 border-teal-500 text-teal-700 hover:bg-teal-50 hover:text-teal-700' : 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900'" href="#" class="cursor-pointer group border-l-4 px-3 py-2 flex items-center text-sm font-medium transition-all duration-300 ease-linear">
                         <!-- Heroicon name: outline/credit-card -->
                         <svg x-bind:class="billing ? 'text-teal-500 group-hover:text-teal-500' : 'text-gray-400 group-hover:text-gray-500'" class="flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -143,7 +143,7 @@
                                        </div>
                                     </div>
                                  </div>
-               
+
                                  <div class="hidden relative rounded-full overflow-hidden lg:block">
                                     @if($photoImage)
                                     <img class="relative rounded-full w-40 h-40 border-dashed border border-gray-400" src="{{ $photoImage->temporaryUrl() }}" alt="">
@@ -155,6 +155,7 @@
                                        <span class="sr-only"> user photo</span>
                                        <input type="file" x-ref="uploader" wire:model="photoImage" id="user-photo" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md">
                                     </label>
+
                                  </div>
                               </div>
                            </div>
@@ -164,24 +165,24 @@
                                  <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
                                  <input type="text" required id="first-name" wire:model="firstName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                               </div>
-              
+
                               <div class="col-span-12 sm:col-span-6">
                                  <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
                                  <input type="text" required id="last-name" wire:model="lastName"  class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                               </div>
-              
+
                               <div class="col-span-12 sm:col-span-6">
                                  <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
                                  <input type="tel" id="phone" wire:model="phone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                               </div>
-              
+
                            </div>
 
                         </div>
                      </form>
 
                      <div class="mt-4 bg-gray-50 divide-y divide-gray-200 py-4 px-4 flex justify-end sm:px-6">
-                        {{-- <div wire:loading class="bg-white shadow-inner rounded-md py-2 px-8 inline-flex justify-center text-sm font-medium text-gray-600">Saving ...</div> --}}
+                        <div wire:loading class=" px-8 inline-flex justify-center text-sm font-medium text-gray-600">Loading ...</div>
                         <button type="button" wire:click.prevent="storeProfile()" class="ml-5 bg-sky-700 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">Save</button>
                      </div>
                   </div>
@@ -199,7 +200,7 @@
                                  <label for="old-password" class="block text-sm font-medium text-gray-700">Old Password</label>
                                  <input type="password" required id="old-password" wire:model="oldPassword" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                               </div>
-              
+
                               <div class="col-span-12 sm:col-span-6">
                                  <label for="new-password" class="block text-sm font-medium text-gray-700">New Password</label>
                                  <input type="password" required id="new-password" wire:model="newPassword"  class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
