@@ -7,13 +7,13 @@
             @include('livewire.users.delete')
 
             @if (count($data) > 0)
-            
+
             <div class="mb-4 px-2 sm:px-0 flex justify-between">
                <div class="relative" x-data="{ open:false }" x-on:click.away="open = false">
                   <div class="h-10 bg-white flex border border-gray-200 items-center rounded-md">
                      <p class="px-4 transform appearance-none outline-none text-gray-800 w-full capitalize">Sort By</p>
 
-                     <label x-on:click="open = !open" 
+                     <label x-on:click="open = !open"
                         x-bind:class="open ? 'flip-top' : 'closed' " for="show_more" class="cursor-pointer outline-none focus:outline-none transition-all text-gray-400 hover:text-gray-800">
                         <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                           <polyline points="18 15 12 9 6 15"></polyline>
@@ -27,7 +27,7 @@
                      <div class="cursor-pointer group w-40">
                         <span wire:click.prevent="sortedBy('staff')" @click.prevent="open = false" class="block p-2 border-transparent capitalize border-b-2 group-hover:border-cyan-600">Staff</span>
                      </div>
-                     
+
                   </div>
                </div>
 
@@ -68,7 +68,7 @@
                                  <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
                                        <div class="flex-shrink-0 h-10 w-10">
-                                          <img class="h-10 w-10 rounded-full" src="{{ asset('img/face.jpg') }}" alt="">
+                                          <img class="h-10 w-10 rounded-full" src="{{ asset('img/face.jpg') }}"  alt="">
                                        </div>
                                        <div class="ml-4">
                                           <div class="text-sm font-bold text-gray-900">
@@ -124,7 +124,7 @@
                <i class="las la-folder-plus text-6xl text-gray-600 py-3"></i>
                <p class="text-gray-600 text-base font-bold">No Users available</p>
                <p class="text-gray-400 font-medium">Get started by creating a new user</p>
-   
+
                <p class="mt-6 mb-10"><span class="px-4 py-2 text-sm rounded-md text-white w-auto bg-indigo-600 hover:bg-indigo-700 cursor-pointer"> <i class="las la-plus text-md px-1"></i> New User </span></p>
             </div>
             @endif

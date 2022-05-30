@@ -13,7 +13,7 @@ use Illuminate\Validation\ValidationException;
 class SettingPage extends Component
 {
    use WithFileUploads;
-   
+
    // user profile
    public $firstName, $lastName, $address, $phone, $photoImage, $profileImage;
    // password
@@ -59,7 +59,7 @@ class SettingPage extends Component
       $profile->save();
 
       if ($this->photoImage != null) {
-         $user->addMedia($this->photoImage->getRealPath())->toMediaCollection('profile_image');
+         $user->addMedia($this->photoImage)->toMediaCollection('profile_image');
       }
 
       $this->dispatchBrowserEvent('alertMessage',[

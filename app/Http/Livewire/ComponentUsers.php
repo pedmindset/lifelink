@@ -8,10 +8,13 @@ use App\Models\User as Person;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Builder;
+use Livewire\WithFileUploads;
 
 class ComponentUsers extends Component
 {
-   public $data, $roles, $name, $email, $password, $password_confirmation, $firstname, $lastname, $phone, $address, $rolename, $selected_id, $selectedname;
+    use WithFileUploads;
+
+   public $data, $roles, $name, $email, $password, $password_confirmation, $firstname, $lastname, $phone, $address, $rolename, $selected_id, $selectedname, $image;
    public $updateMode = false, $createMode = false, $deleteMode=false;
    public function render()
    {
@@ -49,6 +52,8 @@ class ComponentUsers extends Component
       $this->selected_id = null;
       $this->phone = null;
       $this->address = null;
+      $this->image = null;
+
 
       $this->data = Person::all();
       // $this->data = Person::role('customer')->get();
