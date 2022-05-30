@@ -23,8 +23,8 @@ class EventApplications extends Model
     protected static function booted()
     {
         static::deleting(function ($form) {
-            $form->applicants->delete();
-            $form->officials->delete();
+            $form->applicants()->delete();
+            $form->officials()->delete();
 
         });
     }

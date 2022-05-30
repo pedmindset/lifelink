@@ -23,9 +23,9 @@ class Event extends Model implements HasMedia
     protected static function booted()
     {
         static::deleting(function ($event) {
-            $event->applications->delete();
-            $event->fee->delete();
-            $event->award->delete();
+            $event->applications()->delete();
+            $event->fee()->delete();
+            $event->award()->delete();
         });
     }
 
