@@ -65,8 +65,8 @@ class ComponentConference extends Component
          'start_date' => 'required',
          'end_date' => 'required',
          'venue' => 'required|string|max:255',
-         'lat' => 'required|numeric',
-         'lng' => 'required|numeric',
+         'lat' => 'nullable',
+         'lng' => 'nullable',
          'event_image' => 'file|mimes:png,jpg,jpeg|max:2048'
       ]);
       $event = Event::create([
@@ -79,7 +79,11 @@ class ComponentConference extends Component
          'end_date' => new DateTime($this->end_date),
          // 'uuid' => Str::uuid(),
       ]);
-      $event->addMedia($this->event_image->getRealPath())->toMediaCollection('event_image');
+
+      if($this->event_image){
+        $event->addMedia($this->event_image->getRealPath())->toMediaCollection('event_image');
+
+      }
 
       $this->dispatchBrowserEvent('alertMessage',[
          'type'=>'info',
