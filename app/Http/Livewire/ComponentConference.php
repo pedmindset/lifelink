@@ -44,31 +44,41 @@ class ComponentConference extends Component
 
    private function resetInput()
    {
-      $this->name = null;
-      $this->description = null;
-      $this->start_date = null;
-      $this->end_date = null;
-      $this->lat = null;
-      $this->lng = null;
-      $this->event_image = null;
-      $this->selectedname = null;
-      $this->selected_id = null;
-      $this->viewItem = null;
+
+
+    $this->reset(['name', 'description', 'start_date', 'end_date', 'lat', 'lng', 'event_image', 'selectedname', 'selected_id', 'viewItem']);
+
 
       $this->data = Event::all();
    }
 
+   protected $rules = [
+    'name' => 'required|string|max:255',
+    'start_date' => 'required',
+    'end_date' => 'required',
+    'venue' => 'required|string',
+    'lat' => 'nullable',
+    'lng' => 'nullable',
+    'event_image' => 'file|mimes:png,jpg,jpeg|max:2048'
+   ];
+
+   public function updated($propertyName)
+   {
+       $this->validateOnly($propertyName, [
+        'name' => 'required|string|max:255',
+        'start_date' => 'required',
+        'end_date' => 'required',
+        'venue' => 'required|string',
+        'lat' => 'nullable',
+        'lng' => 'nullable',
+        'event_image' => 'file|mimes:png,jpg,jpeg|max:2048'
+       ]);
+   }
+
    public function store()
    {
-      $this->validate([
-         'name' => 'required|string|max:255',
-         'start_date' => 'required',
-         'end_date' => 'required',
-         'venue' => 'required|string',
-         'lat' => 'nullable',
-         'lng' => 'nullable',
-         'event_image' => 'file|mimes:png,jpg,jpeg|max:2048'
-      ]);
+      $this->validate();
+
       $event = Event::create([
          'name' => $this->name,
          'description' => $this->description,
@@ -92,7 +102,9 @@ class ComponentConference extends Component
 
 
       $this->createMode = false;
-      $this->resetInput();
+      if($event){
+        $this->resetInput();
+      }
    }
 
    public function gotoListing()
