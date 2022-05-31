@@ -63,7 +63,7 @@
                         @if(count($event->applications) > 0)
                         <div class="py-4 px-8">
                            <div class="flex place-content-end mb-4">
-                              <button type="button" wire:click="$emit('openForm') class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white capitalize bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                              <button type="button" wire:click="$emit('openForm')" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white capitalize bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
                                  new event form
                               </button>
                            </div>
