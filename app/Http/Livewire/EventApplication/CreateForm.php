@@ -26,12 +26,14 @@ class CreateForm extends Component
 
    public function openForm()
    {
+     $this->resetInput();
      $this->openCreateForm = true;
    }
 
    public function closeForm()
    {
      $this->openCreateForm = false;
+     $this->resetInput();
    }
 
 
