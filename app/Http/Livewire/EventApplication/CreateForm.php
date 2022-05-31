@@ -76,7 +76,7 @@ class CreateForm extends Component
         $this->fieldName = $field['fieldName'];
         $this->placeholder = $field['placeholder'];
         $this->rules = $field['rules'];
-        $this->options = $field['options'];
+        $this->fieldOptions = $field['options'];
 
         $this->switchOption($this->fieldType);
 
