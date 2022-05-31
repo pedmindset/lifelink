@@ -13,7 +13,7 @@ class CreateForm extends Component
    public $optionMode=false, $createForm = false;
    // schema data
    public Collection $schema;
-   public $event_application;
+   public EventApplications $event_application;
    public $rules,$requiredRule, $fieldName,$fieldType,$placeholder, $fieldOptions, $fieldId;
 
    public function render()
@@ -26,8 +26,10 @@ class CreateForm extends Component
    public function editForm($event_application_id)
    {
         $this->event_application = EventApplications::firstWhere('id', $event_application_id);
+        dump($this->event_application);
         $this->createForm = true;
         $this->schema =  $this->schema->push($this->event_application->schema);
+        $this->schemaFieldsCount =  $this->schema->count();
    }
 
    public function mount($eventId, $schema = null)
