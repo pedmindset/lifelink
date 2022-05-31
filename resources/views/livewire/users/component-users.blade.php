@@ -68,7 +68,7 @@
                                  <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
                                        <div class="flex-shrink-0 h-10 w-10">
-                                          <img class="h-10 w-10 rounded-full" src="{{ $person->thumb_image_url ?? asset('img/face.png') }}"  alt="">
+                                          <img class="h-10 w-10 rounded-full" src="@if($person->thumb_image_url) {{ $person->thumb_image_url }} @else {{ asset('img/face.png') }}"  alt="">
                                        </div>
                                        <div class="ml-4">
                                           <div class="text-sm font-bold text-gray-900">
