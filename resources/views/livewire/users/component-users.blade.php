@@ -49,7 +49,7 @@
                                     Name / Email
                                  </th>
                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Address
+                                    Role
                                  </th>
                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Phone
@@ -81,7 +81,7 @@
                                     </div>
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-500">{{ $person->profile->address ?? 'N/A' }}</div>
+                                    <div class="text-sm text-gray-500">{{ $person->getRole() ?? 'N/A' }}</div>
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $person->profile->phone ?? 'N/A' }}

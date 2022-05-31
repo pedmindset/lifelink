@@ -97,4 +97,9 @@ class User extends Authenticatable implements HasMedia
    {
       return $this->belongsToMany(Award::class, 'award_users_pivot', 'award_id', 'user_id');
    }
+
+   public function getRole()
+   {
+      return $this->roles()->first()->name ?? "";
+   }
 }
