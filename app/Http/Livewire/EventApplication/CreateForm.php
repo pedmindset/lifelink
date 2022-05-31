@@ -73,6 +73,7 @@ class CreateForm extends Component
 
         $this->fieldSelected_id = $field['id'];
         $this->fieldType = $field['fieldType'];
+        $this->switchOption($this->fieldTyp);
         $this->fieldName = $field['fieldName'];
         $this->placeholder = $field['placeholder'];
         $this->rules = $field['rules'];
@@ -122,8 +123,10 @@ class CreateForm extends Component
    }
 
    public function switchOption($value){
-      $value > 2 ? $this->optionMode = true : $this->optionMode = false;
-   }
+    $value == 2 ? $this->optionMode = true : null;
+    $value == 3 ? $this->optionMode = true : null;
+    $value == 4 ? $this->optionMode = true : null;
+}
 
    public function getValue($index, $value){
       $val = $this->rules[$index]['value'];
