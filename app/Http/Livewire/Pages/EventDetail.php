@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Pages;
 
 use App\Models\Event;
 use Livewire\Component;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class EventDetail extends Component
 {
@@ -40,6 +40,6 @@ class EventDetail extends Component
       }
 
       $this->access_denied = true;
-    
+
    }
 }
