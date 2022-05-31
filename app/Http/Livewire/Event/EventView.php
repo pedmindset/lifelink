@@ -60,6 +60,6 @@ class EventView extends Component
 
    public function showForm()
    {
-      return redirect()->route('event.form', ['id' => 1]);
+    //   return redirect()->route('event.form', ['id' => 1]);
    }
 }
