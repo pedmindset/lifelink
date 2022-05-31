@@ -1,24 +1,24 @@
 <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" style="display:none" x-show="openTag" @click.outside="openTag = false" role="dialog" aria-modal="true">
    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
       <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"
-         x-transition:enter="ease-in-out duration-300" 
-         x-transition:enter-start="opacity-0" 
-         x-transition:enter-end="opacity-100" 
-         x-transition:leave="ease-in-out duration-200" 
-         x-transition:leave-start="opacity-100" 
-         x-transition:leave-end="opacity-0" 
+         x-transition:enter="ease-in-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="ease-in-out duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
          x-description="Background overlay, show/hide based on slide-over state."
       ></div>
- 
+
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
       <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full"
-         x-transition:enter="ease-in-out duration-300" 
-         x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" 
-         x-transition:leave="ease-in duration-200" 
-         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+         x-transition:enter="ease-in-out duration-300"
+         x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+         x-transition:leave="ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
          x-description="Background overlay, show/hide based on slide-over state."
       >
          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
@@ -50,7 +50,7 @@
                                  @foreach ($clients as $client)
                                  <li @click="open = false" wire:click="selectUser({{ $client }})" class="relative cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900" id="headlessui-combobox-option-31" role="option" tabindex="-1">
                                     <div class="flex items-center">
-                                       <img src="{{ $client->thumb_image_url != '' ? $client->thumb_image_url : 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80' }}" alt="" class="h-6 w-6 flex-shrink-0 rounded-full"><span class="ml-3 truncate">{{ $client->name }}</span>
+                                       <img src="{{ $client->thumb_image_url != '' ? $client->thumb_image_url : asset('img/face.png') }}" alt="" class="h-6 w-6 flex-shrink-0 rounded-full"><span class="ml-3 truncate">{{ $client->name }}</span>
                                     </div>
                                  </li>
                                  @endforeach
@@ -74,5 +74,4 @@
       </div>
    </div>
  </div>
- 
- 
+
