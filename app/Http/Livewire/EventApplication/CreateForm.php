@@ -36,7 +36,7 @@ class CreateForm extends Component
         }
 
 
-        dump($this->schema);
+        // dump($this->schema);
         $this->schemaFieldsCount =  $this->schema->count();
         $this->openCreateForm = true;
 
