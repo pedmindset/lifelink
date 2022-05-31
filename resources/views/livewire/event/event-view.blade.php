@@ -72,12 +72,17 @@
 
                         <ul class="p-3 space-y-2">
                            @forelse ($event->applications as $item)
-                           <li wire:click="showForm({{ $item->id }})" class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
+                           <li  class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
                               <div class="flex p-3 justify-between">
                                  <div class="ml-3 mr-auto">
-                                    <p class="text-sm leading-5 font-medium text-gray-600">
+                                    <p class="text-sm leading-5 font-medium text-gray-600 mr-4">
                                        {{ $item['name'] }}
                                     </p>
+                                    <button>wire:click="showForm({{ $item->id }})" class="inline-flex justify-center items-center font-semibold rounded-md p-1 text-gray-500 hover:bg-green-100 hover:text-green-500 focus:outline-none focus:bg-green-100 transition ease-in-out duration-150">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                     </button>
                                  </div>
 
                                  <a href="{{ route('event.applicants', ['id'=>$item->id]) }}"><span class="bg-cyan-600 text-white rounded-md px-3 py-1">{{ count($item->applicants) }} Applicant(s)</span></a>
