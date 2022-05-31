@@ -42,6 +42,13 @@ class CreateForm extends Component
 
    }
 
+   public function cancel()
+   {
+        $this->openCreateForm = false;
+        $this->schemaFieldsCount = 0;
+        $this->schema = collect([]);
+   }
+
    public function mount($eventId, $schema = null)
    {
       $this->eventId = $eventId;
