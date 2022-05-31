@@ -27,7 +27,7 @@ class CreateForm extends Component
    {
         $this->event_application = EventApplications::firstWhere('id', $event_application_id);
         $data = collect(json_decode($this->event_application->schema));
-        dump($data);
+        // dump($data);
         $this->schema =  $this->schema->push();
         $this->schemaFieldsCount =  $this->schema->count($data);
         $this->createForm = true;
