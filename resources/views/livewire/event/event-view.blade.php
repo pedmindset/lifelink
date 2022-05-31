@@ -72,7 +72,7 @@
 
                         <ul class="p-3 space-y-2">
                            @forelse ($event->applications as $item)
-                           <li wire:click="showForm($item)" class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
+                           <li wire:click="showForm($item, $event->id)" class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
                               <div class="flex p-3 justify-between">
                                  <div class="ml-3 mr-auto">
                                     <p class="text-sm leading-5 font-medium text-gray-600">

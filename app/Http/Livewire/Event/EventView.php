@@ -5,11 +5,13 @@ namespace App\Http\Livewire\Event;
 use App\Models\Award;
 use App\Models\Event;
 use Livewire\Component;
+use App\Models\EventApplications;
 
 class EventView extends Component
 {
     public $event;
     public $eventId;
+    public $data;
     public $schema;
     public $detailTab = false, $formTab = false, $officialTab = false, $awardTab= false, $addAwardMode=false, $addOfficialMode= false, $formCreateMode =false;
 
@@ -62,8 +64,13 @@ class EventView extends Component
 
    }
 
-   public function showForm()
+   public function showForm($formId)
    {
+        $data = EventApplications::firstWhere('id', $formId);
+        $this->data = $data;
+        $this->eventId = $data->event->id;
+        $this->schema = json_decode($this->data->schema);
+
         $this->emit('editForm', $this->schema, $this->eventId);
    }
 }
