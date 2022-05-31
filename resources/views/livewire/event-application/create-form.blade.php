@@ -82,7 +82,7 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                                  <ul class="flex space-x-2">
                                     @foreach ($schema as $s)
                                     <li  class="inline-flex items-center py-0.5 px-3 hover:bg-green-300 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700">
-                                       <span wire:click="selectField({{ $s['id'] }})" class="truncate w-12"> {{ $s['fieldName'] }} </span>
+                                       <span wire:click="selectField({{ $s['id'] }})" class="truncate w-20 h-6 cursor-pointer"> {{ $s['fieldName'] }} </span>
                                        <button wire:click="removeField({{ $s['id'] }})" type="button" class="flex-shrink-0 ml-0.5 h-4 w-4 rounded-full inline-flex items-center justify-center text-indigo-400 hover:bg-indigo-200 hover:text-indigo-500 focus:outline-none focus:bg-indigo-500 focus:text-white">
                                           <span class="sr-only">Remove small option</span>
                                           <svg class="h-2 w-2 ml-1" stroke="currentColor" fill="none" viewBox="0 0 8 8">
