@@ -67,6 +67,13 @@ class CreateForm extends Component
         $this->schema = $this->schema->whereNotIn('id', $id);
    }
 
+   public function selectField($id, $fieldType, $fieldName)
+   {
+        $this->fieldSelected_id = $id;
+        $this->fieldType = $fieldType;
+        $this->fieldName = $fieldName;
+   }
+
    public function mount($eventId, $schema = null)
    {
       $this->eventId = $eventId;
