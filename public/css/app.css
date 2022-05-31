@@ -2041,6 +2041,10 @@ select {
   width: 5rem;
 }
 
+.w-28 {
+  width: 7rem;
+}
+
 .w-40 {
   width: 10rem;
 }
