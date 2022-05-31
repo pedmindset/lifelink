@@ -14,7 +14,8 @@ class CreateForm extends Component
    // schema data
    public Collection $schema;
    public EventApplications $event_application;
-   public $rules,$requiredRule, $fieldName,$fieldType,$placeholder, $fieldOptions, $fieldId;
+
+   public $openCreateForm = false, $rules, $requiredRule, $fieldName, $fieldType, $placeholder, $fieldOptions, $fieldId;
 
    public function render()
    {
@@ -30,7 +31,7 @@ class CreateForm extends Component
         // dump($data);
         $this->schema =  $this->schema->push();
         $this->schemaFieldsCount =  $this->schema->count($data);
-        $this->createForm = true;
+        $this->openCreateForm = true;
 
    }
 
