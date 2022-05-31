@@ -22,7 +22,18 @@ class CreateForm extends Component
       return view('livewire.event-application.create-form');
    }
 
-   protected $listeners = ['editForm'];
+   protected $listeners = ['editForm', 'openForm'];
+
+   public function openForm()
+   {
+     $this->openCreateForm = true;
+   }
+
+   public function closeForm()
+   {
+     $this->openCreateForm = false;
+   }
+
 
    public function editForm($event_application_id)
    {
@@ -40,7 +51,7 @@ class CreateForm extends Component
         }
 
         $this->schemaFieldsCount =  $this->schema->count();
-        $this->openCreateForm = true;
+        $this->openForm();
 
    }
 
