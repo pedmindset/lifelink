@@ -73,11 +73,13 @@ class CreateForm extends Component
 
         $this->fieldSelected_id = $field['id'];
         $this->fieldType = $field['fieldType'];
-        $this->switchOption($this->fieldTyp);
         $this->fieldName = $field['fieldName'];
         $this->placeholder = $field['placeholder'];
         $this->rules = $field['rules'];
         $this->options = $field['options'];
+
+        $this->switchOption($this->fieldType);
+
    }
 
    public function mount($eventId, $schema = null)
