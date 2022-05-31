@@ -31,6 +31,7 @@ class CreateForm extends Component
 
         foreach ($data as $d) {
             dump($d);
+            dump($d['fieldName']);
         }
 
         $this->schema =  $this->schema->push($data);
