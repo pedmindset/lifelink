@@ -68,9 +68,6 @@ class EventView extends Component
    {
         $data = EventApplications::firstWhere('id', $formId);
         $this->data = $data;
-        $this->eventId = $data->event->id;
-        $this->schema = json_decode($this->data->schema);
-
-        $this->emit('editForm', $this->schema, $this->eventId);
+        $this->emit('editForm', $this->data);
    }
 }

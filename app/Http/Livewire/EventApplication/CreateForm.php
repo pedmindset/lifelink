@@ -13,6 +13,7 @@ class CreateForm extends Component
    public $optionMode=false, $createForm = false;
    // schema data
    public Collection $schema;
+   public $event_application;
    public $rules,$requiredRule, $fieldName,$fieldType,$placeholder, $fieldOptions, $fieldId;
 
    public function render()
@@ -22,11 +23,11 @@ class CreateForm extends Component
 
    protected $listeners = ['editForm'];
 
-   public function editForm($schema, $eventId)
+   public function editForm($event_application)
    {
-        $this->eventId = $eventId;
-        $this->schema = collect(($schema));
+        $this->event_application = $event_application;
         $this->createForm = true;
+        $this->schema = collect(($event_application->schema));
    }
 
    public function mount($eventId, $schema = null)
@@ -41,20 +42,34 @@ class CreateForm extends Component
       $this->validate([
          'name' => 'required',
       ]);
-      EventApplications::create([
-         'event_id' => $this->eventId,
-         'name' => $this->name,
-         // 'description' => $this->description,
-         'schema' => json_encode($this->schema)
-      ]);
+      if($this->event_application){
+            $this->event_application->name = $this->name;
+            $this->event_application->schema = json_encode($this->schema);
+            $this->event_application->save();
 
-      $this->dispatchBrowserEvent('alertMessage',[
-         'type'=>'info',
-         'message'=> "Successfully created!"
-      ]);
+            $this->dispatchBrowserEvent('alertMessage',[
+                'type'=>'info',
+                'message'=> "Successfully updated!"
+            ]);
 
-      $this->openCreateForm = false;
-      $this->resetInput();
+      }
+      else
+      {
+            EventApplications::create([
+                'event_id' => $this->eventId,
+                'name' => $this->name,
+                // 'description' => $this->description,
+                'schema' => json_encode($this->schema)
+            ]);
+
+            $this->dispatchBrowserEvent('alertMessage',[
+                'type'=>'info',
+                'message'=> "Successfully created!"
+            ]);
+        }
+
+        $this->openCreateForm = false;
+        $this->resetInput();
    }
 
    public function switchOption($value){
