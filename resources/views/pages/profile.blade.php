@@ -12,7 +12,7 @@
                   <img src="{{ asset('img/logo_white.png') }}" class="w-48" alt="">
                </a>
             </div>
-  
+
             <!-- Right section on desktop -->
             <div class="hidden lg:ml-4 lg:flex lg:items-center lg:py-5 lg:pr-0.5">
                <button type="button" class="flex-shrink-0 p-1 text-cyan-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white">
@@ -22,22 +22,22 @@
                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                   </svg>
                </button>
-  
+
                <!-- Profile dropdown -->
                <div class="ml-4 relative flex-shrink-0">
                   <div>
                      <button type="button" x-on:click="openDrop = !openDrop" x-on:click.away="openDrop = false" class="bg-white rounded-full flex text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                         <span class="sr-only">Open user menu</span>
-                        <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->thumb_image_url !='' ? auth()->user()->thumb_image_url : asset('img/face.jpg') }}" alt="">
+                        <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->thumb_image_url !='' ? auth()->user()->thumb_image_url : asset('img/face.png') }}" alt="">
                      </button>
                   </div>
-                  <div x-show="openDrop" style="display: none" 
-                     x-transition:enter="transition ease-out duration-200" 
-                     x-transition:enter-start="transform opacity-0 scale-95" 
-                     x-transition:enter-end="transform opacity-100 scale-100" 
-                     x-transition:leave="transition ease-in duration-100" 
-                     x-transition:leave-start="transform opacity-100 scale-100" 
-                     x-transition:leave-end="transform opacity-0 scale-95" 
+                  <div x-show="openDrop" style="display: none"
+                     x-transition:enter="transition ease-out duration-200"
+                     x-transition:enter-start="transform opacity-0 scale-95"
+                     x-transition:enter-end="transform opacity-100 scale-100"
+                     x-transition:leave="transition ease-in duration-100"
+                     x-transition:leave-start="transform opacity-100 scale-100"
+                     x-transition:leave-end="transform opacity-0 scale-95"
                      class="origin-top-right z-40 absolute -right-2 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical">
                      <a class="block px-4 py-2 text-sm text-gray-700"
                         href="{{ route('logout') }}"
@@ -50,7 +50,7 @@
                   </div>
                </div>
             </div>
-  
+
             <!-- Menu button -->
             <div class="absolute right-0 flex-shrink-0 lg:hidden">
                <button type="button" x-on:click="openMobile = true" class="bg-transparent p-2 rounded-md inline-flex items-center justify-center text-cyan-200 hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white" aria-expanded="false">
@@ -68,21 +68,21 @@
       <!-- Mobile menu, show/hide based on mobile menu state. -->
       <div class="lg:hidden" x-show="openMobile" style="display: none">
          <div x-show="openMobile"
-            x-transition:enter="duration-150 ease-out" 
-            x-transition:enter-start="opacity-0" 
-            x-transition:enter-end="opacity-100" 
-            x-transition:leave="duration-150 ease-in" 
-            x-transition:leave-start="opacity-100" 
-            x-transition:leave-end="opacity-0" 
+            x-transition:enter="duration-150 ease-out"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="duration-150 ease-in"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
             class="z-20 fixed inset-0 bg-black bg-opacity-25" aria-hidden="true">
          </div>
 
          <div x-show="openMobile"
-            x-transition:enter="duration-150 ease-out" 
-            x-transition:enter-start="opacity-0 scale-95" 
-            x-transition:enter-end="opacity-100 scale-100" 
-            x-transition:leave="duration-150 ease-in" 
-            x-transition:leave-start="opacity-100 scale-100" 
+            x-transition:enter="duration-150 ease-out"
+            x-transition:enter-start="opacity-0 scale-95"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="duration-150 ease-in"
+            x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-95"
             class="z-30 absolute top-0 inset-x-0 max-w-3xl mx-auto w-full p-2 transition transform origin-top">
             <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y divide-gray-200">
@@ -108,7 +108,7 @@
                <div class="pt-4 pb-2">
                   <div class="flex items-center px-5">
                      <div class="flex-shrink-0">
-                        <img class="h-10 w-10 rounded-full" src="{{ auth()->user()->thumb_image_url !='' ? auth()->user()->thumb_image_url : asset('img/face.jpg') }}" alt="">
+                        <img class="h-10 w-10 rounded-full" src="{{ auth()->user()->thumb_image_url !='' ? auth()->user()->thumb_image_url : asset('img/face.png') }}" alt="">
                      </div>
                      <div class="ml-3 min-w-0 flex-1">
                         <div class="text-base font-medium text-gray-800 truncate">{{ auth()->user()->name }}</div>
@@ -145,7 +145,7 @@
                         <div class="sm:flex sm:items-center sm:justify-between">
                            <div class="sm:flex sm:space-x-5">
                               <div class="flex-shrink-0">
-                                 <img class="mx-auto h-20 w-20 rounded-full" src="{{ auth()->user()->thumb_image_url !='' ? auth()->user()->thumb_image_url : asset('img/face.jpg') }}" alt="">
+                                 <img class="mx-auto h-20 w-20 rounded-full" src="{{ auth()->user()->thumb_image_url !='' ? auth()->user()->thumb_image_url : asset('img/face.png') }}" alt="">
                               </div>
                               <div class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
                                  <p class="text-sm font-medium text-gray-600">Welcome back,</p>
@@ -161,12 +161,12 @@
                           <span class="text-gray-900">{{ count(auth()->user()->applications) }}</span>
                           <span class="text-gray-600">Events applied</span>
                         </div>
-        
+
                         <div class="px-6 py-5 text-sm font-medium text-center cursor-pointer" @click="openPayment = true; openEvent = false; openAward = false;">
                           <span class="text-gray-900">{{ count(auth()->user()->payments) }}</span>
                           <span class="text-gray-600">Payments</span>
                         </div>
-        
+
                         <div class="px-6 py-5 text-sm font-medium text-center cursor-pointer" @click="openAward = true; openEvent = false; openPayment = false;">
                           <span class="text-gray-900">{{ count(auth()->user()->awards) }}</span>
                           <span class="text-gray-600">Awards</span>
@@ -414,7 +414,7 @@
                   </div>
                </section>
             </div>
-            
+
          </div>
       </div>
    </div>

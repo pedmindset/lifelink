@@ -148,7 +148,7 @@
                                     @if($photoImage)
                                     <img class="relative rounded-full w-40 h-40 border-dashed border border-gray-400" src="{{ $photoImage->temporaryUrl() }}" alt="">
                                     @else
-                                    <img class="relative rounded-full w-40 h-40 border-dashed border border-gray-400" src="{{ $profileImage != null || $profileImage != '' ? $profileImage : asset('img/face.jpg') }}" alt="">
+                                    <img class="relative rounded-full w-40 h-40 border-dashed border border-gray-400" src="{{ $profileImage != null || $profileImage != '' ? $profileImage : asset('img/face.png') }}" alt="">
                                     @endif
                                     <label for="user-photo" class="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100">
                                        <span>Change</span>

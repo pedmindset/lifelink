@@ -36,18 +36,18 @@
                <div>
                   <button type="button" x-on:click.prevent="open = !open" x-on:click.away="open = false" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                      <span class="sr-only">Open user menu</span>
-                     <img class="h-8 w-8 rounded-full border-2 border-cyan-500" src="{{ auth()->user()->thumb_image_url ?? asset('img/face.jpg') }}" alt="">
+                     <img class="h-8 w-8 rounded-full border-2 border-cyan-500" src="{{ auth()->user()->thumb_image_url ?? asset('img/face.png') }}" alt="">
                   </button>
                </div>
-               <div x-show="open" style="display: none" 
-                     x-transition:enter="transition ease-out duration-200" 
-                     x-transition:enter-start="transform opacity-0 scale-95" 
-                     x-transition:enter-end="transform opacity-100 scale-100" 
-                     x-transition:leave="transition ease-in duration-100" 
-                     x-transition:leave-start="transform opacity-100 scale-100" 
+               <div x-show="open" style="display: none"
+                     x-transition:enter="transition ease-out duration-200"
+                     x-transition:enter-start="transform opacity-0 scale-95"
+                     x-transition:enter-end="transform opacity-100 scale-100"
+                     x-transition:leave="transition ease-in duration-100"
+                     x-transition:leave-start="transform opacity-100 scale-100"
                      x-transition:leave-end="transform opacity-0 scale-95"
-                     class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" 
-                     role="menu" aria-orientation="vertical" 
+                     class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                     role="menu" aria-orientation="vertical"
                      aria-labelledby="user-menu-button" tabindex="-1">
                   {{-- <a href="{{ route('admin.profile') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a> --}}
 
@@ -109,7 +109,7 @@
                      </svg>
                      Users
                   </x-nav-link>
-      
+
                   <x-nav-link :href="route('events')" :active="request()->routeIs('events')">
                      <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -123,7 +123,7 @@
                      </svg>
                      Fees
                   </x-nav-link>
-      
+
                   <x-nav-link :href="route('awards.citations')" :active="request()->routeIs('awards.citations')">
                      <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -132,14 +132,14 @@
                      </svg>
                      Award and Citation
                   </x-nav-link>
-      
+
                   <x-nav-link :href="route('announcements')" :active="request()->routeIs('announcements')">
                      <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                      </svg>
                      Announcement
                   </x-nav-link>
-      
+
                   <x-nav-link :href="route('payments')" :active="request()->routeIs('payments')">
                      <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
@@ -150,6 +150,6 @@
             </div>
 
       </div>
-      
+
    </div>
 </div>

@@ -10,7 +10,7 @@
                   <div class="flex items-center px-4 py-4 sm:px-6">
                      <div class="min-w-0 flex-1 flex items-center">
                         <div class="flex-shrink-0">
-                           <img class="h-12 w-12 rounded-full" src="{{ $person->thumb_image_url != '' ? $person->thumb_image_url : asset('img/face.jpg') }}" alt="">
+                           <img class="h-12 w-12 rounded-full" src="{{ $person->thumb_image_url != '' ? $person->thumb_image_url : asset('img/face.png') }}" alt="">
                         </div>
                         <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                            <div>
