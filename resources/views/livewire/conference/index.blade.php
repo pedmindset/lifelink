@@ -26,6 +26,7 @@
                            End Date
                         </th>
                         <th scope="col" class="relative px-6 py-3">
+                            Forms
                            <span class="sr-only">Forms</span>
                         </th>
                         <th scope="col" class="relative px-6 py-3">

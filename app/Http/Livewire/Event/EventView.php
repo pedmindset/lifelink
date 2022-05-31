@@ -57,4 +57,9 @@ class EventView extends Component
       }
 
    }
+
+   public function showForm()
+   {
+      return redirect()->route('event.form', ['id' => 1]);
+   }
 }

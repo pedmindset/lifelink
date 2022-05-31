@@ -44,22 +44,19 @@ class ComponentConference extends Component
 
    private function resetInput()
    {
+        $this->reset(['name', 'description', 'start_date', 'end_date', 'lat', 'lng', 'event_image', 'selectedname', 'selected_id', 'viewItem']);
 
-
-    $this->reset(['name', 'description', 'start_date', 'end_date', 'lat', 'lng', 'event_image', 'selectedname', 'selected_id', 'viewItem']);
-
-
-      $this->data = Event::all();
+        $this->data = Event::all();
    }
 
    protected $rules = [
-    'name' => 'required|string|max:255',
-    'start_date' => 'required',
-    'end_date' => 'required',
-    'venue' => 'required|string',
-    'lat' => 'nullable',
-    'lng' => 'nullable',
-    'event_image' => 'file|mimes:png,jpg,jpeg|max:2048'
+        'name' => 'required|string|max:255',
+        'start_date' => 'required',
+        'end_date' => 'required',
+        'venue' => 'required|string',
+        'lat' => 'nullable',
+        'lng' => 'nullable',
+        'event_image' => 'file|mimes:png,jpg,jpeg|max:2048'
    ];
 
    public function updated($propertyName)
@@ -127,19 +124,19 @@ class ComponentConference extends Component
 
    public function edit($id)
    {
-      $record = Event::findOrFail($id);
-      $this->selected_id = $id;
-      $this->selectedname =  $record->name;
-      $this->name = $record->name;
-      $this->description = $record->description;
-      $this->start_date = $record->start_date;
-      $this->end_date = $record->end_date;
-      $this->venue = $record->venue;
-      $this->lat = $record->latitude;
-      $this->lng = $record->longitude;
-      $this->imgFile = $record->thumb_image_url;
+        $record = Event::findOrFail($id);
+        $this->selected_id = $id;
+        $this->selectedname =  $record->name;
+        $this->name = $record->name;
+        $this->description = $record->description;
+        $this->start_date = $record->start_date;
+        $this->end_date = $record->end_date;
+        $this->venue = $record->venue;
+        $this->lat = $record->latitude;
+        $this->lng = $record->longitude;
+        $this->imgFile = $record->thumb_image_url;
 
-      $this->updateMode = true;
+        $this->updateMode = true;
    }
 
    public function update()
