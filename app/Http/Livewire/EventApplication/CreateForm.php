@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 class CreateForm extends Component
 {
    public $eventId, $name, $description, $fieldSelected_id, $schemaFieldsCount = 0;
-   public $optionMode=false, $createForm = false;
+   public $optionMode = false, $createForm = false;
    // schema data
    public Collection $schema;
    public EventApplications $event_application;
@@ -60,6 +60,11 @@ class CreateForm extends Component
         $this->openCreateForm = false;
         $this->schemaFieldsCount = 0;
         $this->schema = collect([]);
+   }
+
+   public function removeField($id)
+   {
+        $this->schema = $this->schema->whereNotIn('id', $id);
    }
 
    public function mount($eventId, $schema = null)
