@@ -121,7 +121,7 @@ class ComponentAwardCitation extends Component
    {
       if ($this->selected_id) {
          $record = Award::firstWhere('id', $this->selected_id);
-         $record->user()->delete();
+         $record->user()->detach();
          $record->delete();
 
          $this->dispatchBrowserEvent('alertMessage',[
