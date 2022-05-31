@@ -142,7 +142,7 @@ class ComponentAwardCitation extends Component
 
    public function tagAwardCitation($id) {
       $record = Award::findOrFail($id);
-      $this->clients = User::role('customer')->whereNotIn('id',  $record->user->pluck['id'] )->get();
+      $this->clients = User::role('customer')->whereNotIn('id',  $record->user->pluck(['id']) )->get();
       $this->selected_id = $id;
       $this->selectedname =  $record->name;
 
