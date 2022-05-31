@@ -23,11 +23,11 @@ class CreateForm extends Component
 
    protected $listeners = ['editForm'];
 
-   public function editForm($event_application)
+   public function editForm($event_application_id)
    {
-        $this->event_application = $event_application;
+        $this->event_application = EventApplications::firstWhere('id', $event_application_id);
         $this->createForm = true;
-        $this->schema = collect(($event_application->schema));
+        $this->schema = collect(($this->event_application->schema));
    }
 
    public function mount($eventId, $schema = null)

@@ -66,8 +66,6 @@ class EventView extends Component
 
    public function showForm($formId)
    {
-        $data = EventApplications::firstWhere('id', $formId);
-        $this->data = $data;
-        $this->emit('editForm', $this->data);
+        $this->emit('editForm', $formId);
    }
 }
