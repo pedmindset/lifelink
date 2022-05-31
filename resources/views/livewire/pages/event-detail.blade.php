@@ -78,11 +78,17 @@
                         <dd class="mt-3 text-sm text-gray-400">
                            <ul role="list" class="mt-4 space-y-4">
                               @if (isset($event->fee))
-                              <li>International Delegates: ${{ $event->fee->international_amount }} US DOLLARS</li>
-                              <li>Early bird registration - {{ $event->fee->early_bird_amount }} before {{ date("F jS, Y", strtotime($event->fee->early_bird_date)) }}</li>
-                              <li>Regular registration - {{ $event->fee->standard_amount }} before {{ date("F jS, Y", strtotime($event->fee->regular_date)) }}</li>
-                              <li>Late registration {{ $event->fee->late_amount }} after {{ date("F jS, Y", strtotime($event->fee->late_date)) }}</li>
+                                @if (isset($event->fee->international_amount))
+                                <li>International Delegates: ${{ $event->fee->international_amount }} US DOLLARS</li>
+                                @endif
 
+                                @if (isset($event->fee->early_bird_amount))
+                                <li>Early bird registration - {{ $event->fee->early_bird_amount }} before {{ date("F jS, Y", strtotime($event->fee->early_bird_date)) }}</li>
+                                @endif
+                                <li>Regular registration - {{ $event->fee->standard_amount }} before {{ date("F jS, Y", strtotime($event->fee->regular_date)) }}</li>
+                                @if (isset($event->fee->late_amount))
+                                <li>Late registration {{ $event->fee->late_amount }} after {{ date("F jS, Y", strtotime($event->fee->late_date)) }}</li>
+                                @endif
                               @else
                                  <li>Fees unavailable</li>
                               @endif
@@ -123,8 +129,8 @@
             </div>
             <div class="p-8">
                <div class="border-2 border-gray-500 rounded">
-                  <iframe src="https://maps.google.com/maps?q={{ $event->latitude }}, {{ $event->longitude }}&z=15&output=embed" 
-                     height="450" frameborder="0" 
+                  <iframe src="https://maps.google.com/maps?q={{ $event->latitude }}, {{ $event->longitude }}&z=15&output=embed"
+                     height="450" frameborder="0"
                      width="100%"
                      style="border:0"
                      loading="lazy"></iframe>
@@ -134,12 +140,12 @@
       </div>
    </div>
 <div class="bg-gray-100 z-10" style="min-height: 320px;">
-    
+
   <!-- Global notification live region, render this permanently at the end of the document -->
   <div x-data="{ show: @entangle('access_denied') }" aria-live="assertive" class="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start mt-16 z-10">
     <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
       <!-- Notification panel, dynamically insert this into the live region when it needs to be displayed -->
-      
+
         <div x-show="show" x-transition:enter="transform ease-out duration-300 transition" x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
           <div class="p-4">
             <div class="flex items-start">
@@ -168,7 +174,7 @@
             </div>
           </div>
         </div>
-      
+
     </div>
   </div>
 

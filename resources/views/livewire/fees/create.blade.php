@@ -1,22 +1,22 @@
 <div class="fixed inset-0 overflow-hidden z-20" x-show="openCreate" style="display: none"
    aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
-      x-transition:enter="ease-in-out duration-500" 
-      x-transition:enter-start="opacity-0" 
-      x-transition:enter-end="opacity-100" 
+      x-transition:enter="ease-in-out duration-500"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
       x-transition:leave="ease-in-out duration-500"
-      x-transition:leave-start="opacity-100" 
-      x-transition:leave-end="opacity-0" 
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       x-description="Background overlay, show/hide based on slide-over state."
       class="absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
       <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
          <div class="w-screen max-w-lg"
             x-show="openCreate"
-            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
-            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
+            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
             x-description="Slide-over panel, show/hide based on slide-over state.">
             <form class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                <div class="py-6 px-4 bg-cyan-700 sm:px-6">
@@ -25,7 +25,7 @@
                         add fee
                      </h2>
                      <div class="ml-3 h-7 flex items-center">
-                        <button type="button" x-on:click.prevent="openCreate = false" 
+                        <button type="button" x-on:click.prevent="openCreate = false"
                         class="bg-cyan-700 rounded-md text-cyan-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                            <span class="sr-only">Close panel</span>
                            <!-- Heroicon name: outline/x -->
@@ -74,7 +74,7 @@
                            <div>
                               <label for="event" class="block text-sm font-medium text-gray-900">Select Event</label>
                               <div class="mt-1">
-                                 <select wire:model="eventId" id="event" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                 <select required wire:model="eventId" id="event" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                     <option value="null">-- Select Event --</option>
                                     @foreach ($eventData as $event)
                                     <option value="{{ $event->id }}">{{ $event->name }}</option>
@@ -86,7 +86,7 @@
                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                               <div class="sm:col-span-3">
                                  <x-input.group label="Standard" inline="true" for="standard" :error="$errors->first('standard_amount')" help-text="Standard Fee">
-                                    <input type="number" wire:model="standard_amount" min="1" step="2" placeholder="Standard Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                    <input required type="number" wire:model="standard_amount" min="1" step="2" placeholder="Standard Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">
@@ -107,7 +107,7 @@
 
                               <div class="sm:col-span-3">
                                  <x-input.group label="Regular Date" inline="true" for="regular-date" :error="$errors->first('regular_date')" help-text="Select Regular Date">
-                                    <x-input.date-picker wire:model.lazy="regular_date" id="regular-date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
+                                    <x-input.date-picker required wire:model.lazy="regular_date" id="regular-date" :time="$enableTime = true" :placeholder="$format = 'Y-m-d H:i:S'" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">

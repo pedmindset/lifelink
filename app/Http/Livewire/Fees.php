@@ -39,12 +39,12 @@ class Fees extends Component
       $this->validate([
          'eventId' => 'required|numeric',
          'standard_amount' => 'required|numeric',
-         'international_amount' => 'required|numeric',
-         'early_bird_amount' => 'required|numeric',
-         'late_amount' => 'required|numeric',
+         'international_amount' => 'numeric',
+         'early_bird_amount' => 'numeric',
+         'late_amount' => 'numeric',
          'regular_date' => 'required',
-         'early_bird_date' => 'required',
-         'late_date' => 'required',
+         'early_bird_date' => 'nullable',
+         'late_date' => 'nullable',
       ]);
       $fee = Fee::create([
          'event_id' => $this->eventId,
