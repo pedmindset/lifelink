@@ -69,14 +69,14 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                        <span class="font-semibold">{{ $value }}</span></td>
                                     </tr>
-                                    @endforeach 
+                                    @endforeach
                               </tbody>
                            </table>
                         </div>
                      </div>
                   </div>
                </div>
-                   
+
             </li>
             @empty
                <li class="flex justify-center items-center font-sans leading-7 tracking-wider font-medium text-lg text-gray-600 py-12">
@@ -87,4 +87,4 @@
       </div>
    </div>
 </div>
- 
+

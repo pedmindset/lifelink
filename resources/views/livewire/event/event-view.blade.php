@@ -74,7 +74,7 @@
                            @forelse ($event->applications as $item)
                            <li  class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
                               <div class="flex p-3 justify-between">
-                                 <div class="ml-3 mr-auto">
+                                 <div class="ml-3 mr-auto flex">
                                     <p class="text-sm leading-5 font-medium text-gray-600 mr-4">
                                        {{ $item['name'] }}
                                     </p>
