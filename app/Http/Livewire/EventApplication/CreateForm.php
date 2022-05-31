@@ -26,16 +26,12 @@ class CreateForm extends Component
 
    public function openForm()
    {
-     $this->resetInput();
-     $this->resetFieldInput();
      $this->openCreateForm = true;
    }
 
    public function closeForm()
    {
      $this->openCreateForm = false;
-     $this->resetFieldInput();
-     $this->resetInput();
    }
 
 
@@ -63,6 +59,8 @@ class CreateForm extends Component
    {
         $this->openCreateForm = false;
         $this->schemaFieldsCount = 0;
+        $this->resetInput();
+        $this->resetFieldInput();
         $this->schema = collect([]);
    }
 
