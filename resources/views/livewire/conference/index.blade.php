@@ -30,6 +30,7 @@
                            <span class="sr-only">Forms</span>
                         </th>
                         <th scope="col" class="relative px-6 py-3">
+                            Action
                            <span class="sr-only">Action</span>
                         </th>
                      </tr>
