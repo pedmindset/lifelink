@@ -27,7 +27,7 @@ class CreateForm extends Component
    public function editForm($event_application_id)
    {
         $this->event_application = EventApplications::firstWhere('id', $event_application_id);
-        $data = collect(json_decode($this->event_application->schema));
+        $data = collect(json_decode($this->event_application->schema))->toArray();
 
         foreach ($data as $d) {
             dump($d);
