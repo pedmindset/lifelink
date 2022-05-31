@@ -35,8 +35,9 @@ class CreateForm extends Component
             $this->schema =  $this->schema->push($d);
         }
 
-
-        // dump($this->schema);
+        $this->eventId = $this->event_application->event_id;
+        $this->name = $this->event_application->name;
+        $this->description = $this->event_application->description;
         $this->schemaFieldsCount =  $this->schema->count();
         $this->openCreateForm = true;
 
@@ -77,7 +78,7 @@ class CreateForm extends Component
             EventApplications::create([
                 'event_id' => $this->eventId,
                 'name' => $this->name,
-                // 'description' => $this->description,
+                'description' => $this->description,
                 'schema' => json_encode($this->schema)
             ]);
 
