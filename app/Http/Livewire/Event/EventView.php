@@ -8,13 +8,17 @@ use Livewire\Component;
 
 class EventView extends Component
 {
-   public $event;
-   public $detailTab = false, $formTab = false, $officialTab = false, $awardTab= false, $addAwardMode=false, $addOfficialMode= false, $formCreateMode =false;
+    public $event;
+    public $eventId;
+    public $schema;
+    public $detailTab = false, $formTab = false, $officialTab = false, $awardTab= false, $addAwardMode=false, $addOfficialMode= false, $formCreateMode =false;
 
    public function render()
    {
       return view('livewire.event.event-view');
    }
+
+
 
    public function mount()
    {
@@ -60,6 +64,6 @@ class EventView extends Component
 
    public function showForm()
    {
-    //   return redirect()->route('event.form', ['id' => 1]);
+        $this->emit('editForm', $this->schema, $this->eventId);
    }
 }

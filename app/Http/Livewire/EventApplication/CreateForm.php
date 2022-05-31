@@ -20,7 +20,16 @@ class CreateForm extends Component
       return view('livewire.event-application.create-form');
    }
 
-   public function mount($eventId)
+   protected $listeners = ['editForm'];
+
+   public function editForm($schema, $eventId)
+   {
+        $this->eventId = $eventId;
+        $this->schema = collect(($schema));
+        $this->createForm = true;
+   }
+
+   public function mount($eventId, $schema = null)
    {
       $this->eventId = $eventId;
       $this->createForm = true;
@@ -38,7 +47,7 @@ class CreateForm extends Component
          // 'description' => $this->description,
          'schema' => json_encode($this->schema)
       ]);
-      
+
       $this->dispatchBrowserEvent('alertMessage',[
          'type'=>'info',
          'message'=> "Successfully created!"
@@ -65,7 +74,7 @@ class CreateForm extends Component
    }
 
    public function addOption($value) {
-      
+
    }
 
    public function addField() {
@@ -85,7 +94,7 @@ class CreateForm extends Component
          'options' => $options,
       ];
 
-      
+
       if($this->fieldSelected_id == null){
          $this->schema = $this->schema->push($data);
          $this->schema->all();

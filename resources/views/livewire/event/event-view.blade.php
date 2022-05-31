@@ -26,7 +26,7 @@
                      <div x-show="showDetailTab" style="display: none">
                         <div class="py-4 px-8">
                            <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                        
+
                               <div class="sm:col-span-1">
                                  <dt class="text-sm font-medium text-gray-500">
                                     Name / Title
@@ -35,7 +35,7 @@
                                     {{ $event->name ?? 'N/A' }}
                                  </dd>
                               </div>
-                           
+
                               <div class="sm:col-span-1">
                                  <dt class="text-sm font-medium text-gray-500">
                                     Description
@@ -53,7 +53,7 @@
                            <div class="w-3/4 mx-auto text-center py-8 my-2">
                               <i class="las la-folder-plus text-6xl text-gray-600 py-3"></i>
                               <p class="text-gray-600 text-base font-bold">No Official Found</p>
-                        
+
                               <p class="mt-6 mb-10"><span @click="openAddOfficial = true" class="px-4 py-2 text-sm rounded-md text-white w-auto bg-indigo-600 hover:bg-indigo-700 cursor-pointer"> <i class="las la-plus text-md px-1"></i> Add Official </span></p>
                            </div>
                         </div>
@@ -72,7 +72,7 @@
 
                         <ul class="p-3 space-y-2">
                            @forelse ($event->applications as $item)
-                           <li wire:click="showForm()" class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
+                           <li wire:click="showForm($item)" class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
                               <div class="flex p-3 justify-between">
                                  <div class="ml-3 mr-auto">
                                     <p class="text-sm leading-5 font-medium text-gray-600">
@@ -81,7 +81,7 @@
                                  </div>
 
                                  <a href="{{ route('event.applicants', ['id'=>$item->id]) }}"><span class="bg-cyan-600 text-white rounded-md px-3 py-1">{{ count($item->applicants) }} Applicant(s)</span></a>
-                           
+
                                  {{-- <div class="pl-3">
                                     <div class="-mx-1.5 -my-1.5">
                                        <button class="rounded-md p-1 font-bold text-gray-500 hover:bg-green-100 hover:text-green-500 focus:outline-none focus:bg-green-100 transition ease-in-out duration-150">
@@ -119,16 +119,16 @@
                                  </span>
                                  {{-- <i class="las la-folder-plus text-6xl text-gray-600 py-3"></i> --}}
                                  <p class="text-gray-600 text-base font-bold">No Award / Citation Found</p>
-                           
+
                                  <p class="mt-6 mb-10"><span @click.prevent="openAddAward = true" class="px-4 py-2 text-sm rounded-md text-white w-auto bg-indigo-600 hover:bg-indigo-700 cursor-pointer"> <i class="las la-plus text-md px-1"></i> Add Award / Citation </span></p>
                               </div>
                            </div>
                         </div>
                      </div>
-                  </div>                  
+                  </div>
                </x-card>
-               
-               
+
+
             </div>
          </div>
       </div>
