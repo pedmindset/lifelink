@@ -12,7 +12,7 @@ use Livewire\WithFileUploads;
 class ComponentAwardCitation extends Component
 {
    use WithFileUploads;
-   
+
    public $data, $name, $description, $event, $selected_id, $selectedname, $selectedClient, $selectedClientName, $awardEvent;
    public $clients = [], $awardedList = [], $events = [];
    public $updateMode = false, $createMode = false, $deleteMode=false, $tagMode=false, $listingMode = false;
@@ -20,7 +20,7 @@ class ComponentAwardCitation extends Component
    {
       return view('livewire.awards.component-award-citation');
    }
-   
+
    public function mount()
    {
       $this->data = Award::all();
@@ -53,7 +53,7 @@ class ComponentAwardCitation extends Component
          'description' => $this->description,
          'uuid' => Str::uuid(),
       ]);
-      
+
       $this->dispatchBrowserEvent('alertMessage',[
          'type'=>'info',
          'message'=> "Successfully created!"
@@ -64,7 +64,7 @@ class ComponentAwardCitation extends Component
       $this->createMode = false;
       $this->resetInput();
    }
-   
+
    public function edit($id)
    {
       $record = Award::findOrFail($id);
@@ -157,7 +157,7 @@ class ComponentAwardCitation extends Component
    public function allocate()
    {
       $record = Award::findOrFail($this->selected_id);
-      if($record->user()->sync($this->selectedClient)){
+      if($record->user()->syncWithoutDetaching($this->selectedClient)){
          $this->tagMode = false;
          $this->resetInput();
          $this->dispatchBrowserEvent('alertMessage',[
