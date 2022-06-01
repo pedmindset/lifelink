@@ -83,11 +83,11 @@
                                 @endif
 
                                 @if (isset($event->fee->early_bird_amount))
-                                <li>Early bird registration - {{ number_format($event->fee->early_bird_amount, 2) }} before {{ date("F jS, Y", strtotime($event->fee->early_bird_date)) }}</li>
+                                <li>Early bird registration - GH¢{{ number_format($event->fee->early_bird_amount, 2) }} before {{ date("F jS, Y", strtotime($event->fee->early_bird_date)) }}</li>
                                 @endif
-                                <li>Regular registration - {{ number_format($event->fee->standard_amount, 2) }} before {{ date("F jS, Y", strtotime($event->fee->regular_date)) }}</li>
+                                <li>Regular registration - GH¢{{ number_format($event->fee->standard_amount, 2) }} before {{ date("F jS, Y", strtotime($event->fee->regular_date)) }}</li>
                                 @if (isset($event->fee->late_amount))
-                                <li>Late registration {{ number_format($event->fee->late_amount, 2) }} after {{ date("F jS, Y", strtotime($event->fee->late_date)) }}</li>
+                                <li>Late registration GH¢{{ number_format($event->fee->late_amount, 2) }} after {{ date("F jS, Y", strtotime($event->fee->late_date)) }}</li>
                                 @endif
                               @else
                                  <li>Fees unavailable</li>
