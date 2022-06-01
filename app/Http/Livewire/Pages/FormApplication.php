@@ -40,9 +40,8 @@ class FormApplication extends Component
 
    public function closeForm()
    {
-        $this->formFinish = false;
-
         $this->emit('closeLoginAlert');
+        $this->formFinish = false;
    }
 
    public function saveForm()

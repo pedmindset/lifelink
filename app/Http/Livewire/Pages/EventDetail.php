@@ -18,8 +18,8 @@ class EventDetail extends Component
 
    public function closeLoginAlert()
    {
-        $this->applyMode = false;
         $this->access_denied = false;
+        $this->applyMode = false;
    }
 
    public function render()
