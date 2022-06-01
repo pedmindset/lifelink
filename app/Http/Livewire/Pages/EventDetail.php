@@ -13,6 +13,14 @@ class EventDetail extends Component
    public $access_denied = false;
    public $applyMode = false, $isMobile = false;
 
+
+   protected $listeners = ['closeLoginAlert'];
+
+   public function closeLoginAlert()
+   {
+        $this->access_denied = false;
+   }
+
    public function render()
    {
       return view('livewire.pages.event-detail');

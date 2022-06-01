@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Casts\ArrayObject;
 
 class FormApplication extends Component
 {
-   public $formId,$eventId,$userId, $data, $valueIn; 
+   public $formId,$eventId,$userId, $data, $valueIn;
    public $schema;
    public $applicantData = [];
    public $isMobile = false, $formFinish = false;
@@ -24,7 +24,7 @@ class FormApplication extends Component
       $this->schema = json_decode($this->data->schema);
       return view('livewire.pages.form-application');
    }
-   
+
    public function mount($id, $userId, $isMobile)
    {
       $this->formId = $id;
@@ -32,12 +32,19 @@ class FormApplication extends Component
       $this->isMobile = $isMobile;
       // dd($this->schema[0]);
    }
-   
+
    public function getFieldValue($value, $fieldName)
    {
       $this->applicantData = array_replace($this->applicantData, [$fieldName => $value]);
    }
-   
+
+   public function closeForm()
+   {
+        $this->formFinish = false;
+
+        $this->emit('closeLoginAlert');
+   }
+
    public function saveForm()
    {
       $application = EventApplications::firstWhere('id', $this->formId);
@@ -76,6 +83,6 @@ class FormApplication extends Component
       //    }
       // }
 
-      
+
    }
 }
