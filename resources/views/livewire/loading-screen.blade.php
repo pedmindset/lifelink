@@ -38,18 +38,34 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             this.livewire.hook('message.sent', () => {
-                    Livewire.emit('setLoading', true)
+                window.dispatchEvent(
+                    new CustomEvent('loading', {
+                        detail: {
+                            loading: true
+                        }
+                    })
+                );
             })
             this.livewire.hook('message.processed', (message, component) => {
-                    Livewire.emit('setLoading', false)
+                window.dispatchEvent(
+                    new CustomEvent('loading', {
+                        detail: {
+                            loading: false
+                        }
+                    })
+                );
             })
 
 
         });
+
         // window.addEventListener('setDisplayLoading', event => {
-        //     alert('Name updated to: ' + event.detail.newName);
         //     window.dispatchEvent(
-        //         new CustomEvent('loading', { detail: { loading: false }})
+        //         new CustomEvent('loading', {
+        //             detail: {
+        //                 displayLoading: event.detail.bool
+        //             }
+        //         })
         //     );
         // })
     </script>
