@@ -24,7 +24,7 @@ class EventApplications extends Model
     {
         static::deleting(function ($form) {
             $form->applicants()->delete();
-            $form->officials()->delete();
+            // $form->officials()->delete();
 
         });
     }
@@ -39,10 +39,10 @@ class EventApplications extends Model
       return $this->belongsTo(Event::class);
    }
 
-   public function officials()
-   {
-      return $this->belongsToMany(Applicant::class, 'officials', 'applicant_id', 'event_id')->withPivot('type', 'role');
-   }
+//    public function officials()
+//    {
+//       return $this->belongsToMany(Applicant::class, 'applicants', 'applicant_id', 'event_id')->withPivot('type', 'role');
+//    }
 
    public function applicants()
    {
