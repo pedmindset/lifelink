@@ -1,5 +1,5 @@
 <div  x-data="{ displayLoading: @entangle('displayLoading') }"
-    @displayLoading.window="displayLoading = $event.detail.displayLoading">
+    @displayLoading.window="displayLoading = $event.detail.displayLoading"  x-show="displayLoading">
     <div x-data="{ loading: @entangle('loading') }"
     x-show="loading" @loading.window="loading = $event.detail.loading">
         <style>
