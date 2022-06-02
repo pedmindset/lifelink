@@ -50,8 +50,8 @@ class CreateForm extends Component
 
         $this->emit('setDisplayLoading', false);
 
-
-   }
+        $this->cancel();
+     }
 
 
    public function editForm($event_application_id)
