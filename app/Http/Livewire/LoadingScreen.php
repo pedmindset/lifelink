@@ -12,12 +12,12 @@ class LoadingScreen extends Component
 
     protected $listeners = ['setLoading', 'setDisplayLoading'];
 
-    public function setLoading(Boolean $boolean)
+    public function setLoading(bool $boolean)
     {
         $this->loading = $boolean;
     }
 
-    public function setDisplayLoading(Boolean $boolean)
+    public function setDisplayLoading(bool $boolean)
     {
         $this->loading = $boolean;
         $this->displayLoading = $boolean;
