@@ -212,7 +212,7 @@ class CreateForm extends Component
          $this->schemaFieldsCount =  $this->schemaFieldsCount + 1;
       }
       else {
-         $this->schema = $this->schema->whereNotIn('id', [$data['id']]);
+        //  $this->schema = $this->schema->whereNotIn('id', [$data['id']]);
 
          $this->schema = $this->schema->map(function ($item, $key) use ($data) {
 
