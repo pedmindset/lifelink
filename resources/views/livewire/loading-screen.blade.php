@@ -1,6 +1,6 @@
 <div  x-data="{ displayLoading: @entangle('displayLoading') }"
     @displayLoading.window="displayLoading = $event.detail.displayLoading"  x-show="displayLoading">
-    <div x-data="{ loading: @entangle('loading') }"
+    <div x-data="{ loading: false }"
     x-show="loading" @loading.window="loading = $event.detail.loading">
         <style>
             .loader {
@@ -39,9 +39,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             this.livewire.hook('message.sent', (message, component) => {
 
-                console.log(message);
+                // console.log(message);
 
-                console.log(component);
+                // console.log(component);
 
                 window.dispatchEvent(
                     new CustomEvent('loading', {

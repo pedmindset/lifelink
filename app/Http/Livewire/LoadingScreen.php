@@ -6,16 +6,16 @@ use Livewire\Component;
 
 class LoadingScreen extends Component
 {
-    public $loading = false;
+    // public $loading = false;
     public $displayLoading = true;
 
 
-    protected $listeners = ['setLoading', 'setDisplayLoading'];
+    protected $listeners = ['setDisplayLoading'];
 
-    public function setLoading(bool $boolean)
-    {
-        $this->loading = $boolean;
-    }
+    // public function setLoading(bool $boolean)
+    // {
+    //     $this->loading = $boolean;
+    // }
 
     public function setDisplayLoading(bool $boolean)
     {
