@@ -34,7 +34,12 @@ class CreateForm extends Component
 
    public function closeForm()
    {
-     $this->openCreateForm = false;
+        $this->emit('setDisplayLoading', true);
+
+        $this->openCreateForm = false;
+
+        $this->emit('setDisplayLoading', false);
+
    }
 
    public function deleteForm($event_application_id)
@@ -55,6 +60,8 @@ class CreateForm extends Component
 
    public function editForm($event_application_id)
    {
+        $this->emit('setDisplayLoading', true);
+
         $this->event_application = EventApplications::firstWhere('id', $event_application_id);
         $data = (json_decode($this->event_application->schema, true));
 
@@ -70,6 +77,9 @@ class CreateForm extends Component
 
         $this->schemaFieldsCount =  $this->schema->count();
         $this->openForm();
+
+        $this->emit('setDisplayLoading', false);
+
 
    }
 
