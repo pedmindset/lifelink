@@ -12,9 +12,9 @@ class LoadingScreen extends Component
 
     public function setLoading(Boolean $boolean)
     {
-        $this->loading = $boolean
+        $this->loading = $boolean;
     }
-    
+
     public function render()
     {
         return view('livewire.loading-screen');
