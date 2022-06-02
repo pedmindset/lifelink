@@ -64,14 +64,14 @@
 
         });
 
-        window.addEventListener('setDisplayLoading', event => {
-            window.dispatchEvent(
-                new CustomEvent('displayLoading', {
-                    detail: {
-                        displayLoading: event.detail.bool
-                    }
-                })
-            );
-        })
+        // window.addEventListener('setDisplayLoading', event => {
+        //     window.dispatchEvent(
+        //         new CustomEvent('displayLoading', {
+        //             detail: {
+        //                 displayLoading: event.detail.bool
+        //             }
+        //         })
+        //     );
+        // })
     </script>
 </div>
