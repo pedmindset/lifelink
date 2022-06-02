@@ -144,23 +144,23 @@ class CreateForm extends Component
 
    public function switchOption($value){
 
-    if($value == 2)
-    {
-        $this->optionMode = true;
+        if($value == 2)
+        {
+            $this->optionMode = true;
+        }
+        elseif ( $value == 3)
+        {
+            $this->optionMode = true;
+        }
+        elseif ( $value == 4)
+        {
+            $this->optionMode = true;
+        }
+        else
+        {
+            $this->optionMode = false;
+        }
     }
-    elseif ( $value == 3)
-    {
-        $this->optionMode = true;
-    }
-    elseif ( $value == 4)
-    {
-        $this->optionMode = true;
-    }
-    else
-    {
-        $this->optionMode = false;
-    }
-}
 
    public function getValue($index, $value){
       $val = $this->rules[$index]['value'];
@@ -194,7 +194,7 @@ class CreateForm extends Component
 
       }
       $data = [
-         'id' => $this->fieldSelected_id ?? $this->schemaFieldsCount,
+         'id' => $this->fieldSelected_id ?? $this->schemaFieldsCount + 1,
          'fieldType' => $this->fieldType,
          'fieldName' => $this->fieldName,
          'model'=> str_replace(" ", "_", strtolower( $this->fieldName )),
