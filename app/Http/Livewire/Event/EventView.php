@@ -73,4 +73,9 @@ class EventView extends Component
    {
         $this->emit('editForm', $formId);
    }
+
+   public function deleteForm($formId)
+   {
+        $this->emit('deleteForm', $formId);
+   }
 }

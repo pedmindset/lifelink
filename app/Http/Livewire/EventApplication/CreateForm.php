@@ -22,7 +22,7 @@ class CreateForm extends Component
       return view('livewire.event-application.create-form');
    }
 
-   protected $listeners = ['editForm', 'openForm'];
+   protected $listeners = ['editForm', 'openForm', 'deleteForm'];
 
    public function openForm()
    {
@@ -32,6 +32,19 @@ class CreateForm extends Component
    public function closeForm()
    {
      $this->openCreateForm = false;
+   }
+
+   public function deleteForm($event_application_id)
+   {
+        $this->event_application = EventApplications::firstWhere('id', $event_application_id);
+
+        $this->event_application->delete();
+
+        $this->dispatchBrowserEvent('alertMessage',[
+            'type'=>'info',
+            'message'=> "Successfully deleted!"
+        ]);
+
    }
 
 
@@ -121,7 +134,7 @@ class CreateForm extends Component
                 'message'=> "Successfully created!"
             ]);
         }
-        
+
 
         $this->openCreateForm = false;
         $this->resetInput();
