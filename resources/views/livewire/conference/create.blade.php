@@ -155,12 +155,12 @@
                                  {{-- @if ($event_image) --}}
 
                                  {{-- @endif --}}
-                                 @if ($$event_image)
+                                 @if ($event_image)
                                     <div id="preview-container" class="relative hidden">
                                         <img id="preview" class="inset-0 w-full h-36 object-cover bg-center rounded-md">
                                         <span @click="$refs.uploader.click()" class="px-4 py-1 cursor-pointer text-white bg-red-300 text-xs rounded shadow">Change</span>
                                     </div>
-                                    <img src="{{ $photo->temporaryUrl() }}">
+                                    <img src="{{ $event_image->temporaryUrl() }}">
                                     @else
                                     <div id="upload" class="w-full">
                                         <label class="flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
