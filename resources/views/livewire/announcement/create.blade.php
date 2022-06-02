@@ -1,12 +1,12 @@
 <div class="fixed inset-0 overflow-hidden z-20" x-show="openCreate" style="display:none"
    aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
-      x-transition:enter="ease-in-out duration-500" 
-      x-transition:enter-start="opacity-0" 
-      x-transition:enter-end="opacity-100" 
-      x-transition:leave="ease-in-out duration-500" 
-      x-transition:leave-start="opacity-100" 
-      x-transition:leave-end="opacity-0" 
+      x-transition:enter="ease-in-out duration-500"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in-out duration-500"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       x-description="Background overlay, show/hide based on slide-over state."
       class="absolute inset-0 overflow-hidden">
 
@@ -14,11 +14,11 @@
 
       <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
          <div class="w-screen max-w-md"
-            x-show="openCreate" 
-            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
-            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
+            x-show="openCreate"
+            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
             x-description="Slide-over panel, show/hide based on slide-over state.">
             <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                <div class="py-6 px-4 bg-cyan-700 sm:px-6">
@@ -27,7 +27,7 @@
                         new announcement
                      </h2>
                      <div class="ml-3 h-7 flex items-center">
-                        <button type="button" x-on:click.prevent="openCreate = false" 
+                        <button type="button" x-on:click.prevent="openCreate = false"
                         class="bg-cyan-700 rounded-md text-cyan-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                            <span class="sr-only">Close panel</span>
                            <!-- Heroicon name: outline/x -->
@@ -92,7 +92,7 @@
                               </div> --}}
 
                               <div class="mt-2 sm:mt-0">
-                                 <select wire:model="selectedTag" id="subject" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base capitalize border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                 <select wire:model.lazy="selectedTag" id="subject" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base capitalize border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                     <option value="null">-- Select Option --</option>
                                     @foreach ($tags as $tag)
                                     <option class="capitalize" value="{{ $tag->id }}">{{ $tag->name }}</option>
@@ -104,16 +104,16 @@
                            <div>
                               <label for="subject" class="block text-sm font-medium text-gray-900">Title</label>
                               <div class="mt-1">
-                                 <input type="text" wire:model="subject" id="subject" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" wire:model.lazy="subject" id="subject" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="content" class="block text-sm font-medium text-gray-900">Content</label>
                               <div class="mt-1">
-                                 <textarea id="content" wire:model="content" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
+                                 <textarea id="content" wire:model.lazy="content" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
                               </div>
                            </div>
-                           
+
                         </div>
                      </div>
                      <!-- /End replace -->

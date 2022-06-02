@@ -1,23 +1,23 @@
 <div class="fixed inset-0 overflow-hidden z-20" x-show="openEdit" style="display: none"
    aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
-      x-transition:enter="ease-in-out duration-500" 
-      x-transition:enter-start="opacity-0" 
-      x-transition:enter-end="opacity-100" 
-      x-transition:leave="ease-in-out duration-500" 
-      x-transition:leave-start="opacity-100" 
-      x-transition:leave-end="opacity-0" 
+      x-transition:enter="ease-in-out duration-500"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in-out duration-500"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       x-description="Background overlay, show/hide based on slide-over state."
       class="absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
       <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
          <div class="w-screen max-w-md"
-            x-show="openEdit" 
-            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
-            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
+            x-show="openEdit"
+            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
             x-description="Slide-over panel, show/hide based on slide-over state.">
             <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                <div class="py-6 px-4 bg-blue-700 sm:px-6">
@@ -26,7 +26,7 @@
                         editing fee for ( {{ $selectedname ?? 'N/A' }} )
                      </h2>
                      <div class="ml-3 h-7 flex items-center">
-                        <button type="button" x-on:click.prevent="openEdit = false" 
+                        <button type="button" x-on:click.prevent="openEdit = false"
                         class="bg-blue-700 rounded-md text-blue-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                            <span class="sr-only">Close panel</span>
                            <!-- Heroicon name: outline/x -->
@@ -77,7 +77,7 @@
                            {{-- <div>
                               <label for="event" class="block text-sm font-medium text-gray-900">Select Event</label>
                               <div class="mt-1">
-                                 <select wire:model="selectedId" id="event" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                 <select wire:model.lazy="selectedId" id="event" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                     <option value="null">-- Select Event --</option>
                                     @foreach ($eventData as $event)
                                     <option value="{{ $event->id }}">{{ $event->name }}</option>
@@ -89,22 +89,22 @@
                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                               <div class="sm:col-span-3">
                                  <x-input.group label="Standard" inline="true" for="standard" :error="$errors->first('standard_amount')" help-text="Standard Fee">
-                                    <input type="number" wire:model="standard_amount" min="1" step="2" placeholder="Standard Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                    <input type="number" wire:model.lazy="standard_amount" min="1" step="2" placeholder="Standard Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">
                                  <x-input.group label="International" inline="true" for="international" :error="$errors->first('international_amount')" help-text="International Fee">
-                                    <input type="number" wire:model="international_amount" min="1" step="2" placeholder="International Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                    <input type="number" wire:model.lazy="international_amount" min="1" step="2" placeholder="International Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">
                                  <x-input.group label="Early Bird" inline="true" for="early-bird" :error="$errors->first('early_bird_amount')" help-text="Early Bird Fee">
-                                    <input type="number" id="early-bird" wire:model="early_bird_amount" min="1" step="2" placeholder="Early Bird Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                    <input type="number" id="early-bird" wire:model.lazy="early_bird_amount" min="1" step="2" placeholder="Early Bird Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">
                                  <x-input.group label="Late Fee" inline="true" for="late-fee" :error="$errors->first('late_amount')" help-text="Late Fee">
-                                    <input type="number" id="late-fee" wire:model="late_amount" min="1" step="2" placeholder="Late Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                    <input type="number" id="late-fee" wire:model.lazy="late_amount" min="1" step="2" placeholder="Late Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                  </x-input.group>
                               </div>
 

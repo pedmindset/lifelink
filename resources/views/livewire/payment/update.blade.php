@@ -1,23 +1,23 @@
 <div class="fixed inset-0 overflow-hidden z-20" x-show="openEdit" style="display:none"
    aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
-      x-transition:enter="ease-in-out duration-500" 
-      x-transition:enter-start="opacity-0" 
-      x-transition:enter-end="opacity-100" 
-      x-transition:leave="ease-in-out duration-500" 
-      x-transition:leave-start="opacity-100" 
-      x-transition:leave-end="opacity-0" 
+      x-transition:enter="ease-in-out duration-500"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in-out duration-500"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       x-description="Background overlay, show/hide based on slide-over state."
       class="absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
       <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
          <div class="w-screen max-w-md"
-            x-show="openEdit" 
-            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
-            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
+            x-show="openEdit"
+            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
             x-description="Slide-over panel, show/hide based on slide-over state.">
             <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                <div class="py-6 px-4 bg-blue-700 sm:px-6">
@@ -26,7 +26,7 @@
                         editing ( {{ $selectedname ?? 'N/A' }} )
                      </h2>
                      <div class="ml-3 h-7 flex items-center">
-                        <button type="button" x-on:click.prevent="openEdit = false" 
+                        <button type="button" x-on:click.prevent="openEdit = false"
                         class="bg-blue-700 rounded-md text-blue-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                            <span class="sr-only">Close panel</span>
                            <!-- Heroicon name: outline/x -->
@@ -74,20 +74,20 @@
                      <div class="h-full" aria-hidden="true">
 
                         <div class="space-y-3 pb-5">
-                           <input type="hidden" wire:model="selected_id">
+                           <input type="hidden" wire:model.lazy="selected_id">
                            <div>
                               <label for="name" class="block text-sm font-medium text-gray-900">Name</label>
                               <div class="mt-1">
-                                 <input type="text" wire:model="name" id="name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" wire:model.lazy="name" id="name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="description" class="block text-sm font-medium text-gray-900">Description</label>
                               <div class="mt-1">
-                                 <input type="text" wire:model="description" id="description" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" wire:model.lazy="description" id="description" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
-                           
+
                         </div>
                      </div>
                      <!-- /End replace -->

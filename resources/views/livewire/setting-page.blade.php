@@ -119,7 +119,7 @@
                                  <div>
                                     <label for="address" class="block text-sm font-medium text-gray-700"> Address </label>
                                     <div class="mt-1">
-                                      <textarea id="address" rows="3" wire:model="address" class="shadow-sm focus:ring-sky-500 focus:border-sky-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                      <textarea id="address" rows="3" wire:model.lazy="address" class="shadow-sm focus:ring-sky-500 focus:border-sky-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
                                     </div>
                                     {{-- <p class="mt-2 text-sm text-gray-500">Brief description for your profile. URLs are hyperlinked.</p> --}}
                                  </div>
@@ -153,7 +153,7 @@
                                     <label for="user-photo" class="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100">
                                        <span>Change</span>
                                        <span class="sr-only"> user photo</span>
-                                       <input type="file" x-ref="uploader" wire:model="photoImage" id="user-photo" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md">
+                                       <input type="file" x-ref="uploader" wire:model.lazy="photoImage" id="user-photo" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md">
                                     </label>
 
                                  </div>
@@ -163,17 +163,17 @@
                            <div class="mt-6 grid grid-cols-12 gap-6">
                               <div class="col-span-12 sm:col-span-6">
                                  <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                                 <input type="text" required id="first-name" wire:model="firstName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                                 <input type="text" required id="first-name" wire:model.lazy="firstName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                               </div>
 
                               <div class="col-span-12 sm:col-span-6">
                                  <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
-                                 <input type="text" required id="last-name" wire:model="lastName"  class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                                 <input type="text" required id="last-name" wire:model.lazy="lastName"  class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                               </div>
 
                               <div class="col-span-12 sm:col-span-6">
                                  <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
-                                 <input type="tel" id="phone" wire:model="phone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                                 <input type="tel" id="phone" wire:model.lazy="phone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                               </div>
 
                            </div>
@@ -198,12 +198,12 @@
                            <div class="mt-6 grid grid-cols-12 gap-6">
                               <div class="col-span-12 sm:col-span-6">
                                  <label for="old-password" class="block text-sm font-medium text-gray-700">Old Password</label>
-                                 <input type="password" required id="old-password" wire:model="oldPassword" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                                 <input type="password" required id="old-password" wire:model.lazy="oldPassword" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                               </div>
 
                               <div class="col-span-12 sm:col-span-6">
                                  <label for="new-password" class="block text-sm font-medium text-gray-700">New Password</label>
-                                 <input type="password" required id="new-password" wire:model="newPassword"  class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                                 <input type="password" required id="new-password" wire:model.lazy="newPassword"  class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                               </div>
                            </div>
                         </div>
@@ -224,7 +224,7 @@
                            <div class="mt-6 grid grid-cols-12 gap-6">
                               <div class="col-span-12">
                                  <label for="dues" class="block text-sm font-medium text-gray-700">Aluminia Dues</label>
-                                 <input type="numeric" step="2" required id="dues" wire:model="aluminiaDue" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                                 <input type="numeric" step="2" required id="dues" wire:model.lazy="aluminiaDue" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                               </div>
                            </div>
                         </div>

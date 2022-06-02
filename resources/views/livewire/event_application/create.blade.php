@@ -1,12 +1,12 @@
 <div class="fixed inset-0 overflow-hidden z-20" x-show="openCreate"
 aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
-      x-transition:enter="ease-in-out duration-500" 
-      x-transition:enter-start="opacity-0" 
-      x-transition:enter-end="opacity-100" 
-      x-transition:leave="ease-in-out duration-500" 
-      x-transition:leave-start="opacity-100" 
-      x-transition:leave-end="opacity-0" 
+      x-transition:enter="ease-in-out duration-500"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in-out duration-500"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       x-description="Background overlay, show/hide based on slide-over state."
       class="absolute inset-0 overflow-hidden">
 
@@ -14,11 +14,11 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
 
       <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
          <div class="w-screen max-w-xl"
-            x-show="openCreate" 
-            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
-            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
+            x-show="openCreate"
+            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
             x-description="Slide-over panel, show/hide based on slide-over state.">
             <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                <div class="py-6 px-4 bg-cyan-700 sm:px-6">
@@ -27,7 +27,7 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                         new event form
                      </h2>
                      <div class="ml-3 h-7 flex items-center">
-                        <button type="button" x-on:click.prevent="openCreate = false" 
+                        <button type="button" x-on:click.prevent="openCreate = false"
                         class="bg-cyan-700 rounded-md text-cyan-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                            <span class="sr-only">Close panel</span>
                            <!-- Heroicon name: outline/x -->
@@ -98,7 +98,7 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                                     </div>
                                  </li>
                               </ul>
-                              
+
                            </div>
                         </div>
 
@@ -106,12 +106,12 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                            <div class="mt-6">
                               <label for="name" class="sr-only">Name</label>
                               <div class="relative rounded-md shadow-sm sm:min-w-0 sm:flex-1">
-                                <input type="text" name="name" wire:model="fieldName" id="name" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-32 sm:text-sm border-gray-300 rounded-md" placeholder="Enter field name">
+                                <input type="text" name="name" wire:model.lazy="fieldName" id="name" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-32 sm:text-sm border-gray-300 rounded-md" placeholder="Enter field name">
                                 <div class="absolute inset-y-0 right-0 flex items-center">
                                   <span class="h-4 w-px bg-gray-200" aria-hidden="true"></span>
 
                                   <label for="type" class="sr-only">Type</label>
-                                  <select id="type" wire:model="fieldType" wire:change="switchOption($event.target.value)" name="type" class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-4 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md">
+                                  <select id="type" wire:model.lazy="fieldType" wire:change="switchOption($event.target.value)" name="type" class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-4 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md">
                                     <option value="1">Text</option>
                                     <option value="2">Textarea</option>
                                     <option value="3">Select Option</option>
@@ -123,10 +123,10 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                            </div>
 
                            <div>
-                              <input type="text" id="rules" wire:model="rules" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-32 sm:text-sm border-gray-300 rounded-md" placeholder="Enter set of rules">
+                              <input type="text" id="rules" wire:model.lazy="rules" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-32 sm:text-sm border-gray-300 rounded-md" placeholder="Enter set of rules">
                            </div>
                            <div x-show="openOptions">
-                              <input type="text" wire:model="fieldOptions" class="focus:ring-indigo-600 focus:border-indigo-600 block w-full pr-32 sm:text-sm border-gray-300 rounded-md" placeholder="Enter your options, use comma (,) to seperate the options"/>
+                              <input type="text" wire:model.lazy="fieldOptions" class="focus:ring-indigo-600 focus:border-indigo-600 block w-full pr-32 sm:text-sm border-gray-300 rounded-md" placeholder="Enter your options, use comma (,) to seperate the options"/>
                            </div>
                         </div>
 

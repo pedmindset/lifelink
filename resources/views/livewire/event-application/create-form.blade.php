@@ -101,25 +101,25 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                               <div>
                                  <label for="form-name" class="block text-sm font-medium text-gray-900">Name</label>
                                  <div class="mt-1">
-                                    <input type="text" wire:model="name" id="form-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                    <input type="text" wire:model.lazy="name" id="form-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                                  </div>
                               </div>
                               <div>
                                  <label for="form-description" class="block text-sm font-medium text-gray-900">Description</label>
                                  <div class="mt-1">
-                                    <textarea id="form-description" wire:model="description" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
+                                    <textarea id="form-description" wire:model.lazy="description" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
                                  </div>
                               </div>
 
                               <div class="mt-6">
                                  <label for="field-name" class="text-gray-600 text-sm pb-1">Field Name</label>
                                  <div class="relative rounded-md shadow-sm sm:min-w-0 sm:flex-1">
-                                    <input type="text" wire:model="fieldName" id="field-name" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-32 sm:text-sm border-gray-300 rounded-md" placeholder="Enter field name">
+                                    <input type="text" wire:model.lazy="fieldName" id="field-name" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-32 sm:text-sm border-gray-300 rounded-md" placeholder="Enter field name">
                                     <div class="absolute inset-y-0 right-0 flex items-center">
                                        <span class="h-4 w-px bg-gray-200" aria-hidden="true"></span>
 
                                        <label for="field-type" class="sr-only">Type</label>
-                                       <select id="field-type" wire:model="fieldType" wire:change="switchOption($event.target.value)" class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-4 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md">
+                                       <select id="field-type" wire:model.lazy="fieldType" wire:change="switchOption($event.target.value)" class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-4 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md">
                                           <option >--Select Type--</option>
                                           <option value="1">Text</option>
                                           <option value="2">Textarea</option>
@@ -134,7 +134,7 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                               <div>
                                  <label for="field-placeholder" class="text-gray-600 text-sm pb-1">Field Placeholder</label>
                                  <div class="mt-1">
-                                    <input type="text" wire:model="placeholder" id="field-placeholder" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                    <input type="text" wire:model.lazy="placeholder" id="field-placeholder" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                                  </div>
                               </div>
 
@@ -142,7 +142,7 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                                  <label for="field-rules" class="text-gray-600 text-sm pb-1">Rules</label>
                                  <div class="relative flex items-start">
                                     <div class="flex items-center h-5">
-                                       <input id="required-rule" wire:model="rules" aria-describedby="rule-required" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                       <input id="required-rule" wire:model.lazy="rules" aria-describedby="rule-required" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                     </div>
                                     <div class="ml-3 text-sm">
                                        <label for="required-rule" class="font-medium text-gray-700">Required</label>
@@ -151,7 +151,7 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                               </div>
 
                               <div x-show="openOptions">
-                                 <input type="text" wire:model="fieldOptions" class="focus:ring-indigo-600 focus:border-indigo-600 block w-full pr-32 sm:text-sm border-gray-300 rounded-md" placeholder="Enter your options, use comma (,) to seperate the options"/>
+                                 <input type="text" wire:model.lazy="fieldOptions" class="focus:ring-indigo-600 focus:border-indigo-600 block w-full pr-32 sm:text-sm border-gray-300 rounded-md" placeholder="Enter your options, use comma (,) to seperate the options"/>
                               </div>
                            </div>
 

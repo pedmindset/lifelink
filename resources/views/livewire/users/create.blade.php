@@ -1,23 +1,23 @@
 <div class="fixed inset-0 overflow-hidden z-20" x-show="openCreate" style="display:none"
    aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
-      x-transition:enter="ease-in-out duration-500" 
-      x-transition:enter-start="opacity-0" 
-      x-transition:enter-end="opacity-100" 
-      x-transition:leave="ease-in-out duration-500" 
-      x-transition:leave-start="opacity-100" 
-      x-transition:leave-end="opacity-0" 
+      x-transition:enter="ease-in-out duration-500"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in-out duration-500"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       x-description="Background overlay, show/hide based on slide-over state."
    class="absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
       <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
          <div class="w-screen max-w-md"
-            x-show="openCreate" 
-            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
-            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
+            x-show="openCreate"
+            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
             x-description="Slide-over panel, show/hide based on slide-over state.">
             <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                <div class="py-6 px-4 bg-cyan-700 sm:px-6">
@@ -26,7 +26,7 @@
                         new user
                      </h2>
                      <div class="ml-3 h-7 flex items-center">
-                        <button type="button" x-on:click.prevent="openCreate = false" 
+                        <button type="button" x-on:click.prevent="openCreate = false"
                         class="bg-cyan-700 rounded-md text-cyan-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                            <span class="sr-only">Close panel</span>
                            <!-- Heroicon name: outline/x -->
@@ -77,48 +77,48 @@
                            <div>
                               <label for="first-name" class="block text-sm font-medium text-gray-900">First Name</label>
                               <div class="mt-1">
-                                 <input type="text" wire:model="firstname" id="first-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" wire:model.lazy="firstname" id="first-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="last-name" class="block text-sm font-medium text-gray-900">Last Name</label>
                               <div class="mt-1">
-                                 <input type="text" wire:model="lastname" id="last-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" wire:model.lazy="lastname" id="last-name" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="email" class="block text-sm font-medium text-gray-900">Email Address</label>
                               <div class="mt-1">
-                                 <input type="email" wire:model="email" id="email" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="email" wire:model.lazy="email" id="email" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="password" class="block text-sm font-medium text-gray-900">Password</label>
                               <div class="mt-1">
-                                 <input type="password" wire:model="password" name="password" id="password" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="password" wire:model.lazy="password" name="password" id="password" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="confirm-password" class="block text-sm font-medium text-gray-900">Confirm Password</label>
                               <div class="mt-1">
-                                 <input type="password" wire:model="password_confirmation" name="password_confirmation" id="confirm-password" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="password" wire:model.lazy="password_confirmation" name="password_confirmation" id="confirm-password" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="phone" class="block text-sm font-medium text-gray-900">Phone</label>
                               <div class="mt-1">
-                                 <input type="tel" id="phone" wire:model="phone" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="tel" id="phone" wire:model.lazy="phone" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="address" class="block text-sm font-medium text-gray-900">Address</label>
                               <div class="mt-1">
-                                 <input type="text" id="address" wire:model="address" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                 <input type="text" id="address" wire:model.lazy="address" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                               </div>
                            </div>
                            <div>
                               <label for="roles" class="block text-sm font-medium text-gray-700">Role</label>
-                              <select id="roles" wire:model="rolename" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                              <select id="roles" wire:model.lazy="rolename" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                  @foreach ($roles as $role)
                                  <option value="{{ $role->name }}">{{ $role->name }}</option>
                                  @endforeach

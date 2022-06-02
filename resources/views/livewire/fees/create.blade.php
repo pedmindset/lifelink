@@ -74,7 +74,7 @@
                            <div>
                               <label for="event" class="block text-sm font-medium text-gray-900">Select Event</label>
                               <div class="mt-1">
-                                 <select required wire:model="eventId" id="event" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                 <select required wire:model.lazy="eventId" id="event" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                     <option value="null">-- Select Event --</option>
                                     @foreach ($eventData as $event)
                                     <option value="{{ $event->id }}">{{ $event->name }}</option>
@@ -86,22 +86,22 @@
                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                               <div class="sm:col-span-3">
                                  <x-input.group label="Standard" inline="true" for="standard" :error="$errors->first('standard_amount')" help-text="Standard Fee">
-                                    <input required type="number" wire:model="standard_amount" min="1" step="2" placeholder="Standard Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                    <input required type="number" wire:model.lazy="standard_amount" min="1" step="2" placeholder="Standard Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">
                                  <x-input.group label="International" inline="true" for="international" :error="$errors->first('international_amount')" help-text="International Fee">
-                                    <input type="number" wire:model="international_amount" min="1" step="2" placeholder="International Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                    <input type="number" wire:model.lazy="international_amount" min="1" step="2" placeholder="International Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">
                                  <x-input.group label="Early Bird" inline="true" for="early-bird" :error="$errors->first('early_bird_amount')" help-text="Early Bird Fee">
-                                    <input type="number" id="early-bird" wire:model="early_bird_amount" min="1" step="2" placeholder="Early Bird Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                    <input type="number" id="early-bird" wire:model.lazy="early_bird_amount" min="1" step="2" placeholder="Early Bird Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                  </x-input.group>
                               </div>
                               <div class="sm:col-span-3">
                                  <x-input.group label="Late Fee" inline="true" for="late-fee" :error="$errors->first('late_amount')" help-text="Late Fee">
-                                    <input type="number" id="late-fee" wire:model="late_amount" min="1" step="2" placeholder="Late Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                    <input type="number" id="late-fee" wire:model.lazy="late_amount" min="1" step="2" placeholder="Late Fee" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                  </x-input.group>
                               </div>
 

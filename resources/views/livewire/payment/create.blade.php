@@ -1,12 +1,12 @@
 <div class="fixed inset-0 overflow-hidden z-20" x-show="openCreate" style="display:none"
    aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
    <div
-      x-transition:enter="ease-in-out duration-500" 
-      x-transition:enter-start="opacity-0" 
-      x-transition:enter-end="opacity-100" 
-      x-transition:leave="ease-in-out duration-500" 
-      x-transition:leave-start="opacity-100" 
-      x-transition:leave-end="opacity-0" 
+      x-transition:enter="ease-in-out duration-500"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in-out duration-500"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       x-description="Background overlay, show/hide based on slide-over state."
       class="absolute inset-0 overflow-hidden">
 
@@ -14,11 +14,11 @@
 
       <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
          <div class="w-screen max-w-md"
-            x-show="openCreate" 
-            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" 
-            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
-            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" 
+            x-show="openCreate"
+            x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
             x-description="Slide-over panel, show/hide based on slide-over state.">
             <div class="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
                <div class="py-6 px-4 bg-cyan-700 sm:px-6">
@@ -27,7 +27,7 @@
                         new payment
                      </h2>
                      <div class="ml-3 h-7 flex items-center">
-                        <button type="button" x-on:click.prevent="openCreate = false" 
+                        <button type="button" x-on:click.prevent="openCreate = false"
                         class="bg-cyan-700 rounded-md text-cyan-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                            <span class="sr-only">Close panel</span>
                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -76,7 +76,7 @@
                               <div class="sm:col-span-6">
                                  <label for="user" class="block text-sm font-medium text-gray-900">Select Client</label>
                                  <div class="mt-1">
-                                    <select wire:model="customer" id="user" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <select wire:model.lazy="customer" id="user" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                        <option value="null">-- Select Client --</option>
                                        @foreach ($users as $user)
                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -89,7 +89,7 @@
                               <div class="sm:col-span-6">
                                  <label for="eventPay" class="block text-sm font-medium text-gray-900">Select Event</label>
                                  <div class="mt-1">
-                                    <select wire:model="event_id" id="eventPay" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <select wire:model.lazy="event_id" id="eventPay" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                        <option value="null">-- Select Event --</option>
                                        @foreach ($eventsApp as $evt)
                                        <option value="{{ $evt->id }}">{{ $evt->name }}</option>
@@ -106,12 +106,12 @@
                                     <legend class="sr-only">Payment reason</legend>
                                     <div class="space-y-2 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
                                        <div class="flex items-center">
-                                          <input id="event-radio" wire:model="payment_for_event" wire:change.prevent="getPaymentFor(0)" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                          <input id="event-radio" wire:model.lazy="payment_for_event" wire:change.prevent="getPaymentFor(0)" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                                           <label for="event-radio" class="ml-3 block text-sm font-medium text-gray-700"> Event </label>
                                        </div>
-                                 
+
                                        <div class="flex items-center">
-                                          <input id="aluminia-radio" wire:model="payment_for_aluminia" wire:change.prevent="getPaymentFor(1)" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                          <input id="aluminia-radio" wire:model.lazy="payment_for_aluminia" wire:change.prevent="getPaymentFor(1)" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                                           <label for="aluminia-radio" class="ml-3 block text-sm font-medium text-gray-700"> Aluminia </label>
                                        </div>
                                     </div>
@@ -121,16 +121,16 @@
                            <div>
                               <label for="description" class="block text-sm font-medium text-gray-900">Description</label>
                               <div class="mt-1">
-                                 <textarea id="description" wire:model="description" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
+                                 <textarea id="description" wire:model.lazy="description" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
                               </div>
                            </div>
 
                            <div class="">
                               <x-input.group label="Amount" inline="true" for="amount" :error="$errors->first('amount')" help-text="Amount">
-                                 <input type="number" wire:model="amount" min="1" step="2" placeholder="Amount" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                 <input type="number" wire:model.lazy="amount" min="1" step="2" placeholder="Amount" class="mt-1 block w-full py-2 px-3 border-b border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                               </x-input.group>
                            </div>
-                           
+
                         </div>
                      </div>
                      <!-- /End replace -->
