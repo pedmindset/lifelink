@@ -156,7 +156,7 @@ aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
                            </div>
 
                            <div class="p-8 w-full overflow-hidden">
-                              <button wire:click.prevent="addField()" class="w-full flex justify-center items-center bg-green-400 text-white rounded-md hover:bg-green-600 hover:shadow-md py-2 px-4 border border-transparent shadow-sm text-sm font-medium focus:outline-none">Add Field</button>
+                              <button wire:click.prevent="addField()" class="w-full flex justify-center items-center bg-green-400 text-white rounded-md hover:bg-green-600 hover:shadow-md py-2 px-4 border border-transparent shadow-sm text-sm font-medium focus:outline-none">{{ $field_save_action }}</button>
                            </div>
 
                         </div>

@@ -11,6 +11,7 @@ class CreateForm extends Component
 {
    public $eventId, $name, $description, $fieldSelected_id = null, $schemaFieldsCount = 0;
    public $optionMode = false, $createForm = false;
+   public $field_save_action = 'Add Field';
    // schema data
    public Collection $schema;
    public ?EventApplications $event_application = null;
@@ -96,6 +97,7 @@ class CreateForm extends Component
         $this->fieldOptions = $field['options'];
 
         $this->switchOption($this->fieldType);
+        $this->field_save_action = 'Edit Field';
 
    }
 
@@ -229,6 +231,7 @@ class CreateForm extends Component
 
    private function resetFieldInput()
    {
+      $this->field_save_action = 'Add Field';
       $this->rules = null;
       $this->fieldName = null;
       $this->fieldType = null;
