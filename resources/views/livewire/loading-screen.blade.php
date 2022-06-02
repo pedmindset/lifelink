@@ -37,7 +37,12 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            this.livewire.hook('message.sent', () => {
+            this.livewire.hook('message.sent', (message, component) => {
+
+                console.log(message);
+
+                console.log(component);
+
                 window.dispatchEvent(
                     new CustomEvent('loading', {
                         detail: {
