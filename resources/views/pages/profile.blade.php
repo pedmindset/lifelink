@@ -342,7 +342,7 @@
                                        <div class="bg-white rounded-md border-gray-300 border p-3 shadow-sm my-1">
                                           <div class="ml-2 mr-4 text-sm">
                                              <span class="font-semibold capitalize">{{ $noti->subject }}</span>
-                                             <span class="block text-gray-500 truncate">{{ $noti->content }}</span>
+                                             <span class="block text-gray-500 ">{{ $noti->content }}</span>
                                           </div>
                                        </div>
                                     @empty
@@ -371,7 +371,7 @@
                                     <div class="bg-white rounded-md border-gray-300 border p-3 shadow-sm my-1">
                                        <div class="ml-2 mr-4 text-sm">
                                           <span class="font-semibold capitalize">{{ $noti->subject }}</span>
-                                          <span class="block text-gray-500 truncate">{{ $noti->content }}</span>
+                                          <span class="block text-gray-500 ">{{ $noti->content }}</span>
                                        </div>
                                     </div>
                                     @empty
@@ -399,7 +399,7 @@
                                        <div class="bg-white rounded-md border-gray-300 border p-3 shadow-sm my-1">
                                           <div class="ml-2 mr-4 text-sm">
                                              <span class="font-semibold capitalize">{{ $noti->subject }}</span>
-                                             <span class="block text-gray-500 truncate">{{ $noti->content }}</span>
+                                             <span class="block text-gray-500 ">{{ $noti->content }}</span>
                                           </div>
                                        </div>
                                     @empty
