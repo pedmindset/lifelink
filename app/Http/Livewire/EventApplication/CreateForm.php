@@ -38,6 +38,7 @@ class CreateForm extends Component
 
    public function deleteForm($event_application_id)
    {
+       $this->emit('setDisplayLoading', true);
         $this->event_application = EventApplications::firstWhere('id', $event_application_id);
 
         $this->event_application->delete();
@@ -46,6 +47,9 @@ class CreateForm extends Component
             'type'=>'info',
             'message'=> "Successfully deleted!"
         ]);
+
+        $this->emit('setDisplayLoading', false);
+
 
    }
 
