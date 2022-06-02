@@ -38,18 +38,19 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             this.livewire.hook('message.sent', () => {
-                window.dispatchEvent(
                     Livewire.emit('setLoading', true)
-                );
             })
             this.livewire.hook('message.processed', (message, component) => {
-                window.dispatchEvent(
                     Livewire.emit('setLoading', false)
-                );
             })
 
 
         });
-
+        // window.addEventListener('setDisplayLoading', event => {
+        //     alert('Name updated to: ' + event.detail.newName);
+        //     window.dispatchEvent(
+        //         new CustomEvent('loading', { detail: { loading: false }})
+        //     );
+        // })
     </script>
 </div>
