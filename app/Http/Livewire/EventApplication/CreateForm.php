@@ -13,7 +13,7 @@ class CreateForm extends Component
    public $optionMode = false, $createForm = false;
    // schema data
    public Collection $schema;
-   public EventApplications $event_application;
+   public ?EventApplications $event_application = null;
 
    public $openCreateForm = false, $rules, $requiredRule, $fieldName, $fieldType, $placeholder, $fieldOptions, $fieldId;
 
