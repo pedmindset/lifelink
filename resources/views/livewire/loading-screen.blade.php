@@ -50,11 +50,6 @@
 
 
         });
-        // window.addEventListener('setDisplayLoading', event => {
-        //     alert('Name updated to: ' + event.detail.newName);
-        //     window.dispatchEvent(
-        //         new CustomEvent('loading', { detail: { loading: false }})
-        //     );
-        // })
+
     </script>
 </div>
