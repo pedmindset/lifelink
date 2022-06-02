@@ -340,7 +340,7 @@
                                  <div class="my-2 overflow-x-auto">
                                     @forelse ($general as $noti)
                                        <div class="bg-white rounded-md border-gray-300 border p-3 shadow-sm my-1">
-                                          <div class="ml-2 mr-4 text-sm">
+                                          <div class="mx-2 text-sm">
                                              <span class="font-semibold capitalize">{{ $noti->subject }}</span>
                                              <span class="block text-gray-500 ">{{ $noti->content }}</span>
                                           </div>
@@ -369,7 +369,7 @@
                                  <div class="my-2 overflow-x-auto">
                                     @forelse ($events as $noti)
                                     <div class="bg-white rounded-md border-gray-300 border p-3 shadow-sm my-1">
-                                       <div class="ml-2 mr-4 text-sm">
+                                       <div class="mx-2 text-sm">
                                           <span class="font-semibold capitalize">{{ $noti->subject }}</span>
                                           <span class="block text-gray-500 ">{{ $noti->content }}</span>
                                        </div>
@@ -397,7 +397,7 @@
                                  <div class="my-2 overflow-x-auto">
                                     @forelse ($aluminia as $noti)
                                        <div class="bg-white rounded-md border-gray-300 border p-3 shadow-sm my-1">
-                                          <div class="ml-2 mr-4 text-sm">
+                                          <div class="mx-2 text-sm">
                                              <span class="font-semibold capitalize">{{ $noti->subject }}</span>
                                              <span class="block text-gray-500 ">{{ $noti->content }}</span>
                                           </div>
