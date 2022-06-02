@@ -146,7 +146,7 @@
    {{-- @livewire('event-application.add-award', ['eventId' => $this->event->id]) --}}
    @livewire('event-application.create-form', ['eventId' => $this->event->id])
    {{-- @livewire('event-application.add-official', ['eventId' => $this->event->id]) --}}
-   @push('custom-script')
+   @push('custom-scripts')
 
    <style>
         .loader {
