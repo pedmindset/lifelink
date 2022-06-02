@@ -70,7 +70,7 @@
                         </div>
                         @endif
 
-                        <ul class="p-3 space-y-2">
+                        <ul wire:poll="getEventProperty" class="p-3 space-y-2">
                            @forelse ($this->event->applications as $item)
                            <li  class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
                               <div class="flex p-3 justify-between">
