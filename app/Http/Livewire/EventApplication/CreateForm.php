@@ -213,7 +213,37 @@ class CreateForm extends Component
       }
       else {
          $this->schema = $this->schema->whereNotIn('id', [$data['id']]);
-         $this->schema = $this->schema->push($data);
+
+         $this->schema = $this->schema->map(function ($item, $key) use ($data) {
+
+            if($data['id'] == $item['id'])
+            {
+                return [
+                    'id' => $data['id'],
+                    'fieldType' => $data['fieldType'],
+                    'fieldName' =>  $data['fieldName'],
+                    'model'=>  $data['model'],
+                    'placeholder' =>  $data['placeholder'],
+                    'rules' =>  $data['rules'],
+                    'options' => $data['options'],
+                 ];
+            }
+            else
+            {
+                return [
+                    'id' => $item['id'],
+                    'fieldType' =>$item['fieldType'],
+                    'fieldName' =>$item['fieldName'],
+                    'model'=> $item['model'],
+                    'placeholder' => $item['placeholder'],
+                    'rules' => $item['rules'],
+                    'options' =>$item['options'],
+                 ];
+            }
+
+         });
+
+        //  $this->schema = $this->schema->push($data);
         //  $this->schema->all();
       }
       $this->resetFieldInput();
