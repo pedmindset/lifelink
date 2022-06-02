@@ -121,6 +121,7 @@ class CreateForm extends Component
                 'message'=> "Successfully created!"
             ]);
         }
+        
 
         $this->openCreateForm = false;
         $this->resetInput();

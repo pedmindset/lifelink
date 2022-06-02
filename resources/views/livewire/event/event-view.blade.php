@@ -6,9 +6,9 @@
 
                <x-card class="shadow-md">
                   <div>
-                     <img class="h-60 w-full object-cover md:h-80 shadow-md rounded-t-md" src="{{ $event->thumb_image_url != '' ? $event->thumb_image_url : asset('img/back_con.jpg') }}" alt="image back">
+                     <img class="h-60 w-full object-cover md:h-80 shadow-md rounded-t-md" src="{{ $this->event->thumb_image_url != '' ? $this->event->thumb_image_url : asset('img/back_con.jpg') }}" alt="image back">
                   </div>
-                  <div class="bg-gray-200 shadow-inner py-3 text-gray-700 text-center text-sm font-sans font-semibold leading-6 tracking-wide">{{ $event->name }}</div>
+                  <div class="bg-gray-200 shadow-inner py-3 text-gray-700 text-center text-sm font-sans font-semibold leading-6 tracking-wide">{{ $this->event->name }}</div>
 
                   <div class="pt-3">
                      <div class="hidden sm:block">
@@ -32,7 +32,7 @@
                                     Name / Title
                                  </dt>
                                  <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $event->name ?? 'N/A' }}
+                                    {{ $this->event->name ?? 'N/A' }}
                                  </dd>
                               </div>
 
@@ -41,7 +41,7 @@
                                     Description
                                  </dt>
                                  <dd class="mt-1 text-sm text-gray-900">
-                                    {{ $event->description ?? 'N/A' }}
+                                    {{ $this->event->description ?? 'N/A' }}
                                  </dd>
                               </div>
                            </dl>
@@ -60,7 +60,7 @@
                      </div>
 
                      <div x-show="showFormTab" style="display: none">
-                        @if(count($event->applications) > 0)
+                        @if(count($this->event->applications) > 0)
                         <div class="py-4 px-8">
                            <div class="flex place-content-end mb-4">
                               <button type="button" wire:click="$emit('openForm')" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white capitalize bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
@@ -71,7 +71,7 @@
                         @endif
 
                         <ul class="p-3 space-y-2">
-                           @forelse ($event->applications as $item)
+                           @forelse ($this->event->applications as $item)
                            <li  class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
                               <div class="flex p-3 justify-between">
                                  <div class="ml-3 mr-auto flex">
@@ -138,8 +138,8 @@
          </div>
       </div>
    </div>
-   {{-- @livewire('event-application.add-award', ['eventId' => $event->id]) --}}
-   @livewire('event-application.create-form', ['eventId' => $event->id])
-   {{-- @livewire('event-application.add-official', ['eventId' => $event->id]) --}}
+   {{-- @livewire('event-application.add-award', ['eventId' => $this->event->id]) --}}
+   @livewire('event-application.create-form', ['eventId' => $this->event->id])
+   {{-- @livewire('event-application.add-official', ['eventId' => $this->event->id]) --}}
 
 </div>
