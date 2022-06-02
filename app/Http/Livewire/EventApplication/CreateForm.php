@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 class CreateForm extends Component
 {
-   public $eventId, $name, $description, $fieldSelected_id, $schemaFieldsCount = 0;
+   public $eventId, $name, $description, $fieldSelected_id = null, $schemaFieldsCount = 0;
    public $optionMode = false, $createForm = false;
    // schema data
    public Collection $schema;
@@ -79,7 +79,7 @@ class CreateForm extends Component
 
    public function removeField($id)
    {
-        $this->schema = $this->schema->whereNotIn('id', $id);
+        $this->schema = $this->schema->whereNotIn('id', [$id]);
    }
 
    public function selectField($id)
@@ -204,13 +204,13 @@ class CreateForm extends Component
 
       if($this->fieldSelected_id == null){
          $this->schema = $this->schema->push($data);
-         $this->schema->all();
+        //  $this->schema->all();
          $this->schemaFieldsCount =  $this->schemaFieldsCount + 1;
       }
       else {
-         $this->schema = $this->schema->whereNotIn('id', $data['id']);
+         $this->schema = $this->schema->whereNotIn('id', [$data['id']]);
          $this->schema = $this->schema->push($data);
-         $this->schema->all();
+        //  $this->schema->all();
       }
       $this->resetFieldInput();
 
