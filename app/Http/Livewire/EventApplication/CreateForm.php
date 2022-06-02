@@ -27,6 +27,7 @@ class CreateForm extends Component
    public function openForm()
    {
      $this->openCreateForm = true;
+     dump($this->schema);
    }
 
    public function closeForm()
