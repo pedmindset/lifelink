@@ -38,7 +38,8 @@ class CreateForm extends Component
 
    public function deleteForm($event_application_id)
    {
-       $this->emit('setDisplayLoading', true);
+        $this->emit('setDisplayLoading', true);
+
         $this->event_application = EventApplications::firstWhere('id', $event_application_id);
 
         $this->event_application->delete();

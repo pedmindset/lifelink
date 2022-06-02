@@ -84,6 +84,8 @@ class EventView extends Component
 
    public function deleteForm($formId)
    {
+        $this->emit('setDisplayLoading', true);
+
         $this->emit('deleteForm', $formId);
    }
 }
