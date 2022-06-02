@@ -24,6 +24,7 @@ class EventView extends Component
 
    public function mount()
    {
+       $this->emit('setDisplayLoading', false);
        $this->event = Event::firstWhere('id', request()->id);
        $this->detailTab = true;
    }

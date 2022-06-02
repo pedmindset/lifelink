@@ -1,9 +1,11 @@
-<div>
-    <div x-data="{ loading: @entangle('loading') }" x-show="loading" @loading.window="loading = $event.detail.loading">
+<div  x-data="{ displayLoading: @entangle('displayLoading') }"
+    @displayLoading.window="displayLoading = $event.detail.displayLoading">
+    <div x-data="{ loading: @entangle('loading') }"
+    x-show="loading" @loading.window="loading = $event.detail.loading">
         <style>
             .loader {
                 border-top-color: #3498db;
-                -webkit-animation: spinner 1.5s linear infinite;
+                -webkit-animation: spinner 1.5s linear infini"te;
                 animation: spinner 1.5s linear infinite;
             }
 
@@ -37,22 +39,22 @@
         document.addEventListener('DOMContentLoaded', () => {
             this.livewire.hook('message.sent', () => {
                 window.dispatchEvent(
-                    new CustomEvent('loading', {
-                        detail: {
-                            loading: true
-                        }
-                    })
+                    Livewire.emit('setLoading', true)
                 );
             })
             this.livewire.hook('message.processed', (message, component) => {
                 window.dispatchEvent(
-                    new CustomEvent('loading', {
-                        detail: {
-                            loading: false
-                        }
-                    })
+                    Livewire.emit('setLoading', false)
                 );
             })
+
+
         });
+        // window.addEventListener('setDisplayLoading', event => {
+        //     alert('Name updated to: ' + event.detail.newName);
+        //     window.dispatchEvent(
+        //         new CustomEvent('loading', { detail: { loading: false }})
+        //     );
+        // })
     </script>
 </div>
