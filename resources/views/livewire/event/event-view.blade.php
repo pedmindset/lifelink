@@ -70,7 +70,7 @@
                         </div>
                         @endif
 
-                        <ul wire:poll="getEventProperty" class="p-3 space-y-2">
+                        <ul wire:poll.3000ms="getEventProperty" class="p-3 space-y-2">
                            @forelse ($this->event->applications as $item)
                            <li  class="bg-gray-200 rounded cursor-pointer shadow-sm hover:shadow-lg transition duration-300 ease-linear" x-data="{ showDelete: false, showCategory: false, showEdit: false }">
                               <div class="flex p-3 justify-between">
@@ -141,5 +141,34 @@
    {{-- @livewire('event-application.add-award', ['eventId' => $this->event->id]) --}}
    @livewire('event-application.create-form', ['eventId' => $this->event->id])
    {{-- @livewire('event-application.add-official', ['eventId' => $this->event->id]) --}}
+   @push('custom-script')
 
+   <style>
+        .loader {
+            border-top-color: #3498db;
+            -webkit-animation: spinner 1.5s linear infinite;
+            animation: spinner 1.5s linear infinite;
+            visibility: hidden;
+        }
+
+        @-webkit-keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinner {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+   @endpush
 </div>
