@@ -182,7 +182,15 @@ class CreateForm extends Component
          'fieldType' => 'required',
       ]);
 
-      $options = explode(",",$this->fieldOptions);
+      if(!is_array(($this->fieldOptions)))
+      {
+        $options = explode(",",$this->fieldOptions);
+      }
+      else
+      {
+        $options = $this->fieldOptions;
+
+      }
       $data = [
          'id' => $this->fieldSelected_id ?? $this->schemaFieldsCount,
          'fieldType' => $this->fieldType,
