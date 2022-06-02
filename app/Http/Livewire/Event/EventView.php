@@ -29,13 +29,15 @@ class EventView extends Component
        $this->detailTab = true;
    }
 
-   public function hydrate()
-   {
-        $this->emit('setDisplayLoading', false);
-   }
+//    public function hydrate()
+//    {
+
+//    }
 
    public function getEventProperty()
    {
+        $this->emit('setDisplayLoading', false);
+        $this->emit('setLoading', false);
         $this->event = Event::firstWhere('id', $this->event->id);
    }
 
