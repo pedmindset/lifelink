@@ -24,13 +24,13 @@ class EventView extends Component
 
    public function mount()
    {
-       $this->getEventProperty();
+       $this->event = Event::firstWhere('id', request()->id);
        $this->detailTab = true;
    }
 
    public function getEventProperty()
    {
-        $this->event = Event::firstWhere('id', request()->id);
+        $this->event = Event::firstWhere('id', $this->event->id);
    }
 
    public function switchtab($value){
