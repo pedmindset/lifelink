@@ -36,9 +36,9 @@ class EventView extends Component
 
    public function getEventProperty()
    {
-        $this->emit('setDisplayLoading', false);
-        $this->emit('setLoading', false);
-        $this->event = Event::firstWhere('id', $this->event->id);
+    $this->emit('setDisplayLoading', false);
+    // $this->emit('setLoading', false);
+    $this->event = Event::firstWhere('id', $this->event->id);
    }
 
    public function switchtab($value){

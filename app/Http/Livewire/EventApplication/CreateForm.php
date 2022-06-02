@@ -26,25 +26,16 @@ class CreateForm extends Component
 
    public function openForm()
    {
-    $this->emit('setDisplayLoading', true);
-    // $this->emit('setLoading', true);
      $this->openCreateForm = true;
-     $this->emit('setDisplayLoading', false);
    }
 
    public function closeForm()
    {
-        $this->emit('setDisplayLoading', true);
-
-        $this->openCreateForm = false;
-
-        $this->emit('setDisplayLoading', false);
-
+     $this->openCreateForm = false;
    }
 
    public function deleteForm($event_application_id)
    {
-        $this->emit('setDisplayLoading', true);
         $this->event_application = EventApplications::firstWhere('id', $event_application_id);
 
         $this->event_application->delete();
@@ -53,15 +44,12 @@ class CreateForm extends Component
             'type'=>'info',
             'message'=> "Successfully deleted!"
         ]);
-        $this->emit('setDisplayLoading', false);
 
    }
 
 
    public function editForm($event_application_id)
    {
-        $this->emit('setDisplayLoading', true);
-
         $this->event_application = EventApplications::firstWhere('id', $event_application_id);
         $data = (json_decode($this->event_application->schema, true));
 
@@ -78,35 +66,24 @@ class CreateForm extends Component
         $this->schemaFieldsCount =  $this->schema->count();
         $this->openForm();
 
-        $this->emit('setDisplayLoading', false);
-
-
    }
 
    public function cancel()
    {
-        $this->emit('setDisplayLoading', true);
-
         $this->openCreateForm = false;
         $this->schemaFieldsCount = 0;
         $this->resetInput();
         $this->resetFieldInput();
         $this->schema = collect([]);
-        $this->emit('setDisplayLoading', false);
-
    }
 
    public function removeField($id)
    {
-        $this->emit('setDisplayLoading', true);
         $this->schema = $this->schema->whereNotIn('id', $id);
-        $this->emit('setDisplayLoading', false);
    }
 
    public function selectField($id)
    {
-        $this->emit('setDisplayLoading', true);
-
         $field = $this->schema->firstWhere ('id', $id);
 
         $this->fieldSelected_id = $field['id'];
@@ -117,8 +94,6 @@ class CreateForm extends Component
         $this->fieldOptions = $field['options'];
 
         $this->switchOption($this->fieldType);
-        $this->emit('setDisplayLoading', false);
-
 
    }
 
@@ -131,8 +106,6 @@ class CreateForm extends Component
 
    public function store()
    {
-      $this->emit('setDisplayLoading', true);
-
       $this->validate([
          'name' => 'required',
       ]);
@@ -165,9 +138,6 @@ class CreateForm extends Component
 
         $this->openCreateForm = false;
         $this->resetInput();
-
-        $this->emit('setDisplayLoading', false);
-
    }
 
    public function switchOption($value){
@@ -207,8 +177,6 @@ class CreateForm extends Component
    }
 
    public function addField() {
-      $this->emit('setDisplayLoading', true);
-
       $this->validate([
          'fieldName' => 'required',
          'fieldType' => 'required',
@@ -237,9 +205,6 @@ class CreateForm extends Component
          $this->schema->all();
       }
       $this->resetFieldInput();
-
-      $this->emit('setDisplayLoading', false);
-
 
    }
 
