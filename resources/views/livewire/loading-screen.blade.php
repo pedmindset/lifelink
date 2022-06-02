@@ -61,7 +61,7 @@
 
         window.addEventListener('setDisplayLoading', event => {
             window.dispatchEvent(
-                new CustomEvent('loading', {
+                new CustomEvent('displayLoading', {
                     detail: {
                         displayLoading: event.detail.bool
                     }
