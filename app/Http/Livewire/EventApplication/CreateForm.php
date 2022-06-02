@@ -89,6 +89,7 @@ class CreateForm extends Component
         $this->fieldSelected_id = $field['id'];
         $this->fieldType = $field['fieldType'];
         $this->fieldName = $field['fieldName'];
+        $this->model = $field['model'];
         $this->placeholder = $field['placeholder'];
         $this->rules = $field['rules'];
         $this->fieldOptions = $field['options'];
