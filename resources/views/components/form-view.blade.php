@@ -8,7 +8,7 @@
                   <div class="mt-3">
                      <label for="{{ $s['model'] }}" class="block text-sm capitalize font-bold text-gray-900">{{ $s['fieldName'] }}</label>
                      <div class="mt-1">
-                        <input name="{{ $s['model'] }}" wire:change.prevent="getFieldValue($event.target.value,'{{ $s['fieldName'] }}')" {{ $s['rules'] ? 'required' : '' }} type ="text" id="{{ $s['model'] }}" placeholder="{{ $s['placeholder }}" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                        <input name="{{ $s['model'] }}" wire:change.prevent="getFieldValue($event.target.value,'{{ $s['fieldName'] }}')" {{ $s['rules'] ? 'required' : '' }} type ="text" id="{{ $s['model'] }}" placeholder="{{ $s['placeholder'] }}" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                      </div>
                   </div>
                @break
@@ -80,7 +80,7 @@
                   <div class="mt-3">
                      <label for="{{ $s['model']'] }}" class="block text-sm font-bold text-gray-900">{{ $s['fieldName']'] }}</label>
                      <div class="mt-1">
-                        <input wire:change.prevent="getFieldValue($event.target.value,'{{ $s['fieldName']'] }}')" {{ $s['rules']'] ? 'required' : '' }} type ="text" id="{{ $s['model']'] }}" placeholder="{{ $s['placeholder'] }}" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                        <input wire:change.prevent="getFieldValue($event.target.value,'{{ $s['fieldName']'] }}')" {{ $s['rules']'] ? 'required' : '' }} type ="text" id="{{ $s['model']'] }}" placeholder="{{ $s['placeholder']'] }}" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                      </div>
                   </div>
                @break
