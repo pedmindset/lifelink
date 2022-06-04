@@ -2,18 +2,19 @@
 
 namespace App\Http\Livewire\Pages;
 
-use App\Events\ApplyEmailEvent;
+use App\Models\User;
 use Livewire\Component;
 use App\Models\Applicant;
+use App\Events\ApplyEmailEvent;
 use App\Models\EventApplications;
-use App\Models\User;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Casts\ArrayObject;
 
 class FormApplication extends Component
 {
    public $formId,$eventId,$userId, $data, $valueIn;
-   public $schema;
+   public Collection $schema;
    public $applicantData = [];
    public $isMobile = false, $formFinish = false;
    public function render()
