@@ -22,7 +22,7 @@ class FormApplication extends Component
       $data = EventApplications::firstWhere('id', $this->formId);
       $this->data = $data;
       $this->eventId = $data->event->id;
-      $this->schema = collect(json_decode($this->data->schema, true))->all();
+      $this->schema = collect(json_decode($this->data->schema, true));
       return view('livewire.pages.form-application');
    }
 
