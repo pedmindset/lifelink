@@ -152,7 +152,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-gray-100 z-10" style="min-height: 320px; display: none;">
+    <div class="bg-gray-100 z-10" style="min-height: 320px;">
 
         <!-- Global notification live region, render this permanently at the end of the document -->
         <div x-data="{ show: @entangle('access_denied') }" aria-live="assertive"
@@ -160,7 +160,7 @@
             <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
                 <!-- Notification panel, dynamically insert this into the live region when it needs to be displayed -->
 
-                <div x-show="show" x-transition:enter="transform ease-out duration-300 transition"
+                <div x-show="show" style="display: none;" x-transition:enter="transform ease-out duration-300 transition"
                     x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
                     x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
                     x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100"
