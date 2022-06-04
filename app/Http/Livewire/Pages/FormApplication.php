@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Casts\ArrayObject;
 class FormApplication extends Component
 {
    public $formId,$eventId,$userId, $data, $valueIn;
-   public Collection $schema;
+   public $schema;
    public $applicantData = [];
    public $isMobile = false, $formFinish = false;
    public function render()
@@ -22,7 +22,7 @@ class FormApplication extends Component
       $data = EventApplications::firstWhere('id', $this->formId);
       $this->data = $data;
       $this->eventId = $data->event->id;
-      $this->schema = collect(json_decode($this->data->schema, true));
+      $this->schema = (json_decode($this->data->schema, true));
       return view('livewire.pages.form-application');
    }
 
