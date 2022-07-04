@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "126b2907afebae4b92fa38133622b036",
+    "content-hash": "7b3fa47973a1ed14b2bd131e8cda010f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3026,6 +3026,51 @@
                 "source": "https://github.com/marianvlad/nova-env-card/tree/master"
             },
             "time": "2018-08-24T22:04:46+00:00"
+        },
+        {
+            "name": "mastani/nova-git-manager",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mastani/nova-git-manager.git",
+                "reference": "e319c276b1c9dcdaea8a4bc637ca748c4d2836b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mastani/nova-git-manager/zipball/e319c276b1c9dcdaea8a4bc637ca748c4d2836b9",
+                "reference": "e319c276b1c9dcdaea8a4bc637ca748c4d2836b9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mastani\\NovaGitManager\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mastani\\NovaGitManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Laravel Nova Git Manager tool.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/mastani/nova-git-manager/issues",
+                "source": "https://github.com/mastani/nova-git-manager/tree/0.0.1"
+            },
+            "time": "2022-04-16T05:51:47+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.10",
         "marianvlad/nova-env-card": "^1.0",
+        "mastani/nova-git-manager": "^0.0.1",
         "spatie/laravel-medialibrary": "9.0.0",
         "spatie/laravel-permission": "^5.5.0"
     },

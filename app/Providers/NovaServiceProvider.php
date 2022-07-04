@@ -6,6 +6,7 @@ use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Marianvlad\NovaEnvCard\NovaEnvCard;
+use Mastani\NovaGitManager\NovaGitManager;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Cloudstudio\ResourceGenerator\ResourceGenerator;
 use JeffersonSimaoGoncalves\NovaPermission\NovaPermissionTool;
@@ -86,6 +87,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             NovaPermissionTool::make(),
+            new NovaGitManager,
             (new ResourceGenerator())->canSee(function ($request) {
                 return true;
             }),
