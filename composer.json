@@ -20,7 +20,7 @@
         "livewire/livewire": "^2.10",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
         "spatie/laravel-medialibrary": "9.0.0",
-        "spatie/laravel-permission": "^4.4.0"
+        "spatie/laravel-permission": "^5.5.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
