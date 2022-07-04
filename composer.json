@@ -60,7 +60,7 @@
         },
         {
             "type": "path",
-            "url": "./nova"
+            "url": "./nova" 
         }
     ],
     "extra": {
