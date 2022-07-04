@@ -3,6 +3,7 @@
 use App\Models\Tag;
 use App\Models\User;
 use App\Models\Event;
+use App\Models\Profile;
 use App\Http\Livewire\Fees;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
@@ -62,11 +63,21 @@ Route::middleware('auth')->group(function ($route) {
    })->name('auth.home');
 
    $route->get('/profile', function () {
-    //   $users = User::doesntHave('roles')->get();
+      $users = User::with('profile')->get();
 
-    //   foreach ($users as $user) {
-    //     $user->assignRole('customer');
-    //   }
+      foreach ($users as $user) {
+       if(empty($user->profile)){
+           $name = explode(" ", $user->name);
+           $first = $name[0];
+           $last = $name[1];
+        Profile::create([
+            'user_id' => $user->id,
+            'first_name' => $first,
+            'last_name' => $last,
+            'email' => $user->email,
+         ]);
+       }
+      }
       $generalAnnouncement = Tag::firstWhere('id', 2)->announcements;
       $aluminiaAnnouncement = Tag::firstWhere('id', 3)->announcements;
       $eventAnnouncement = Tag::firstWhere('id', 1)->announcements;
