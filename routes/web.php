@@ -63,21 +63,21 @@ Route::middleware('auth')->group(function ($route) {
    })->name('auth.home');
 
    $route->get('/profile', function () {
-      $users = User::with('profile')->get();
+    //   $users = User::with('profile')->get();
 
-      foreach ($users as $user) {
-       if(empty($user->profile)){
-           $name = explode(" ", $user->name);
-           $first = $name[0];
-           $last = $name[1];
-        Profile::create([
-            'user_id' => $user->id,
-            'first_name' => $first,
-            'last_name' => $last,
-            'email' => $user->email,
-         ]);
-       }
-      }
+    //   foreach ($users as $user) {
+    //    if(empty($user->profile)){
+    //        $name = explode(" ", $user->name);
+    //        $first = $name[0];
+    //        $last = $name[1];
+    //     Profile::create([
+    //         'user_id' => $user->id,
+    //         'first_name' => $first,
+    //         'last_name' => $last,
+    //         'email' => $user->email,
+    //      ]);
+    //    }
+    //   }
       $generalAnnouncement = Tag::firstWhere('id', 2)->announcements;
       $aluminiaAnnouncement = Tag::firstWhere('id', 3)->announcements;
       $eventAnnouncement = Tag::firstWhere('id', 1)->announcements;
