@@ -64,10 +64,14 @@ Route::middleware('auth')->group(function ($route) {
       foreach (App\Models\User::all() as $user) {
           if(empty($user->profile))
           {
+            $words = explode(" ", $user->name);
+
+            $firstname = $words[0];
+            $lastname = $words[1];
             App\Models\Profile::create([
                 'user_id' => $user->id,
-                'first_name' => $user->name,
-                'last_name' => $this->name,
+                'first_name' => $firstname,
+                'last_name' =>  $lastname,
                 'email' => $user->email,
             ]);
           }
