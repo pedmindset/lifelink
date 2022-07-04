@@ -11,10 +11,10 @@ class AddEventToAwardsTable extends Migration
     *
     * @return void
     */
-   public function up()   
+   public function up()
    {
       Schema::table('awards', function (Blueprint $table) {
-         $table->unsignedBigInteger('event_id');
+         $table->unsignedBigInteger('event_id')->nullable();
          // $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
       });
    }

@@ -13,7 +13,7 @@ class CreateReceiptsTable extends Migration
     */
    public function up()
    {
-
+    Schema::dropIfExists('receipts');
       Schema::create('receipts', function (Blueprint $table) {
          $table->id();
          $table->unsignedBigInteger('payment_id');
