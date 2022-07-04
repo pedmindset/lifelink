@@ -84,28 +84,31 @@ Route::middleware('auth')->group(function ($route) {
    //    return view('pages.event-detail', ['eventId' => $request->id, 'formId' => null, 'userId'=> null]);
    // })->name('events.detail');
 
-   $route->get('/settings', function(Request $request) {
-      return view('pages.settings');})->name('admin.settings');
-
-   $route->get('/dashboard', DashboardView::class)->name('dashboard');
-   $route->get('/users', ComponentUsers::class)->name('users');
-
-   $route->get('/events', ComponentConference::class)->name('events');
-   $route->get('/event/{id}', EventView::class)->name('event.view');
-   $route->post('/event/create', [EventController::class, 'store'])->name('event.create');
-   $route->post('/event/update', [EventController::class, 'update'])->name('event.update');
-   $route->post('/event/apply/form', [EventController::class, 'apply'])->name('apply.form');
-   // $route->get('/events/{option}/{id}', ComponentConference::class)->name('event');
-
-   $route->get('/event-form', EventApplication::class)->name('event.form');
-   $route->get('/applicants/{id}', EventApplicants::class)->name('event.applicants');
-   $route->get('/fees', Fees::class)->name('fees');
-   $route->get('/officials', ComponentOfficials::class)->name('officials');
-   $route->get('/members', ComponentMembers::class)->name('members');
-   $route->get('/awards-citations', ComponentAwardCitation::class)->name('awards.citations');
-   $route->get('/announcements', ComponentAnnouncement::class)->name('announcements');
-   $route->get('/payments', ComponentPayment::class)->name('payments');
 });
+Route::group(['middleware' => ['role:super-admin', 'role:admin', 'role:staff']], function ($route) {
+
+    $route->get('/settings', function(Request $request) {
+       return view('pages.settings');})->name('admin.settings');
+
+    $route->get('/dashboard', DashboardView::class)->name('dashboard');
+    $route->get('/users', ComponentUsers::class)->name('users');
+
+    $route->get('/events', ComponentConference::class)->name('events');
+    $route->get('/event/{id}', EventView::class)->name('event.view');
+    $route->post('/event/create', [EventController::class, 'store'])->name('event.create');
+    $route->post('/event/update', [EventController::class, 'update'])->name('event.update');
+    $route->post('/event/apply/form', [EventController::class, 'apply'])->name('apply.form');
+    // $route->get('/events/{option}/{id}', ComponentConference::class)->name('event');
+
+    $route->get('/event-form', EventApplication::class)->name('event.form');
+    $route->get('/applicants/{id}', EventApplicants::class)->name('event.applicants');
+    $route->get('/fees', Fees::class)->name('fees');
+    $route->get('/officials', ComponentOfficials::class)->name('officials');
+    $route->get('/members', ComponentMembers::class)->name('members');
+    $route->get('/awards-citations', ComponentAwardCitation::class)->name('awards.citations');
+    $route->get('/announcements', ComponentAnnouncement::class)->name('announcements');
+    $route->get('/payments', ComponentPayment::class)->name('payments');
+ });
 
 Route::get('upcoming/event/mobile/{user}/{eventId}', function (Request $request) {
    if (! $request->hasValidSignature()) {
