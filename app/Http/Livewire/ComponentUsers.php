@@ -166,7 +166,7 @@ class ComponentUsers extends Component
       if ($this->selected_id) {
          $record = Person::firstWhere('id', $this->selected_id);
          $record->profile()->delete();
-         $record->roles()->delete();
+         $record->removeRole($record->getRoleNames()[0]);
 
          $this->selectedname = $record->name;
          $record->delete();

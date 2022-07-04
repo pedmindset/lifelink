@@ -62,11 +62,11 @@ Route::middleware('auth')->group(function ($route) {
    })->name('auth.home');
 
    $route->get('/profile', function () {
-    //   $users = User::doesntHave('roles')->get();
+      $users = User::doesntHave('roles')->get();
 
-    //   foreach ($users as $user) {
-    //     $user->assignRole('customer');
-    //   }
+      foreach ($users as $user) {
+        $user->assignRole('customer');
+      }
       $generalAnnouncement = Tag::firstWhere('id', 2)->announcements;
       $aluminiaAnnouncement = Tag::firstWhere('id', 3)->announcements;
       $eventAnnouncement = Tag::firstWhere('id', 1)->announcements;
