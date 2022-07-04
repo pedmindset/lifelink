@@ -59,7 +59,7 @@
                         {{ __('Remember me') }}
                        </label>
                      </div>
-             
+
                      <div class="text-sm my-3">
                         @if (Route::has('password.request'))
                         <a class="font-semibold text-indigo-600 hover:text-indigo-500" href="{{ route('password.request') }}">
@@ -82,10 +82,10 @@
 
                   <div class="flex items-center justify-center my-8">
                      <p class="ml-2 block text-sm text-gray-900">
-                     {{ __("Don't have an account") }} <span class="font-bold text-cyan-600 hover:text-indigo-500"> <a href="{{ route('register') }}">{{ _('Register') }}</a></span>
+                     {{ __("Don't have an account") }} <span class="font-bold text-cyan-600 hover:text-indigo-500"> <a href="{{ route('register') }}">{{ __('Register') }}</a></span>
                      </p>
                   </div>
-                  
+
                </form>
 
             </div>
@@ -103,10 +103,10 @@
          <!-- Email Address -->
          <div>
             <x-label for="email" :value="__('Email')" class="sr-only" />
-            <x-auth-input id="email" class="w-full rounded-t-md" 
-                     type="email" 
-                     name="email" 
-                     :value="old('email')" 
+            <x-auth-input id="email" class="w-full rounded-t-md"
+                     type="email"
+                     name="email"
+                     :value="old('email')"
                      required autofocus />
          </div>
          <!-- Password -->
@@ -126,7 +126,7 @@
                {{ __('Remember me') }}
               </label>
             </div>
-    
+
             <div class="text-sm my-6">
                @if (Route::has('password.request'))
                <a class="font-semibold text-indigo-600 hover:text-indigo-500" href="{{ route('password.request') }}">
