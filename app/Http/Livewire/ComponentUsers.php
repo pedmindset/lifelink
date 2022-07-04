@@ -24,7 +24,7 @@ class ComponentUsers extends Component
 
    public function mount()
    {
-      $this->data = Person::latest()->all();
+      $this->data = Person::latest()->get();
    }
 
    public function sortedBy($value){
@@ -55,7 +55,7 @@ class ComponentUsers extends Component
       $this->image = null;
 
 
-      $this->data = Person::all();
+      $this->data = Person::latest()->get();
       // $this->data = Person::role('customer')->get();
    }
 
