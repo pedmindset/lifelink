@@ -12,6 +12,7 @@ use Vyuldashev\NovaPermission\RoleSelect;
 use Vyuldashev\NovaPermission\PermissionBooleanGroup;
 
 
+
 class User extends Resource
 {
     /**
