@@ -67,7 +67,6 @@ class User extends Resource
                 ->updateRules('nullable', 'string', 'min:8'),
 
             RoleSelect::make('Role', 'roles'),
-            PermissionBooleanGroup::make('Permissions'),
 
             Impersonate::make($this),
         ];
