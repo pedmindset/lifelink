@@ -48,7 +48,13 @@ class RegisteredUserController extends Controller
          'password' => Hash::make($request->password),
       ]);
 
-      $user->assignRole('customer');
+      try {
+        $user->assignRole('customer');
+      } catch (\Throwable $th) {
+        \Spatie\Permission\Models\Role::create(['name' => 'customer']);
+        $user->assignRole('customer');
+      }
+
 
       Profile::create([
          'user_id' => $user->id,

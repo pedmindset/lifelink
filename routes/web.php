@@ -61,21 +61,7 @@ Route::middleware('auth')->group(function ($route) {
    })->name('auth.home');
 
    $route->get('/profile', function () {
-    //   foreach (App\Models\User::all() as $user) {
-    //       if(empty($user->profile))
-    //       {
-    //         $words = explode(" ", $user->name);
-
-    //         $firstname = $words[0];
-    //         $lastname = $words[1];
-    //         App\Models\Profile::create([
-    //             'user_id' => $user->id,
-    //             'first_name' => $firstname,
-    //             'last_name' =>  $lastname,
-    //             'email' => $user->email,
-    //         ]);
-    //       }
-    //   }
+    //   Spatie\Permission\Models\Role::create(['name' => 'customer']);
       $generalAnnouncement = Tag::firstWhere('id', 2)->announcements;
       $aluminiaAnnouncement = Tag::firstWhere('id', 3)->announcements;
       $eventAnnouncement = Tag::firstWhere('id', 1)->announcements;
