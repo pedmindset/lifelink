@@ -46,7 +46,6 @@ Route::get('/about', function () {
    return view('pages.about');
 })->name('about');
 require __DIR__.'/auth.php';
-
 Route::get('/404', Err404::class)->name('404');
 Route::get('/500', Err500::class)->name('500');
 
