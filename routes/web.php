@@ -87,7 +87,7 @@ Route::middleware('auth')->group(function ($route) {
    // })->name('events.detail');
 
 });
-Route::group(['middleware' => ['role:super-admin', 'role:admin', 'role:staff']], function ($route) {
+Route::group(['middleware' => ['auth',]], function ($route) {
 
     $route->get('/settings', function(Request $request) {
        return view('pages.settings');})->name('admin.settings');
