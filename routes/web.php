@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function ($route) {
    })->name('auth.home');
 
    $route->get('/profile', function () {
-      Spatie\Permission\Models\Role::create(['name' => 'customer']);
+    //   Spatie\Permission\Models\Role::create(['name' => 'customer']);
       $generalAnnouncement = Tag::firstWhere('id', 2)->announcements;
       $aluminiaAnnouncement = Tag::firstWhere('id', 3)->announcements;
       $eventAnnouncement = Tag::firstWhere('id', 1)->announcements;

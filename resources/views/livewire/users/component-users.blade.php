@@ -88,7 +88,7 @@
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap">
                                     <span class="px-2 py-1 inline-flex text-xs leading-5 font-bold rounded-full bg-green-100 text-green-800">
-                                       {{ $person->profile->aluminia ? 'Active' : 'Inactive' }}
+                                       {{ ($person->profile->aluminia ? 'Active' : 'Inactive') ?? 'Inactive' }}
                                     </span>
                                  </td>
                                  <td class="px-6 py-4 whitespace-nowrap text-right space-x-2">
