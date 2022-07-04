@@ -27,10 +27,10 @@ class EventDetail extends Component
       return view('livewire.pages.event-detail');
    }
 
-   public function mount($eventId, $formId, $userId)
+   public function mount($event, $formId, $userId)
    {
-      $this->eventId = $eventId;
-      $this->event = Event::firstWhere('id', $this->eventId);
+      $this->event = $event;
+      $this->eventId = $event->id;
       if($formId != null){
          $this->event = Event::firstWhere('id', $this->eventId);
          if($userId != null){

@@ -1,9 +1,9 @@
 @extends('layouts.home-livewire')
 
-@section('title', $eventName)
+@section('title', $event->name ?? 'Conference')
 
 @section('content')
 
-@livewire('pages.event-detail', ['eventId' => $eventId, 'eventName' => $eventName, 'formId' => $formId, 'userId'=>$userId])
+@livewire('pages.event-detail', ['event' => $event, 'formId' => $formId, 'userId'=>$userId])
 
 @endsection
