@@ -8,8 +8,6 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 use KABBOUCHI\NovaImpersonate\Impersonate;
-use Vyuldashev\NovaPermission\RoleSelect;
-use Vyuldashev\NovaPermission\PermissionBooleanGroup;
 
 
 
@@ -65,8 +63,6 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
-
-            RoleSelect::make('Role', 'roles'),
 
             Impersonate::make($this),
         ];
