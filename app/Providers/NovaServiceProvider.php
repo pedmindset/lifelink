@@ -90,7 +90,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             new NovaGitManager,
             (new ResourceGenerator())->canSee(function ($request) {
                 return true;
-            }),
+            }), 
         ];
     }
 
