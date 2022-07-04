@@ -103,6 +103,8 @@ return [
         DispatchServingNovaEvent::class,
         BootTools::class,
         Authorize::class,
+        \JeffersonSimaoGoncalves\NovaPermission\ForgetCachedPermissions::class,
+
     ],
 
     /*

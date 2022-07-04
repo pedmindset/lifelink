@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use Marianvlad\NovaEnvCard\NovaEnvCard;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Cloudstudio\ResourceGenerator\ResourceGenerator;
+use JeffersonSimaoGoncalves\NovaPermission\NovaPermissionTool;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -84,6 +85,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
+            NovaPermissionTool::make(),
             (new ResourceGenerator())->canSee(function ($request) {
                 return true;
             }),

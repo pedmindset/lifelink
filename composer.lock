@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e034a8ae8c58667d5c2e49ef51c7043",
+    "content-hash": "126b2907afebae4b92fa38133622b036",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1619,6 +1619,52 @@
                 }
             ],
             "time": "2022-05-21T17:30:32+00:00"
+        },
+        {
+            "name": "jeffersonsimaogoncalves/nova-permission",
+            "version": "v4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeffersonsimaogoncalves/nova-permission.git",
+                "reference": "e1cc64b6fe5cf7b7ecaab2910c1407790e7f702a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeffersonsimaogoncalves/nova-permission/zipball/e1cc64b6fe5cf7b7ecaab2910c1407790e7f702a",
+                "reference": "e1cc64b6fe5cf7b7ecaab2910c1407790e7f702a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0",
+                "spatie/laravel-permission": "^3.0|^4.0|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JeffersonSimaoGoncalves\\NovaPermission\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JeffersonSimaoGoncalves\\NovaPermission\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool for Spatie's Permission library.",
+            "keywords": [
+                "laravel",
+                "nova",
+                "spatie-permission"
+            ],
+            "support": {
+                "source": "https://github.com/jeffersonsimaogoncalves/nova-permission/tree/v4.0.2"
+            },
+            "time": "2022-04-03T18:11:33+00:00"
         },
         {
             "name": "kabbouchi/nova-impersonate",
