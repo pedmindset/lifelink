@@ -24,7 +24,7 @@
                      <div class="flex flex-col justify-between flex-1 p-6 bg-white cursor-pointer">
                         <div class="flex-1 ">
                            <div class="block mt-2">
-                              <a href="{{ route('events.detail', ['id' => $event->id]) }}" class="text-xl font-semibold text-indigo-600">
+                              <a href="{{ route('events.detail', ['id' => $event->id, 'name' => $event->name]) }}" class="text-xl font-semibold text-indigo-600">
                                  {{ $event->name }}
                               </a>
                               <p class="pb-3 mt-3 text-base prose-sm prose text-gray-500">{{ $event->short_description }}</p>

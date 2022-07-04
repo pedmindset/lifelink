@@ -1,6 +1,6 @@
 @extends('layouts.home-livewire')
 
-@section('title', 'Event')
+@section('title', $eventName)
 
 @section('content')
 
