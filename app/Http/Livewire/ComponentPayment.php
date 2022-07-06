@@ -17,7 +17,7 @@ class ComponentPayment extends Component
 
    public function render()
    {
-      $this->payData = Payment::all();
+      $this->payData = Payment::latest()->get();
       $this->users = User::role('customer')->get();
       return view('livewire.payment.component-payment');
    }

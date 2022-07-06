@@ -12,7 +12,7 @@ class ComponentMembers extends Component
 
    public function render()
    {
-      $this->data = Member::all();
+      $this->data = Member::latest()->get();
       return view('livewire.member.component-members');
    }
 

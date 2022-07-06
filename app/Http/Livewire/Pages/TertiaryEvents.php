@@ -12,7 +12,7 @@ class TertiaryEvents extends Component
    public function render()
    {
      
-      $this->events = Event::all()->reverse();
+      $this->events = Event::latest()->get();
       return view('livewire.pages.tertiary-events');
    }
 

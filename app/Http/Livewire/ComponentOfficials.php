@@ -12,7 +12,7 @@ class ComponentOfficials extends Component
 
    public function render()
    {
-      $this->data = Official::all();
+      $this->data = Official::latest()->get();
       return view('livewire.official.component-officials');
    }
 

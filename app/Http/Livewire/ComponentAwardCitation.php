@@ -23,8 +23,8 @@ class ComponentAwardCitation extends Component
 
    public function mount()
    {
-      $this->data = Award::all();
-      $this->events = Event::all();
+      $this->data = Award::latest()->get();
+      $this->events = Event::latest()->get();
    }
 
    private function resetInput()

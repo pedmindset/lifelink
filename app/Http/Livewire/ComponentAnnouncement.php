@@ -15,8 +15,8 @@ class ComponentAnnouncement extends Component
 
    public function render()
    {
-      $this->data = Announcement::all();
-      $this->tags = Tag::all();
+      $this->data = Announcement::latest()->get();
+      $this->tags = Tag::latest()->get();
       return view('livewire.announcement.component-announcement');
    }
 
@@ -28,7 +28,7 @@ class ComponentAnnouncement extends Component
       $this->selected_id = null;
       $this->selectedTag = null;
 
-      $this->data = Announcement::all();
+      $this->data = Announcement::latest()->get();
    }
 
    public function notify($id) {
