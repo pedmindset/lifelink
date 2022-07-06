@@ -17,9 +17,9 @@ class EventApplicants extends Component
    public function mount()
    {
       $this->formId = request()->id;
-      $this->data = EventApplications::firstWhere('id', $this->formId)->with(['applicants' => function($query){
+      $this->data = EventApplications::Where('id', $this->formId)->with(['applicants' => function($query){
           $query->latest();
-      }])->applicants;
+      }])->first()->applicants;
       // dd($this->data);
    }
 }
