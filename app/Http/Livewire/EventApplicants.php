@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class EventApplicants extends Component
 {
-   public $formId, $data;
+   public $formId, $data = [];
 
    public function render()
    {
@@ -17,9 +17,18 @@ class EventApplicants extends Component
    public function mount()
    {
       $this->formId = request()->id;
-      $this->data = EventApplications::Where('id', $this->formId)->with(['applicants' => function($query){
+      $applicants = EventApplications::Where('id', $this->formId)->with(['applicants' => function($query){
           $query->latest();
-      }])->first()->applicants;
+      }])->first();
+
+      if($applicants)
+      {
+        $this->data = $applicants->applicants;
+      }
+
+
+
+
       // dd($this->data);
    }
 }
